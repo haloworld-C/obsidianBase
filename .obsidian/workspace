@@ -1,5 +1,6 @@
 {
   "main": {
+<<<<<<< HEAD
     "id": "cfbf17ea710df9ec",
     "type": "split",
     "children": [
@@ -31,11 +32,27 @@
           }
         ],
         "direction": "horizontal"
+=======
+    "id": "aa3fc36d2ced0f5b",
+    "type": "split",
+    "children": [
+      {
+        "id": "94d9d3f7c4e12406",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "source"
+          }
+        }
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
       }
     ],
     "direction": "vertical"
   },
   "left": {
+<<<<<<< HEAD
     "id": "f59356104807e579",
     "type": "split",
     "children": [
@@ -45,6 +62,17 @@
         "children": [
           {
             "id": "3d61b013f850142a",
+=======
+    "id": "5d0bbb9f05ca3642",
+    "type": "split",
+    "children": [
+      {
+        "id": "d5dbb7c0b6cc42b1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f448f2a9c5488ac0",
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -52,7 +80,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "6f24c0893beb274e",
+=======
+            "id": "4509892565e3d031",
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,6 +105,7 @@
     "width": 300
   },
   "right": {
+<<<<<<< HEAD
     "id": "209ce83b03d64706",
     "type": "split",
     "children": [
@@ -82,11 +115,26 @@
         "children": [
           {
             "id": "3e41f8280049e33f",
+=======
+    "id": "b535373fdc539082",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac82f84bf0d54d8c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ae22adcf8fedf8e",
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "待办/TodoList.md",
+=======
+                "file": "README.md",
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,11 +152,16 @@
     "width": 300,
     "collapsed": true
   },
+<<<<<<< HEAD
   "active": "9320fbe8d8c63215",
   "lastOpenFiles": [
     "待办/TodoList.md",
     "日志/worklog.md",
     "日志/备忘.md",
+=======
+  "active": "94d9d3f7c4e12406",
+  "lastOpenFiles": [
+>>>>>>> f8055b5389c131816ff92190a26c50b6cbd2508c
     "README.md"
   ]
 }
