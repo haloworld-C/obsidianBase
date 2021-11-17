@@ -29,3 +29,13 @@
 1. STL
 2. Boost
 3. Eigen
+
+
+
+
+
+### 头文件
+#### C++ assert.h头文件
+ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供一个assert的宏定义。assert只是对所给的表达式求值，就像if判断语句中一样，然后如果该值为真则正常运行，否则报错，并调用abort(),产生异常中断，exit出来。
+该宏声名，只需在包含assert.h之前＃define NDEBUG
+可以通过#undef NDEBUG进行屏蔽
