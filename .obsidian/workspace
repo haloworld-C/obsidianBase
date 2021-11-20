@@ -1,30 +1,50 @@
 {
   "main": {
-    "id": "aa3fc36d2ced0f5b",
+    "id": "cfbf17ea710df9ec",
     "type": "split",
     "children": [
       {
+<<<<<<< HEAD
         "id": "086cb68f63193588",
         "type": "split",
         "children": [
           {
             "id": "94d9d3f7c4e12406",
+=======
+        "id": "8d76d8ca5f483665",
+        "type": "split",
+        "children": [
+          {
+            "id": "0430c4d7a36e83e9",
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "待办/ideas.md",
+=======
+                "file": "待办/TodoList.md",
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
                 "mode": "source"
               }
             }
           },
           {
+<<<<<<< HEAD
             "id": "2c5c1765c8683bbc",
+=======
+            "id": "6f3479ed20066249",
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "config&workflow/vim配置.md",
+=======
+                "file": "待办/TodoList.md",
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
                 "mode": "preview"
               }
             }
@@ -36,15 +56,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "5d0bbb9f05ca3642",
+    "id": "f59356104807e579",
     "type": "split",
     "children": [
       {
-        "id": "d5dbb7c0b6cc42b1",
+        "id": "03712e630287c12e",
         "type": "tabs",
         "children": [
           {
-            "id": "f448f2a9c5488ac0",
+            "id": "3d61b013f850142a",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -52,7 +72,7 @@
             }
           },
           {
-            "id": "4509892565e3d031",
+            "id": "6f24c0893beb274e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,20 +93,24 @@
     "width": 300
   },
   "right": {
-    "id": "b535373fdc539082",
+    "id": "209ce83b03d64706",
     "type": "split",
     "children": [
       {
-        "id": "ac82f84bf0d54d8c",
+        "id": "c37ea71432df733e",
         "type": "tabs",
         "children": [
           {
-            "id": "5ae22adcf8fedf8e",
+            "id": "3e41f8280049e33f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "待办/ideas.md",
+=======
+                "file": "待办/TodoList.md",
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,11 +128,24 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "94d9d3f7c4e12406",
+  "active": "0430c4d7a36e83e9",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "待办/ideas.md",
     "config&workflow/git workflow.md",
     "config&workflow/vim配置.md",
     "README.md"
+=======
+    "待办/TodoList.md",
+    "日志/worklog.md",
+    "自动驾驶/业务逻辑.md",
+    "config/西井科技vpn.md",
+    "workspace/C++.md",
+    "workspace/lanelet2.md",
+    "workspace/linux常用命令行.md",
+    "workspace/ROS.md",
+    "config/C++ libconfig库的安装与编译注意事项.md",
+    "自动驾驶/产业链List.md"
+>>>>>>> 1e5affc0393292fd5213147dc1454e84004d2aa6
   ]
 }
