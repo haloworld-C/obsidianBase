@@ -12,11 +12,11 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | rosrun [nodename]| 启动包节点|
 | roscore| 启动ROS| 
 | roscd | 切换到对应包的目录当中|
-| rosrun rqt_plot rqt_plot | 画图模块| 可画单维变量随时间的变化|
+| rqt_plot | 画图模块| 可画单维变量随时间的变化|
 | rosparam| 在param sever上设置参数数据| 
-| rosrun rqt_graph rqt_graph | 查看包图视图|
+| rqt_graph | 查看包图视图|也可通过rosrun rqt_graph rqt_graph运行
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
-
+| rqt_console | 查看正在运行的ros_info（）发出的消息
 ## 常用模块
 rviz ROS的可视化工具
 ## ?
