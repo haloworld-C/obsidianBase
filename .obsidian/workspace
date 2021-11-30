@@ -90,13 +90,13 @@
   "lastOpenFiles": [
     "待办/TodoList.md",
     "日志/worklog.md",
-    "workspace/docker.md",
-    "config&workflow/西井科技vpn.md",
+    "config&workflow/boost的安装与卸载.md",
+    "workspace/C++标准库+boost+其他库.md",
+    "workspace/lanelet2.md",
+    "config&workflow/C++ libconfig库的安装与编译注意事项.md",
+    "workspace/C++.md",
+    "待办/Q&A.md",
     "workspace/ROS.md",
-    "待办/ideas.md",
-    "config&workflow/Carsim、Simulink与ROS联调环境配置.md",
-    "自动驾驶/车辆分类.md",
-    "自动驾驶/业务逻辑.md",
-    "workspace/Carsim.md"
+    "workspace/docker.md"
   ]
 }

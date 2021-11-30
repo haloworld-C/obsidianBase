@@ -99,3 +99,15 @@ int main(int argc, char **argv)
 	return 0;
 }
 ```
+
+### ROS中在callback函数中处理主程序中数据的三种方式
+1. 在主程序外声明全局变量
+2. 在subscribe函数中利用bind机制传入该变量的指针
+``` C++
+ros::Subscriber sub_chasis = n.subscribe<geometry_msgs::Pose2D>("simulink_pose", 1, bind(pidCallback, _1, &pid, &cmd_pub));//其中simulick_pose为消息名称，1为缓存大小，bind函数通过绑定机制按照地址传入额外变量pid,cmd_pub,其中的_1参数为占位符号，表示pidCallback回调函数本身的参数
+
+```
+3. 编写ROS类进行接节点注册与操作，从而可以在类的内部进行数据共享。示例如下：
+```C++
+
+```
