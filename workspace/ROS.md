@@ -111,3 +111,6 @@ ros::Subscriber sub_chasis = n.subscribe<geometry_msgs::Pose2D>("simulink_pose",
 ```C++
 
 ```
+
+#### Q&S
+1.清理编译后应该进行source 操作以便识别路径
