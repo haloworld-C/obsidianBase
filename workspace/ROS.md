@@ -20,8 +20,15 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 ## 常用模块
-rviz ROS的可视化工具
-## ?
+### rviz ROS
+可视化工具
+### pluginlib
+将类编译为插件，可以在其他程序中直接使用，从而降低包之间的依赖。尤其是在编译阶段，链接是在运行时才有关联。
+换句话说这些plugin可以自由组合
+### nodelet
+可以将多个节点跑在同一个进程中，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据
+- a nodelet class is a node
+## 问题
 不同的publisher能否发布同名主题？（应该不可以）
 
 ### 范例
