@@ -2,6 +2,8 @@
 #### std::chrono
 
 #### std::thread
+#### std::floor地板除(向下取整数)
+#### std::ceil地板除（向上取整）
 线程是运行在进程当中的
 ### boost库
 
