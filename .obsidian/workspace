@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 191
   },
   "right": {
     "id": "209ce83b03d64706",
@@ -89,14 +89,14 @@
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
     "待办/TodoList.md",
-    "待办/ideas.md",
     "日志/worklog.md",
     "workspace/ROS.md",
-    "workspace/Wellsim仿真接口对接.md",
-    "workspace/docker.md",
-    "config&workflow/西井科技.md",
-    "workspace/linux常用命令行.md",
+    "workspace/C++标准库+boost+其他库.md",
     "workspace/计算机基础.md",
-    "config&workflow/git workflow.md"
+    "workspace/Wellsim仿真接口对接.md",
+    "自动驾驶/产业链List.md",
+    "workspace/docker.md",
+    "workspace/linux常用命令行.md",
+    "待办/ideas.md"
   ]
 }

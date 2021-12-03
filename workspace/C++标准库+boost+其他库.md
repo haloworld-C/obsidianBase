@@ -1,5 +1,8 @@
 ### STL
 #### std::chrono
+
+#### std::thread
+线程是运行在进程当中的
 ### boost库
 
 

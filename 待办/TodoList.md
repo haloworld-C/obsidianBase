@@ -2,10 +2,13 @@
 1. 速度控制算法优化
 2. 梳理项目代码结构（重点把MPC的具体实现弄懂）
 
+#### 20211203
+- [ ]  查看routing 具体实施及相关方法
+- [ ]  调试网络环境，调试calibration
 #### 20211202
-- [ ] nodelet改写，调试calibration模块
-- [ ] 查看routing 具体实施
-- [ ] 阅读MPC论文及代码
+- [x] nodelet改写，调试calibration模块
+- [x] 查看routing 具体实施
+- [x] 阅读MPC论文及代码
 #### 20211201
 - [x] 尝试编译项目代码并运行
 - [x] 梳理routing模块接口

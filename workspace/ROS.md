@@ -21,12 +21,148 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 ## 常用模块
 ### rviz ROS
-可视化工具
+可视化工具，可以进行3D显示
 ### pluginlib
 将类编译为插件，可以在其他程序中直接使用，从而降低包之间的依赖。尤其是在编译阶段，链接是在运行时才有关联。
 换句话说这些plugin可以自由组合
 ### nodelet
-可以将多个节点跑在同一个进程中，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据
+可以将多个节点（nodelet）跑在同一个进程中(nodelet manager)，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据
+#### nodelet work flow
+1. 编写nodelet 节点类，该类应该继承nodelet class。在类结束后应使用宏将该类导出（以便可以被外界发现）。demo如下。
+```C++
+//nodelet class declaration
+-------------------------------------------------
+# ifndef _PLANNER_
+# define _PLANNER_
+   
+# include <pluginlib/class_list_macros.h>//for pluginlib
+# include <nodelet/nodelet.h>//for nodelet
+# include <ros/ros.h>
+# include <std_msgs/Float64.h>
+# include <geometry_msgs/Pose2D.h>
+# include <thread>
+namespace autoCar{
+namespace plan{
+     class Planner : public nodelet::Nodelet{
+         public:
+		 Planner():startFlag_(false){};
+         ~Planner(){};//do nothing
+         virtual void onInit();
+         private:
+         void plannerThread();
+         void flagCallback(const geometry_msgs::Pose2D::ConstPtr& msg);
+         private:
+         std::thread thread_;
+         bool startFlag_;
+         ros::Publisher pub;
+         ros::Subscriber sub;
+     };//end of class planner
+ }//end of namespace controll
+ }//end of autoCar
+ # endif 
+ //nodelet class implemention
+ -------------------------------------------------------------
+ # include <auto_car/planner.h>                                                                       
+# include <math.h>
+//This version intend to generate a sine shape velocity file
+// modified as nodelet at 20211201
+namespace autoCar{
+namespace plan{
+    void Planner::onInit(){
+         ros::NodeHandle& private_nh = getPrivateNodeHandle();
+         NODELET_DEBUG("Initialized the Nodelet");
+         pub = private_nh.advertise<std_msgs::Float64>("trajtory", 1);
+         sub = private_nh.subscribe("simulink_pose", 1 , &Planner::flagCallback, this);
+         thread_ = std::thread(std::bind(&Planner::plannerThread, this));//开启一个线程，在线程中运行>    主要的逻辑代码
+     }
+     void Planner::plannerThread(){
+         //TODO: 是否加入线程锁
+         ros::Rate loop_rate(1);
+         int counter = 0;
+         std_msgs::Float64 msg;//message to send
+         while(ros::ok()){
+             //msg.data = 5 * sin(counter * M_PI / 500) + 10;
+             msg.data = 10;
+             if(counter == 1000) counter = 0;
+             pub.publish(msg);
+             ROS_INFO("planner published target speed in thread: %f", msg.data);
+             ros::spinOnce();
+             loop_rate.sleep();
+         }
+}
+     void Planner::flagCallback(const geometry_msgs::Pose2D::ConstPtr& msg){
+         startFlag_ = true;
+     }
+     
+}//end of namespace autoCar::controll
+}//end of namespace autoCar
+PLUGINLIB_EXPORT_CLASS(autoCar::plan::Planner,nodelet::Nodelet);//声明插件的宏[类， 基类]  
+```
+3. 添加plugin.xml配置文件
+为了编译而进行配置，该配置主要是为了将nodelet做成插件(具体教程参见ROS wiki中的libplugin组建说明[pluginlib](ROS.md#pluginlib))，样例：
+```nodelet_plugin.XML
+<!-- libnodelet_auto_car为装载plugin的库文件，将来会被编译为.so文件-->
+<!-- .so文件与plugin.xml文件配合即可识别步骤2中导出的类-->
+<!-- 注意：最终是一个nodelet class 被编译为一个plugin，并集成在.so文件当中-->
+<library path="libnodelet_auto_car">                                   
+     <class name="nodelet_auto_car/Planner" 
+	        type="autoCar::plan::Planner" 
+			base_class_type="nodelet::Nodelet">
+         <description>
+         A planner nodelet to publish trajtory message
+         </description>
+     </class>
+</library>
+```
+4. 最后配置CMakelists.txt文件
+在包的CMakelists.txt文末加入以下内容。
+```CMakelists
+# add nodelet plugin
+add_library(nodelet_auto_car #指定编译的lib名，这里的名字可以任意指定
+    src/plannerNodelet.cpp
+    )
+target_link_libraries(nodelet_auto_car 
+    ${catkin_LIBRARIES}
+    )             
+```
+5.最后配置包package.xml中的依赖,添加以下内容
+```package.XML
+<!-- nodelet_auto_car为决定的插件的名字，应与步骤4中的lib名一致-->
+<!-- 下面两行可能实际并不需要，与动态库的概念相违背-->
+	<build_depend>nodelet_auto_car</build_depend>
+	<exec_depend>nodelet_auto_car</exec_depend>
+    <export>
+    <!-- Other tools can request additional information be placed here -->  
+	<!--根据plugin.xml将编译好的.lib文件装载到.so文件当中-->
+		<nodelet plugin="${prefix}/planner_nodelet_plugin.xml"/>
+    </export>
+```
+
+6. 最后依次启动roscore->nodelet manager->nodelet节点。
+具体命令可参考以下命令行参考。后续可以将nodelet像node一样写到.launch 文件中进行统一启动。官方示例如下。
+```launch
+<launch>
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="Plus"
+        args="load nodelet_tutorial_math/Plus standalone_nodelet">
+    <remap from="/Plus/out" to="remapped_output"/>
+  </node>
+  <rosparam param="Plus2" file="$(find nodelet_tutorial_math)/plus_default.yaml"/>
+  <node pkg="nodelet" type="nodelet" name="Plus2" args="load nodelet_tutorial_math/Plus standalone_nodelet">
+    <rosparam file="$(find nodelet_tutorial_math)/plus_default.yaml"/>
+  </node>
+  <node pkg="nodelet" type="nodelet" name="Plus3" args="standalone nodelet_tutorial_math/Plus">
+    <param name="value" type="double" value="2.5"/>
+    <remap from="Plus3/in" to="Plus2/out"/>
+  </node>
+</launch>
+```
+#### nodelet 常用命令
+| command | discription | comment|
+|------|----------|---------|
+| rosrun nodelet nodelet manager __name:=nodelet_manager | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
+| rosrun nodelet nodelet load [编译好的.so插件]/[.so文件内的插件]  __name:=nodelet1| 启动编译好节点，这个动作也可以在运行时决定启动
+
 - a nodelet class is a node
 ## 问题
 不同的publisher能否发布同名主题？（应该不可以）
