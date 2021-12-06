@@ -30,3 +30,8 @@ roslaunch rviz_panel rviz_panel.launch  # 启动rviz可视化节点
 
 ### 代码结构梳理
 ![well_driver_routing_arch](well_driver_routing_arch.png)
+
+### 需求
+1. 支持急停
+2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑
+3. 支持消息转发
