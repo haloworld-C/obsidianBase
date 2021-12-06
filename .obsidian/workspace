@@ -10,7 +10,11 @@
           "type": "markdown",
           "state": {
             "file": "待办/TodoList.md",
+<<<<<<< HEAD
             "mode": "source"
+=======
+            "mode": "preview"
+>>>>>>> 948f86b85bdc4fda48f132ffe7263f62ffb32088
           }
         }
       }
@@ -89,14 +93,25 @@
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
     "待办/TodoList.md",
+<<<<<<< HEAD
     "workspace/Wellsim仿真接口对接.md",
     "workspace/ROS.md",
+=======
+    "待办/ideas collecting box.md",
+    "待办/ideas.md",
+    "日志/worklog.md",
+>>>>>>> 948f86b85bdc4fda48f132ffe7263f62ffb32088
     "自动驾驶/自动驾驶工具链.md",
     "自动驾驶/产业链List.md",
     "workspace/C++标准库+boost+其他库.md",
+<<<<<<< HEAD
     "自动驾驶/自动驾驶数据集.md",
     "自动驾驶/业务逻辑.md",
     "research/list.md",
     "日志/worklog.md"
+=======
+    "待办/Q&A.md",
+    "workspace/计算机基础.md"
+>>>>>>> 948f86b85bdc4fda48f132ffe7263f62ffb32088
   ]
 }
