@@ -2,9 +2,12 @@
 1. simulator接口适配
 2. 速度控制算法优化
 3. MPC算法实现
+#### 20211208
+- [ ] 在单台计算机上调试map routing
+- [ ] 完成auto_car的nodelet改写（将plan, control 与calibration 都加载到一个nodelet中）
 #### 20211207
-- [ ] 改造launch文件（后续可以考虑新写一个包，这样比较灵活）
-- [ ] MPC算法
+- [x] 改造launch文件（后续可以考虑新写一个包，这样比较灵活）,添加脚本启动指定的模块
+- [x] MPC算法
 #### 20211206
 - [ ] simulator接口适配收发消息梳理及适配（初步把框架定了下来）
 - [ ] MPC算法实现

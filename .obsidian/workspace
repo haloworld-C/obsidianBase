@@ -89,14 +89,14 @@
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
     "待办/TodoList.md",
+    "日志/备忘.md",
     "日志/worklog.md",
-    "workspace/ROS.md",
-    "workspace/计算机基础.md",
-    "workspace/Wellsim仿真接口对接.md",
     "自动驾驶/自动驾驶工具链.md",
-    "自动驾驶/产业链List.md",
     "workspace/C++标准库+boost+其他库.md",
-    "自动驾驶/自动驾驶数据集.md",
-    "自动驾驶/业务逻辑.md"
+    "config&workflow/西井科技.md",
+    "workspace/docker.md",
+    "workspace/ROS.md",
+    "workspace/Wellsim仿真接口对接.md",
+    "workspace/计算机基础.md"
   ]
 }
