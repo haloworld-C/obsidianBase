@@ -19,6 +19,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | rqt_graph | 查看包图视图|也可通过rosrun rqt_graph rqt_graph运行
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
+| rosnode kill --all | 关闭所有节点
 ## workflow
 安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
 ```bash

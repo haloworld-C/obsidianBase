@@ -26,6 +26,8 @@ docker images
 ```bash
 exit
 ```
+| command | discription | comment|
+|------|----------|---------|
 
 ### Q&A
 1.  安装docker后出现permission denied错误
