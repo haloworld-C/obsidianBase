@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "待办/TodoList.md",
-            "mode": "preview"
+            "mode": "source"
           }
         }
       }
@@ -89,6 +89,7 @@
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
     "待办/TodoList.md",
+    "个人信息.md",
     "待办/ideas collecting box.md",
     "待办/ideas.md",
     "日志/worklog.md",
@@ -96,7 +97,6 @@
     "自动驾驶/产业链List.md",
     "workspace/docker.md",
     "workspace/C++标准库+boost+其他库.md",
-    "待办/Q&A.md",
-    "workspace/计算机基础.md"
+    "待办/Q&A.md"
   ]
 }
