@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "workspace/docker.md",
+            "file": "计算机基础/docker.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "workspace/docker.md",
+                "file": "计算机基础/docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
-    "workspace/docker.md",
-    "workspace/ROS.md",
-    "workspace/VIM常用操作记录.md",
+    "计算机基础/docker.md",
+    "计算机基础/git.md",
+    "计算机基础/linux常用命令行.md",
+    "计算机基础/ROS.md",
+    "计算机基础/VIM常用操作记录.md",
+    "自动驾驶/lanelet2.md",
+    "C++/C++标准库+boost+其他库.md",
+    "自动驾驶/Carsim.md",
     "个人信息.md",
-    "自动驾驶/自动驾驶数据集.md",
-    "自动驾驶/自动驾驶工具链.md",
-    "自动驾驶/业务逻辑.md",
-    "自动驾驶/产业链List.md",
-    "自动驾驶/决策规划.md",
-    "自动驾驶/深度学习.md"
+    "自动驾驶/自动驾驶数据集.md"
   ]
 }
