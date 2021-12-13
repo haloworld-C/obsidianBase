@@ -6,6 +6,13 @@ docker pull ubuntu:18.04
 - 镜像运行
 ```bash 
 docker run -itd [镜像名称] /bin/bash
+# 参数说明
+-it # 以命令行交互的方式进入
+-d # 以后台方式运行，这样退出docker后docker运行的镜像不会退出
+-v [宿主机绝对路径文件夹/文件]：[镜像绝对路径文件夹]
+-e [环境变量] # 像镜像导出环境变量
+-- net=host # 将镜像的网络与宿主机的网络绑定（换言之，镜像网络并不会有自己独立的IP地址，类似于交换机的模式）
+--hostname haloworld #以指定访客帐号进入docker
 ```
 - 启动镜像并挂载宿主机目录
 ```bash

@@ -25,7 +25,7 @@ areas与*lanelets*类似，不过与之不同的是areas是一个没有方向的
 - 软件架构
 ![lanelet2_arch](https://github.com/haloworld-C/images/blob/main/lanelet2_arch.png "lanelet2_arch.png")
 
-osm,地图格式（OSM的离线编辑器JOSM）
+lanelet2主要识别osm（地图上点的坐标为经度-维度，地图格式（OSM的离线编辑器JOSM））然后将其投影转换到UTM（by default UTM32N）格式地图（其单位是m）
 
 - lanelet2 主要模块
 1. core(包含了前述的基本元素与不同的分层，还包含了中心线的生成、距离计算等基础计算)

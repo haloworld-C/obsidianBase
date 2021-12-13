@@ -170,12 +170,17 @@ target_link_libraries(nodelet_auto_car
 #### nodelet 常用命令
 | command | discription | comment|
 |------|----------|---------|
-| rosrun nodelet nodelet manager __name:=nodelet_manager | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
+| rosrun nodelet nodelet manager __name:=nodelet_manager_auto_car | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
 | rosrun nodelet nodelet load [编译好的.so插件]/[.so文件内的插件]  __name:=nodelet1| 启动编译好节点，这个动作也可以在运行时决定启动
 
 - a nodelet class is a node
 ## 问题
-不同的publisher能否发布同名主题？（应该不可以）
+1. 不同的publisher能否发布同名主题？（应该不可以）
+2. 如果运行nodelet 出现以下报错(其他步骤均正确的情况下)
+```bug
+with base class type nodelet::Nodelet does not exist
+```
+则一般是nodemanage的命令行在编译包后没有source.
 
 ### 范例
 1.  subscriber-publisher

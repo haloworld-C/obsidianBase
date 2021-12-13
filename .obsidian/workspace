@@ -9,7 +9,11 @@
         "state": {
           "type": "markdown",
           "state": {
+<<<<<<< HEAD
             "file": "计算机基础/docker.md",
+=======
+            "file": "日志/worklog.md",
+>>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
             "mode": "source"
           }
         }
@@ -52,7 +56,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 428
+    "width": 265
   },
   "right": {
     "id": "209ce83b03d64706",
@@ -68,7 +72,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "计算机基础/docker.md",
+=======
+                "file": "日志/worklog.md",
+>>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +96,7 @@
   },
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "计算机基础/docker.md",
     "计算机基础/git.md",
     "计算机基础/linux常用命令行.md",
@@ -98,5 +107,17 @@
     "自动驾驶/Carsim.md",
     "个人信息.md",
     "自动驾驶/自动驾驶数据集.md"
+=======
+    "日志/worklog.md",
+    "待办/TodoList.md",
+    "自动驾驶/控制算法.md",
+    "自动驾驶/智能汽车操作系统.md",
+    "自动驾驶/深度学习.md",
+    "自动驾驶/自动驾驶工具链.md",
+    "自动驾驶/自动驾驶数据集.md",
+    "自动驾驶/车辆分类.md",
+    "自动驾驶/车辆纵向控制.md",
+    "README.md"
+>>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
   ]
 }
