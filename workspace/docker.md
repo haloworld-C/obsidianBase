@@ -1,6 +1,7 @@
 - 镜像拉取
 ```bash
 docker pull [镜像名称]
+docker pull ubuntu:18.04
 ```
 - 镜像运行
 ```bash 
@@ -26,6 +27,21 @@ docker images
 ```bash
 exit
 ```
+- 本机文件与宿主机文件的相互拷贝
+```bash
+docker cp [宿主机文件] [container name:容器绝对路径] # 从宿主机向docker 拷贝
+docker cp [container name:容器绝对路径] [宿主机文件]  # 从docker向宿主机拷贝
+```
+- 保存docker的修改
+```docker bash
+docker commit [容器名或ID] [镜像名：tag] # tag 类似于版本
+```
+- 删除本地镜像
+``` docker bash
+docker image rm [镜像名或ID]
+```
+| command | discription | comment|
+|------|----------|---------|
 
 ### Q&A
 1.  安装docker后出现permission denied错误
@@ -39,4 +55,4 @@ sudo gpasswd -a $USER docker #将登陆用户加入到docker用户组中
 newgrp docker #更新用户组 
 docker ps #测试docker命令是否可以使用sudo正常使用
 ```
-2. 尝试自己配置一个用于测试及学习的docker
+2. 尝试自己配置一个用于测试及学习的docker环境
