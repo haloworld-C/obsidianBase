@@ -170,7 +170,7 @@ target_link_libraries(nodelet_auto_car
 #### nodelet 常用命令
 | command | discription | comment|
 |------|----------|---------|
-| rosrun nodelet nodelet manager __name:=nodelet_manager | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
+| rosrun nodelet nodelet manager __name:=nodelet_manager_auto_car | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
 | rosrun nodelet nodelet load [编译好的.so插件]/[.so文件内的插件]  __name:=nodelet1| 启动编译好节点，这个动作也可以在运行时决定启动
 
 - a nodelet class is a node
