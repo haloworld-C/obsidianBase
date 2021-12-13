@@ -175,7 +175,12 @@ target_link_libraries(nodelet_auto_car
 
 - a nodelet class is a node
 ## 问题
-不同的publisher能否发布同名主题？（应该不可以）
+1. 不同的publisher能否发布同名主题？（应该不可以）
+2. 如果运行nodelet 出现以下报错(其他步骤均正确的情况下)
+```bug
+with base class type nodelet::Nodelet does not exist
+```
+则一般是nodemanage的命令行在编译包后没有source.
 
 ### 范例
 1.  subscriber-publisher
