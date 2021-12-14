@@ -36,7 +36,8 @@ $ source devel/setup.bash # devel为在我们的catkin_ws根目录中
 将类编译为插件，可以在其他程序中直接使用，从而降低包之间的依赖。尤其是在编译阶段，链接是在运行时才有关联。
 换句话说这些plugin可以自由组合
 ### nodelet
-可以将多个节点（nodelet）跑在同一个进程中(nodelet manager)，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据
+可以将多个节点（nodelet）跑在同一个进程中(nodelet manager)，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据.
+- nodelet的实现是基于pluginlib的，nodelet类通过pluginlib的类注册机制发布，实现使用时加载。
 #### nodelet work flow
 1. 编写nodelet 节点类，该类应该继承nodelet class。在类结束后应使用宏将该类导出（以便可以被外界发现）。demo如下。
 ```C++
@@ -124,7 +125,7 @@ PLUGINLIB_EXPORT_CLASS(autoCar::plan::Planner,nodelet::Nodelet);//声明插件�
      </class>
 </library>
 ```
-4. 最后配置CMakelists.txt文件
+4. 然后配置CMakelists.txt文件
 在包的CMakelists.txt文末加入以下内容。
 ```CMakelists
 # add nodelet plugin
@@ -138,9 +139,10 @@ target_link_libraries(nodelet_auto_car
 5.最后配置包package.xml中的依赖,添加以下内容
 ```package.XML
 <!-- nodelet_auto_car为决定的插件的名字，应与步骤4中的lib名一致-->
-<!-- 下面两行可能实际并不需要，与动态库的概念相违背-->
 	<build_depend>nodelet_auto_car</build_depend>
+	<build_depend>nodelet</build_depend>
 	<exec_depend>nodelet_auto_car</exec_depend>
+	<exec_depend>nodelet</exec_depend>
     <export>
     <!-- Other tools can request additional information be placed here -->  
 	<!--根据plugin.xml将编译好的.lib文件装载到.so文件当中-->
@@ -167,6 +169,13 @@ target_link_libraries(nodelet_auto_car
   </node>
 </launch>
 ```
+7. 如果使用多个nodelet加入同一个nodelet manager则应注意
+- 使用一在同一个nodelet manager中的nodelet中的消息会自动将节点名称信息加入到消息当中，例如：/cmd 将会变成/control/cmd(假定control为发出/cmd的nodelet节点名称)。需要在launch文件的节点内部加入如下信息：
+```lanuch
+<remap from="/control/cmd" to="cmd" />
+```
+- 尽管将多个nodelet模块(线程)加入同一个nodelet manager(进程)中，但是这并不以为着他们之间收发的消息便是通过共享内存进行通讯的。通过ROS官方教程，我们需要发出一个share_ptr类型的消息才能实现内存共享通讯。
+> [进一步资料参考](http://wiki.ros.org/nodelet)
 #### nodelet 常用命令
 | command | discription | comment|
 |------|----------|---------|
