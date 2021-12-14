@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "日志/worklog.md",
-            "mode": "source"
+            "file": "workspace/ROS.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/worklog.md",
+                "file": "workspace/ROS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
-    "日志/worklog.md",
+    "workspace/ROS.md",
     "待办/TodoList.md",
+    "日志/worklog.md",
     "自动驾驶/控制算法.md",
     "自动驾驶/智能汽车操作系统.md",
     "自动驾驶/深度学习.md",
     "自动驾驶/自动驾驶工具链.md",
     "自动驾驶/自动驾驶数据集.md",
     "自动驾驶/车辆分类.md",
-    "自动驾驶/车辆纵向控制.md",
-    "README.md"
+    "自动驾驶/车辆纵向控制.md"
   ]
 }
