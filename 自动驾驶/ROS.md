@@ -6,7 +6,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 2. 服务注册模式（同步通信）
 3. 参数服务器（多个node共享不经常变动的参数）
 4. nodelet共享内存方式（可以在一定程度上保证实时性）
-	- nodelet允许将不同的node加载到同一个进程，从而实现不同的节点通过共享内存的形式进行publish与receive
+	- nodelet允许将不同的node加载到同一个进程，从而实现不同的节点通过共享内存的形式进行publish与subscribe
 ## 常用命令
 | command | discription | comment|
 |------|----------|---------|
@@ -20,6 +20,22 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 | rosnode kill --all | 关闭所有节点
+## 网络中的IP设置
+1. 单机 
+如果仅在本地跑则在~/.bashrc中添加如下命令
+```bash
+export ROS_HOSTNAME=localhost
+export ROS_MASTER_URI=http://localhost:11311
+```
+修改完成后记得source一下。
+2. 多台机器在网络中的设置
+如果多台机器在同一个网络中，则按照本地网络中的地址即可。如果多台机器不再同一网络中，则ROS官方推荐使用openvpn这个工具进行网络配置（待研究）。
+在作为服务器的机器上作如下设置
+```bash
+export ROS_HOSTNAME=[XXX.XXX.XXX.XXX](your ip address)
+esport ROS_MASTER_URI=http://[XXX.XXX.XXX.XXX]
+```
+
 ## workflow
 安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
 ```bash
