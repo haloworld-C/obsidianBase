@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "日志/worklog.md",
-            "mode": "source"
+            "file": "待办/TodoList.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/worklog.md",
+                "file": "待办/TodoList.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,9 +88,9 @@
   },
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
-    "日志/worklog.md",
     "待办/TodoList.md",
     "workspace/Wellsim仿真接口对接.md",
+    "日志/worklog.md",
     "计算机基础/计算机基础.md",
     "计算机基础/VIM常用操作记录.md",
     "计算机基础/linux常用命令行.md",
