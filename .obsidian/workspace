@@ -1,20 +1,16 @@
 {
   "main": {
-    "id": "cfbf17ea710df9ec",
+    "id": "a839cf5209a53501",
     "type": "split",
     "children": [
       {
-        "id": "e60cfd49b160870a",
+        "id": "2c4a1eaba377b139",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-<<<<<<< HEAD
-            "file": "计算机基础/docker.md",
-=======
-            "file": "日志/worklog.md",
->>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
-            "mode": "source"
+            "file": "待办/TodoList.md",
+            "mode": "preview"
           }
         }
       }
@@ -22,15 +18,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f59356104807e579",
+    "id": "4012c3778c39bd0a",
     "type": "split",
     "children": [
       {
-        "id": "03712e630287c12e",
+        "id": "dff1bcac2a78e3dc",
         "type": "tabs",
         "children": [
           {
-            "id": "3d61b013f850142a",
+            "id": "a6f80fe68b658292",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -38,7 +34,7 @@
             }
           },
           {
-            "id": "6f24c0893beb274e",
+            "id": "9e4cbad0bffca308",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -56,27 +52,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265
+    "width": 300
   },
   "right": {
-    "id": "209ce83b03d64706",
+    "id": "b323d52cf6f431bc",
     "type": "split",
     "children": [
       {
-        "id": "c37ea71432df733e",
+        "id": "b65aefa84e5332a6",
         "type": "tabs",
         "children": [
           {
-            "id": "3e41f8280049e33f",
+            "id": "9efbfeeb1196af40",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-                "file": "计算机基础/docker.md",
-=======
-                "file": "日志/worklog.md",
->>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
+                "file": "待办/TodoList.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,30 +86,12 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e60cfd49b160870a",
+  "active": "2c4a1eaba377b139",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "计算机基础/docker.md",
-    "计算机基础/git.md",
-    "计算机基础/linux常用命令行.md",
-    "计算机基础/ROS.md",
-    "计算机基础/VIM常用操作记录.md",
-    "自动驾驶/lanelet2.md",
-    "C++/C++标准库+boost+其他库.md",
-    "自动驾驶/Carsim.md",
-    "个人信息.md",
-    "自动驾驶/自动驾驶数据集.md"
-=======
-    "日志/worklog.md",
     "待办/TodoList.md",
-    "自动驾驶/控制算法.md",
-    "自动驾驶/智能汽车操作系统.md",
-    "自动驾驶/深度学习.md",
-    "自动驾驶/自动驾驶工具链.md",
-    "自动驾驶/自动驾驶数据集.md",
-    "自动驾驶/车辆分类.md",
-    "自动驾驶/车辆纵向控制.md",
+    "计算机基础/docker.md",
+    "计算机基础/VIM常用操作记录.md",
+    "计算机基础/ROS.md",
     "README.md"
->>>>>>> 8a3d330f8d1a46c6482f53b7ee3bb27e9bf44bf4
   ]
 }

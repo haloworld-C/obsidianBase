@@ -30,6 +30,10 @@ docker exec -it [container ID] /bin/bash
 ```bash
 docker images
 ```
+- 删除docker 镜像
+```bash
+docker rmi -f [container ID] # -f为强制删除
+```
 - 退出命令行交互
 ```bash
 exit
