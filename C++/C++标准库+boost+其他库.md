@@ -9,6 +9,9 @@ mutex中提供两种上锁方式
 #### std::floor地板除(向下取整数)
 #### std::ceil地板除（向上取整）
 线程是运行在进程当中的
+#### std::numeric_limits<TYPE>
+	::infinity() 定义无限大的数
+	
 ### boost库
 
 

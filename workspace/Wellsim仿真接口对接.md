@@ -29,6 +29,7 @@ source /devel/setup.bash
 ```bash
 roslaunch monitor monitor.launch # 首先启动monitor节点，其他所有节点都会等待该节点
 roslaunch routing routing_abuzhabi_qtruck11.launch #启动规划节点
+roslaunch mpc_controller sim_control_qtruck11.launch # 启动控制节点
 roslaunch rosbridge-server rosbridge_websocket.launch # 启动rosbridge
 roslaunch rviz_panel rviz_panel.launch  # 启动rviz可视化节点
 ```
