@@ -6,7 +6,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 2. 服务注册模式（同步通信）
 3. 参数服务器（多个node共享不经常变动的参数）
 4. nodelet共享内存方式（可以在一定程度上保证实时性）
-	- nodelet允许将不同的node加载到同一个进程，从而实现不同的节点通过共享内存的形式进行publish与receive
+	- nodelet允许将不同的node加载到同一个进程，从而实现不同的节点通过共享内存的形式进行publish与subscribe
 ## 常用命令
 | command | discription | comment|
 |------|----------|---------|
@@ -20,6 +20,22 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 | rosnode kill --all | 关闭所有节点
+## 网络中的IP设置
+1. 单机 
+如果仅在本地跑则在~/.bashrc中添加如下命令
+```bash
+export ROS_HOSTNAME=localhost
+export ROS_MASTER_URI=http://localhost:11311
+```
+修改完成后记得source一下。
+2. 多台机器在网络中的设置
+如果多台机器在同一个网络中，则按照本地网络中的地址即可。如果多台机器不再同一网络中，则ROS官方推荐使用openvpn这个工具进行网络配置（待研究）。
+在作为服务器的机器上作如下设置
+```bash
+export ROS_HOSTNAME=[XXX.XXX.XXX.XXX](your ip address)
+esport ROS_MASTER_URI=http://[XXX.XXX.XXX.XXX]
+```
+
 ## workflow
 安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
 ```bash
@@ -36,7 +52,8 @@ $ source devel/setup.bash # devel为在我们的catkin_ws根目录中
 将类编译为插件，可以在其他程序中直接使用，从而降低包之间的依赖。尤其是在编译阶段，链接是在运行时才有关联。
 换句话说这些plugin可以自由组合
 ### nodelet
-可以将多个节点（nodelet）跑在同一个进程中(nodelet manager)，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据
+可以将多个节点（nodelet）跑在同一个进程中(nodelet manager)，这些节点使用共享内存实现节点间的通讯，共享内存机制允许节点之间进行0拷贝的方式共享数据.
+- nodelet的实现是基于pluginlib的，nodelet类通过pluginlib的类注册机制发布，实现使用时加载。
 #### nodelet work flow
 1. 编写nodelet 节点类，该类应该继承nodelet class。在类结束后应使用宏将该类导出（以便可以被外界发现）。demo如下。
 ```C++
@@ -124,7 +141,7 @@ PLUGINLIB_EXPORT_CLASS(autoCar::plan::Planner,nodelet::Nodelet);//声明插件�
      </class>
 </library>
 ```
-4. 最后配置CMakelists.txt文件
+4. 然后配置CMakelists.txt文件
 在包的CMakelists.txt文末加入以下内容。
 ```CMakelists
 # add nodelet plugin
@@ -138,9 +155,10 @@ target_link_libraries(nodelet_auto_car
 5.最后配置包package.xml中的依赖,添加以下内容
 ```package.XML
 <!-- nodelet_auto_car为决定的插件的名字，应与步骤4中的lib名一致-->
-<!-- 下面两行可能实际并不需要，与动态库的概念相违背-->
 	<build_depend>nodelet_auto_car</build_depend>
+	<build_depend>nodelet</build_depend>
 	<exec_depend>nodelet_auto_car</exec_depend>
+	<exec_depend>nodelet</exec_depend>
     <export>
     <!-- Other tools can request additional information be placed here -->  
 	<!--根据plugin.xml将编译好的.lib文件装载到.so文件当中-->
@@ -167,6 +185,13 @@ target_link_libraries(nodelet_auto_car
   </node>
 </launch>
 ```
+7. 如果使用多个nodelet加入同一个nodelet manager则应注意
+- 使用一在同一个nodelet manager中的nodelet中的消息会自动将节点名称信息加入到消息当中，例如：/cmd 将会变成/control/cmd(假定control为发出/cmd的nodelet节点名称)。需要在launch文件的节点内部加入如下信息：
+```lanuch
+<remap from="/control/cmd" to="cmd" />
+```
+- 尽管将多个nodelet模块(线程)加入同一个nodelet manager(进程)中，但是这并不以为着他们之间收发的消息便是通过共享内存进行通讯的。通过ROS官方教程，我们需要发出一个share_ptr类型的消息才能实现内存共享通讯。
+> [进一步资料参考](http://wiki.ros.org/nodelet)
 #### nodelet 常用命令
 | command | discription | comment|
 |------|----------|---------|
