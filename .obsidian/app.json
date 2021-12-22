@@ -1,5 +1,7 @@
 {
   "useMarkdownLinks": true,
   "attachmentFolderPath": "Resourse",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "legacyEditor": false,
+  "livePreview": true
 }
