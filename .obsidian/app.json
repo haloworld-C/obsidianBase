@@ -3,5 +3,5 @@
   "attachmentFolderPath": "Resourse",
   "alwaysUpdateLinks": true,
   "legacyEditor": false,
-  "livePreview": true
+  "livePreview": false
 }
