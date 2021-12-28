@@ -12,4 +12,6 @@
 	|ls -l (ll)|列出文件夹内所有的链接|
 	|unlink link| 进入有软链接的/link文件夹下，删除对应的链接文件
 	|cd - | 返回上次历史目录，利用该命令可以在两个相距较远的目录之间i进行跳转
+| chown [user name] [filename] | 更改文件所属用户 | 如果是文件夹则添加-R参数
+| chgrp [user group] [filename] | 更改文件所属用户组 | 如果是文件夹则添加-R参数
 	
