@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "日志/worklog.md",
+            "file": "日志/问题备忘.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日志/worklog.md",
+                "file": "日志/问题备忘.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
-    "日志/worklog.md",
-    "待办/TodoList.md",
-    "research/list.md",
+    "日志/问题备忘.md",
     "config&workflow/西井科技.md",
+    "待办/TodoList.md",
+    "日志/worklog.md",
+    "research/list.md",
     "待办/ideas collecting box.md",
     "待办/Q&A.md",
     "workspace/Wellsim仿真接口对接.md",
     "config&workflow/Terminator保存窗口布局失败.md",
-    "计算机基础/linux常用命令行.md",
-    "config&workflow/git workflow.md"
+    "计算机基础/linux常用命令行.md"
   ]
 }
