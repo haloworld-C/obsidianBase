@@ -16,5 +16,8 @@ mutex中提供两种上锁方式
 
 
 ### Eigen矩阵库
-- col为列，row为行（初始化参数中通常一个个为行，第二个为列）
+- row为行，col为列（动态矩阵初始化参数中第一个为行，第二个为列）
 - 通过.col（index）, .row(index)返回行与列的对象
+
+###  Abseil
+谷歌C++ and Python库

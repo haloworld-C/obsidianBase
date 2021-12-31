@@ -1,16 +1,29 @@
 {
   "main": {
+<<<<<<< HEAD
     "id": "b802e6789b589dd9",
     "type": "split",
     "children": [
       {
         "id": "fe6d1aaf5ed6e096",
+=======
+    "id": "cfbf17ea710df9ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "e60cfd49b160870a",
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
             "file": "待办/TodoList.md",
+<<<<<<< HEAD
             "mode": "source"
+=======
+            "mode": "source",
+            "source": true
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
           }
         }
       }
@@ -18,6 +31,7 @@
     "direction": "vertical"
   },
   "left": {
+<<<<<<< HEAD
     "id": "cb8b487dcc496b32",
     "type": "split",
     "children": [
@@ -27,6 +41,17 @@
         "children": [
           {
             "id": "018ca3f212419b68",
+=======
+    "id": "f59356104807e579",
+    "type": "split",
+    "children": [
+      {
+        "id": "03712e630287c12e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3d61b013f850142a",
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -34,7 +59,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "5248fa5174ed9065",
+=======
+            "id": "6f24c0893beb274e",
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
             "type": "leaf",
             "state": {
               "type": "search",
@@ -52,9 +81,10 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 265
   },
   "right": {
+<<<<<<< HEAD
     "id": "8e973398258d4af2",
     "type": "split",
     "children": [
@@ -64,6 +94,17 @@
         "children": [
           {
             "id": "4e10dff1a0f12efc",
+=======
+    "id": "209ce83b03d64706",
+    "type": "split",
+    "children": [
+      {
+        "id": "c37ea71432df733e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e41f8280049e33f",
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -86,9 +127,24 @@
     "width": 300,
     "collapsed": true
   },
+<<<<<<< HEAD
   "active": "fe6d1aaf5ed6e096",
   "lastOpenFiles": [
     "待办/TodoList.md",
     "C++/C++标准库+boost+其他库.md"
+=======
+  "active": "e60cfd49b160870a",
+  "lastOpenFiles": [
+    "待办/TodoList.md",
+    "日志/worklog.md",
+    "C++/C++标准库+boost+其他库.md",
+    "workspace/Wellsim仿真接口对接.md",
+    "自动驾驶/业务逻辑.md",
+    "自动驾驶/qomolo车辆信息.md",
+    "自动驾驶/自动驾驶工具链.md",
+    "计算机基础/docker.md",
+    "计算机基础/git.md",
+    "计算机基础/linux常用命令行.md"
+>>>>>>> 72441305364e37d7dea6aca634ac967967ce5b11
   ]
 }
