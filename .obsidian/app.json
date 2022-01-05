@@ -3,5 +3,7 @@
   "attachmentFolderPath": "Resourse",
   "alwaysUpdateLinks": true,
   "legacyEditor": false,
-  "livePreview": false
+  "livePreview": false,
+  "vimMode": true,
+  "showLineNumber": true
 }
