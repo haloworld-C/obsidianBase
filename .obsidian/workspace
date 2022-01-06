@@ -1,19 +1,15 @@
 {
   "main": {
-    "id": "cfbf17ea710df9ec",
+    "id": "9beeb010da044a9e",
     "type": "split",
     "children": [
       {
-        "id": "e60cfd49b160870a",
+        "id": "4f7353c3aa70e124",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-<<<<<<< HEAD
-            "file": "计算机基础/VIM常用操作记录.md",
-=======
-            "file": "config&workflow/西井科技.md",
->>>>>>> 5fc822e1e2dd28d52556e2a97e4d51f6fa3507e3
+            "file": "个人管理/吾日三省吾身.md",
             "mode": "source",
             "source": true
           }
@@ -23,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f59356104807e579",
+    "id": "3979856a3aeb1922",
     "type": "split",
     "children": [
       {
-        "id": "03712e630287c12e",
+        "id": "a2c882e543ec4515",
         "type": "tabs",
         "children": [
           {
-            "id": "3d61b013f850142a",
+            "id": "2cc06a93c1523f28",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +35,7 @@
             }
           },
           {
-            "id": "6f24c0893beb274e",
+            "id": "dd0e2d212aecd8b0",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -57,27 +53,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 430
+    "width": 300
   },
   "right": {
-    "id": "209ce83b03d64706",
+    "id": "1cbbeb2b3c503c00",
     "type": "split",
     "children": [
       {
-        "id": "c37ea71432df733e",
+        "id": "3a28a28bf861439f",
         "type": "tabs",
         "children": [
           {
-            "id": "3e41f8280049e33f",
+            "id": "1fb339394e82150e",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-                "file": "计算机基础/VIM常用操作记录.md",
-=======
-                "file": "config&workflow/西井科技.md",
->>>>>>> 5fc822e1e2dd28d52556e2a97e4d51f6fa3507e3
+                "file": "个人管理/吾日三省吾身.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,33 +84,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
-  "active": "e60cfd49b160870a",
+  "active": "4f7353c3aa70e124",
   "lastOpenFiles": [
-<<<<<<< HEAD
+    "个人管理/吾日三省吾身.md",
+    "个人管理/worklog.md",
     "计算机基础/VIM常用操作记录.md",
     "每日作息.md",
     "个人管理/个人信息.md",
     "待办/TodoList.md",
     "计算机基础/计算机基础.md",
     "计算机基础/linux常用命令行.md",
-    "个人管理/吾日三省吾身.md",
-    "个人管理/worklog.md",
     "待办/Q&A.md",
     "待办/ideas collecting box.md"
-=======
-    "config&workflow/西井科技.md",
-    "workspace/Wellsim仿真接口对接.md",
-    "日志/worklog.md",
-    "待办/TodoList.md",
-    "config&workflow/coding principles.md",
-    "计算机基础/VIM常用操作记录.md",
-    "config&workflow/vim配置.md",
-    "C++/C++标准库+boost+其他库.md",
-    "config&workflow/C++ libconfig库的安装与编译注意事项.md",
-    "日志/问题备忘.md"
->>>>>>> 5fc822e1e2dd28d52556e2a97e4d51f6fa3507e3
   ]
 }
