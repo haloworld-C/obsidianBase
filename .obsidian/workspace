@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "计算机基础/计算机基础.md",
+            "file": "计算机基础/VIM常用操作记录.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "计算机基础/计算机基础.md",
+                "file": "计算机基础/VIM常用操作记录.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "4f7353c3aa70e124",
   "lastOpenFiles": [
-    "计算机基础/计算机基础.md",
     "计算机基础/VIM常用操作记录.md",
-    "计算机基础/linux常用命令行.md",
-    "日志/吾日三省吾身.md",
-    "日志/个人信息.md",
-    "日志/worklog.md",
+    "每日作息.md",
+    "个人管理/个人信息.md",
     "待办/TodoList.md",
+    "计算机基础/计算机基础.md",
+    "计算机基础/linux常用命令行.md",
+    "个人管理/吾日三省吾身.md",
+    "个人管理/worklog.md",
     "待办/Q&A.md",
-    "待办/ideas collecting box.md",
-    "自动驾驶/控制/多车辆运动学公式推导.md"
+    "待办/ideas collecting box.md"
   ]
 }
