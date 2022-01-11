@@ -39,3 +39,54 @@
 ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供一个assert的宏定义。assert只是对所给的表达式求值，就像if判断语句中一样，然后如果该值为真则正常运行，否则报错，并调用abort(),产生异常中断，exit出来。
 该宏声名，只需在包含assert.h之前＃define NDEBUG
 可以通过#undef NDEBUG进行屏蔽
+
+### flags
+#### override
+为虚函数重载覆盖标志， 在子类中重新定义父类中已经定义的虚函数。
+```C++
+#include <iostream>
+ 
+struct A
+{
+    virtual void foo();
+    void bar();
+    virtual ~A();
+};
+ 
+// member functions definitions of struct A:
+void A::foo() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "A::foo();\n"; }
+A::~A() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "A::~A();\n"; }
+ 
+struct B : A
+{
+//  void foo() const override; // Error: B::foo does not override A::foo
+                               // (signature mismatch)
+    void foo() override; // OK: B::foo overrides A::foo
+//  void bar() override; // Error: A::bar is not virtual
+    ~B() override; // OK: `override` can also be applied to virtual
+                   // special member functions, e.g. destructors
+    void override(); // OK, member function name, not a reserved keyword
+};
+ 
+// member functions definitions of struct B:
+void B::foo() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::foo();\n"; }
+B::~B() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::~B();\n"; }
+void B::override() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::override();\n"; }
+ 
+int main() {
+    B b;
+    b.foo();
+    b.override(); // OK, invokes the member function `override()`
+    int override{42}; // OK, defines an integer variable
+    [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "override: " << override << '\n';
+}
+////////////////////////////////////////////////////////////////////
+OUTPUT
+B::foo();
+B::override();
+override: 42
+B::~B();
+A::~A();
+////////////////////////////////////////////////////////////////////
+				
+```
