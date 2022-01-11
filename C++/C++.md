@@ -40,6 +40,7 @@ ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供
 该宏声名，只需在包含assert.h之前＃define NDEBUG
 可以通过#undef NDEBUG进行屏蔽
 
+<<<<<<< HEAD
 ### C++ 语法糖(grammer sugar)
 #### for的范围循环
 传统的for循环对于复杂类型来说，需要书写大量语句，例如对vector<int> 中的元素进行迭代其形式如下：
@@ -98,3 +99,55 @@ item的类型将由var的类型推断得出。
 typedef double wages;
 typedef double* wages_ptr;//通过名称可以理解其代指与类型
 ```
+=======
+### flags
+#### override
+为虚函数重载覆盖标志， 在子类中重新定义父类中已经定义的虚函数。
+```C++
+#include <iostream>
+ 
+struct A
+{
+    virtual void foo();
+    void bar();
+    virtual ~A();
+};
+ 
+// member functions definitions of struct A:
+void A::foo() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "A::foo();\n"; }
+A::~A() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "A::~A();\n"; }
+ 
+struct B : A
+{
+//  void foo() const override; // Error: B::foo does not override A::foo
+                               // (signature mismatch)
+    void foo() override; // OK: B::foo overrides A::foo
+//  void bar() override; // Error: A::bar is not virtual
+    ~B() override; // OK: `override` can also be applied to virtual
+                   // special member functions, e.g. destructors
+    void override(); // OK, member function name, not a reserved keyword
+};
+ 
+// member functions definitions of struct B:
+void B::foo() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::foo();\n"; }
+B::~B() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::~B();\n"; }
+void B::override() { [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "B::override();\n"; }
+ 
+int main() {
+    B b;
+    b.foo();
+    b.override(); // OK, invokes the member function `override()`
+    int override{42}; // OK, defines an integer variable
+    [std::cout](http://en.cppreference.com/w/cpp/io/cout) << "override: " << override << '\n';
+}
+////////////////////////////////////////////////////////////////////
+OUTPUT
+B::foo();
+B::override();
+override: 42
+B::~B();
+A::~A();
+////////////////////////////////////////////////////////////////////
+				
+```
+>>>>>>> f144fd01c986f1ba1aba0dd130310654eb2cd5e8
