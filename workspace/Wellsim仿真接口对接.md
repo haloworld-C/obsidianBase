@@ -37,6 +37,40 @@ roslaunch rviz_panel rviz_panel.launch  # 启动rviz可视化节点
 ### 代码结构梳理
 ![well_driver_routing_arch](well_driver_routing_arch.png)
 
+### 多车路径测试
+目前多车路径的测试是分别跑在六台笔记本上，接收FMS发过来的路径信息，然后输出路径发送给仿真环境。
+六台笔记本地址为：
+[qtruck11]
+192.168.103.25 ansible_ssh_user=qomolo ansible_ssh_pass="123" ansible_sudo_pass="123"
+[qtruck12]
+192.168.103.26 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+[qtruck13]
+192.168.103.27 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+[qtruck14]
+192.168.103.28 ansible_ssh_user=qomolo ansible_ssh_pass="q" ansible_sudo_pass="q"
+[qtruck15]
+192.168.103.29 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+[qtruck16]
+192.168.103.30 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+测试流程：
+1. ssh进入每个笔记本（代表一辆qtruck），然后启动所有模块
+```bash
+ssh qomolo@192.168.103.25 #进入第一辆车命令行，其他依次类推
+```
+2. 启动本地docker
+```bash
+./start_docker_qtruck_simulate.sh
+```
+3. 启动所有模块
+```bash
+./start_abuzhabi_all_module_simulate.sh
+```
+4. 在本地安装启动多车监控面板
+进入well_driver的/remote_monitor分支，然后编译项目。编译后通过脚本启动。
+```bash
+./start_server_monitor_abuzhabi.sh
+```
+> 备注：当前版本只支持一个监控服务器，需要在/script/client/client_simulate.py中修改服务器地址。
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑

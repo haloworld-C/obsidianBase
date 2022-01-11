@@ -39,3 +39,62 @@
 ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供一个assert的宏定义。assert只是对所给的表达式求值，就像if判断语句中一样，然后如果该值为真则正常运行，否则报错，并调用abort(),产生异常中断，exit出来。
 该宏声名，只需在包含assert.h之前＃define NDEBUG
 可以通过#undef NDEBUG进行屏蔽
+
+### C++ 语法糖(grammer sugar)
+#### for的范围循环
+传统的for循环对于复杂类型来说，需要书写大量语句，例如对vector<int> 中的元素进行迭代其形式如下：
+```C++
+# include <vector>
+# include <string>
+using namespace std;
+/test for-loop 
+int main()
+{
+	vector<int> elements = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	for(auto iter = elements.begin(), iter != elements.end(), ++iter){
+		cout << *iter << '\t'; //print element in vector
+	}
+	cout << endl;
+
+	return 0;
+}
+```
+而C++11引入了利用迭代器范围的循环，配合auto这个自动推断类型的声明，可以让我们的代码变的简介，从而增强可读性（个人感觉有待你与python靠拢）。其形式为：
+```C++
+for(auto element : elements){
+	cout << element << '\t';
+}
+```
+还有一点需要注意的是for的范围循环返回的是序列的元素本身，而上面传统的基于迭代器的循环，返回的是指向元素的迭代器。
+如果需要改动元素的内容则可以将元素声明为引用类型，形式如下：
+```C++
+for(auto& element : elements){
+	element *= 2;//每个元素扩大两倍
+}
+```
+#### auto & decltype
+auto 可以让编译器帮助我们解析变量类型，但是它要与赋值操作一起用，即推断返回值的类型。
+其语法为：
+```C++
+auto item = var;
+```
+decltype与auto 有所不同，其推断值可以通过变量或表达式来推断，只用类型，而可以自己进行类型的初始话。其语法为：
+```C++
+int i =42, *p = &i, &r = i;
+decltype(r + 0) = b;//括号中为表达式，则推断结果是表达式返回类型（int 而非 int&）
+decltype(r) = i;// 括号中为变量，则其推断类型为变量类型
+decltype((i)) d = i; //括号中再来一个小括号，返回该变量的引用，引用值必须初始化
+```
+item的类型将由var的类型推断得出。
+需要注意的是，auto 会忽略顶层const（但是底层const会保留）。
+#### 类型别名 typedef & template
+在标准库及第三方库当中经常可以看到类型别名（还有个常见的是模板）。把他们看懂了，对于我们理解代码有莫大的帮助。不过其实这两个都很容易理解只要稍微花些时间就可以掌握。
+##### 类型别名
+类型别名（type alias）就是对一个类型名称进行重新命名，这样做主要有一下两个好处：
+	1. 利用类型别名，让复杂的类型变的简洁，从而降低理解的成本;
+	2. 可以针对基础类型进行更高维度的抽象，有时候虽然类型本身并不复杂，但是在具体应用中可以让类型名称与业务相关，从而可以增进理解。
+其语法很简单：
+```C++
+typedef double wages;
+typedef double* wages_ptr;//通过名称可以理解其代指与类型
+```
