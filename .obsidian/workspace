@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "待办/TodoList.md",
-            "mode": "preview",
+            "mode": "source",
             "source": true
           }
         }
@@ -90,14 +90,14 @@
   "active": "e60cfd49b160870a",
   "lastOpenFiles": [
     "待办/TodoList.md",
-    "待办/ideas collecting box.md",
-    "个人管理/worklog.md",
-    "计算机基础/python.md",
-    "计算机基础/docker.md",
-    "计算机基础/git.md",
-    "计算机基础/linux常用命令行.md",
-    "计算机基础/Shell及其他脚本.md",
-    "自动驾驶/工具链/坐标系转换.md",
-    "自动驾驶/工具链/常用框架工具.md"
+    "config&workflow/C++ libconfig库的安装与编译注意事项.md",
+    "config&workflow/boost的安装与卸载.md",
+    "C++/多线程编程.md",
+    "C++/C++标准库+boost+其他库.md",
+    "C++/C++.md",
+    "config&workflow/Carsim、Simulink与ROS联调环境配置.md",
+    "config&workflow/Carsim多版本安装自动识别之前的lisense.md",
+    "config&workflow/coding principles.md",
+    "config&workflow/git workflow.md"
   ]
 }
