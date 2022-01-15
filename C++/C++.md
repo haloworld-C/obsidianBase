@@ -40,7 +40,7 @@ ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供
 该宏声名，只需在包含assert.h之前＃define NDEBUG
 可以通过#undef NDEBUG进行屏蔽
 
-<<<<<<< HEAD
+ 
 ### C++ 语法糖(grammer sugar)
 #### for的范围循环
 传统的for循环对于复杂类型来说，需要书写大量语句，例如对vector<int> 中的元素进行迭代其形式如下：
@@ -99,7 +99,7 @@ item的类型将由var的类型推断得出。
 typedef double wages;
 typedef double* wages_ptr;//通过名称可以理解其代指与类型
 ```
-=======
+
 ### flags
 #### override
 为虚函数重载覆盖标志， 在子类中重新定义父类中已经定义的虚函数。
@@ -150,4 +150,22 @@ A::~A();
 ////////////////////////////////////////////////////////////////////
 				
 ```
->>>>>>> f144fd01c986f1ba1aba0dd130310654eb2cd5e8
+
+#### =default & = delete
+C++如果结构或者类没有明确声明默认函数（构造函数，拷贝构造， 析构函数），那么编译器会在需要的时候生成默认版本，这可能会引发非预期的行为。
+=default是明确告诉编译器要生成默认版本，
+=delete是明确告诉编译器**禁止**生成默认版本
+主要目的是通过显式声明（explicitly）来避免非预期的行为
+在C++11以前，主要是通过将不想让编译器生成的默认函数定义为private来阻止编译器。
+其代码如下：
+```C++
+struct noncopyable { 
+	noncopyable() {};
+private: 
+	noncopyable(const noncopyable&); 
+	noncopyable& operator=(const noncopyable&); 
+};
+class son : private nocopyable{
+
+};
+```
