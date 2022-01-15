@@ -67,3 +67,8 @@ newgrp docker #更新用户组
 docker ps #测试docker命令是否可以使用sudo正常使用
 ```
 2. 尝试自己配置一个用于测试及学习的docker环境
+
+### 备忘
+个人docker 默认密码
+user: 2
+root: 1
