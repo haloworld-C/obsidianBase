@@ -17,8 +17,8 @@
 2. 总结Apollo控制模块
 3. 完成VehicleState类的编写
 #### 20220117
-- [ ] 完成PID基类的仿写及VehicleState类的编写
-- [ ] 调研考虑起步与停车阶段速度规划的实现
+- [x] 完成PID基类的仿写及VehicleState类的编写
+- [x] 调研考虑起步与停车阶段速度规划的实现(需要知道location的更新频率)
 
 #### 20220115
 - [x]  晚上的时候把terminator配置文件该一下
