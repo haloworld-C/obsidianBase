@@ -169,3 +169,5 @@ class son : private nocopyable{
 
 };
 ```
+#### constexpr
+C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
