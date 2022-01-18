@@ -24,7 +24,8 @@ docker ps -a
 ```
 - 进入某个运行中的镜像命令行
 ```bash
-docker exec -it [container ID] /bin/bash
+docker exec -it [container ID] env LANG=C.UTF-8 /bin/bash
+# env LANG=C.UTF-8 设置docker 命令行支持中文环境
 ```
 - 列出本机docker 镜像
 ```bash
@@ -51,8 +52,17 @@ docker commit [容器名或ID] [镜像名：tag] # tag 类似于版本
 ``` docker bash
 docker image rm [镜像名或ID]
 ```
-| command | discription | comment|
-|------|----------|---------|
+- 镜像上传到公共仓库
+```docker bash
+# 登录自己的仓库帐号
+docker login
+# 修改仓库名称
+docker tag <docker image name>:tag <docker hub id>/<docker image name>:tag
+# 仓库上传
+docker push <docker hub id>/<docker image name>:tag
+```
+
+### docker file
 
 ### Q&A
 1.  安装docker后出现permission denied错误
