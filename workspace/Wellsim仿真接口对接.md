@@ -9,12 +9,8 @@ source /opt/ros/melodic/setup.bash
 2. 编译
 首次编译时应先编译一下qomolo_msgs
 ```bash
-catkin_make --only-pkg-with-deps <qomolo_msgs> #和赛激光模块也需要重新编译
+catkin_make --only-pkg-with-deps <qomolo_msgs hesai_lidar> #和赛激光模块也需要重新编译
 source /devel/setup.bash # 编译完成后需要更新lib关联地址
-```
-然后，删掉build文件夹后，再次编译和赛激光的包
-```bash
-catkin_make --only-pkg-with-deps <hesai_lidar>
 ```
 然后删掉build文件夹后，运行
 ```bash
