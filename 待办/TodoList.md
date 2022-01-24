@@ -6,25 +6,32 @@
 1. 掌握控制、规划部分的关键技术(以Apollo与Autoware.ai为例)
 2. 开始感知SLAM的学习
 3. Leetcode 100
-4. 
 ---
 - [ ] 将个人博客搭建起来
 - [ ] 配置vpn
 - [ ] 个人笔记本迁移到debian系统上（春节期间）
 - [ ] 写一个vehicle_motion类，以便在项目中进行复用
+### 第四周计划
+1. 完成集成测试，查看效果
+2. 完成VehicleState类的编写，并将其显示在ROS中与车辆位置同步显示
+3. Apollo规划模块深入学习
+#### 20220124
+- [ ] 准备测试py脚本
+- [ ] 安装latex; 添加string与char相互转换的库，安装谷歌三件套
+- [ ] 开始看apollo planning 模块
 ### 第三周计划
 1. 代码实现起步与停车阶段速度规划
 2. 总结Apollo控制模块
 3. 完成VehicleState类的编写
 #### 20210121
-- [ ] 写切换速度规划切换主逻辑
-- [ ] 总结Apollo控制模块
+- [x] 写切换速度规划切换主逻辑
+- [x] 总结Apollo控制模块
 #### 20220120
-- [ ] 将simple_planner集成到现有代码中
-- [ ] 总结Apollo控制模块
+- [x] 将simple_planner集成到现有代码中
+- [x] 总结Apollo控制模块
 #### 20220119
 - [x] 理解时间模块，完成单元测试
-- [ ] 将simple_planner集成到现有代码中
+- [x] 将simple_planner集成到现有代码中
 - [x] SLAM论文综述阅读2
 #### 20220118
 - [x] Apollo控制模块代码阅读
