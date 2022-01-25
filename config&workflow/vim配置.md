@@ -11,3 +11,7 @@
 
 alias sudo='sudo env HOME=$HOME'
 ```
+
+### 常用插件
+- 自动补全：ycm
+- 注释：## Doxygen
