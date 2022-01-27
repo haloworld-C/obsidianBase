@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "workspace/Wellsim仿真接口对接.md",
+            "file": "自动驾驶/工具链/常用框架工具.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "workspace/Wellsim仿真接口对接.md",
+                "file": "自动驾驶/工具链/常用框架工具.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "4f7353c3aa70e124",
   "lastOpenFiles": [
-    "workspace/Wellsim仿真接口对接.md",
-    "workspace/Qtruck接口文档.md",
-    "workspace/Function & features.md",
+    "自动驾驶/工具链/常用框架工具.md",
+    "计算机基础/VIM常用操作记录.md",
+    "计算机基础/计算机基础.md",
     "计算机基础/编译原理&&Cmake.md",
+    "自动驾驶/工具链/深度学习.md",
     "待办/TodoList.md",
     "计算机基础/docker.md",
-    "计算机基础/linux常用命令行.md",
-    "计算机基础/计算机基础.md",
-    "自动驾驶/工具链/自动驾驶开源库.md",
-    "自动驾驶/工具链/自动驾驶工具链.md"
+    "C++/C++标准库+boost+其他库.md",
+    "C++/多线程编程.md",
+    "C++/C++.md"
   ]
 }

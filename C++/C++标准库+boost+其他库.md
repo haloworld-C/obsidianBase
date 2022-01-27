@@ -26,3 +26,23 @@
 
 ###  Abseil
 谷歌C++ and Python库
+
+#### 谷歌三件套
+##### gflags
+glags在添加链接库报错：
+```error
+undefined reference to symbol '_ZN6google14FlagRegistererC1IiEEPKcS3_S3_PT_S5_'
+```
+需要在CMakeLists.txt中添加-lgflags：
+```CMakeLists.txt
+IF (HELLO_FOUND AND gflags_FOUND)
+    ADD_EXECUTABLE(useHello useHello.cpp)
+    TARGET_LINK_LIBRARIES(useHello ${HELLO_LIBRARY}
+                                   ${gflags_LIBRARY}
+                                   -lgflags)
+
+```
+
+##### glog
+
+##### gtest
