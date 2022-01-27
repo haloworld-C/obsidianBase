@@ -61,7 +61,18 @@ docker tag <docker image name>:tag <docker hub id>/<docker image name>:tag
 # 仓库上传
 docker push <docker hub id>/<docker image name>:tag
 ```
-
+- 清空所有未在使用的镜像
+```bash
+docker rmi $(docker images -q) -f
+```
+- 查看某镜像的完整ID
+```bash
+docker images --digests
+```
+- 删除所有untagged镜像
+```bash
+docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force
+```
 ### docker file
 
 ### Q&A
