@@ -32,7 +32,7 @@ roslaunch rviz_panel rviz_panel.launch  # 启动rviz可视化节点
 
 ### 代码结构梳理
 ![well_driver_routing_arch](well_driver_routing_arch.png)
-
+qtruck规划控制部分接口文档详见[Qtruck接口文档](Qtruck接口文档.md)
 ### 多车路径测试
 目前多车路径的测试是分别跑在六台笔记本上，接收FMS发过来的路径信息，然后输出路径发送给仿真环境。
 六台笔记本地址为：
