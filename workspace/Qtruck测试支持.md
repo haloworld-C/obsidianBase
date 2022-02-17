@@ -14,7 +14,7 @@
 | 1970890 |  lanelet不存在 | 经地图中对比，发现是新地图用新的一条lanelet代替 | 
  
 
-#### 修改cutin 及 past_time 
+#### 添加cutin 及 past_time 
 使车辆能够在四条道上面的service line可以切进来
 
 
@@ -27,3 +27,13 @@
 | check_block  |  string  | ? | 
 | motion_check  |  lanelet_id  | ? | 
 | reloc_allow  |  true ; false  | ? | 
+| cutin   | |为是否允许变道属性| 
+
+#### issues
+1. [阿布扎比]124仿真环境AT6无法变道
+![not_change_issue](not_change_line_issue.jpg)
+
+
+2. [泰国]车辆跨越no pass 区域
+
+![no_pass_issue](nopass_issue.jpg)
