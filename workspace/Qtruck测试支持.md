@@ -37,3 +37,7 @@
 2. [泰国]车辆跨越no pass 区域
 
 ![no_pass_issue](nopass_issue.jpg)
+问题定位：在qtruck1上播放rosbag定位问题，发现no pass area区域不连续，如下图所示：
+
+3.[泰国]AT01在G11完成任务后客户发了E10任务路径规划是从D11 bypass 绕了一圈
+失效时间： 8:22
