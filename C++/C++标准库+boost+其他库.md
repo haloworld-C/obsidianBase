@@ -1,9 +1,12 @@
 ### STL
 #### 组件 
 - std::chrono
-
+C++ 共提供三种时钟计时器：
+1. system_clock
+2. high_resolution_clock
+3. steady_clock(与hight_resolution_clock类似，不过不能调整is_steady属性，indicates if the clock is monotonous)
 - std::thread
-> 当使用std::thread时， 需要在编译时g++ 需要在末尾加上
+> 当使用std::thread时， 需要在编译时g++ 需要在末尾加上-pthread
 - std::mutex(线程中的资源锁)
 	mutex中提供两种上锁方式
 		- std::lock_guard
