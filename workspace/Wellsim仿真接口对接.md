@@ -10,7 +10,7 @@ source /opt/ros/melodic/setup.bash
 首次编译时应先编译一下qomolo_msgs
 ```bash
 catkin_make --only-pkg-with-deps <qomolo_msgs hesai_lidar> #和赛激光模块也需要重新编译
-source /devel/setup.bash # 编译完成后需要更新lib关联地址
+source devel/setup.bash # 编译完成后需要更新lib关联地址
 ```
 然后删掉build文件夹后，运行
 ```bash
@@ -51,7 +51,7 @@ qtruck规划控制部分接口文档详见[Qtruck接口文档](Qtruck接口文�
 测试流程：
 1. ssh进入每个笔记本（代表一辆qtruck），然后启动所有模块
 ```bash
-ssh qomolo@192.168.103.25 #进入第一辆车命令行，其他依次类推
+ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ```
 2. 启动本地docker
 ```bash
@@ -62,7 +62,7 @@ ssh qomolo@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ./start_abuzhabi_all_module_simulate.sh
 ```
 4. 在本地安装启动多车监控面板
-进入well_driver的/remote_monitor分支，然后编译项目。编译后通过脚本启动。
+进入well_driver的/remote_monitor分支，然后编译项目。编译后通过脚本启动(本地docker 需要启动，但是不需要进入docker执行)。
 ```bash
 ./start_server_monitor_abuzhabi.sh
 ```

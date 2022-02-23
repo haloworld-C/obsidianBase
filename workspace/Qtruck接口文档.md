@@ -15,3 +15,4 @@
 |/control\_info   | Qomolo\_msgs::ControlInfo | Control    | Simulator, CANBUS  |车辆当前时刻执行的控制指令|
 |/fusion\_odom   | nav\_msgs::Odometry | Perception, Simulator     | Control  |融合定位信息|
 |/trailer\_angle   | Qomolo\_msgs::TrailerAngle | Simulator, ?     | Control  |车辆几何参数|
+|/rtgc   |  |      | Plan  |    |
