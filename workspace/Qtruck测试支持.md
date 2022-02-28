@@ -28,7 +28,11 @@
 | motion_check  |  lanelet_id  | ? | 
 | reloc_allow  |  true ; false  | ? | 
 | cutin   | |为是否允许变道属性| 
+| turn mode|反映路径的曲率信息|straight:1 inside:2 outside:3 lanechange:5|
+| lanechange_block|是否允许变道区域|101869  101874 101879 101775 124856 124846 124851 124861 |
 
+#### 关于属性的问题
+1. lanechange_block 的值对应的元素（polygonLayer）在哪里查看
 #### issues
 1. [阿布扎比]124仿真环境AT6无法变道
 ![not_change_issue](not_change_line_issue.jpg)
