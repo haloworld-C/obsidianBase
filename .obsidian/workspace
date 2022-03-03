@@ -10,10 +10,14 @@
           "type": "markdown",
           "state": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "file": "自动驾驶/开源库架构/自动驾驶开源库.md",
 =======
             "file": "待办/TodoList.md",
 >>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
+=======
+            "file": "workspace/Qtruck测试支持.md",
+>>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
             "mode": "source",
             "source": true
           }
@@ -74,10 +78,14 @@
               "type": "backlink",
               "state": {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "file": "自动驾驶/开源库架构/自动驾驶开源库.md",
 =======
                 "file": "待办/TodoList.md",
 >>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
+=======
+                "file": "workspace/Qtruck测试支持.md",
+>>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +105,7 @@
   "active": "4f7353c3aa70e124",
   "lastOpenFiles": [
 <<<<<<< HEAD
+<<<<<<< HEAD
     "自动驾驶/开源库架构/自动驾驶开源库.md",
     "计算机基础/VIM常用操作记录.md",
     "C++/多线程编程.md",
@@ -108,16 +117,23 @@
     "个人管理/worklog.md",
     "自动驾驶/工具链/常用框架工具.md"
 =======
+=======
+    "workspace/Qtruck测试支持.md",
+    "workspace/Qtruck接口文档.md",
+>>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
     "待办/TodoList.md",
     "个人管理/worklog.md",
-    "C++/C++标准库+boost+其他库.md",
-    "C++/C++.md",
-    "workspace/Qtruck测试支持.md",
-    "自动驾驶/决策规划/lanelet2.md",
-    "计算机基础/git常用及理解.md",
     "workspace/Wellsim仿真接口对接.md",
+<<<<<<< HEAD
     "config&workflow/西井科技.md",
     "workspace/Qtruck接口文档.md"
 >>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
+=======
+    "计算机基础/git常用及理解.md",
+    "待办/ideas collecting box.md",
+    "C++/C++标准库+boost+其他库.md",
+    "config&workflow/Terminator保存窗口布局失败.md",
+    "config&workflow/git workflow.md"
+>>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
   ]
 }
