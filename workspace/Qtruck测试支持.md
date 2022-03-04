@@ -24,15 +24,24 @@
 |key | value  | 说明  |
 |:---------|:-----------|:-----|
 | path_check  |  true ; false  | 与防撞相关 | 
-| check_block  |  string  | ? | 
+| check_block  |  string  | 用于判断该区域是否适用于红绿灯 | 
 | motion_check  |  lanelet_id  | ? | 
 | reloc_allow  |  true ; false  | ? | 
 | cutin   | |为是否允许变道属性| 
 | turn mode|反映路径的曲率信息|straight:1 inside:2 outside:3 lanechange:5|
 | lanechange_block|是否允许变道区域|101869  101874 101879 101775 124856 124846 124851 124861 |
+| subtype|"road","xxxx"||
 
+> lanechange_block属性代表aera，其特征如下所示。
+![lanechange_blocke](lanelet-osm-aera.png)
 #### 关于属性的问题
-1. lanechange_block 的值对应的元素（polygonLayer）在哪里查看
+1. lanechange_block 的值对应的元素（polygonLayer）与其位置关系不是一一对应。表征的是不允许变道的信息
+2. turn mode == 4的含义
+3. 短横线中的属性如何读取
+
+#### 地图正确性检查
+taiguo0228 -> taiguo0301,见
+
 #### issues
 1. [阿布扎比]124仿真环境AT6无法变道
 ![not_change_issue](not_change_line_issue.jpg)

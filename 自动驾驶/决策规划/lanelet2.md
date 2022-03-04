@@ -38,7 +38,39 @@ lanelet2主要识别osm（地图上点的坐标为经度-维度，地图格式�
 9. validity:(提供对地图中异常的检测)
 10. ROS（为ROS提供相关的接口）
 11. python(为python提供接口)
+### 常用接口
+#### map模块
+```C++
+//获取lanelet对应key-value属性
+lanelet::Optional<double> velocity =map_->laneletLayer.get(path_id).attributes()["speed"].asDouble();
 
+```
+#### geometry模块
+1. 判断该点是否处于lanelet对象内
+```C++
+lanelet::geometry::inside(lanelet, point)
+//获取lanelet_path直到未变道前的后续路径
+lanelet::LaneletSequence lane = path.getRemainingLane(path[count])
+```
+#### routing模块
+```C++
+/* @brief: getRoute获取计算的是由起点lanelet到终点lanelet之间的最短路由lanelet
+@param: 1st, 起点lanelet
+@param: 2nd, 终点lanelet
+@param: 3th, cost类型0为时间，1为距离
+@param: 4th, 是否允许换道
+@return, 其返回值为对应的lanelet集合
+*/
+lanelet::Optional<lanelet::routing::Route> route = routing_graph_->getRoute(map_->laneletLayer.get(start_ids[i]),map_->laneletLayer.get(end_ids[j]), 0 ,true);
+//获取上步计算的最短路径，并不涉及计算
+route->shortestPath()
+//获取左侧相邻lanelet
+auto left_neighbor=routing_graph_->left(current_lanelet);
+//获取当前lanelet的后继lanelet(可能不止一个)
+auto following_lanes=routing_graph_->following(current_lanelet);
+//获取当前lanelet的前序lanelet(可能不止一个)
+auto previous_lanelets=routing_graph_->previous(current_lanelet);
+```
 ## practise
 ### install
 可以通过以下命令安装lanelet2.
