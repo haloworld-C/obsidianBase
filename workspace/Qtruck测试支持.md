@@ -27,7 +27,7 @@
 | check_block  |  string  | 用于判断该区域是否适用于红绿灯 | 
 | motion_check  |  lanelet_id  | ? | 
 | reloc_allow  |  true ; false  | ? | 
-| cutin   | |为是否允许变道属性| 
+| cutin  cutout | |为是否允许变道-service lane属性| 
 | turn mode|反映路径的曲率信息|straight:1 inside:2 outside:3 lanechange:5|
 | lanechange_block|是否允许变道区域|101869  101874 101879 101775 124856 124846 124851 124861 |
 | subtype|"road","xxxx"||

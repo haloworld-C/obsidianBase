@@ -48,7 +48,7 @@ lanelet::Optional<double> velocity =map_->laneletLayer.get(path_id).attributes()
 #### geometry模块
 1. 判断该点是否处于lanelet对象内
 ```C++
-lanelet::geometry::inside(lanelet, point)
+bool is_inside = lanelet::geometry::inside(lanelet, point)
 //获取lanelet_path直到未变道前的后续路径
 lanelet::LaneletSequence lane = path.getRemainingLane(path[count])
 ```

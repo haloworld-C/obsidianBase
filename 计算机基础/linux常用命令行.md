@@ -14,7 +14,7 @@
 |cd - | 返回上次历史目录，利用该命令可以在两个相距较远的目录之间i进行跳转|
 |adduser [user name] | 创建用户 |
 | passwd [user name] | 修改用户密码|
-|
+|su [user name] | 切换用户 |
 | chown [user name] [filename] | 更改文件所属用户 ,如果是文件夹则添加-R参数|
 | chgrp [user group] [filename] | 更改文件所属用户组 ,如果是文件夹则添加-R参数|
 | whereis <package> | 查找package的环境路径| 
