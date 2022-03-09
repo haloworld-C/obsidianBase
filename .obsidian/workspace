@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "config&workflow/docker image配置.md",
+            "file": "个人管理/worklog.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "config&workflow/docker image配置.md",
+                "file": "个人管理/worklog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "fa671e71695554af",
   "lastOpenFiles": [
-    "config&workflow/docker image配置.md",
-    "config&workflow/coding principles.md",
-    "config&workflow/boost的安装与卸载.md",
-    "config&workflow/西井科技.md",
-    "config&workflow/环境配置.md",
-    "config&workflow/Terminator保存窗口布局失败.md",
-    "config&workflow/C++ libconfig库的安装与编译注意事项.md",
-    "config&workflow/Carsim、Simulink与ROS联调环境配置.md",
-    "config&workflow/Carsim多版本安装自动识别之前的lisense.md",
-    "config&workflow/git workflow.md"
+    "个人管理/worklog.md",
+    "待办/TodoList.md",
+    "C++/C++.md",
+    "workspace/Wellsim仿真接口对接.md",
+    "research/list.md",
+    "计算机基础/git常用及理解.md",
+    "自动驾驶/工具链/ROS.md",
+    "计算机基础/docker.md",
+    "workspace/地图正确性检查.md",
+    "workspace/Qtruck测试支持.md"
   ]
 }

@@ -1,3 +1,11 @@
+20220309
+- 主要收获
+1. 总结字符串处理
+2. start play with code
+20220308
+- 主要收获
+1. 配置docker GPU显示
+2. 成功用pangolin现实差值曲线。
 20220307
 - 主要收获
 1. 了解git pull request(需要继续深入理解)
