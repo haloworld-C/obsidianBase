@@ -69,6 +69,7 @@ std::string foo{"text"};
 auto p = &*foo.begin();
 ```
 ## C++
+### 概念
 
 #### 左值引用与右值引用
 左值引用：类型 &引用名 = 左值表达式
@@ -220,3 +221,6 @@ class son : private nocopyable{
 ```
 #### constexpr
 C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
+
+### 遇到的问题
+1. ROS plugin中的函数加入inline 标志后无法识别
