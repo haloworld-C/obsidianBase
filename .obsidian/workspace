@@ -1,41 +1,29 @@
 {
   "main": {
-    "id": "9beeb010da044a9e",
+    "id": "78e568e7822c025b",
     "type": "split",
     "children": [
       {
-        "id": "4f7353c3aa70e124",
+        "id": "bbbd7a2e58d928f1",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "file": "自动驾驶/开源库架构/自动驾驶开源库.md",
-=======
-            "file": "待办/TodoList.md",
->>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
-=======
-            "file": "workspace/Qtruck测试支持.md",
->>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
-            "mode": "source",
-            "source": true
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "3979856a3aeb1922",
+    "id": "705fcde18950426b",
     "type": "split",
     "children": [
       {
-        "id": "a2c882e543ec4515",
+        "id": "7b159a974042a66e",
         "type": "tabs",
         "children": [
           {
-            "id": "2cc06a93c1523f28",
+            "id": "cffa46100b6f058b",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +31,7 @@
             }
           },
           {
-            "id": "dd0e2d212aecd8b0",
+            "id": "9c30be09a186f119",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -64,28 +52,19 @@
     "width": 300
   },
   "right": {
-    "id": "1cbbeb2b3c503c00",
+    "id": "addf9620bff4395c",
     "type": "split",
     "children": [
       {
-        "id": "3a28a28bf861439f",
+        "id": "f61cddcb6f692902",
         "type": "tabs",
         "children": [
           {
-            "id": "1fb339394e82150e",
+            "id": "d8ac02488c7e6f91",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "file": "自动驾驶/开源库架构/自动驾驶开源库.md",
-=======
-                "file": "待办/TodoList.md",
->>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
-=======
-                "file": "workspace/Qtruck测试支持.md",
->>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,40 +79,9 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "4f7353c3aa70e124",
-  "lastOpenFiles": [
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "自动驾驶/开源库架构/自动驾驶开源库.md",
-    "计算机基础/VIM常用操作记录.md",
-    "C++/多线程编程.md",
-    "C++/C++标准库+boost+其他库.md",
-    "C++/C++.md",
-    "待办/TodoList.md",
-    "计算机基础/docker.md",
-    "个人管理/三省.md",
-    "个人管理/worklog.md",
-    "自动驾驶/工具链/常用框架工具.md"
-=======
-=======
-    "workspace/Qtruck测试支持.md",
-    "workspace/Qtruck接口文档.md",
->>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
-    "待办/TodoList.md",
-    "个人管理/worklog.md",
-    "workspace/Wellsim仿真接口对接.md",
-<<<<<<< HEAD
-    "config&workflow/西井科技.md",
-    "workspace/Qtruck接口文档.md"
->>>>>>> ccc8cf84ff20ef97c4faff669e7ab7ddf336c469
-=======
-    "计算机基础/git常用及理解.md",
-    "待办/ideas collecting box.md",
-    "C++/C++标准库+boost+其他库.md",
-    "config&workflow/Terminator保存窗口布局失败.md",
-    "config&workflow/git workflow.md"
->>>>>>> 55e62d8a7aab44291078b3cf4e36224d4a46e0c9
-  ]
+  "active": "bbbd7a2e58d928f1",
+  "lastOpenFiles": []
 }
