@@ -24,8 +24,17 @@ C++ 共提供三种时钟计时器：
 
 
 ### Eigen矩阵库
+#### 概念
+- 矩阵运算库
 - row为行，col为列（动态矩阵初始化参数中第一个为行，第二个为列）
 - 通过.col（index）, .row(index)返回行与列的对象
+#### 常用接口
+```cpp
+Eigen::MatrixXf mat; //声明一个动态矩阵
+mat.resize(m,n); //将mat初始化为m行n列的矩阵
+mat.block<p, q>(i, j); //返回矩阵左上角为(i, j)，矩阵大小为(p, q)的子矩阵
+mat.block(i, j, p,q); //与上语句等价
+```
 
 ###  Abseil
 谷歌C++ and Python库

@@ -1,9 +1,8 @@
 关于动态编译(dll)与静态编译（.lib）
 
 
-
+## c语言补遗
 ### C语言当中的输出控制符
-## 输出控制符
 
 常用的输出控制符主要有以下几个：  
 
@@ -20,6 +19,57 @@
 |%s|用来输出字符串。用 %s 输出字符串同前面直接输出字符串是一样的。但是此时要先定义字符数组或字符指针存储或指向字符串，这个稍后再讲。
 |%x（或 %X 或 %#x 或 %#X）|以十六进制形式输出整数，这个很重要。
 
+### 内存操作
+```C++
+  
+void * memset ( void * ptr, int value, size_t num );//内存分配及初始化
+void* memcpy( void* dest, const void* src, [std::size_t]//内存拷贝，需要知道内存大小
+			 
+```
+### char* 与 C++ string之间的互相转换
+1. std::string  to const char*(不可写)
+```C++
+std::string str;
+const char* c_char = str.c_str();
+```
+2. std::string to char*(可写)
+- 对于早期C++版本(该方式并非异常安全)：
+```C++
+std::string str;
+char* c_char_writable = new char[str.size() + 1];
+std::copy(str.begin(), str.end(), writable);
+c_char_writable[str.size()] = '\0'; //don't foget the terminating
+
+// when use finished, remember to delete the memory
+delete[] c_char_writable;
+```
+- boost::scoped_array(异常安全)
+```C++
+std::string str;
+boost::scoped_array<char> writable(new char[str.size() + 1]);
+std::copy(str.begin(), str.end(), writable.get());
+writable[str.size()] = '\0'; // don't forget the terminating 0
+
+// get the char* using writable.get()
+
+// memory is automatically freed if the smart pointer goes 
+// out of scope
+```
+- std::vector（异常安全），内存占用是所需的2倍
+```cpp
+std::string str;
+std::vector<char> writable(str.begin(), str.end());
+writable.push_back('\0');
+
+// get the char* using &writable[0] or &*writable.begin()
+```
+- std::string(快速)
+```cpp
+std::string foo{"text"};
+auto p = &*foo.begin();
+```
+## C++
+### 概念
 
 #### 左值引用与右值引用
 左值引用：类型 &引用名 = 左值表达式
@@ -171,3 +221,6 @@ class son : private nocopyable{
 ```
 #### constexpr
 C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
+
+### 遇到的问题
+1. ROS plugin中的函数加入inline 标志后无法识别
