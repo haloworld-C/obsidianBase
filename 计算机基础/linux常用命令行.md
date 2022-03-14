@@ -19,6 +19,7 @@
 | chgrp [user group] [filename] | 更改文件所属用户组 ,如果是文件夹则添加-R参数|
 | whereis <package> | 查找package的环境路径| 
 | whichis <file name> | 查找file的文件位置| 
+| sudo ldconfig | 更新链接库|
 
 
 ### 高效小工具
