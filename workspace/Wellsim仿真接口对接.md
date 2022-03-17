@@ -48,7 +48,7 @@ qtruck规划控制部分接口文档详见[Qtruck接口文档](Qtruck接口文�
 192.168.103.29 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
 [qtruck16]
 192.168.103.30 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
-测试流程：
+#### 多车环境测试流程：
 1. ssh进入每个笔记本（代表一辆qtruck），然后启动所有模块
 ```bash
 ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
@@ -67,6 +67,16 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ./start_server_monitor_abuzhabi.sh
 ```
 > 备注：当前版本只支持一个监控服务器，需要在/script/client/client_simulate.py中修改服务器地址。
+#### 非多车环境（模拟6号车）
+1. 编译test_noproxy分支（需要将master分支合并到本地）
+2. 启动本地docker
+```bash
+./start_docker_qtruck_simulate.sh
+```
+3. 启动所有模块
+```bash
+./start_abuzhabi_all_module_simulate.sh
+```
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑

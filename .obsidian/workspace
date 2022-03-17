@@ -90,14 +90,14 @@
   "active": "bbbd7a2e58d928f1",
   "lastOpenFiles": [
     "待办/TodoList.md",
-    "自动驾驶/感知/SLAM定位与建图.md",
-    "计算机基础/linux常用命令行.md",
-    "config&workflow/vim配置.md",
-    "config&workflow/Terminator保存窗口布局失败.md",
-    "config&workflow/Linux 配置.md",
-    "config&workflow/git workflow.md",
-    "config&workflow/docker image配置.md",
-    "config&workflow/coding principles.md",
-    "config&workflow/Carsim多版本安装自动识别之前的lisense.md"
+    "workspace/Wellsim仿真接口对接.md",
+    "workspace/Qtruck测试支持.md",
+    "计算机基础/git常用及理解.md",
+    "workspace/Function & features.md",
+    "workspace/Qtruck接口文档.md",
+    "workspace/地图正确性检查.md",
+    "个人管理/worklog.md",
+    "自动驾驶/控制/qomolo车辆信息.md",
+    "计算机基础/linux常用命令行.md"
   ]
 }
