@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/C++.md",
+            "file": "计算机基础/git常用及理解.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/C++.md",
+                "file": "计算机基础/git常用及理解.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "fa671e71695554af",
   "lastOpenFiles": [
+    "计算机基础/git常用及理解.md",
+    "workspace/Qtruck测试支持.md",
     "C++/C++.md",
     "config&workflow/vim配置.md",
-    "计算机基础/git常用及理解.md",
     "config&workflow/git workflow.md",
     "C++/C++标准库+boost+其他库.md",
     "待办/TodoList.md",
     "待办/ideas collecting box.md",
     "待办/Q&A.md",
-    "个人管理/worklog.md",
-    "workspace/Wellsim仿真接口对接.md"
+    "个人管理/worklog.md"
   ]
 }

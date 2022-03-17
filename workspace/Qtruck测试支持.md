@@ -54,3 +54,10 @@ taiguo0228 -> taiguo0301,见
 
 3.[泰国]AT01在G11完成任务后客户发了E10任务路径规划是从D11 bypass 绕了一圈
 失效时间： 8:22
+
+#### 现场测试
+通过ssh远程车辆，车辆ip:10.94开头，会浮动。
+AT05：user name:qtruck password:123qwe
+```bash
+ssh qtruck@10.94...
+```
