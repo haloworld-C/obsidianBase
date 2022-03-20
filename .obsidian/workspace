@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "bbbd7a2e58d928f1",
+        "id": "275548fb9662aa51",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -87,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "bbbd7a2e58d928f1",
+  "active": "275548fb9662aa51",
   "lastOpenFiles": [
     "待办/TodoList.md",
+    "计算机基础/并行计算.md",
+    "计算机基础/git常用及理解.md",
+    "个人管理/worklog.md",
     "workspace/Wellsim仿真接口对接.md",
     "workspace/Qtruck测试支持.md",
-    "计算机基础/git常用及理解.md",
     "workspace/Function & features.md",
     "workspace/Qtruck接口文档.md",
     "workspace/地图正确性检查.md",
-    "个人管理/worklog.md",
-    "自动驾驶/控制/qomolo车辆信息.md",
-    "计算机基础/linux常用命令行.md"
+    "自动驾驶/控制/qomolo车辆信息.md"
   ]
 }
