@@ -39,15 +39,16 @@ qtruck规划控制部分接口文档详见[Qtruck接口文档](Qtruck接口文�
 [qtruck11]
 192.168.103.25 ansible_ssh_user=qomolo ansible_ssh_pass="123" ansible_sudo_pass="123"
 [qtruck12]
-192.168.103.26 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+10.66.12.193 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+
 [qtruck13]
-192.168.103.27 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+10.66.12.192 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
 [qtruck14]
-192.168.103.28 ansible_ssh_user=qomolo ansible_ssh_pass="q" ansible_sudo_pass="q"
+10.66.12.186 ansible_ssh_user=qomolo ansible_ssh_pass="q" ansible_sudo_pass="q"
 [qtruck15]
-192.168.103.29 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+10.66.12.185 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
 [qtruck16]
-192.168.103.30 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+10.66.12.115 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
 #### 多车环境测试流程：
 1. ssh进入每个笔记本（代表一辆qtruck），然后启动所有模块
 ```bash
@@ -69,6 +70,10 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 > 备注：当前版本只支持一个监控服务器，需要在/script/client/client_simulate.py中修改服务器地址。
 #### 非多车环境（模拟6号车）
 1. 编译test_noproxy分支（需要将master分支合并到本地）
+```bash
+git pull origin master --recurse-submodules
+catkin_make
+```
 2. 启动本地docker
 ```bash
 ./start_docker_qtruck_simulate.sh
@@ -84,3 +89,9 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ### 问题记录
 1、控制周期是由消息触发，是否有不稳定的问题
 2、对接仿真时发现其姿态转换有问题，导致控制失稳
+### 注意事项
+1. 在修改地图验证路径前，需要在rviz中验证一遍是否能够规划路径
+
+## 现场测试
+车辆IP：10.94开头（会动态变化）
+用户名：qtruck 密码：123qwe
