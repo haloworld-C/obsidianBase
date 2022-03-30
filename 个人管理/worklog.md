@@ -1,3 +1,6 @@
+20220329
+- 完成nopass_area调节长宽及本地移动逻辑
+- 理解Voronoi Diagram的生成过程（Voronoi Field还没有完全理解）
 20220328
 - 完成nopass_area消息的调试（很有成就感）
 - 掌握Hybird A* 思路及用到的技术点需要进一步推敲细节
