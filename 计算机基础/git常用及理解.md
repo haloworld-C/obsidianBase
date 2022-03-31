@@ -1,6 +1,6 @@
 | command | discription | comment|
 |------|----------|---------|
-| git branch | 查看当前分支
+| git branch | 查看当前分支||
 | git checkout -b <branch-name> |创建新分支|
 | git remote -v | 查看远程仓库主分支| 
 | git fetch | 获取远程仓库内容|
@@ -8,6 +8,7 @@
 | git checkout <分支名称> | 切换到对应的分支|git checkout -切回到之前的分支| 
 | git clone <仓库地址> --recurse-submodules | 连带子模块进行拉取|
 | git fetch --all && git reset --hard master && git pull | 获取所有历史分支，将head指针重置到最新master分支上|
+| git pull|拉去当前分支最近内容并合并到本地（相当与fetch+merge）| --recurse-submodules 连带子模块一起拉取|
 | git push -u origin <branch_name> | 将本地分支推送到远程对应分支并关联| 后续只需要git push便可推送到对应分支|
 | git push origin --delete <branch_name> | 删除远程分支|
 | git branch -d <branch_name>|删除本地分支（需要退出需要删除的分支才能删除）|-D为强制删除|
