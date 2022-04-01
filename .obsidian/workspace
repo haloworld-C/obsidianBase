@@ -90,14 +90,14 @@
   "active": "275548fb9662aa51",
   "lastOpenFiles": [
     "待办/TodoList.md",
-    "个人管理/worklog.md",
+    "自动驾驶/工具链/ROS.md",
     "计算机基础/git常用及理解.md",
+    "workspace/Wellsim仿真接口对接.md",
+    "计算机基础/linux常用命令行.md",
+    "计算机基础/VIM常用操作记录.md",
+    "个人管理/worklog.md",
     "workspace/Qtruck测试支持.md",
     "workspace/Qtruck接口文档.md",
-    "workspace/Wellsim仿真接口对接.md",
-    "workspace/地图正确性检查.md",
-    "个人管理/三省.md",
-    "自动驾驶/决策规划/决策规划.md",
-    "计算机基础/docker.md"
+    "workspace/地图正确性检查.md"
   ]
 }

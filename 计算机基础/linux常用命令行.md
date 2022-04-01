@@ -20,6 +20,9 @@
 | whereis <package> | 查找package的环境路径| 
 | whichis <file name> | 查找file的文件位置| 
 | sudo ldconfig | 更新链接库|
+| *网络相关*|
+|telnet ip:port|            |
+
 
 
 ### 高效小工具

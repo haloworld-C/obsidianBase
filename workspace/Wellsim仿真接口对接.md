@@ -82,6 +82,10 @@ catkin_make
 ```bash
 ./start_abuzhabi_all_module_simulate.sh
 ```
+#### 配置测试集群Ip+端口
+1， 在master最新分支上新建一个modify_ip分支
+2. 修改launch与code中的ip（_test.launch）与端口(task_fetcher_abzhabi 与 status_reporter_abuzhabi文件夹内，共8处端口)
+3. 编译后按照上面的脚本启动节点
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑
