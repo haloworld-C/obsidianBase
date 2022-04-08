@@ -23,6 +23,7 @@
 | git config||git行为配置;分为三个层级：System(--system) User(--global) Repository(--local)|
 | git blame <filename> |查看某个文件改动历程||
 | git bundle| 将当前仓库进行快照||
+|git submodule add https://github.com/<user>/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
 ### concepts
 1. git pull = git fetch + git merge
 2. 文件的状态可以分为四个阶段，如下图所示：
