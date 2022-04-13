@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "待办/TodoList.md",
-            "mode": "preview",
+            "mode": "source",
             "source": true
           }
         }
@@ -92,11 +92,11 @@
     "待办/TodoList.md",
     "个人管理/三省.md",
     "个人管理/worklog.md",
-    "personal/个人备忘.md",
     "C++/C++.md",
-    "C++/C++标准库+boost+其他库.md",
     "计算机基础/git常用及理解.md",
     "workspace/Wellsim仿真接口对接.md",
+    "personal/个人备忘.md",
+    "C++/C++标准库+boost+其他库.md",
     "计算机基础/linux常用命令行.md",
     "config&workflow/西井科技.md"
   ]

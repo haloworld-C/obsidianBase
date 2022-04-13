@@ -153,6 +153,7 @@ typedef double* wages_ptr;//通过名称可以理解其代指与类型
 ### flags
 #### override
 为虚函数重载覆盖标志， 在子类中重新定义父类中已经定义的虚函数。
+- 只应用在虚函数身上，子类重写基类的虚函数，其函数签名应该相同，该关键字的主要目的是帮助编译器进行检查。
 ```C++
 #include <iostream>
  
@@ -221,6 +222,8 @@ class son : private nocopyable{
 ```
 #### constexpr
 C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
+
+#### 右值引用与std::move
 
 ### 遇到的问题
 1. ROS plugin中的函数加入inline 标志后无法识别

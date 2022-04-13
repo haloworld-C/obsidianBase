@@ -30,6 +30,7 @@
 ![file status in git](file_status_in_git.png)
 3. HEAD是当前分支和版本的一个指针（pointer）
 4. origin为默认远程主机名称，而main(master)为默认分支名称
+5. git rebase为修改当前分支切出的分支base,相当与让原来的base与新base合并（merge），然后设置为当前分支的base
 
 ### git workflow
 #### general
