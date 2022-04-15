@@ -87,6 +87,16 @@ catkin_make
 2. 修改launch与code中的ip（_test.launch）与端口(task_fetcher_abzhabi 与 status_reporter_abuzhabi文件夹内，共8处端口)
 3. 编译后按照上面的脚本启动节点
 4. 车辆编号在start docker 的脚本中储存：PR_ID
+#### 泰国英国仿真车辆
+1. 代码是复制过来的，可能要设置远程仓库
+2. 启动（重启）本地docker 
+```bash
+./start_docker_qtruck_simulate_local.sh #修改关闭了GPU选项
+```
+3. 启动所有模块
+```bash
+./start_abuzhabi_all_module_simulate.sh
+```
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑
