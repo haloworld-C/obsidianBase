@@ -25,20 +25,30 @@
 | git bundle| 将当前仓库进行快照||
 |git submodule add https://github.com/<user>/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
 | git diff <base branch> <to_comare branch>|比较两个分支的内容差别|非常适合定位不同分支都做了那些修改|
+| git merge-base <base branch> <to_comare branch>|询问两个待合并分支的common commit|合并前先看下|
+|git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
+|git checkout --confict diff3 <filepath>|查看待合并的两个版本加上commit base三者之间的差异||
 ### concepts
 1. git pull = git fetch + git merge
 2. 文件的状态可以分为四个阶段，如下图所示：
-![file status in git](file_status_in_git.png)
+![file status in git](../Resourse/file_status_in_git.png)
 3. HEAD是当前分支和版本的一个指针（pointer）
 4. origin为默认远程主机名称，而main(master)为默认分支名称
 5. git rebase为修改当前分支切出的分支base,相当与让原来的base与新base合并（merge），然后设置为当前分支的base
-
+6. git commit 相当于代码仓库的一份“快照”，可以回滚到较早版本
+7. git merge 合并的是不同的commits, 合并后的commit有两个parrent, 待合并分支的branch base作为这次合并的common commits
+![git_merge](../Resourse/git_merge_concept.jpeg)
+> [useful ref](https://www.biteinteractive.com/understanding-git-merge/)
+8. git rebase, 与git merge要解决的问题一样，都是将不同分支、版本中的修改集中起来。rebase比较危险，可能影响到被合并版本，应**非常小心**
+> [useful ref](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+9. git的版本管理是每个文件中的每一行进行版本管理的，具有非常高的灵活性
 ### git workflow
 #### general
 1. 创建fork分支或者本地分支
 2. 在该分支上作相应更改
 3. 完成后git pull request到主分支
 4. 主分支接受更改后，删除该分支的远程分支及本地分支。有新功能时返回1,进行新一轮的循环。
+> 更新或者修改分支前都应该检查当前分支是否“干净”（所有修改都已经staged），以及与远程分支是否同步
 #### fork后更新最新代码
 0、 通过git status检查当前的分支是否clean,否则则应通过git stash恢复至上一个干净的版本
 
