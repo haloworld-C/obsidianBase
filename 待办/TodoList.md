@@ -19,11 +19,14 @@
 2. slam课程推进
 3. 完成粒子滤波器
 ### 第十六周计划
-1. 完成Hybird Astar文档
+1. 完成Hybird Astar文档(done)
 2. 构思并完成Hybird Astar第一部分
 3. 撰写专利
+#### 20220421
+- [ ] v22泰国地图验证，并制作分支
+- [ ] 开始构思Hybird Astar第一部分接口及逻辑
 #### 20220420
-- [ ] 完成Hybird Astar文档
+- [x] 完成Hybird Astar文档
 - [ ] 开始构思Hybird Astar第一部分接口及逻辑
 #### 20220419
 - [x] Hybird 文档推进
