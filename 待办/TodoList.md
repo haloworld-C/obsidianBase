@@ -18,12 +18,19 @@
 1. 掌握Hybird Astar算法，实现demo框架
 2. slam课程推进
 3. 完成粒子滤波器
+### 第十七周计划
+1. 构思并完成Hybrid Astar的运动空间模型
+2. 完成专利初稿
+#### 20220425
+1. 构思并试验Dubins构造程序
+2. 地图验证; debug工作
+3. CG interpolation优化论文研究
 ### 第十六周计划
 1. 完成Hybird Astar文档(done)
 2. 构思并完成Hybird Astar第一部分
 3. 撰写专利
 #### 20220421
-- [ ] v22泰国地图验证，并制作分支
+- [x] v22泰国地图验证，并制作分支
 - [ ] 开始构思Hybird Astar第一部分接口及逻辑
 #### 20220420
 - [x] 完成Hybird Astar文档
