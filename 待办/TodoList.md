@@ -21,10 +21,13 @@
 ### 第十七周计划
 1. 构思并完成Hybrid Astar的运动空间模型
 2. 完成专利初稿
+#### 20220426
+- [ ] CG interpolation优化论文研究
+- [ ] 构建Dubins曲线
 #### 20220425
-1. 构思并试验Dubins构造程序
-2. 地图验证; debug工作
-3. CG interpolation优化论文研究
+- [x] 构思并试验Dubins构造程序
+- [x] 地图验证; debug工作
+- [ ] CG interpolation优化论文研究
 ### 第十六周计划
 1. 完成Hybird Astar文档(done)
 2. 构思并完成Hybird Astar第一部分
