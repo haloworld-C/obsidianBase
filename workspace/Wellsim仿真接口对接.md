@@ -95,7 +95,7 @@ catkin_make
 ```
 3. 启动所有模块
 ```bash
-./start_abuzhabi_all_module_simulate.sh
+./start_taiguo_all_module_simulate.sh
 ```
 ### 需求
 1. 支持急停

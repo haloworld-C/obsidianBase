@@ -1,3 +1,6 @@
+#### 20220426
+- 收获：完成Rubins曲线计算框架，掌握计算具体步骤
+- 改进：qomolo中task_fetcher与status_reporter掌握（debug过程中会经常用到）
 #### 20220425
 - 收获：在python中实现vehicle motion类（是否从开始就考虑脱挂呢）
 - 改进：python复习
