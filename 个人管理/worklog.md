@@ -1,3 +1,6 @@
+#### 20220427
+- 收获：完成Dubins曲线计算框架;完成RSR构型的计算
+- 改进：晚饭控制碳水摄入
 #### 20220426
 - 收获：完成Rubins曲线计算框架，掌握计算具体步骤
 - 改进：qomolo中task_fetcher与status_reporter掌握（debug过程中会经常用到）
