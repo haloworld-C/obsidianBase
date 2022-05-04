@@ -72,7 +72,7 @@ git merge upstream/master
 5、把合并最新的代码推送到你的fork项目上
 git push origin master
 
-#### 其他
+#### 远程仓库
 1. 将本地仓库推送到远程空仓库
 ```bash
 git remote add origin <remote-repository-url>
@@ -89,3 +89,12 @@ git remote add upstream <upstream-remote-repository-url>
 #### git pull 与 git push 的默认行为
 1. git 2.0后git push 的推送模式为simple（仅将当前分支推送到远程分支），而在2.0以前则为matching模式（将所有的本地-远程分支全部推送）
 2. git pull = git fetch + git merge, 
+#### 解决git merge的经验
+git merge conflict产生的主要问题是本分支的更改（相对于创建该分支时的基类base）及远程分支相对于该base所做的变更的不同。
+从长期来看，merge的时间周期越短，出现git merge conflict的可能性就越小
+1. 放弃git merge，采用远程分支
+```bash
+git merge --abort
+```
+2. 修改有冲突的代码片段
+可以搜索“=======”定位需要人工修改的位置。
