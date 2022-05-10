@@ -110,3 +110,5 @@ catkin_make
 2. 通过查看/monitor_info来确认各模块是否正常运行
 
 
+### 其他接口
+修改电量：status_reporter_nodelet.cpp
