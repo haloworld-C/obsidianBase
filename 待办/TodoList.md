@@ -22,8 +22,8 @@
 1. 完成粒子滤波器调试
 2. 以设计模式的角度重新熟悉lanelet2
 3. 熟悉task_fetcher 和 status_reporter接口
-#### 20220518
-- [ ] 迪拜仿真车辆调试
+#### 20220518-19
+- [x] 迪拜仿真车辆调试
 - [ ] ADQT-243 debug
 - [ ] path_shorten 测试及debug
 - 改写消息脚本，可以调节位置
