@@ -65,3 +65,7 @@ J11_TPA20_OFFSET = (34.6209882143-26.1283807943109, 114.355918521-111.8714450146
 ！！！<不要删除well_driver主文件夹：即使要删也要先与负责人确认>
 车辆IP：10.94开头（会动态变化）
 用户名：qtruck 密码：123qwe
+#### 速度限制
+```bash
+/bin/bash -c "source /home/westwell/welldriver/devel/setup.bash; roslaunch routing routing_abuzhabi.launch max_speed:=3"#将最大速度限制为3m/s
+```

@@ -13,15 +13,22 @@
 - [x] 个人笔记本迁移到debian系统上（春节期间）
 - [ ] 写一个vehicle_motion类，以便在项目中进行复用
 - [ ] 研究大型项目如何用Cmake gdb debug
-- [ ] linux脚本编写学习
+- [x] linux脚本编写学习
 ## 五月计划
 1. 掌握Hybird Astar算法，实现demo框架
 2. slam课程推进
 3. 完成粒子滤波器
+### 第二十一周计划
+1. 完成提前切出QC道逻辑调试
+2. 完成远程更新脚本编写
+3. 以设计模式的角度重新熟悉lanelet2
+#### 20220523-24
+- [x] 准备主干道进入G10新地图测试分支
+- [ ] 测试并完善pathshortening功能
 ### 第二十周计划
-1. 完成粒子滤波器调试
-2. 以设计模式的角度重新熟悉lanelet2
-3. 熟悉task_fetcher 和 status_reporter接口
+1. 完成粒子滤波器调试(未做)
+2. 以设计模式的角度重新熟悉lanelet2（未做）
+3. 熟悉task_fetcher 和 status_reporter接口（完成）
 #### 20220518-19
 - [x] 迪拜仿真车辆调试
 - [ ] ADQT-243 debug
