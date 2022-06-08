@@ -98,6 +98,16 @@ catkin_make
 ```bash
 ./start_taiguo_all_module_simulate.sh
 ```
+#### 迪拜仿真车辆
+仿真车ip:192.168.103.129(用户名：westwell 密码：1)
+2. 启动（重启）本地docker 
+```bash
+./start_docker_qtruck_simulate.sh #修改关闭了GPU选项
+```
+3. 启动所有模块
+```bash
+./start_dubai_all_module_simulate.sh
+```
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑

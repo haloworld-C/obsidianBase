@@ -20,6 +20,10 @@ C++ 共提供三种时钟计时器：
 	::infinity() 定义无限大的数
 - std::bind
 	模板绑定	
+- 数值相关
+```cpp
+std::numeric_limits<double>::infinity()
+```
 ### boost库
 
 
