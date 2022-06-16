@@ -19,7 +19,7 @@ catkin_make
 3. 运行
 每次进入docker应运行
 ```bash
-source /devel/setup.bash
+source devel/setup.bash
 ```
 然后依次运行模块节点-monitor-rivz节点
 ```bash
@@ -100,6 +100,7 @@ catkin_make
 ```
 #### 迪拜仿真车辆
 仿真车ip:192.168.103.129(用户名：westwell 密码：1)
+TV: 309 245 468 pwd:eun2grnw
 2. 启动（重启）本地docker 
 ```bash
 ./start_docker_qtruck_simulate.sh #修改关闭了GPU选项

@@ -43,6 +43,7 @@
 8. git rebase, 与git merge要解决的问题一样，都是将不同分支、版本中的修改集中起来。rebase比较危险，可能影响到被合并版本，应**非常小心**
 > [useful ref](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 9. git的版本管理是每个文件中的每一行进行版本管理的，具有非常高的灵活性
+10. branch 就是一系列的commits，当head指向一个具体commit 而不是branch时head会处于游离态（head detached, 也是正常状态，只需要checkout到对应分支即可）
 ### git workflow
 #### general
 1. 创建fork分支或者本地分支
