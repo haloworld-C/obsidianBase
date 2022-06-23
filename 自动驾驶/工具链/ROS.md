@@ -20,6 +20,8 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 | rosnode kill --all | 关闭所有节点
+| rosbag record /<msg_name>|录入消息数据|
+
 ## 网络中的IP设置
 1. 单机 
 如果仅在本地跑则在~/.bashrc中添加如下命令
