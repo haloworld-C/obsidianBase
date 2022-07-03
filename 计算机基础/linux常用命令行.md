@@ -22,7 +22,7 @@
 | sudo ldconfig | 更新链接库|
 | *网络相关*|
 |telnet ip:port|            |
-
+|clear | 清楚命令行窗口历史文本|
 
 
 ### 高效小工具

@@ -6,6 +6,11 @@
 3. 先实现，后优化
 4. 编译前仔细检查代码（尽可能发现错误），可以有效检验自己对于概念理解的正确性;
 
+### code principle
+1. PPP(Pesuade program process)
+2. 面向接口编程,面向问题编程
+3. 小步变更
+4. compile-test-commit(记录与管理变更)
 #### Coding style pricinple
 1. comment 用英文
 2. 不直接copy代码，尤其是逻辑代码
