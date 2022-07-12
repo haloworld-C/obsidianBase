@@ -1,15 +1,15 @@
 {
   "main": {
-    "id": "f2b5a8f226ad670d",
+    "id": "457d732eec97d15e",
     "type": "split",
     "children": [
       {
-        "id": "fa671e71695554af",
+        "id": "b894599a2ffd894c",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "计算机基础/git常用及理解.md",
+            "file": "config&workflow/环境配置.md",
             "mode": "source",
             "source": true
           }
@@ -19,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "581de0021914795b",
+    "id": "09a2d3400abdf0fc",
     "type": "split",
     "children": [
       {
-        "id": "1fdf11a1fb052016",
+        "id": "81752b5e9c878008",
         "type": "tabs",
         "children": [
           {
-            "id": "0bd7572273c7211d",
+            "id": "b2e2b1f05fb14f4e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -35,7 +35,7 @@
             }
           },
           {
-            "id": "985bc0a566003a12",
+            "id": "ed0f722bc522fbf0",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -56,20 +56,20 @@
     "width": 300
   },
   "right": {
-    "id": "42bbf16bb34ed613",
+    "id": "482b0b03208bb01c",
     "type": "split",
     "children": [
       {
-        "id": "43815767428bf9ec",
+        "id": "839c0afca5a5e79a",
         "type": "tabs",
         "children": [
           {
-            "id": "c19c275fbcc5f7fa",
+            "id": "9fe86abf28adb980",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "计算机基础/git常用及理解.md",
+                "file": "config&workflow/环境配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +87,8 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "fa671e71695554af",
+  "active": "b894599a2ffd894c",
   "lastOpenFiles": [
-    "计算机基础/git常用及理解.md",
-    "workspace/Qtruck测试支持.md",
-    "C++/C++.md",
-    "config&workflow/vim配置.md",
-    "config&workflow/git workflow.md",
-    "C++/C++标准库+boost+其他库.md",
-    "待办/TodoList.md",
-    "待办/ideas collecting box.md",
-    "待办/Q&A.md",
-    "个人管理/worklog.md"
+    "config&workflow/环境配置.md"
   ]
 }
