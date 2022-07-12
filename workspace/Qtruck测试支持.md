@@ -1,31 +1,10 @@
-### 地图正确性检查
-|lanelet ID | 检查类型  | 状态  |
-|:---------|:-----------|:-----|
-| 4007434  |  新增交通灯  | 忽略 | 
-|          |  path_check(与防撞相关)  | 忽略 | 
-|          |  check_block  | 忽略 | 
-| 1966204  1966206  1966226 1966266 1966268 1966286|  right_safety_dis 0.2->0.5 |为本次更新，忽略 | 
-|          |  motion_check  new | 与安全距离的修改相关?? | 
-| 52450    |  reloc_allow | 新地图无该属性?? | 
-|          |  tower_id   124732 | 新地图无该属性?? | 
-|          |  tower_id   124732 | 新地图无该属性?? | 
-| 3987738  |  left_safety_dis right   0.05->0.2| 为本次更新，忽略?? | 
-| 498114  1970884 |  lanelet不存在 | 经地图中对比，发现是新地图用新的一条lanelet（6239810）代替合并的两段 | 
-| 1970890 |  lanelet不存在 | 经地图中对比，发现是新地图用新的一条lanelet代替 | 
- 
-
-#### 添加cutin 及 past_time 
-使车辆能够在四条道上面的service line可以切进来
-
-
-
 #### 地图属性
 
 |key | value  | 说明  |
 |:---------|:-----------|:-----|
 | path_check  |  true ; false  | 与防撞相关 | 
 | check_block  |  string  | 用于判断该区域是否适用于红绿灯 | 
-| motion_check  |  lanelet_id  | ? | 
+| motion_check  |  lanelet_id  | 当遇到障碍物时的可选便道路径 | 
 | reloc_allow  |  true ; false  | ? | 
 | cutin  cutout | |为是否允许变道-service lane属性| 
 | turn mode|反映路径的曲率信息|straight:1 inside:2 outside:3 lanechange:5|
@@ -39,30 +18,12 @@
 2. turn mode == 4的含义
 3. 短横线中的属性如何读取
 
-#### 地图正确性检查
-taiguo0228 -> taiguo0301,见
-
-#### issues
-1. [阿布扎比]124仿真环境AT6无法变道
-![not_change_issue](not_change_line_issue.jpg)
-
-
-2. [泰国]车辆跨越no pass 区域
-
-![no_pass_issue](nopass_issue.jpg)
-问题定位：在qtruck1上播放rosbag定位问题，发现no pass area区域不连续，如下图所示：
-
-3.[泰国]AT01在G11完成任务后客户发了E10任务路径规划是从D11 bypass 绕了一圈
-失效时间： 8:22
-
-<<<<<<< HEAD
 #### 现场测试
 通过ssh远程车辆，车辆ip:10.94开头，会浮动。
 AT05：user name:qtruck password:123qwe
 ```bash
 ssh qtruck@10.94...
 ```
-=======
 #### 港口常用术语
 
 |缩略语 | 含义  | 备注  |
@@ -87,4 +48,31 @@ berth ： 船的停泊位置
 by pass lane : 用来只通行不作业的路 
 
 监控界面说明如下所示：![gui](thai.jpeg)
->>>>>>> d65a0e91ebb733731dfb8e5c4214b4fc92a31c03
+
+### 贝位坐标信息
+#### 泰国（贝位对应的service lane的坐标）
+B11,35,-11.2148110297,303.729429185  
+D11,35,6.25518897026,246.649429185  
+F11,35,23.3051889703,189.609429185  
+H11,35,40.272588970256,132.1741291855
+
+上述信息是集装箱对位信息，如果想计算车辆坐标原点的位置添加如下坐标信息（根据任务不容进行选用）
+##### 40inch 箱子任务
+J11_TP40_OFFSET = (-2.56633 - (-7.76040096231736),  
+103.26936 - 101.696893325541)  
+#J11_Stack29  
+##### 20inch 箱子（前箱）
+J11_TPF20_OFFSET = (28.6325789582-26.1283807943109, 112.587935096-111.871445014607)  
+
+##### 20inch 箱子（后箱）
+J11_TPA20_OFFSET = (34.6209882143-26.1283807943109, 114.355918521-111.871445014607)
+
+## 现场测试
+！！！<不要删除well_driver主文件夹：即使要删也要先与负责人确认>
+车辆IP：10.94开头（会动态变化）
+用户名：qtruck 密码：123qwe
+#### 速度限制
+```bash
+/bin/bash -c "source /home/westwell/welldriver/devel/setup.bash; roslaunch routing routing_abuzhabi.launch max_speed:=3"#将最大速度限制为3m/s
+```
+>>>>>>> a23c24b4c31a7697326bdf780e5cc8616bfdd351

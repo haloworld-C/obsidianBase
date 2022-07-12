@@ -19,7 +19,7 @@ catkin_make
 3. 运行
 每次进入docker应运行
 ```bash
-source /devel/setup.bash
+source devel/setup.bash
 ```
 然后依次运行模块节点-monitor-rivz节点
 ```bash
@@ -39,15 +39,16 @@ qtruck规划控制部分接口文档详见[Qtruck接口文档](Qtruck接口文�
 [qtruck11]
 192.168.103.25 ansible_ssh_user=qomolo ansible_ssh_pass="123" ansible_sudo_pass="123"
 [qtruck12]
-192.168.103.26 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+10.66.12.193 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+
 [qtruck13]
-192.168.103.27 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
+10.66.12.192 ansible_ssh_user=westwell ansible_ssh_pass="xijingkeji" ansible_sudo_pass="xijingkeji"
 [qtruck14]
-192.168.103.28 ansible_ssh_user=qomolo ansible_ssh_pass="q" ansible_sudo_pass="q"
+10.66.12.186 ansible_ssh_user=qomolo ansible_ssh_pass="q" ansible_sudo_pass="q"
 [qtruck15]
-192.168.103.29 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+10.66.12.185 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
 [qtruck16]
-192.168.103.30 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
+10.66.12.115 ansible_ssh_user=westwell ansible_ssh_pass="1" ansible_sudo_pass="1"
 #### 多车环境测试流程：
 1. ssh进入每个笔记本（代表一辆qtruck），然后启动所有模块
 ```bash
@@ -69,6 +70,10 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 > 备注：当前版本只支持一个监控服务器，需要在/script/client/client_simulate.py中修改服务器地址。
 #### 非多车环境（模拟6号车）
 1. 编译test_noproxy分支（需要将master分支合并到本地）
+```bash
+git pull origin master --recurse-submodules
+catkin_make
+```
 2. 启动本地docker
 ```bash
 ./start_docker_qtruck_simulate.sh
@@ -77,6 +82,33 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ```bash
 ./start_abuzhabi_all_module_simulate.sh
 ```
+#### 配置测试集群Ip+端口
+1， 在master最新分支上新建一个modify_ip分支
+2. 修改launch与code中的ip（_test.launch）与端口(task_fetcher_abzhabi 与 status_reporter_abuzhabi文件夹内，共8处端口)
+3. 编译后按照上面的脚本启动节点
+4. 车辆编号在start docker 的脚本中储存：PR_ID
+#### 泰国英国仿真车辆
+仿真车ip:10.6.64.66(用户名：westwell 密码：1)
+1. 代码是复制过来的，可能要设置远程仓库
+2. 启动（重启）本地docker 
+```bash
+./start_docker_qtruck_simulate_local.sh #修改关闭了GPU选项
+```
+3. 启动所有模块
+```bash
+./start_taiguo_all_module_simulate.sh
+```
+#### 迪拜仿真车辆
+仿真车ip:192.168.103.129(用户名：westwell 密码：1)
+TV: 309 245 468 pwd:eun2grnw
+2. 启动（重启）本地docker 
+```bash
+./start_docker_qtruck_simulate.sh #修改关闭了GPU选项
+```
+3. 启动所有模块
+```bash
+./start_dubai_all_module_simulate.sh
+```
 ### 需求
 1. 支持急停
 2. 同时支持六台车辆的路径规划，多车的交互由FMS考虑
@@ -84,3 +116,10 @@ ssh westwell@192.168.103.25 #进入第一辆车命令行，其他依次类推
 ### 问题记录
 1、控制周期是由消息触发，是否有不稳定的问题
 2、对接仿真时发现其姿态转换有问题，导致控制失稳
+### 注意事项
+1. 在修改地图验证路径前，需要在rviz中验证一遍是否能够规划路径
+2. 通过查看/monitor_info来确认各模块是否正常运行
+
+
+### 其他接口
+修改电量：status_reporter_nodelet.cpp

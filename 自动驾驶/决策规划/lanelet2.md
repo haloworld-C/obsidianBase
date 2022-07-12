@@ -100,6 +100,5 @@ add_executable(foo_exe foo.cpp)
 target_include_directories(foo_exe PUBLIC ${lanelet2_core_INCLUDE_DIRS})
 target_link_libraries(foo_exe ${lanelet2_core_LIBRARIES})
 ```
-### 疑问
-1. lanelet中的元素顺序是以红黑树还是hashtable进行存储的
-2. 
+### Lanelet2源码阅读
+1. lanelet中的元素顺序是以hashtable进行存储的
