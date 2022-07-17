@@ -18,6 +18,12 @@
 2. turn mode == 4的含义
 3. 短横线中的属性如何读取
 
+#### 现场测试
+通过ssh远程车辆，车辆ip:10.94开头，会浮动。
+AT05：user name:qtruck password:123qwe
+```bash
+ssh qtruck@10.94...
+```
 #### 港口常用术语
 
 |缩略语 | 含义  | 备注  |
@@ -69,3 +75,4 @@ J11_TPA20_OFFSET = (34.6209882143-26.1283807943109, 114.355918521-111.8714450146
 ```bash
 /bin/bash -c "source /home/westwell/welldriver/devel/setup.bash; roslaunch routing routing_abuzhabi.launch max_speed:=3"#将最大速度限制为3m/s
 ```
+>>>>>>> a23c24b4c31a7697326bdf780e5cc8616bfdd351
