@@ -93,3 +93,5 @@ docker ps #测试docker命令是否可以使用sudo正常使用
 个人docker 默认密码
 user: 2
 root: 1
+## docker file
+通过docker file构建容器
