@@ -23,6 +23,8 @@
 | *网络相关*|
 |telnet ip:port|            |
 |clear | 清楚命令行窗口历史文本|
+|man ascii | 显示ascii码对照表 | |
+
 
 
 ### 高效小工具
