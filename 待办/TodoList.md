@@ -13,7 +13,11 @@
 - [x] 个人笔记本迁移到debian系统上（春节期间）
 - [ ] 写一个vehicle_motion类，以便在项目中进行复用
 - [ ] 研究大型项目如何用Cmake gdb debug
-- [ ] linux脚本编写学习
+- [x] linux脚本编写学习
+- [ ] dockerfile学习
+### 八月计划
+1. 实现Hybrid Astar算法demo(python版本)
+2. 学习测试类编写（gmock, gtest）
 ## 五月计划
 1. 掌握Hybird Astar算法，实现demo框架
 2. slam课程推进
