@@ -1,4 +1,3 @@
-
 #### 地图属性
 
 |key | value  | 说明  |
@@ -10,7 +9,7 @@
 | cutin  cutout | |为是否允许变道-service lane属性| 
 | turn mode|反映路径的曲率信息|straight:1 inside:2 outside:3 lanechange:5|
 | lanechange_block|是否允许变道区域|101869  101874 101879 101775 124856 124846 124851 124861 |
-| subtype|"road","xxxx"||
+| subtype|"road","xxxx"|xxxx的路段不在路網中|
 
 > lanechange_block属性代表aera，其特征如下所示。
 ![lanechange_blocke](lanelet-osm-aera.png)
@@ -18,7 +17,16 @@
 1. lanechange_block 的值对应的元素（polygonLayer）与其位置关系不是一一对应。表征的是不允许变道的信息
 2. turn mode == 4的含义
 3. 短横线中的属性如何读取
+##### routing模块注意事项
+1. 地图中laneletId不能超过8位数（原因是int 转float再转为int出现精度损失的问题）
+> ![int转float精度损失问题](https://icode.best/i/02045630794853)
 
+#### 现场测试
+通过ssh远程车辆，车辆ip:10.94开头，会浮动。
+AT05：user name:qtruck password:123qwe
+```bash
+ssh qtruck@10.94...
+```
 #### 港口常用术语
 
 |缩略语 | 含义  | 备注  |
@@ -66,3 +74,8 @@ J11_TPA20_OFFSET = (34.6209882143-26.1283807943109, 114.355918521-111.8714450146
 ！！！<不要删除well_driver主文件夹：即使要删也要先与负责人确认>
 车辆IP：10.94开头（会动态变化）
 用户名：qtruck 密码：123qwe
+#### 速度限制
+```bash
+/bin/bash -c "source /home/westwell/welldriver/devel/setup.bash; roslaunch routing routing_abuzhabi.launch max_speed:=3"#将最大速度限制为3m/s
+```
+>>>>>>> a23c24b4c31a7697326bdf780e5cc8616bfdd351

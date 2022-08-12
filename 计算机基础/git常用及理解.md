@@ -25,20 +25,32 @@
 | git bundle| 将当前仓库进行快照||
 |git submodule add https://github.com/<user>/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
 | git diff <base branch> <to_comare branch>|比较两个分支的内容差别|非常适合定位不同分支都做了那些修改|
+| git merge-base <base branch> <to_comare branch>|询问两个待合并分支的common commit|合并前先看下|
+|git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
+|git checkout --confict diff3 <filepath>|查看待合并的两个版本加上commit base三者之间的差异||
+|git branch -m <old-branch-name> <new-branch-name>|修改已经存在的分支名称|
 ### concepts
 1. git pull = git fetch + git merge
 2. 文件的状态可以分为四个阶段，如下图所示：
-![file status in git](file_status_in_git.png)
+![file status in git](../Resourse/file_status_in_git.png)
 3. HEAD是当前分支和版本的一个指针（pointer）
 4. origin为默认远程主机名称，而main(master)为默认分支名称
 5. git rebase为修改当前分支切出的分支base,相当与让原来的base与新base合并（merge），然后设置为当前分支的base
-
+6. git commit 相当于代码仓库的一份“快照”，可以回滚到较早版本
+7. git merge 合并的是不同的commits, 合并后的commit有两个parrent, 待合并分支的branch base作为这次合并的common commits
+![git_merge](../Resourse/git_merge_concept.jpeg)
+> [useful ref](https://www.biteinteractive.com/understanding-git-merge/)
+8. git rebase, 与git merge要解决的问题一样，都是将不同分支、版本中的修改集中起来。rebase比较危险，可能影响到被合并版本，应**非常小心**
+> [useful ref](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+9. git的版本管理是每个文件中的每一行进行版本管理的，具有非常高的灵活性
+10. branch 就是一系列的commits，当head指向一个具体commit 而不是branch时head会处于游离态（head detached, 也是正常状态，只需要checkout到对应分支即可）
 ### git workflow
 #### general
 1. 创建fork分支或者本地分支
 2. 在该分支上作相应更改
 3. 完成后git pull request到主分支
 4. 主分支接受更改后，删除该分支的远程分支及本地分支。有新功能时返回1,进行新一轮的循环。
+> 更新或者修改分支前都应该检查当前分支是否“干净”（所有修改都已经staged），以及与远程分支是否同步
 #### fork后更新最新代码
 0、 通过git status检查当前的分支是否clean,否则则应通过git stash恢复至上一个干净的版本
 
@@ -61,7 +73,7 @@ git merge upstream/master
 5、把合并最新的代码推送到你的fork项目上
 git push origin master
 
-#### 其他
+#### 远程仓库
 1. 将本地仓库推送到远程空仓库
 ```bash
 git remote add origin <remote-repository-url>
@@ -78,3 +90,28 @@ git remote add upstream <upstream-remote-repository-url>
 #### git pull 与 git push 的默认行为
 1. git 2.0后git push 的推送模式为simple（仅将当前分支推送到远程分支），而在2.0以前则为matching模式（将所有的本地-远程分支全部推送）
 2. git pull = git fetch + git merge, 
+#### 解决git merge的经验
+git merge conflict产生的主要问题是本分支的更改（相对于创建该分支时的基类base）及远程分支相对于该base所做的变更的不同。
+从长期来看，merge的时间周期越短，出现git merge conflict的可能性就越小
+1. 放弃git merge，采用远程分支
+```bash
+git merge --abort
+```
+2. 修改有冲突的代码片段
+可以搜索“=======”定位需要人工修改的位置。
+
+#### 子模块管理
+1. 添加子模块的更改只需要将对应的子目录使用git add <子模块路径>， 即可（事实上父项目中仅更新了版本追踪信息）
+2. 更新子模块的仓库更新(更新前先切换到对应分支)
+```bash
+git submodule update
+```
+> 注意更新后子模块目录并不会自动切换分支，需要自己手动切换
+如果是第一次切新的分支可以使用命令：
+```bash
+git submodule update --init --recursive
+```
+可以使用如下命令使子模块追踪到对应远程仓库的版本
+```bash
+git submodule update --recursive --remote
+```

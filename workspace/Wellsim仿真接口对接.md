@@ -19,7 +19,7 @@ catkin_make
 3. 运行
 每次进入docker应运行
 ```bash
-source /devel/setup.bash
+source devel/setup.bash
 ```
 然后依次运行模块节点-monitor-rivz节点
 ```bash
@@ -88,6 +88,7 @@ catkin_make
 3. 编译后按照上面的脚本启动节点
 4. 车辆编号在start docker 的脚本中储存：PR_ID
 #### 泰国英国仿真车辆
+仿真车ip:10.6.64.66(用户名：westwell 密码：1)
 1. 代码是复制过来的，可能要设置远程仓库
 2. 启动（重启）本地docker 
 ```bash
@@ -95,7 +96,18 @@ catkin_make
 ```
 3. 启动所有模块
 ```bash
-./start_abuzhabi_all_module_simulate.sh
+./start_taiguo_all_module_simulate.sh
+```
+#### 迪拜仿真车辆
+仿真车ip:192.168.103.129(用户名：westwell 密码：1)
+TV: 309 245 468 pwd:eun2grnw
+2. 启动（重启）本地docker 
+```bash
+./start_docker_qtruck_simulate.sh #修改关闭了GPU选项
+```
+3. 启动所有模块
+```bash
+./start_dubai_all_module_simulate.sh
 ```
 ### 需求
 1. 支持急停
@@ -106,5 +118,8 @@ catkin_make
 2、对接仿真时发现其姿态转换有问题，导致控制失稳
 ### 注意事项
 1. 在修改地图验证路径前，需要在rviz中验证一遍是否能够规划路径
+2. 通过查看/monitor_info来确认各模块是否正常运行
 
 
+### 其他接口
+修改电量：status_reporter_nodelet.cpp
