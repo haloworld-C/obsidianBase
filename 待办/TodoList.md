@@ -15,6 +15,10 @@
 - [ ] 写一个vehicle_motion类，以便在项目中进行复用
 - [ ] 研究大型项目如何用Cmake gdb debug
 - [x] linux脚本编写学习
+- [ ] dockerfile学习
+### 八月计划
+1. 实现Hybrid Astar算法demo(python版本)
+2. 学习测试类编写（gmock, gtest）
 ## 五月计划
 1. 掌握Hybird Astar算法，实现demo框架
 2. slam课程推进
@@ -250,9 +254,6 @@
 - [ ] routing代码完全梳理
 - [ ] 地图确认检查
 - [ ] 总结C++中string转c类型字符串互相转换的代码模板
-<<<<<<< HEAD
-#### 20220228
-- [x] routing代码完全梳理
 
 ### 第八周计划
 1. 青浦控制模块测试（仿真预测试）
