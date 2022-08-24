@@ -10,11 +10,21 @@
 #### catkin_make
 1. 编译添加debug选项
 ```bash
-catkin_make -DCMAKE_BUILD_TYPE=debug
+catkin_make -DCMAKE_BUILD_TYPE=debug # 对普通的程序也适用
 ```
 2. 需要debug的节点的lauch文件添加launch-prefix="xterm -e gdb -ex run --args"
 ```xml
 <node pkg="waypoint_follower" type="pure_persuit" name="pure_pursuit" output="screen" launch-prefix="xterm -e gdb -ex run --args">
         <param name="is_linear_interpolation" value="$(arg is_linear_interpolation)"/>
 </node>
+```
+### debug步骤
+1. 编译应添加debug选项
+- gcc/g++ 
+```C
+$ gcc/g++ -g factorial.c
+```
+- CMake
+```CMakeLists.txt
+SET(CMAKE_BUILD_TYPE "Debug")
 ```
