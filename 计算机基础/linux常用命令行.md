@@ -24,6 +24,8 @@
 |telnet ip:port|            |
 |clear | 清楚命令行窗口历史文本|
 |man ascii | 显示ascii码对照表 | |
+|nslookup  <域名>| 刷新dns域名列表 | |
+
 
 
 

@@ -12,6 +12,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 |------|----------|---------|
 |rosnode list | 列出所有启动节点|
 | rosrun [nodename]| 启动包节点|
+|rosnode kill [node name] | 杀死特定节点|
 | roscore| 启动ROS| 
 | roscd | 切换到对应包的目录当中|
 | rqt_plot | 画图模块| 可画单维变量随时间的变化|
