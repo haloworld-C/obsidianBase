@@ -19,3 +19,9 @@
 | [ctrl + w] + c | 关闭:sp打开的窗口 | 与:sp配合
 | ndd | 删除所在行的向下n行 | 中
 |0, $|移动到该行第一个（最后一个字符）| 
+
+- vim 配置：
+[amix/vimrc](https://github.com/amix/vimrc)
+### vim 编辑器
+1. vim(原生自带)
+2. neovim(推荐)
