@@ -36,3 +36,8 @@
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
+
+## Linux维护
+### 自动化
+1. ansible playbook
+2. cron

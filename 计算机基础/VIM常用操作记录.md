@@ -19,6 +19,7 @@
 | [ctrl + w] + c | 关闭:sp打开的窗口 | 与:sp配合
 | ndd | 删除所在行的向下n行 | 中
 |0, $|移动到该行第一个（最后一个字符）| 
+|[shift] + >/<|选中内容向右或者向左多行缩进/提前一个tab的长度| 
 
 - vim 配置：
 [amix/vimrc](https://github.com/amix/vimrc)
