@@ -1,7 +1,7 @@
 ### core concept
 #### containers and images
 - Docker containers are instances of Docker images, major difference between Docker containers and images is that containers have a writable layer.You can see a Docker container as an instance of a Docker image:
-![docker concept](docker_container_concept.png)
+![docker concept](../Resourse/docker_container_concept.png)
 - 镜像拉取
 ```bash
 docker pull [镜像名称]
