@@ -41,3 +41,4 @@
 ### 自动化
 1. ansible playbook
 2. cron
+3. expect
