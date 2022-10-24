@@ -310,3 +310,8 @@ rm *.active
 
 ### 有用的包
 - plotjuggler, 用来代替rqtplot和rqtbag的绘图工具
+```bash
+sudo apt-get -y install qtbase5-dev libqt5svg5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimedia5-plugins #安装依赖
+sudo apt-get install ros-<version>-plotjuggler # 安装plotjuggler
+sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
+```
