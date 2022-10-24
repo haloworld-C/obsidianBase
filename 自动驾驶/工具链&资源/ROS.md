@@ -307,3 +307,6 @@ rosbag reindex xxx.bag.active
 rosbag fix xxx.bag.active result.bag
 rm *.active
 ```
+
+### 有用的包
+- plotjuggler, 用来代替rqtplot和rqtbag的绘图工具

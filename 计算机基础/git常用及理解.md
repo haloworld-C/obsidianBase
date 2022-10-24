@@ -9,13 +9,13 @@
 | git clone [仓库地址]  [指定目录] --recurse-submodules | 连带子模块进行拉取，如果拉到指定目录则不带顶层文件夹|
 | git fetch --all && git reset --hard [分支名称] && git pull | 获取所有历史分支，将head指针重置到最新master分支上| 更安全的方法是把要更新的分支删除，然后pull| --hard选项不能轻易使用，因为会强制删除本地更改（可以改用--soft选项），且不可恢复|
 |git reset HEAD[file]|将文件状态恢复当当前head记录的状态||
-| git pull|拉去当前分支最近内容并合并到本地（相当与fetch+merge）| --recurse-submodules 连带子模块一起拉取|
+| git pull|拉去当前分支最近内容并合并到本地（相当于fetch+merge）| --recurse-submodules 连带子模块一起拉取|
 | git push -u origin <branch_name> | 将本地分支推送到远程对应分支并关联（-u）| 后续只需要git push便可推送到对应分支|
 | git push origin --delete <branch_name> | 删除远程分支|
 | git branch -d <branch_name>|删除本地分支（需要退出需要删除的分支才能删除）|-D为强制删除|
 | git status| 查看目前分支的修改状态|
 | git log| 查看git commit 的历史记录|git shortlog 历史记录的缩略版|
-| git merge [分支名称]| 将对应分支的修改合并到本分支|
+| git merge [分支名称]| 将对应分支的修改合并到本分支|git merge --abort: 放弃之前的merge|
 | git add [filename]| 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update）
 | git rm [filename]| 将对应文件由tracked状态变为untracked状态| 可以添加--cached选项，导致该文件不会立即删除，而是在commit之后删除 |
 | git stash | 将将当前分支更改保存，并恢复到之前clean commit的状态|恢复git stash apply|
