@@ -1,5 +1,6 @@
 ### core concept
 #### containers and images
+- A Docker Image is a template of instructions used to create containers
 - Docker containers are instances of Docker images, major difference between Docker containers and images is that containers have a writable layer.You can see a Docker container as an instance of a Docker image:
 ![docker concept](../Resourse/docker_container_concept.png)
 - 镜像拉取
@@ -121,7 +122,7 @@ LICENSE
 # a docker file for test
 #构建image的基础，如果本机没有则从远程dockerhub拉取
 FROM ubuntu:20.04 
-# 设置本机的工作目录
+# 设置进入docker后的工作目录
 WORKDIR /home/westwell/workspace/workout/
 # 拷贝相关的配置文件到镜像中 
 COPY lanelet2.pdf /home
