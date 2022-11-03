@@ -57,12 +57,75 @@ z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k){\times}dt\\
 \end{equation}
 $$
 ### 优化目标函数推导
-定义未来p个周期内预测的系统状态为：
+定义未来p个周期(预测步长)内预测的系统状态为：
 $$
-X_k=\left[ z(k+1|k)^T, z(k+2|k)^T, \dots, z(k+p|k)^T  \right]^T
+X_k=\left[ z_{k|k}^T, z_{k+1|k}^T, \dots, z_{k+p-1|k}^T  \right]^T
 $$
 定义到达未来p个周期内预测的系统输入为：
 $$
-U_k=\left[  u(k+1|k)^T, u(k+2|k)^T,\dots, u(k+p|k)^T   \right]
+U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+p-1|k}^T   \right]
 $$
 则由上述离散状态转移方程可以写出未来p个状态的状态转移方程：
+$$
+\begin{equation}
+\begin{aligned}
+z_{k+1|k}&=\overline{A}z_k+\overline{B}u_k\\
+z_{k+2|k}&=\overline{A}z_{k+1|k}+\overline{B}u_{k+1|k} \\
+		&={\overline{A}}^2z_k+\overline{A}{\times}\overline{B}u_k+\overline{B}u_{k+1|k} \\
+		&\dots \\
+z_{k+p|k}&={\overline{A}}^p{\times}z_{k+p-1|k}+{\overline{A}}^{p-1}{\times}{\overline{B}u_k}+{\overline{A}}^{p-2}{\times}{\overline{B}}u_{k+1}+\dots+\overline{A}^{p-p}\times\overline{B}u_{k+p-1|k}
+\end{aligned}
+\end{equation}
+$$
+将上式写为矩阵形式：
+$$
+\begin{equation}
+\begin{aligned}
+X_{k+1}&=\Phi\times{X_k}+\Theta\times{U_k} \\
+	   &=\left[ 
+		   \begin{array}{}   
+		   \overline{A} \\
+		   \overline{A}^2 \\
+		   \vdots \\
+		   \overline{A}^p
+		   \end{array} 
+	   \right ]_{4p\times{4}}\times{X_k} 
+	   &+\left[ 
+		   \begin{array}{cccc}   
+		   \overline{A}^{1-1}\overline{B} & \dots & 0 & 0 \\
+		   \overline{A}^{2-1}\overline{B} & \overline{A}^{1-1}\overline{B} & \dots & 0\\
+		   \vdots & \vdots & \ddots & vdots\\
+		   \overline{A}^{p-1}\overline{B} & \overline{A}^{p-2}\overline{B} & \dots & \overline{A}^{p-p}\overline{B}
+		   \end{array} 
+	   \right ]_{4p\times{4}}\times{U_k} 
+\end{aligned}
+\end{equation}
+$$
+定义预定的控制目标(步长为p)为：
+$$
+R_k=\left[ r_{k}^T, r_{k+1}^T, \dots, r_{k+p-1}^T  \right]^T
+$$
+定义优化目标代价函数为：
+$$
+J(U_k)=(X_{k+1}-R_{k+1})^TQ(X_{k+1}-R_{k+1})+U_k^TW_1U_k+(U_k-U_{k-1})^TW_2(U_k-U_{k-1})
+
+$$
+将上面的$X_k$的状态转移方程带入上式，整理得以下二次型：
+$$
+J(u_k)=\frac{1}{2}U_k^THU_k+FU_k 
+$$
+其中：
+$$
+\begin{equation}
+\begin{aligned}
+\left \{\begin{matrix}
+		H=2({\Theta}^TQ\Theta+W_1+WQ_2) 
+		\\ F^T=\frac{1}{2}E^TQ\Theta-D
+		\\ E=\Phi{X_k}-R_k
+		\\ D=U_{k-1}^T(W_2+W_2^T)
+		\end{matrix} \right .
+\end{aligned}
+\end{equation}
+$$
+上式可调用osqp进行求解，对$U_k$可以添加输入限制。
+### 优化目标求解 
