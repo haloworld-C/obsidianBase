@@ -94,7 +94,7 @@ X_{k+1}&=\Phi\times{X_k}+\Theta\times{U_k} \\
 		   \begin{array}{cccc}   
 		   \overline{A}^{1-1}\overline{B} & \dots & 0 & 0 \\
 		   \overline{A}^{2-1}\overline{B} & \overline{A}^{1-1}\overline{B} & \dots & 0\\
-		   \vdots & \vdots & \ddots & vdots\\
+		   \vdots & \vdots & \ddots & \vdots\\
 		   \overline{A}^{p-1}\overline{B} & \overline{A}^{p-2}\overline{B} & \dots & \overline{A}^{p-p}\overline{B}
 		   \end{array} 
 	   \right ]_{4p\times{4}}\times{U_k} 
@@ -119,7 +119,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \left \{\begin{matrix}
-		H=2({\Theta}^TQ\Theta+W_1+WQ_2) 
+		H=2({\Theta}^TQ\Theta+W_1+W_2) 
 		\\ F^T=\frac{1}{2}E^TQ\Theta-D
 		\\ E=\Phi{X_k}-R_k
 		\\ D=U_{k-1}^T(W_2+W_2^T)
