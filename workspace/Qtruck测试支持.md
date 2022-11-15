@@ -74,8 +74,18 @@ J11_TPA20_OFFSET = (34.6209882143-26.1283807943109, 114.355918521-111.8714450146
 ！！！<不要删除well_driver主文件夹：即使要删也要先与负责人确认>
 车辆IP：10.94开头（会动态变化）
 用户名：qtruck 密码：123qwe
+
+### 常见问题及处置
+#### 现场无法启动rviz_panel
+```bash
+sudo systemctl restart gdm3.service && xhost +
+```
 #### 速度限制
 ```bash
 /bin/bash -c "source /home/westwell/welldriver/devel/setup.bash; roslaunch routing routing_abuzhabi.launch max_speed:=3"#将最大速度限制为3m/s
 ```
->>>>>>> a23c24b4c31a7697326bdf780e5cc8616bfdd351
+#### 车不走原因
+1. active_safety, 查看路径上是否有点云
+2. 有些模块crash
+#### 地图相关
+- 没有显示地图，但是规划模块正常：可能是定位偏离
