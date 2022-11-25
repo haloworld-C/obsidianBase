@@ -27,5 +27,5 @@
 |4   |tx      |托挂位置坐标x   |托挂坐标原点位于托挂后轴轮轴中心|
 |5   |ty      |托挂位置坐标y   ||
 |6   |tyaw    |托挂航向角      |右手坐标系|
-|7   |lane_id |当前路径所在lanelet id| |
-|8   |turn_mode|当前路径点所处路径的类型| 1: straight  2: inside  3: outside 4:cutin 5:cutout |
+|7   |lane_id |当前路径所在lanelet id| cutin and cutout curve is special|
+|8   |turn_mode|当前路径点所处路径的类型| 1: straight  2: inside  3: outside 4:cutin/cutout 5: lanechange |

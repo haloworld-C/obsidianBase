@@ -9,6 +9,10 @@
 | git clone [仓库地址]  [指定目录] --recurse-submodules | 连带子模块进行拉取，如果拉到指定目录则不带顶层文件夹|
 | git fetch --all && git reset --hard [分支名称] && git pull | 获取所有历史分支，将head指针重置到最新master分支上| 更安全的方法是把要更新的分支删除，然后pull| --hard选项不能轻易使用，因为会强制删除本地更改（可以改用--soft选项），且不可恢复|
 |git reset HEAD[file]|将文件状态恢复当当前head记录的状态||
+|        |--hard HEAD ^|回退到上n个commit, ^有多少个n就为多少，不过回退后的commit都回呗删除（慎用！！！！！）|
+|        |--soft HEAD ^|回退到上n个commit, ^有多少个n就为多少|
+|git revert | 撤销摸个中间commit 所做的修改  ||
+|git reflog | 可以查看历史git 操作记录|用来回退reset --hard中删除的新的分支|
 | git pull|拉去当前分支最近内容并合并到本地（相当于fetch+merge）| --recurse-submodules 连带子模块一起拉取|
 | git push -u origin <branch_name> | 将本地分支推送到远程对应分支并关联（-u）| 后续只需要git push便可推送到对应分支|
 | git push origin --delete <branch_name> | 删除远程分支|
