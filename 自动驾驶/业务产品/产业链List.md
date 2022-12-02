@@ -6,4 +6,4 @@
 - 康明斯 汽车动力系统领先供应商
 
 ### 港口相关产业链
-![面向港口的自动驾驶公司](habour_selfdriving.png)
+![面向港口的自动驾驶公司](../../Resourse/habour_selfdriving.png)
