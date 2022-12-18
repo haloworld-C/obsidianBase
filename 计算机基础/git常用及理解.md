@@ -33,6 +33,9 @@
 |git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
 |git checkout --confict diff3 [filepath]|查看待合并的两个版本加上commit base三者之间的差异||
 |git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
+|git submodule update --init --recursive |用于首次git clone 后的子模块拉取|
+|git clone [repo] --recursive |用于首次git clone 时连带子模块拉取|
+
 ### concepts
 1. git pull = git fetch + git merge
 2. 文件的状态可以分为四个阶段，如下图所示：
