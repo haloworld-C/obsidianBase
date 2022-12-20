@@ -300,10 +300,19 @@ ros::Subscriber sub_chasis = n.subscribe<geometry_msgs::Pose2D>("simulink_pose",
 ```
 
 #### Q&S
-1.清理编译后应该进行source 操作以便识别路径
+1. 清理编译后应该进行source 操作以便识别路径
 2. rosbag .active的处理
 ```bash
 rosbag reindex xxx.bag.active  
 rosbag fix xxx.bag.active result.bag
 rm *.active
+```
+
+
+### 有用的包
+- plotjuggler, 用来代替rqtplot和rqtbag的绘图工具
+```bash
+sudo apt-get -y install qtbase5-dev libqt5svg5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimedia5-plugins #安装依赖
+sudo apt-get install ros-<version>-plotjuggler # 安装plotjuggler
+sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
 ```

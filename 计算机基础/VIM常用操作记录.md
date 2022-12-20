@@ -17,16 +17,19 @@
 | [ctrl + w] + j | 跳到上面打开同一个文件的下一个窗口|与:sp配合
 | [ctrl + w] + k | 跳到上面打开同一个文件的上面窗口 | 与:sp配合
 | [ctrl + w] + c | 关闭:sp打开的窗口 | 与:sp配合
-| ndd | 删除所在行的向下n行 | 中
+| ndd | 删除所在行的向下n行 | 
+| :nd | 删除第n行 | 
+| :n,md | 删除第n行到第m行的内容 | 
 |0, $|移动到该行第一个（最后一个字符）| 
 |[shift] + >/<|选中内容向右或者向左多行缩进/提前一个tab的长度| 
+|[shift] + \*|搜索当前单词| 
 |:set number|显示行号| 
 |:set nonumber|不显示行号| 
 
 - vim 配置：
 [amix/vimrc](https://github.com/amix/vimrc)
 ### vim 编辑器
-1. vim(原生自带)
+1. vim(原生自带, 兼容vi)
 2. neovim(推荐)
 ### vim使用技巧
 #### 多行注释
