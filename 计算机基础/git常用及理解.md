@@ -28,12 +28,14 @@
 | git blame [filename] |查看某个文件改动历程||
 | git bundle| 将当前仓库进行快照||
 |git submodule add https://github.com/[user]/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
+|git show [commitID] --stat| 查看对应commit修改了哪些文件||
 | git diff <base branch> <to_comare branch>|比较两个分支的内容差别|非常适合定位不同分支都做了那些修改|
 | git merge-base <base branch> <to_comare branch>|询问两个待合并分支的common commit|合并前先看下|
 |git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
 |git checkout --confict diff3 [filepath]|查看待合并的两个版本加上commit base三者之间的差异||
 |git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
 |git submodule update --init --recursive |用于首次git clone 后的子模块拉取|
+
 |git clone [repo] --recursive |用于首次git clone 时连带子模块拉取|
 
 ### concepts
@@ -131,4 +133,14 @@ git submodule update --recursive --remote
 ```bash
 git config --global user.name "guangshen.zhi"
 git config --global user.email guangshen.zhi@westwell-lab.com
+```
+### 遇到的问题
+- 终端下git status乱码问题
+solution: 
+```bash
+git config --global core.quotepath false #termianal里可能也设置一下支持中文utf-8
+```
+- 修改默认编辑器
+```bash
+git config --global core.editor nvim
 ```

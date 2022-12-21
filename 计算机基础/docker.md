@@ -82,6 +82,28 @@ docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force
 ```bash
 docker build <script>
 ```
+### docker-compose
+#### 安装
+1. 下载可执行文件
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose #官方github
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose #国内源
+```
+2. 添加权限
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+3. 添加链接（以便在当前用户执行）
+```bash
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+4. 测试是否安装成功
+```bash
+docker-compose version
+```
+#### 配置文件
+
+#### 运行
 
 ### Q&A
 1.  安装docker后出现permission denied错误
