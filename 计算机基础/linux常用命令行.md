@@ -1,8 +1,8 @@
 ### 高频常用命令行
-|命令行名称|说明|
+|命令行名称|说明||
 |---|---|---|
-|dpkg -i <you.deb>|安装deb包|  
-|apt purge <package name>|删除软件及其配置及依赖包|   
+|dpkg -i <you.deb>|安装deb包| 需要先给dep包添加执行权限|  
+|apt purge <package name>|删除软件及其配置及依赖包|   |
 | apt remove <package name> | 删除软件（保留配置及依赖包）| 
 | apt autoremove <package name> | 删除当前不需要的依赖包|  
 | apt list --installed| 列出已安装软件包|  
