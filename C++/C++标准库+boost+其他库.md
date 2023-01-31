@@ -42,6 +42,11 @@ mat.block(i, j, p,q); //与上语句等价
 ```
 #### eigen的注意事项
 - 静态大小与动态大小的区别（初始化）
+- 在编译的时候，如果eigen
+- 遇到一个很奇怪的现在，按理说eigen是一个纯头文件库，不需要链接，但是通过在CMake中通过find_package后需要链接才能找到Eigen的头文件，解决方案：
+```CMakelists.txt
+include_directories(${EIGEN3_INCLUDE_DIR})
+```
 
 ###  Abseil
 谷歌C++ and Python库
