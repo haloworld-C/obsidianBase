@@ -78,6 +78,14 @@ docker images --digests
 ```bash
 docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force
 ```
+- 备份docker image到压缩包
+```bash
+docker save [docker name] > [name].tar
+```
+- 从.tar备份文件加载镜像
+```bash
+docker load -i [.tar file name]
+```
 ### docker file
 ```bash
 docker build <script>
