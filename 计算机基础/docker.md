@@ -86,6 +86,16 @@ docker save [docker name] > [name].tar
 ```bash
 docker load -i [.tar file name]
 ```
+- docker image 重命名
+```bash
+docker tag [old image name] [new image name]
+```
+- docker container 重命名
+```bash
+docker rename [old container name] [new containner name]
+```
+ 
+
 ### docker file
 ```bash
 docker build <script>
