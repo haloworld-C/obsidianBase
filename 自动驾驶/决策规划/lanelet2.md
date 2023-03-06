@@ -4,26 +4,26 @@ Lanelet2 学习
 ##  关键概念
 Lanelet2是C++库(提供了python接口).
 Lanelet2 divides the world into a hierarchical structure of six different primitives: Points, linestrings, polygons, lanelets, areas and regulatory elements.
-lanelet2由五种基本元素组成。每种元素都由唯一的ID号进行识别。
+lanelet2由六种基本元素（均继承Primitives基类meta-data）组成。每种元素都由唯一的ID号进行识别。
 - Points
 Point是五种元素中唯一有位置信息的，而其他元素均直接或者间接地有Points构成（也就能依靠Points进行定位）
 - linestrings
 linestrings主要用来表达地图中实体的的形状，也可以表示虚拟的东西（比如在交叉路口可能的行车路线)。linestrings具有方向（单向），linestrings是由一系列Points组成的有序数组。
 - polygons
-
+polygon为多边形区域（一定封闭，即收尾相连）
 - lanelets
 代表车道或人行道、铁道（具有原子性）的基本单元，原子性表示的是在一个lanelets中相关的属性不会发生改变。由左右边线*linestrings*组成，相邻的两个lanelet共享交点。可以包含辅助中线（如果没有会自动计算）。lanelet具有方向。在*regulatory elements*指示的是lanelets末端适用的交通规则，而*regulatory Attributes*则对整个lanelets均适用。
 - areas
 areas与*lanelets*类似，不过与之不同的是areas是一个没有方向的区域（人行道、停车场），具有多个进入点、多个出口点。areas包含了不可到达区域*holes*,
 - regulatory elements
-代表交通规则(比如路段限制速度、交通灯、停止线等信息)，多条Lanelets可以共享*regulatory elements*,
+代表交通规则(比如路段限制速度、交通灯、停止线、交通信号等信息)，多条Lanelets可以共享*regulatory elements*,
  - 图层
  分为三个图层（三个层级的抽象层级越来越高）：
  1. 物理层：包含实际的道路实体映射的元素（包含点与线）
  2. 关联层：包含了物理层之间的关联关系（包含交通规则等）
  3. 拓扑层：关联元素的抽象表示
 - 软件架构
-![lanelet2_arch](lanelet2_arch.png)
+![lanelet2_arch](../../Resourse/lanelet2_arch.png)
 
 lanelet2主要识别osm（地图上点的坐标为经度-维度，地图格式（OSM的离线编辑器JOSM））然后将其投影转换到UTM（by default UTM32N）格式地图（其单位是m）
 
@@ -102,3 +102,8 @@ target_link_libraries(foo_exe ${lanelet2_core_LIBRARIES})
 ```
 ### Lanelet2源码阅读
 1. lanelet中的元素顺序是以hashtable进行存储的
+### 注意事项
+1. id是lanelet地图各元素的唯一表示当使用lanelet::utils::getId()生成新的元素时，会从所有元素最大id+1开始递增（避免在id重复）
+2. lineString的属性为dashed时，其相邻车道可以变道；type属性为solid时，相邻车道不可以变道（只有相邻车道共用lineString时才认为是相邻车道）
+3. lanelet的中线只有在第一次访问时才会计算并存储（可以事先遍历一遍，后续便只需要读取即可）
+4. 

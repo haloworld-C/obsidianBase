@@ -12,6 +12,7 @@
 3. 小步变更
 4. compile-test-commit(记录与管理变更)
 5. 采用分解的思路很难有原创性
+6. code into your language, NOT coding in your language
 #### Coding style pricinple
 1. comment 用英文
 2. 不直接copy代码，尤其是逻辑代码

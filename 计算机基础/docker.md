@@ -1,3 +1,8 @@
+### core concept
+#### containers and images
+- A Docker Image is a template of instructions used to create containers
+- Docker containers are instances of Docker images, major difference between Docker containers and images is that containers have a writable layer.You can see a Docker container as an instance of a Docker image:
+![docker concept](../Resourse/docker_container_concept.png)
 - 镜像拉取
 ```bash
 docker pull [镜像名称]
@@ -73,7 +78,50 @@ docker images --digests
 ```bash
 docker images -a | grep none | awk '{ print $3; }' | xargs docker rmi --force
 ```
+- 备份docker image到压缩包
+```bash
+docker save [docker name] > [name].tar
+```
+- 从.tar备份文件加载镜像
+```bash
+docker load -i [.tar file name]
+```
+- docker image 重命名
+```bash
+docker tag [old image name] [new image name]
+```
+- docker container 重命名
+```bash
+docker rename [old container name] [new containner name]
+```
+ 
+
 ### docker file
+```bash
+docker build <script>
+```
+### docker-compose
+#### 安装
+1. 下载可执行文件
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose #官方github
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose #国内源
+```
+2. 添加权限
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+3. 添加链接（以便在当前用户执行）
+```bash
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+4. 测试是否安装成功
+```bash
+docker-compose version
+```
+#### 配置文件
+
+#### 运行
 
 ### Q&A
 1.  安装docker后出现permission denied错误
@@ -93,5 +141,49 @@ docker ps #测试docker命令是否可以使用sudo正常使用
 个人docker 默认密码
 user: 2
 root: 1
-## docker file
+### docker file
 通过docker file构建容器
+### dockerignore
+忽略用户目录的配置文件：在根目录新建一个.dockerignore的文件并添加以下内容：
+```config file
+.git
+.gitignore
+node_modules
+npm-debug.log
+Dockerfile*
+docker-compose*
+README.md
+LICENSE
+.vscode
+```
+### docker image 构建
+1. 通过dockerfile构建
+```Dockerfile demo 
+# a docker file for test
+#构建image的基础，如果本机没有则从远程dockerhub拉取
+FROM ubuntu:20.04 
+# 设置进入docker后的工作目录
+WORKDIR /home/westwell/workspace/workout/
+# 拷贝相关的配置文件到镜像中 
+COPY lanelet2.pdf /home
+# 运行linux中的命令
+RUN <linux command>
+```
+2.  运行docker build 进行构建
+```bash
+docker build -t haloworld/docker-test:workdir .
+```
+3. 运行结果如下：
+```output
+Sending build context to Docker daemon  611.3kB
+Step 1/3 : FROM ubuntu:20.04
+ ---> a0ce5a295b63
+Step 2/3 : WORKDIR .
+ ---> Running in 0c93af2519d2
+Removing intermediate container 0c93af2519d2
+ ---> d765d22b25aa
+Step 3/3 : COPY lanelet2.pdf /home
+ ---> 9bbc23e5d288
+Successfully built 9bbc23e5d288
+Successfully tagged haloworld/docker-test:latest
+```

@@ -12,6 +12,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 |------|----------|---------|
 |rosnode list | 列出所有启动节点|
 | rosrun [nodename]| 启动包节点|
+|rosnode kill [node name] | 杀死特定节点|
 | roscore| 启动ROS| 
 | roscd | 切换到对应包的目录当中|
 | rqt_plot | 画图模块| 可画单维变量随时间的变化|
@@ -21,6 +22,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 | rosnode kill --all | 关闭所有节点
 | rosbag record /<msg_name>|录入消息数据|
+| rosbag filter old.bag new.bag "topic == '/topic_name1' and topic == '/topic_name2'"|过滤bag中的某些消息|""中的逻辑表达式与python兼容|
 
 ## 网络中的IP设置
 1. 单机 
@@ -298,10 +300,19 @@ ros::Subscriber sub_chasis = n.subscribe<geometry_msgs::Pose2D>("simulink_pose",
 ```
 
 #### Q&S
-1.清理编译后应该进行source 操作以便识别路径
+1. 清理编译后应该进行source 操作以便识别路径
 2. rosbag .active的处理
 ```bash
 rosbag reindex xxx.bag.active  
 rosbag fix xxx.bag.active result.bag
 rm *.active
+```
+
+
+### 有用的包
+- plotjuggler, 用来代替rqtplot和rqtbag的绘图工具
+```bash
+sudo apt-get -y install qtbase5-dev libqt5svg5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimedia5-plugins #安装依赖
+sudo apt-get install ros-<version>-plotjuggler # 安装plotjuggler
+sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
 ```

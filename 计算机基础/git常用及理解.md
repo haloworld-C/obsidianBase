@@ -1,34 +1,43 @@
 | command | discription | comment|
 |------|----------|---------|
 | git branch | 查看当前分支||
-| git checkout -b <branch-name> |创建新分支|
+| git checkout -b [branch-name] |创建新分支|
 | git remote -v | 查看远程仓库主分支| 
 | git fetch | 获取远程仓库内容|
 | git checkout | 检查当前目录的内容进行校验（如果是子模块，需要在子目录进行checkout; git checkout - 返回之前的分支|
-| git checkout <分支名称> | 切换到对应的分支|git checkout -切回到之前的分支| 
-| git clone <仓库地址> --recurse-submodules | 连带子模块进行拉取|
-| git fetch --all && git reset --hard <分支名称> && git pull | 获取所有历史分支，将head指针重置到最新master分支上| 更安全的方法是把要更新的分支删除，然后pull| --hard选项不能轻易使用，因为会强制删除本地更改（可以改用--soft选项），且不可恢复|
-|git reset HEAD<file>|将文件状态恢复当当前head记录的状态||
-| git pull|拉去当前分支最近内容并合并到本地（相当与fetch+merge）| --recurse-submodules 连带子模块一起拉取|
+| git checkout [分支名称] | 切换到对应的分支|git checkout -切回到之前的分支| 
+| git clone [仓库地址]  [指定目录] --recurse-submodules | 连带子模块进行拉取，如果拉到指定目录则不带顶层文件夹|
+| git fetch --all && git reset --hard [分支名称] && git pull | 获取所有历史分支，将head指针重置到最新master分支上| 更安全的方法是把要更新的分支删除，然后pull| --hard选项不能轻易使用，因为会强制删除本地更改（可以改用--soft选项），且不可恢复|
+|git reset HEAD[file]|将文件状态恢复当当前head记录的状态||
+|        |--hard HEAD ^|回退到上n个commit, ^有多少个n就为多少，不过回退后的commit都回呗删除（慎用！！！！！）|
+|        |--soft HEAD ^|回退到上n个commit, ^有多少个n就为多少|
+|git revert | 撤销摸个中间commit 所做的修改  ||
+|git reflog | 可以查看历史git 操作记录|用来回退reset --hard中删除的新的分支|
+| git pull|拉去当前分支最近内容并合并到本地（相当于fetch+merge）| --recurse-submodules 连带子模块一起拉取|
 | git push -u origin <branch_name> | 将本地分支推送到远程对应分支并关联（-u）| 后续只需要git push便可推送到对应分支|
 | git push origin --delete <branch_name> | 删除远程分支|
 | git branch -d <branch_name>|删除本地分支（需要退出需要删除的分支才能删除）|-D为强制删除|
 | git status| 查看目前分支的修改状态|
 | git log| 查看git commit 的历史记录|git shortlog 历史记录的缩略版|
-| git merge <分支名称>| 将对应分支的修改合并到本分支|
-| git add <filename>| 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update）
-| git rm <filename>| 将对应文件由tracked状态变为untracked状态| 可以添加--cached选项，导致该文件不会立即删除，而是在commit之后删除 |
+| git merge [分支名称]| 将对应分支的修改合并到本分支|git merge --abort: 放弃之前的merge|
+| git add [filename]| 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update）
+| git rm [filename]| 将对应文件由tracked状态变为untracked状态| 可以添加--cached选项，导致该文件不会立即删除，而是在commit之后删除 |
 | git stash | 将将当前分支更改保存，并恢复到之前clean commit的状态|恢复git stash apply|
 |git remote -v| 获取远程仓库信息|
 | git config||git行为配置;分为三个层级：System(--system) User(--global) Repository(--local)|
-| git blame <filename> |查看某个文件改动历程||
+| git blame [filename] |查看某个文件改动历程||
 | git bundle| 将当前仓库进行快照||
-|git submodule add https://github.com/<user>/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
+|git submodule add https://github.com/[user]/rock rock| 添加其他远程仓库作为子模块（存在形式为子文件夹）||
+|git show [commitID] --stat| 查看对应commit修改了哪些文件||
 | git diff <base branch> <to_comare branch>|比较两个分支的内容差别|非常适合定位不同分支都做了那些修改|
 | git merge-base <base branch> <to_comare branch>|询问两个待合并分支的common commit|合并前先看下|
 |git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
-|git checkout --confict diff3 <filepath>|查看待合并的两个版本加上commit base三者之间的差异||
-|git branch -m <old-branch-name> <new-branch-name>|修改已经存在的分支名称|
+|git checkout --confict diff3 [filepath]|查看待合并的两个版本加上commit base三者之间的差异||
+|git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
+|git submodule update --init --recursive |用于首次git clone 后的子模块拉取|
+
+|git clone [repo] --recursive |用于首次git clone 时连带子模块拉取|
+
 ### concepts
 1. git pull = git fetch + git merge
 2. 文件的状态可以分为四个阶段，如下图所示：
@@ -114,4 +123,24 @@ git submodule update --init --recursive
 可以使用如下命令使子模块追踪到对应远程仓库的版本
 ```bash
 git submodule update --recursive --remote
+```
+### git config
+#### git config的三个级别
+1. --local 仅适用于当前仓库
+2. --global 仅适用当前用户
+3. --system适用于当前系统所有用户
+#### 配置用户名及邮箱
+```bash
+git config --global user.name "guangshen.zhi"
+git config --global user.email guangshen.zhi@westwell-lab.com
+```
+### 遇到的问题
+- 终端下git status乱码问题
+solution: 
+```bash
+git config --global core.quotepath false #termianal里可能也设置一下支持中文utf-8
+```
+- 修改默认编辑器
+```bash
+git config --global core.editor nvim
 ```
