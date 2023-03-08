@@ -77,6 +77,10 @@ auto p = &*foo.begin();
 
 #### C++ 常用库
 1. STL
+#### std::numeric_limits<T> ::infinity()
+- 这个无穷大的值只有在浮点数上才有，在其他整形数值类型上为0;
+- 如果在整型上想用一个比较大的值可以用std::numeric_limits<T>::max()代替
+- 包含在头文件<limits>当中 
 2. Boost
 3. Eigen
 
