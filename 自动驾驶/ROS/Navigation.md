@@ -8,6 +8,7 @@
 基于概率方法的定位, 即粒子滤波算法。
 ##### map server
 用来管理和加载静态地图。
+
 #### 模块
 由move_base类抽象实现(nav_core)，具体实现由其子模块实现。
 ![move_base_arch](../../Resourse/move_base.png)
@@ -30,7 +31,14 @@ costmap分为三个图层：
 	- 2D obstacle layer
 	- 3D voxel layer(需要由三维信息)
 3. Inflation map layer: 用于存储根据障碍物膨胀后的地图信息， 用于最终cost的更新
+costmap为多图层代价地图的形式，其实现方式类似lanelet2.
+![costmap caculation](../../Resourse/multi_layer_costmap.png)
 - footprint: 机器人尺寸信息（可理解为机器人在xy平面里的投影）,用于计算碰撞半径。
+costmap中的cost的计算方式如下：
+![costmap caculation](../../Resourse/ros_costmap_cost.png)
+
+- 曲线平滑Bspline
 ##### recovery_behaviors
+
 
 ## Nav2
