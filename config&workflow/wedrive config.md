@@ -1,5 +1,5 @@
 - 邮箱 
-账号：zhiguangshen@cshbot.com
+账号：zhiguangshen@csjbot.com
 密码: guang123///
 CRM
 账号：zhiguangshen
