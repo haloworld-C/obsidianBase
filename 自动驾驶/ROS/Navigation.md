@@ -36,6 +36,14 @@ costmap为多图层代价地图的形式，其实现方式类似lanelet2.
 - footprint: 机器人尺寸信息（可理解为机器人在xy平面里的投影）,用于计算碰撞半径。
 costmap中的cost的计算方式如下：
 ![costmap caculation](../../Resourse/ros_costmap_cost.png)
+cost设置的逻辑
+|数值区间|含义|
+|-------|--------|-----------|
+|255|障碍物区间||
+|254|碰撞区间||
+|128~253|可能碰撞区间||
+|1~127|无碰撞区间||
+|0|未知区域||
 
 - 曲线平滑Bspline
 ##### recovery_behaviors

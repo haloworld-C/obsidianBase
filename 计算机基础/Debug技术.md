@@ -10,7 +10,11 @@
 #### catkin_make
 1. 编译添加debug选项
 ```bash
-catkin_make -DCMAKE_BUILD_TYPE=debug # 对普通的程序也适用
+catkin_make -DCMAKE_BUILD_TYPE=Debug # 对普通的程序也适用
+```
+如果cmake提示会严重降低性能，则可以再添加下面的选项:
+```bash
+catkin_make -DCMAKE_BUILD_TYPE=Debug -DFORCE_DEBUG_BUILD=True
 ```
 2. 需要debug的节点的lauch文件添加launch-prefix="xterm -e gdb -ex run --args"
 ```xml
