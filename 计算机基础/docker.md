@@ -163,7 +163,7 @@ LICENSE
 #构建image的基础，如果本机没有则从远程dockerhub拉取
 FROM ubuntu:20.04 
 # 设置进入docker后的工作目录
-WORKDIR /home/westwell/workspace/workout/
+WORKDIR /home/westwell/workspace/workout/ #设置workdir后所有单条命令的默认当前目录
 # 拷贝相关的配置文件到镜像中 
 COPY lanelet2.pdf /home
 # 运行linux中的命令
@@ -187,3 +187,35 @@ Step 3/3 : COPY lanelet2.pdf /home
 Successfully built 9bbc23e5d288
 Successfully tagged haloworld/docker-test:latest
 ```
+### 跨平台使用docker image
+#### 使用qemu进行硬件模拟
+- 缺点： 性能有所损失
+- 优点： 可以进行交叉编译
+1. qemu的安装
+要确保您的宿主机上安装了 QEMU 并启用了对应的二进制格式支持，请按照以下步骤操作：  
+  
+首先，安装 QEMU。在基于 Debian 的系统（如 Ubuntu）上，您可以使用以下命令进行安装：  
+   
+sudo apt-get update  
+sudo apt-get install qemu qemu-user-static binfmt-support  
+在基于 RHEL 的系统（如 CentOS、Fedora）上，您可以使用以下命令进行安装：  
+   
+sudo yum install qemu qemu-user-static  
+接下来，验证 QEMU 是否已安装：  
+   
+qemu-system-aarch64 --version  
+如果成功安装，您应该会看到 QEMU 版本信息。  
+  
+确认 binfmt-support 服务是否启用：  
+   
+sudo systemctl status binfmt-support  
+如果服务未启用，请使用以下命令启用并启动服务：  
+   
+sudo systemctl enable binfmt-support  
+sudo systemctl start binfmt-support  
+最后，确保您的系统已注册了 ARM64 架构的二进制格式支持。运行以下命令：  
+   
+cat /proc/sys/fs/binfmt_misc/qemu-aarch64  
+如果已启用支持，您应该会看到包含 "flags: F" 和 "interpreter /usr/bin/qemu-aarch64-static" 的输出。  
+  
+完成这些步骤后，您的宿主机应已准备好运行 ARM64 架构的 Docker 镜像。这意味着您可以在这些镜像中直接编译 ARM64 程序，而无需配置交叉编译。

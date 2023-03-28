@@ -21,3 +21,4 @@ master ip: 192.168.1.151
 gitlab
 账号：zhiguangshen
 密码：guang123///
+> 问题通过gitlab中的问题列表进行管理

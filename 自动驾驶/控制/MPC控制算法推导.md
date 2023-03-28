@@ -1,3 +1,5 @@
+### 当前研究趋势
+![mpc_with_learning](../../Resourse/mpc_research_topic.png)
 ### 概述
 
 ### 运动模型建模

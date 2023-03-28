@@ -14,4 +14,8 @@
 	```bash
 	sudo ldconfig
 	```
-	
+
+ 也可用通过命令查询库文件是否可以被系统识别：
+```bash
+pkg-config --libs ipopt[pack_name]
+```
