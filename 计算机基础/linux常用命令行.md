@@ -26,6 +26,7 @@
 |clear | 清楚命令行窗口历史文本|
 |man ascii | 显示ascii码对照表 | |
 |nslookup  [域名]| 刷新dns域名列表 | |
+|du -sh  [文件夹]| 查看文件夹大小 | |
 
 
 
