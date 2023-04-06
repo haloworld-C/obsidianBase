@@ -58,6 +58,9 @@ z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k){\times}dt\\
 \end{aligned}
 \end{equation}
 $$
+> 问题一：是否意味着输入的trajectory上的点也是时间均匀的
+>       solution 1: 将路径点上的速度设置为相同（比如1m/s）
+>       solution 2: 在路径点上带上时间点信息(这样就知道dt了)
 ### 优化目标函数推导
 #### 形式一(Condensed Format)
 定义未来p个周期(预测步长)内预测的系统状态为：
@@ -129,7 +132,9 @@ $$
 $$
 上式可调用osqp进行求解，对$U_k$可以添加输入限制。
 TODO: 这种类型的实现目前还不多，可以尝试自己封装一个库。
-### 形式二(Non-Condensed Format)
+### 形式二(Non-Condensed Format), 构造法
 参考[MPC cast to osqp](https://robotology.github.io/osqp-eigen/md_pages_mpc.html)
 该形式直接利用$J(u_k, x_k)$进行构造，容易实现。
 ### 优化目标求解 
+对于形式一，可以利用线性求解器求得解析解。
+对于形式二， 可以利用QP问题求解器求最优解（本质为凸优化问题）
