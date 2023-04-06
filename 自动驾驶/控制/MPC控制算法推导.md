@@ -59,6 +59,7 @@ z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k){\times}dt\\
 \end{equation}
 $$
 ### 优化目标函数推导
+#### 形式一(Condensed Format)
 定义未来p个周期(预测步长)内预测的系统状态为：
 $$
 X_k=\left[ z_{k|k}^T, z_{k+1|k}^T, \dots, z_{k+p-1|k}^T  \right]^T
@@ -67,10 +68,7 @@ $$
 $$
 U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+p-1|k}^T   \right]
 $$
-则由上述离散状态转移方程可以写出未来p个状态的状态转移方程：
-$$
-\begin{equation}
-\begin{aligned}
+则由上述离散状态转移方程可以写出未来p个状态的状态转移方程： $$ \begin{equation} \begin{aligned}
 z_{k+1|k}&=\overline{A}z_k+\overline{B}u_k\\
 z_{k+2|k}&=\overline{A}z_{k+1|k}+\overline{B}u_{k+1|k} \\
 		&={\overline{A}}^2z_k+\overline{A}{\times}\overline{B}u_k+\overline{B}u_{k+1|k} \\
@@ -130,4 +128,8 @@ $$
 \end{equation}
 $$
 上式可调用osqp进行求解，对$U_k$可以添加输入限制。
+TODO: 这种类型的实现目前还不多，可以尝试自己封装一个库。
+### 形式二(Non-Condensed Format)
+参考[MPC cast to osqp](https://robotology.github.io/osqp-eigen/md_pages_mpc.html)
+该形式直接利用$J(u_k, x_k)$进行构造，容易实现。
 ### 优化目标求解 
