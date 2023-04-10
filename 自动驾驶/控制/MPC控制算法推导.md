@@ -144,7 +144,7 @@ $$
 \end{aligned}
 \end{equation}
 $$
-上式可调用osqp进行求解，对$U_k$可以添加输入限制。
+上式可调用线性求解器进行求解析解，对$U_k$可以添加输入限制。
 TODO: 这种类型的实现目前还不多，可以尝试自己封装一个库。
 #### 形式二(Non-Condensed Format), 构造法
 #### 参考
@@ -193,7 +193,7 @@ $$
 \begin{equation}
 \begin{aligned}
 J(x_k,u_k)&=x_N^T{Q_N}x_N+\sum_{k=1}^{N-1}x_k^T{Q}x_k + \sum_{k=0}^{N-1}u_k^T{R_1}u_k-2Q_N{r_N}-2Q\sum_{k=0}^{N-1}r_k\\
-&=z^Tdiag(Q,\ldots,Q,Q_N,R_1,\cdots,r=R_1)_{(4*N+2*p)*(4*N+2*p)}z \\
+&=z^Tdiag(Q,\ldots,Q,Q_N,R_1,\cdots,R_1)_{(4*N+2*p)*(4*N+2*p)}z \\
 &+2[Qr_1, Qr_2,\cdots, Qr_{k-1}, Q_N{r_k}, 0, \cdots, 0]*z
 \end{aligned}
 \end{equation}
