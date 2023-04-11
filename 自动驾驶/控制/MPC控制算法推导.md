@@ -215,12 +215,12 @@ $$
 \begin{aligned}
 &[-\overline{x},0,\dots,0,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T \leq \\ 
 &\left[ 
-	\begin{array}{ccccc|cccc}   
--I & 0 &\cdots & \cdots  & 0 & 0 &\cdots  & \cdots & 0 \\
-A  & -I & \ddots & & \vdots  & B & \ddots  & &\vdots \\
-0 & A  & -I & \ddots &\vdots & 0 & B &  \ddots & \vdots \\
-\vdots & \ddots & \ddots & \ddots & 0 & \vdots & \ddots & \ddots & 0\\
-0 & \cdots & 0 & A & -I & 0 & \cdots & 0 & B \\ \hline
+	\begin{array}{ccccc|ccccc}   
+-I & 0 &\cdots & \cdots  & 0 & 0 &\cdots  & \cdots & \cdots &0 \\
+A  & -I & \ddots & & \vdots  & B & \ddots  & & &\vdots \\
+0 & A  & -I & \ddots &\vdots & 0 & \ddots &  \ddots && \vdots \\
+\vdots & \ddots & \ddots & \ddots & 0 & \vdots & \ddots & B & \ddots & \vdots\\
+0 & \cdots & 0 & A & -I & 0 & \cdots & 0 & 0 & 0 \\ \hline
 I & 0 & \cdots & \cdots & 0 & 0 & \cdots & \cdots & 0 \\
 0 & I & \ddots &  & \vdots & \vdots &  &  & \vdots \\
 \vdots & \ddots & \ddots & \ddots & \vdots & \vdots &  &  & \vdots \\
