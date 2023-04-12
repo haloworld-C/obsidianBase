@@ -197,7 +197,7 @@ $\overline{x}$为初始状态。
 > 注意： 形式二中的代价函数将$(x_k, u_k)$作为求解器要优化的变量，而形式一则只优化$u_k$序列。
 ##### 构造代价函数为OSQP求解形式
 下面将上述优化目标$J$及其约束构造为式(1)要求的形式(为了理解方便，后面的矩阵都将注释维度, x维度假定为4x1, u维度假定为2x1): 1. 构造$P, q^T$矩阵,式(2)中$x_k-x_r$可以展开并忽略常数项可以整理为如下形式： 
-设$z=[x_1, x_2,\cdots, x_N,u_0, u_1,\cdots,u_p]_{1*(4*N+2*p)}$
+设$z=[x_1, x_2,\cdots, x_N,u_0, u_1,\cdots,u_p]_{(4*N+2*p)*1}^T$
 $$
 \begin{equation}
 \begin{aligned}
@@ -214,7 +214,7 @@ $$
 \begin{equation}
 \begin{aligned}
 &\overline{x} \leq x_0 \leq \overline{x} \\
-&0 \leq Ax_k+Bu_k-x_{k+1} \leq 0
+&0 \leq Ax_k+Bu_k+C-x_{k+1} \leq 0
 \end{aligned}
 \end{equation}
 $$
@@ -222,7 +222,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-&[-\overline{x},0,\dots,0,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T \leq \\ 
+&[-\overline{x},-C,\dots,-C,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T \leq \\ 
 &\left[ 
 	\begin{array}{ccccc|ccccc}   
 -I & 0 &\cdots & \cdots  & 0 & 0 &\cdots  & \cdots & \cdots &0 \\
@@ -242,9 +242,7 @@ I & 0 & \cdots & \cdots & 0 & 0 & \cdots & \cdots & 0 \\
 	\end{array} 
 \right ]z \\
    
-&\leq[-\overline{x},0,\dots,0,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T 
-
-
+&\leq[-\overline{x},-C,\dots,-C,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T 
 \end{aligned}
 \end{equation}
 $$
