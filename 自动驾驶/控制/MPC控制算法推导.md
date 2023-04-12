@@ -27,11 +27,11 @@ $$
 其中$\beta$为重心处的速度与车辆纵轴的的夹角, $l_r$为汽车重心到后轮的距离， $l_r$为汽车重心到前轮的距离。
 ### 运动模型线性化
 定义系统状态$z=[x, y, \phi, v]^T$, 控制向量为$u=[a, \delta]^T$。
-则上面运动方程可以写为：
+则上面运动方程可以写为（这里有问题需要更新）：
 $$
 \begin{equation}
 \begin{aligned}
-\dot{z}=f(z,u)&=\frac{\partial{f}}{\partial{z}}z+\frac{\partial{f}}{\partial{u}}u=A{\times}z+B{\times}u\\
+\dot{z}=f(z,u)&=\frac{\partial{f}}{\partial{z}}z+\frac{\partial{f}}{\partial{u}}u+C=A{\times}z+B{\times}u+C\\
 &=\left[ \begin{array}{cccc}
 \frac{\partial{f_1}}{\partial{x}} & \frac{\partial{f_1}}{\partial{y}} & \frac{\partial{f_1}}{\partial{\phi}} & \frac{\partial{f_1}}{\partial{v}} \\
 
@@ -44,7 +44,7 @@ $$
 \frac{\partial{f_2}}{\partial{a}} & \frac{\partial{f_2}}{\partial{\delta}} \\
 \frac{\partial{f_3}}{\partial{a}} & \frac{\partial{f_3}}{\partial{\delta}} \\
 \frac{\partial{f_4}}{\partial{a}} & \frac{\partial{f_4}}{\partial{\delta}} \\
-  \end{array} \right]{\times}u \\
+  \end{array} \right]{\times}u + C\\
 &=\left[ \begin{array}{cccc}
  0 & 0 & -v*sin(\phi) & cos(\phi) \\
  0 & 0 & v*cos(\phi) & sin(\phi) \\
@@ -56,9 +56,18 @@ $$
 0 & 0 \\
 0 & \frac{v}{L*cos^2(\delta)} \\
 0 & 1 \\
-  \end{array} \right]{\times}u \\
+  \end{array} \right]{\times}u + C\\
 \end{aligned}
 \end{equation}
+$$
+其中
+$$
+C=\dot{z} -Az+Bu=\left[ \begin{array}{cccc}
+v*sin{\phi}*\phi \\
+-v*cos{\phi}*\phi  \\
+-\frac{v}{L*cos^2{\delta}}\delta \\
+0 \\
+  \end{array} \right]
 $$
 
 ### 运动状态方程离散化
