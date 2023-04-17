@@ -298,7 +298,59 @@ ros::Subscriber sub_chasis = n.subscribe<geometry_msgs::Pose2D>("simulink_pose",
 ```
 3. 编写ROS类进行接节点注册与操作，从而可以在类的内部进行数据共享。示例如下：
 ```C++
+ros::NodeHandle nh_private("~") // ~代表当前命名空间
+nh_private.getParam("parameters/dt", p_dt);
+nh_private.param<double>("parameters/dt", p_dt); // 两种方式均可
 
+```
+
+### 配置文件的读取
+#### 参数的设置
+参考
+```launch
+<launch>
+    <!-- topic -->
+	<arg name="odom_topic" default="odom"/>
+	<arg name="trajectory_topic" default="trajectory"/>
+    <!-- load config mpc parameters-->
+
+    <!-- start controller -->
+    <node name="controller_mpc_robot" pkg="mpc_controller_robot" type="controller_mpc_robot" output="screen">
+        <param name="odom" value="$(arg odom_topic)" />
+        <param name="trajectory" value="$(arg trajectory_topic)" />
+        <rosparam file="$(find mpc_controller_robot)/param/mpc_controller_params.yaml" command="load" />
+    </node>
+</launch>
+```
+
+```yaml
+parameters:
+    dt: 0.112
+    pred_horizon: 10
+    control_horizon: 5
+weights:
+    position: 1.0
+    position_terminal: 2.0
+    angle: 1.0
+    angle_terminal: 2.0
+    velocity: 0.1
+    velocity_terminal: 0.0
+    omega: 0.01
+    accel: 0.1
+    alpha: 0.0 # acceleration of omega
+    jerk: 0.0 # acceleration of accel
+constraints:
+    max_accel: 2.0
+    min_accel: -2.0
+    max_omega: 1.0
+    max_alpha: 0.1
+    max_jerk: 10.0
+```
+#### 使用NodeHandle句柄读取
+```C++
+ros::NodeHandle nh_private("~") // ~代表当前参数命名空间
+nh_private.getParam("parameters/dt", p_dt);
+nh_private.param<double>("parameters/dt", p_dt); // 这两种读取方式等价,第二种更加灵活
 ```
 
 #### Q&S
