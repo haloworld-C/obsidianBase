@@ -9,6 +9,12 @@ python脚本打包为可执行文件
 - ndarray, 核心数据结构
 - broadcasting(element by element)
 - axis
+- 广播
+#### 常用操作
+```python
+
+```
+
 ### matplotlib
 #### core concept
 
