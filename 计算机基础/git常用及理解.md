@@ -35,7 +35,8 @@
 |git checkout --confict diff3 [filepath]|查看待合并的两个版本加上commit base三者之间的差异||
 |git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
 |git submodule update --init --recursive |用于首次git clone 后的子模块拉取|
-
+|git remote rm origin |删除远程仓库地址|
+|git remote add origin [新仓库地址]|删除远程仓库地址|
 |git clone [repo] --recursive |用于首次git clone 时连带子模块拉取|
 
 ### concepts
