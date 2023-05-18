@@ -75,9 +75,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k){\times}dt\\
-&=(I+A{\times}dt)z_k+(B{\times}dt)u_k\\
-&=\overline{A}z_k+\overline{B}u_k
+z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k+C){\times}dt\\
+&=(I+A{\times}dt)z_k+(B{\times}dt)u_k + C*dt\\
+&=\overline{A}z_k+\overline{B}u_k + \overline{C}
 \end{aligned}
 \end{equation}
 $$
@@ -86,6 +86,25 @@ $$
 >       solution 2: 在路径点上带上时间点信息(这样就知道dt了)
 > 问题二： 线性化传递函数离线性化点越远，则偏差越大此时A矩阵是否为变值
 ### 优化目标函数推导
+#### 状态矩阵的增广形式(待补充)
+$$
+\left[ \begin{array}{c}
+z_{k+1} \\
+u_{k+1}  \\
+  \end{array} \right]=
+\left[ \begin{array}{cc}
+\overline{A} & \overline{B}\\
+0 & I \\
+  \end{array} \right] *
+\left[ \begin{array}{c}
+z_k \\
+u_k  \\
+\end{array} \right] +
+\left[ \begin{array}
+\overline{B} \\
+I  \\
+\end{array} \right]*\Delta{u}
+$$
 #### 形式一(Condensed Format)
 定义未来p个周期(预测步长)内预测的系统状态为：
 $$
@@ -243,7 +262,7 @@ I & 0 & \cdots & \cdots & 0 & 0 & \cdots & \cdots & 0 \\
 	\end{array} 
 \right ]z \\
    
-&\leq[-\overline{x},-C,\dots,-C,x_{min},\dots,x_{min},u_{min},\dots ,u_{min}]^T 
+&\leq[-\overline{x},-C,\dots,-C,x_{max},\dots,x_{max},u_{max},\dots ,u_{max}]^T 
 \end{aligned}
 \end{equation}
 $$

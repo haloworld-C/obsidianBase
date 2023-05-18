@@ -27,6 +27,7 @@ ROS中默认callback默认是线程安全的
 | rosbag filter old.bag new.bag "topic == '/topic_name1' and topic == '/topic_name2'"|过滤bag中的某些消息|""中的逻辑表达式与python兼容|
 | catkin_make --only-pkg-with-deps [package name]|编译单个包及其依赖|
 | rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
+| rosdep|rosdep [package_name]|安装某个包的依赖|
 
 ## 网络中的IP设置
 1. 单机 

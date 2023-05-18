@@ -40,6 +40,12 @@
 1. terminator多页面命令行终端
 2. fish交互式命令提示工具(不如zsh好用)
 3. 考虑使用aptitude作为日常软件的管理工具，而apt作为系统升级的工具
+4. apt-file工具可以查找某个动态链接库的安装包：
+```bash
+sudo apt install apt-file # 安装
+sudo apt-file update # 读取软件库index
+apt-file search [lib-xxx.so] # 返回包含该动态库的安装包
+```
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
