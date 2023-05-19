@@ -19,3 +19,8 @@
 ```bash
 pkg-config --libs ipopt[pack_name]
 ```
+2. 编译出现c++: internal compiler error: Killed (program cc1plus)问题
+查看内存使用后发现是内存耗尽导致的，使用的catkin_make进行编译（默认采用-j6 多线程编译），采用单线程编译即可：
+```bash
+catkin_make -j1
+```

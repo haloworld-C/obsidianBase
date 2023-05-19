@@ -105,6 +105,7 @@ u_k  \\
 I  \\
 \end{array} \right]*\Delta{u}
 $$
+> 问题一： 如何用增广矩阵构造cost函数
 #### 形式一(Condensed Format)
 定义未来p个周期(预测步长)内预测的系统状态为：
 $$
@@ -151,6 +152,7 @@ $$
 $$
 R_k=\left[ r_{k}^T, r_{k+1}^T, \dots, r_{k+p-1}^T  \right]^T
 $$
+这里的$r_k$为路径点，需要根据采样周期dt进行插值处理。
 定义优化目标代价函数为：
 $$
 J(U_k)=(X_{k+1}-R_{k+1})^TQ(X_{k+1}-R_{k+1})+U_k^TW_1U_k+(U_k-U_{k-1})^TW_2(U_k-U_{k-1})
