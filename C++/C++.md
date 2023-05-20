@@ -76,13 +76,22 @@ auto p = &*foo.begin();
 右值引用：类型 && 引用名 = 右值表达式（右值引用主要用来绑定临时对象）
 
 #### C++ 常用库
-1. STL
-#### std::numeric_limits<T> ::infinity()
-- 这个无穷大的值只有在浮点数上才有，在其他整形数值类型上为0;
-- 如果在整型上想用一个比较大的值可以用std::numeric_limits<T>::max()代替
-- 包含在头文件<limits>当中 
-2. Boost
-3. Eigen
+##### STL
+#### 无穷大 
+```C++
+std::numeric_limits<T> ::infinity()
+```
+这个无穷大的值只有在浮点数上才有，在其他整形数值类型上为0;
+如果在整型上想用一个比较大的值可以用
+```c++
+std::numeric_limits<T>::max()
+```
+代替
+包含在头文件limits.h头文件当中 
+
+##### Boost
+
+##### Eigen
 
 
 
@@ -97,7 +106,11 @@ ssert.h是c标准库的一个头文件，该头文件的主要目的就是提供
  
 ### C++ 语法糖(grammer sugar)
 #### for的范围循环
-传统的for循环对于复杂类型来说，需要书写大量语句，例如对vector<int> 中的元素进行迭代其形式如下：
+传统的for循环对于复杂类型来说，需要书写大量语句，例如对
+```C++
+vector<int>
+```
+中的元素进行迭代其形式如下：
 ```C++
 # include <vector>
 # include <string>
@@ -224,10 +237,21 @@ class son : private nocopyable{
 
 };
 ```
-#### constexpr
+####  constexpr
 C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
 
 #### 右值引用与std::move
+
+#### lamda表达式
+发现可以使用lamda表达式写一些泛化并不强的小函数(用完既扔), 也能作为functer使用，并且可以减少代码量与可读性。
+下面以cout输出为例：
+```C++
+auto coutPair = [](std::string a, double parameter){
+	std::cout << a << "\t" << parameter << std::endl;
+};
+```
+> 注意最后的分号
+
 
 ### 遇到的问题
 1. ROS plugin中的函数加入inline 标志后无法识别
