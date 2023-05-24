@@ -1,2 +1,0 @@
-FLT_EPSILON:需要一个容差(就是FLT_EPSILON )来弥补精度问题引发偏差
-使1+FLT_EPSILON扔等于1的最小值。
