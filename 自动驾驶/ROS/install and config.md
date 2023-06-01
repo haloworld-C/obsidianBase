@@ -11,3 +11,6 @@
 |rostopic hz [message_name]|查看消息频率| |
 |roscd|切换不同的ros package|该包需要被编译过 |
 |rospack find [pack_name]|确认ros包是否安装| |
+
+### 问题
+- 当ros源为清华源，系统源为科大源时，经常会报依赖错误（尽量保持一致）
