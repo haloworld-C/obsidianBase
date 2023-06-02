@@ -48,6 +48,8 @@ sudo apt install apt-file # 安装
 sudo apt-file update # 读取软件库index
 apt-file search [lib-xxx.so] # 返回包含该动态库的安装包
 ```
+5. stow 第三方lib库管理程序
+使用stow 可以方便当管理库的版本。
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定

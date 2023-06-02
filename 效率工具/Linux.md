@@ -8,3 +8,9 @@ sudo apt install -y vokoscreen
 ```bash
 sudo apt install -y kruler
 ```
+3. pdf阅读器
+- Okular,易用，也有标记功能
+```bash
+sudo apt install okular
+```
+- foxit 阅读器
