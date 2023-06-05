@@ -94,6 +94,10 @@ docker tag [old image name] [new image name]
 ```bash
 docker rename [old container name] [new containner name]
 ```
+- docker container 运行日志查看(可以方便的查看容器退出原因)
+```bash
+docker logs [container name]
+```
  
 
 ### docker file
