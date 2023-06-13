@@ -104,6 +104,18 @@ docker logs [container name]
 ```bash
 docker build <script>
 ```
+#### docker file 常用命令
+
+|命令行名称|说明||
+|---|---|---|
+|RUN|执行linux命令| 最常用|  
+|COPY [source file] [target file]|将对应的本机的文件或目录(可以是相对路径),拷贝到docker中|注意dockerfile中复制目录时，目录内的纵深关系会被破坏为平级关系   |
+|ADD|与COPY类似|推荐只使用COPY， ADD在拷贝压缩包时会自动解压缩, ADD的源地址可以是网络地址|
+|WORKDIR|设置当前工作路径|1. 设置过workdir后所有命令在执行相对路径时，都是相对workdir而言的; 2.如果workdir指定的路径不存在则会自动创建该目录|
+|USER|设置当前用户||
+|CMD|进入容器后默认执行该命令|可以被docker run 进行覆盖,当执行脚本时，需要将脚本权限更改为可执行|
+|ENTERPOINT|docker run image后面的命令会被当做参数传递给ENTERPOINT|当与CMD同时存在时会将CMD指令当做参数传递给ENTERPOINT，当用户覆盖了CMD时将用户指定的命令当做参数|
+||||
 ### docker-compose
 #### 安装
 1. 下载可执行文件
