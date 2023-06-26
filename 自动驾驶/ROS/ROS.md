@@ -10,6 +10,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 ###  通信机制
 ROS中默认callback默认是线程安全的
 ## 常用命令
+
 | command | discription | comment|
 |------|----------|---------|
 |rosnode list | 列出所有启动节点|
@@ -202,10 +203,11 @@ target_link_libraries(nodelet_auto_car
 - 尽管将多个nodelet模块(线程)加入同一个nodelet manager(进程)中，但是这并不以为着他们之间收发的消息便是通过共享内存进行通讯的。通过ROS官方教程，我们需要发出一个share_ptr类型的消息才能实现内存共享通讯。
 > [进一步资料参考](http://wiki.ros.org/nodelet)
 #### nodelet 常用命令
+
 | command | discription | comment|
 |------|----------|---------|
-| rosrun nodelet nodelet manager __name:=nodelet_manager_auto_car | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor
-| rosrun nodelet nodelet load [编译好的.so插件]/[.so文件内的插件]  __name:=nodelet1| 启动编译好节点，这个动作也可以在运行时决定启动
+| rosrun nodelet nodelet manager name:=nodelet_manager_auto_car | 运行nodelet manager管理节点 | 运行nodelet manager之前应先运行roscor|
+| rosrun nodelet nodelet load [编译好的.so插件]/[.so文件内的插件]  name:=nodelet1| 启动编译好节点，这个动作也可以在运行时决定启动
 
 - a nodelet class is a node
 ## 问题
@@ -292,6 +294,8 @@ int main(int argc, char **argv)
 }
 ```
 
+#### tips
+- publisher设置latch=True，可以保存最后一次消息，知道有receiver接收到了才会消失。
 ### ROS中在callback函数中处理主程序中数据的三种方式
 1. 在主程序外声明全局变量
 2. 在subscribe函数中利用bind机制传入该变量的指针
@@ -355,6 +359,7 @@ ros::NodeHandle nh_private("~") // ~代表当前参数命名空间
 nh_private.getParam("parameters/dt", p_dt);
 nh_private.param<double>("parameters/dt", p_dt); // 这两种读取方式等价,第二种更加灵活
 ```
+####  使用map结构一次性读取
 
 #### Q&S
 1. 清理编译后应该进行source 操作以便识别路径
