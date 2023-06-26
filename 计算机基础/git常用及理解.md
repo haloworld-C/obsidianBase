@@ -112,18 +112,23 @@ git merge --abort
 
 #### 子模块管理
 1. 添加子模块的更改只需要将对应的子目录使用git add <子模块路径>， 即可（事实上父项目中仅更新了版本追踪信息）
-2. 更新子模块的仓库更新(更新前先切换到对应分支)
+2. 更新子模块的仓库更新(按照父模块中记录的commit进行更新)
 ```bash
 git submodule update
 ```
 > 注意更新后子模块目录并不会自动切换分支，需要自己手动切换
-如果是第一次切新的分支可以使用命令：
+如果是第一次拉取子模块可以使用命令：
 ```bash
 git submodule update --init --recursive
 ```
 可以使用如下命令使子模块追踪到对应远程仓库的版本
 ```bash
 git submodule update --recursive --remote
+
+```
+3. 子模块遍历操作
+```bash
+git submodule foreach 'git stash' #引号内是要对所有子模块进行的操作
 ```
 ### git config
 #### git config的三个级别
