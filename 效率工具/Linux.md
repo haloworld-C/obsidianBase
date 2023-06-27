@@ -14,3 +14,5 @@ sudo apt install -y kruler
 sudo apt install okular
 ```
 - foxit 阅读器
+4. 电子书发布工具gitbook
+- 可以方便的将markdown内容制作成电子书，并发布为github.io的网页
