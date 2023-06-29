@@ -16,6 +16,7 @@
 | git pull|拉去当前分支最近内容并合并到本地（相当于fetch+merge）| --recurse-submodules 连带子模块一起拉取|
 | git push -u origin <branch_name> | 将本地分支推送到远程对应分支并关联（-u）| 后续只需要git push便可推送到对应分支|
 | git push origin --delete <branch_name> | 删除远程分支|
+| git push -f origin main | 回滚版本后，强制远程仓库同步回退|
 | git branch -d <branch_name>|删除本地分支（需要退出需要删除的分支才能删除）|-D为强制删除|
 | git status| 查看目前分支的修改状态|
 | git log| 查看git commit 的历史记录|git shortlog 历史记录的缩略版|
