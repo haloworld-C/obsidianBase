@@ -37,3 +37,20 @@ nparray.tolist() # 将nparray转化为list
 ```bash
 pip install "pybind11[global]"
 ```
+### pickle
+用于python原生数据点永久存储，缺点是只能够被python读取。如果需要跨语言可以使用json格式进行存储。
+#### 使用
+> ref: [基于内存点二进制和python对象转化](https://zhuanlan.zhihu.com/p/544792469)
+```python
+import pickle
+
+tup1 = ('hello Python', {1, 2, 3}, None)
+
+# 使用pickle.dumps()函数将元组tup1转换成p1
+p1 = pickle.dumps(tup1)
+print(p1)
+
+# 使用pickle.loads()函数将p1转化成Python对象
+t2 = pickle.loads(p1)
+print(t2)
+```
