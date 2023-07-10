@@ -7,6 +7,11 @@
 1. google 三件套
 	gtest, glog, gflags
 
+### 参数
+- 指定安装目录
+```bash
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+```
 
 ### Q&A
 1. 安装库后仍无法找到？

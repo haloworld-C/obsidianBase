@@ -119,7 +119,8 @@ $$
 $$
 U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+p-1|k}^T   \right]
 $$
-则由上述离散状态转移方程可以写出未来p个状态的状态转移方程： $$ \begin{equation} \begin{aligned}
+则由上述离散状态转移方程可以写出未来p个状态的状态转移方程：
+$$ \begin{equation} \begin{aligned}
 z_{k+1|k}&=\overline{A}z_k+\overline{B}u_k\\
 z_{k+2|k}&=\overline{A}z_{k+1|k}+\overline{B}u_{k+1|k} \\
 		&={\overline{A}}^2z_k+\overline{A}{\times}\overline{B}u_k+\overline{B}u_{k+1|k} \\

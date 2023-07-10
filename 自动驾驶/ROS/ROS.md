@@ -29,6 +29,7 @@ ROS中默认callback默认是线程安全的
 | catkin_make --only-pkg-with-deps [package name]|编译单个包及其依赖|
 | rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
 | rosdep|rosdep [package_name]|安装某个包的依赖|
+| rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
 
 ## 网络中的IP设置
 1. 单机 
@@ -378,4 +379,8 @@ rm *.active
 sudo apt-get -y install qtbase5-dev libqt5svg5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimedia5-plugins #安装依赖
 sudo apt-get install ros-<version>-plotjuggler # 安装plotjuggler
 sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
+```
+运行:
+```bash
+rosrun plotjuggler plotjuggler
 ```
