@@ -151,3 +151,8 @@ git config --global core.quotepath false #termianal里可能也设置一下支�
 ```bash
 git config --global core.editor nvim
 ```
+- 当本地分支没有远程分支时可以新建一个同名分支，然后拉取
+```bash
+git checkout -b <branch name>
+git pull origin <branch name>
+```
