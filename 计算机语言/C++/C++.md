@@ -255,3 +255,6 @@ auto coutPair = [](std::string a, double parameter){
 
 ### 遇到的问题
 1. ROS plugin中的函数加入inline 标志后无法识别
+2. helper函数写在hpp文件中，多个地方引用时出现"多次定义错误"
+	- 对于helper函数，一般都是全局的，所以尽量将定义与实现分离
+	- hpp适于写类与结构体进行封装
