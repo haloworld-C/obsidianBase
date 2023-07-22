@@ -258,3 +258,4 @@ auto coutPair = [](std::string a, double parameter){
 2. helper函数写在hpp文件中，多个地方引用时出现"多次定义错误"
 	- 对于helper函数，一般都是全局的，所以尽量将定义与实现分离
 	- hpp适于写类与结构体进行封装
+	- 利用匿名命名空间进行处理

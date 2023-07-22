@@ -362,7 +362,11 @@ nh_private.param<double>("parameters/dt", p_dt); // 这两种读取方式等价,
 ```
 ####  使用map结构一次性读取
 
-#### Q&S
+#### 使用Dynamic Reconfigure进行读取
+> 这种方式非常适合与动态调参的场景
+> [tutorial](http://wiki.ros.org/dynamic_reconfigure/Tutorials)
+
+### Q&S
 1. 清理编译后应该进行source 操作以便识别路径
 2. rosbag .active的处理
 ```bash
