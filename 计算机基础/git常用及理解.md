@@ -1,6 +1,7 @@
 | command | discription | comment|
 |------|----------|---------|
 | git branch | 查看当前分支||
+|git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
 | git checkout -b [branch-name] |创建新分支|
 | git remote -v | 查看远程仓库主分支| 
 | git fetch | 获取远程仓库内容|
@@ -34,7 +35,6 @@
 | git merge-base <base branch> <to_comare branch>|询问两个待合并分支的common commit|合并前先看下|
 |git rev-parse --short @|查看当前版本编号|（如果是bf1908d）,在合并失败后可以git reset --hard bf1098d来恢复合并后的版本|
 |git checkout --confict diff3 [filepath]|查看待合并的两个版本加上commit base三者之间的差异||
-|git branch -m [old-branch-name]  [new-branch-name]|修改已经存在的分支名称|
 |git submodule update --init --recursive |用于首次git clone 后的子模块拉取|
 |git remote rm origin |删除远程仓库地址|
 |git remote add origin [新仓库地址]|删除远程仓库地址|
