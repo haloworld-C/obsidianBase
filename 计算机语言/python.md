@@ -1,16 +1,44 @@
 ### 基础语法
+- 断行符 \
 
+#### 列表解析
+
+#### lambda表达式
+其形式为：lambda argument_list:expersion
+```python
+sqrt_2 = lambda n, n*n
+```
+缺点是表达式只能是一条语句。
 ### 官方库
 #### pyinstaller 
 python脚本打包为可执行文件
 ### 第三方库
-### numpy
-####  core concept
+#### 安装方式
+主要通过pip包管理工具进行安装:
+```bash
+pip install [package name] #适用python2
+pip3 install [package name] #适用python3
+```
+使用国内源:
+- 临时使用：
+```bash
+pip3 install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+- 配置文件
+```~/.pip/pip.conf
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = https://pypi.tuna.tsinghua.edu.cn
+```
+
+#### numpy
+#####  core concept
 - ndarray, 核心数据结构
 - broadcasting(element by element)
 - axis
 - 广播(为默认模式)
-#### 常用操作
+##### 常用操作
 ```python
 # 逐元素操作
 np.sum(nparray) 
@@ -53,4 +81,16 @@ print(p1)
 # 使用pickle.loads()函数将p1转化成Python对象
 t2 = pickle.loads(p1)
 print(t2)
+```
+### pynput
+- 键盘鼠标交互库
+安装
+```bash
+pip install pynput
+```
+#### 遇到的问题
+- pip2 安装最新版本失败
+解决方案: 安装低版本(这也是常用多一种安装软件包失败多解决方案)
+```bash
+pip install pynput==1.6.0
 ```
