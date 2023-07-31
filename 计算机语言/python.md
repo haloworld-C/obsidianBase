@@ -1,5 +1,6 @@
 ### 基础语法
 - 断行符 \
+- python中一切皆对象，赋值均为浅拷贝
 
 #### 列表解析
 
@@ -15,6 +16,11 @@ python脚本打包为可执行文件
 ### 第三方库
 #### 安装方式
 主要通过pip包管理工具进行安装:
+- pip安装
+```bash
+sudo apt install python-pip
+```
+- 具体包安装
 ```bash
 pip install [package name] #适用python2
 pip3 install [package name] #适用python3
