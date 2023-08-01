@@ -94,9 +94,33 @@ print(t2)
 ```bash
 pip install pynput
 ```
+#### demo
+```python 
+from pynput.keyboard import Key, Listener # keyboard interaction lib
+keyListener = Listener(on_press = self.on_press, suppress=True)# suppress 代表全局监听
+keyListener.start()
+def on_press(self, key):
+	try:
+		print('key {0} pressed'.format(key.char))
+		if key.char == 'q':
+			self.isFinished = True
+		except AttributeError:
+			print("some thing goes wrong..")
+```
 #### 遇到的问题
 - pip2 安装最新版本失败
 解决方案: 安装低版本(这也是常用多一种安装软件包失败多解决方案)
 ```bash
 pip install pynput==1.6.0
+```
+- ssh到arm 平台上无效
+在本机的ssh配置文件/etc/ssh/sshd_config中去掉以下行的注释:
+```/etc/ssh/sshd_config
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost yes
+```
+然后登录的时候在ssh命令中加入x server选项:
+```bash
+ssh user@address -X
 ```
