@@ -9,7 +9,7 @@
 | /word | 向下搜索名为word的字符串 | 
 | ？word | 向上搜索名为word的字符串|
 | n,N | 重复上一次查找操作 | 使用/word后可向下跳转（类似于下一个，N为上一个）
-| :n1, n2/word1/word2/g | 在第n1与n2行之间搜索word1并替换为word2| g的意思是替换
+| :n1, n2s/word1/word2/g | 在第n1与n2行之间搜索word1并替换为word2| g的意思是替换
 |:1, $s/word1/word2/g |从第一行到最后一行搜索并替换为word2
 | ctrl + r |恢复上一次操作 | 与u对应
 | . | 重复上次操作 | 类似word 中的f4|
