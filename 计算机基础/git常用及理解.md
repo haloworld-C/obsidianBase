@@ -40,6 +40,7 @@
 |git remote add origin [新仓库地址]|删除远程仓库地址|
 |git clone [repo] --recursive |用于首次git clone 时连带子模块拉取|
 |git show [commit] -- [filepath]|查看某次commit多具体文件做了哪些修改||
+|git cherry-pick [commit]|仅将单个commit内部修改的内容合并到当前分支|失败回退: git cherry-pick --abort|
 
 ### concepts
 1. git pull = git fetch + git merge
