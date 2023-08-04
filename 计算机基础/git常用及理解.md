@@ -147,7 +147,7 @@ git config --global user.email guangshen.zhi@westwell-lab.com
 - 终端下git status乱码问题
 solution: 
 ```bash
-git config --global core.quotepath false #termianal里可能也设置一下支持中文utf-8
+git config --global core.quotepath false #termianal里可能也设置一下支持中文utf-8, 在zsh中本身就支持utf-8
 ```
 - 修改默认编辑器
 ```bash
