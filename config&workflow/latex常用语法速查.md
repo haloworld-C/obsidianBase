@@ -17,6 +17,12 @@
 |lvert|竖|绝对值左边| 
 |rvert|竖|绝对值右边边| 
 
+不常用希腊字母
+
+|命令行名称|说明|补充|
+|---|---|---|
+|\chi|$\chi$|| 
+
 - 分组注释
 $$
 \begin{matrix}\underbrace{cos\theta_c*v_{xr}+sin\theta_c*v_{yr}} \\ v_r\ project\ to\ v_c\end{matrix}-\begin{matrix}\underbrace{(cos\theta_c*v_c*cos\theta_c + sin\theta_c*v_c*sin\theta_c) }\\ v_c \end{matrix}
