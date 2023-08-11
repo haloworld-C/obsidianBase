@@ -63,6 +63,15 @@ apt-file search [lib-xxx.so] # 返回包含该动态库的安装包
 ### 自动化
 1. ansible playbook
 2. cron
+示例：
+```cron
+#crontab -e
+# m h  dom mon dow   command
+ 0 9-20/1 * * * notify-send ["该休息一下啦"] "喝水！伸懒腰！动一动！"
+ 45 9 * * 1-6 zenity --width 500 --info --title "打卡" --text "上班啦！你打卡了吗？记得去泡咖啡！"
+ 5 19 * * 1-6 zenity --width 500 --info --title "打卡" --text "下班啦！你打卡了吗？记得关灯！"
+```
+
 3. expect
 #### 开机自启动
 1. 在/etc/profile.d/文件夹下面写脚本
