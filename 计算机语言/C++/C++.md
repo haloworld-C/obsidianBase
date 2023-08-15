@@ -83,7 +83,8 @@ auto p = &*foo.begin();
 
 #### C++ 常用库
 ##### STL
-#### 无穷大 
+#### 数值
+- 无穷大
 ```C++
 std::numeric_limits<T> ::infinity()
 ```
@@ -94,6 +95,25 @@ std::numeric_limits<T>::max()
 ```
 代替
 包含在头文件limits.h头文件当中 
+#### algorithm
+- 倒转元素
+```C++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
+
+    std::reverse(myVector.begin(), myVector.end());
+
+    for (int num : myVector) {
+        std::cout << num << " ";
+    }
+
+    return 0;
+}
+```
 
 ##### Boost
 
