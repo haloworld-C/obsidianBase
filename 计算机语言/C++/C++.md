@@ -43,6 +43,12 @@ c_char_writable[str.size()] = '\0'; //don't foget the terminating
 // when use finished, remember to delete the memory
 delete[] c_char_writable;
 ```
+3. 将string字符转换为ascii码
+```C++
+#include <cctype>
+std::string s;
+toascii(s[0])
+```
 - boost::scoped_array(异常安全)
 ```C++
 std::string str;
