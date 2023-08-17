@@ -43,6 +43,12 @@ c_char_writable[str.size()] = '\0'; //don't foget the terminating
 // when use finished, remember to delete the memory
 delete[] c_char_writable;
 ```
+3. 将string字符转换为ascii码
+```C++
+#include <cctype>
+std::string s;
+toascii(s[0])
+```
 - boost::scoped_array(异常安全)
 ```C++
 std::string str;
@@ -77,6 +83,42 @@ auto p = &*foo.begin();
 
 #### C++ 常用库
 ##### STL
+##### vector
+
+##### list
+- 在第k个元素前插入
+```C++
+#include <iostream>
+#include <list>
+
+int main() {
+    std::list<int> myList = {10, 20, 30, 40, 50};
+
+    // Inserting an element at the kth position (k = 2 in this example)
+    int k = 2;
+    std::list<int>::iterator it = myList.begin();
+    std::advance(it, k);  // Move the iterator to the kth position
+
+    myList.insert(it, 25); // Insert the value 25 at the kth position
+
+    // Print the updated list
+    for (int num : myList) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
+```
+
+
+##### queue
+
+##### map
+
+##### set
+
 #### 数值
 - 无穷大
 ```C++
