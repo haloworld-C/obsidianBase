@@ -98,6 +98,8 @@ int main() {
     int k = 2;
     std::list<int>::iterator it = myList.begin();
     std::advance(it, k);  // Move the iterator to the kth position
+						  // since C++17
+	// std::next(it, k); // since C++11
 
     myList.insert(it, 25); // Insert the value 25 at the kth position
 
