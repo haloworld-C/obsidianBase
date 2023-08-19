@@ -152,6 +152,12 @@ int main() {
     return 0;
 }
 ```
+- 迭代器与index计算
+```C++
+std::next(iter, 5); //在iter迭代器上递增5(since C++11)
+std::advance(iter, 5); //在iter迭代器上递增5(since C++17)
+std::distance(input_path.begin(), precise_planning_iter); // 计算两个迭代器之间的步长
+```
 
 ##### Boost
 
