@@ -1,6 +1,7 @@
 ## Nav1
 ### concepts
-
+- occupancy grid map
+- grid map
 ### archtect
 ![lanelet2_arch](../../Resourse/ros_nav_arch.png)
 #### 外部接口
