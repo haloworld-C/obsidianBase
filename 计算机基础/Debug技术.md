@@ -1,8 +1,25 @@
 ## Debug思路
+- debug的目的是解决程序运行的非预期bug，一般在程序部署运行后使用。对于研发阶段的bug应该通过测试驱动的流程来规避。
 
 ### Debug 工具
 #### gdb
 - 常用命令
+
+|命令行名称|说明||
+|---|---|---|
+|help |显示命令帮助||  
+|run |启动程序||  
+|continue |启动程序||  
+|break | 加入断点| break [源文件：行号]，在某行加入断点 break function_name为某个函数设置断点 |
+|delete | 删除断点| delete [源文件：行号]，在某行加入断点 delete function_name为某个函数设置断点 |
+|next|执行下一行代码|并不会进入子函数, step会进入子函数   |
+|step|执行下一行代码|   |
+|print my_var|查看断点处的变量状态|print/x my_var 以十六进制进行显示  |
+|watch my_var|监视某个变量， 如果变量发生改变则暂停程序|  |
+|backtrace|显示 seg fault 前的函数调用过程|  |
+|where|显示 seg fault 前的函数调用过程|  |
+|list|显示发生错误附近的源码|  list [function]显示function源码|
+
 - gdb -tui
 #### cgdb(图形化gdb工具)
 #### valgrind
@@ -42,7 +59,7 @@ SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall") 
 ```
 ### debug步骤
-1. 编译应添加debug选项
+1. 编译应添加debug支持
 - gcc/g++ 
 ```C
 $ gcc/g++ -g factorial.c # -g 支持源码显示
@@ -50,4 +67,9 @@ $ gcc/g++ -g factorial.c # -g 支持源码显示
 - CMake
 ```CMakeLists.txt
 SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+```
+2. 以gdb或cgdb运行程序
+```bash
+gdb executa_file
 ```
