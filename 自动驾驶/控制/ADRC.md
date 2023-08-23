@@ -1,0 +1,1 @@
+ADRC (Active Disturbance Rejection Control) 是一种控制策略，目的是有效地处理不确定性和外部扰动，从而实现对复杂动态系统的鲁棒控制
