@@ -67,9 +67,7 @@ apt-file search [lib-xxx.so] # 返回包含该动态库的安装包
 ```cron
 #crontab -e
 # m h  dom mon dow   command
- 0 9-20/1 * * * notify-send ["该休息一下啦"] "喝水！伸懒腰！动一动！"
- 45 9 * * 1-6 zenity --width 500 --info --title "打卡" --text "上班啦！你打卡了吗？记得去泡咖啡！"
- 5 19 * * 1-6 zenity --width 500 --info --title "打卡" --text "下班啦！你打卡了吗？记得关灯！"
+ 0 * * * * /bin/bash -c 'DISPLAY=:0 zenity --width 500 --info --title "一休！休息一下!" --text "喝水>    ！上厕所!"' >> /home/test/Documents/logs/cron/logfile 2>&1
 ```
 
 3. expect

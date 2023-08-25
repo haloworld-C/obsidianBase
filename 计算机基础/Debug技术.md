@@ -15,6 +15,7 @@
 |next|执行下一行代码|并不会进入子函数, step会进入子函数   |
 |step|执行下一行代码|   |
 |print my_var|查看断点处的变量状态|print/x my_var 以十六进制进行显示  |
+|dispaly my_var|自动显示断点处的变量状态|dispaly/x my_var 以十六进制进行显示  |
 |watch my_var|监视某个变量， 如果变量发生改变则暂停程序|  |
 |backtrace|显示 seg fault 前的函数调用过程|  |
 |where|显示 seg fault 前的函数调用过程|  |
@@ -22,6 +23,11 @@
 
 - gdb -tui
 #### cgdb(图形化gdb工具)
+##### core concept
+- 源文件窗口
+	 - 按[esc]进入源文件窗口
+	 - 按o进入当前加载的程序相关的文件窗口 
+- gdb调试窗口
 #### valgrind
 ##### core concept
 - 常用来定位内存问题
@@ -40,10 +46,12 @@ catkin_make -DCMAKE_BUILD_TYPE=Debug -DFORCE_DEBUG_BUILD=True
 ```
 2. 需要debug的节点的lauch文件添加launch-prefix="xterm -e gdb -ex run --args"
 ```xml
-<node pkg="waypoint_follower" type="pure_persuit" name="pure_pursuit" output="screen" launch-prefix="xterm -e gdb -ex run --args">
+<node pkg="waypoint_follower" type="pure_persuit" name="pure_pursuit" output="screen" launch-prefix="xterm -e gdb -ex run --args"> 
         <param name="is_linear_interpolation" value="$(arg is_linear_interpolation)"/>
 </node>
 ```
+> #可以把-ex run 去掉，这样就有机会设置断点
+
 3. cmake 源码无法同步显示
 在Cmakefile中添加如下编译选项
 ```CMakefile
@@ -73,3 +81,5 @@ SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
 ```bash
 gdb executa_file
 ```
+3. 调试
+- 可以在主程序中添加断点，然后通过step进入调用函数中再次设置断点
