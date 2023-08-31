@@ -37,6 +37,7 @@ DWA中考虑的代价有三项：
 
 ##### hybrid方法
 - EM planner
+也叫二次规划(DP + QP)
 
 ##### 人工势场(potential field)
 通常用来计算避障代价
