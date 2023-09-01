@@ -9,6 +9,8 @@
 - 优点，通用性足够, 比较稳定
 - path_opttimizer_2
 > [github](https://github.com/LiJiangnanBit/path_optimizer_2)
+- Piecewise Jerk Path Optimizer
+> [paper]()
 
 优化目标函数：
 $$
