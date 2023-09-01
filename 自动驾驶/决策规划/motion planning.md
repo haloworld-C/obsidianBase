@@ -4,7 +4,9 @@
 ##### 基于搜索
 - dynamic programming(DP)
 通常为基于栅格地图，比较经典的算法有A*， RRT算法等
+- 缺点：生成的路径为离散点，需要平滑后才能让运动体执行
 ##### 基于优化
+- 优点，通用性足够, 比较稳定
 - path_opttimizer_2
 > [github](https://github.com/LiJiangnanBit/path_optimizer_2)
 
@@ -14,8 +16,7 @@ O = w_1 \sum_{i=1}^{N}k_i^2+ w_2 \sum_{i=1}^{N-1}k^\prime_(i)^2+ w_3 \sum_{i=1}^
 $$
 ##### 基于采样
 1. control sampling method(动作采样)
-
-好处是输出是机器可执行的动作序列, 但是有可能不满足环境约束
+- 特点：是输出是机器可执行的动作序列, 但是有可能不满足环境约束
 - DWA(The Dynamic Window Approach to Collision Avoidance)
 容易陷入局部最优
 DWA中考虑的代价有三项：
@@ -33,7 +34,7 @@ DWA中考虑的代价有三项：
 4) 格栅地图
 
 
-##### 基于AI
+##### 基于学习
 
 ##### hybrid方法
 - EM planner
