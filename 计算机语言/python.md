@@ -124,3 +124,9 @@ X11UseLocalhost yes
 ```bash
 ssh user@address -X
 ```
+- ssl证书问题
+使用以下证书添加特定域名的信任:
+```bash
+pip install --trusted-host pypi.python.org package_name
+pip install --trusted-host pypi.tuna.tsinghua.edu.cn pynput==1.6.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
