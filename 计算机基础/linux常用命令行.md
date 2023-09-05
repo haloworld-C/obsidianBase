@@ -53,6 +53,28 @@ sudo apt install apt-file # 安装
 sudo apt-file update # 读取软件库index
 apt-file search [lib-xxx.so] # 返回包含该动态库的安装包
 ```
+5. ffmpeg视频压缩
+- 安装
+```bash
+sudo apt install ffmpeg
+```
+- 压缩视频
+```bash
+ffmpeg -y -i test.avi -s 400x240 -vcodec libx264 -preset fast -b 80000 -r 25 out.mp4
+# 命令参数：
+# -y: 当已存在out.mp4是，不提示是否覆盖。
+# -i : “test.avi” 输入文件名，可以自己修改路径和名字
+# -s: 400x240 输出的分辨率，注意片源一定要是16:9的不然会变形
+# -vcodec -libx264: 输出文件使用的编解码器。
+# -preset fast: 使用libx264做为编解码器时，需要带上这个参数。
+# -b: 80000 视频数据流量，用-b xxx表示使用固定码率，数字可更改；还可以用动态码率如：-qscale 4和-qscale 6，4的质量比6高（一般用80000就可以了，否则文件会很大）
+# -acodec: aac 音频编码用AAC
+# -ac 2 声道数1或2
+# -ar: 48000 声音的采样频率
+# -ab: 128 音频数据流量，一般选择32、64、96、128#-vol 200 200%的音量，可更改（如果源文件声音很小，可以提升10到20倍1000%~2000%）
+# -r: 25 帧数 (一般用25就可以了)
+# out.mp4: 输出文件名。
+```
 
 
 ### 注意事项

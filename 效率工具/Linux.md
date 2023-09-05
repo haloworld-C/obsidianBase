@@ -14,5 +14,9 @@ sudo apt install -y kruler
 sudo apt install okular
 ```
 - foxit 阅读器
+功能更加完整，体验更好，推荐
 4. 电子书发布工具gitbook
 - 可以方便的将markdown内容制作成电子书，并发布为github.io的网页
+5. 视频播放软件
+- VLC
+Linux下最强播放器
