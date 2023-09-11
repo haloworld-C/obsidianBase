@@ -63,7 +63,7 @@ sudo apt install ffmpeg
 ffmpeg -y -i test.avi -s 400x240 -vcodec libx264 -preset fast -b 80000 -r 25 out.mp4
 # 命令参数：
 # -y: 当已存在out.mp4是，不提示是否覆盖。
-# -i : “test.avi” 输入文件名，可以自己修改路径和名字
+# -i : “test.avi” 输入文件名
 # -s: 400x240 输出的分辨率，注意片源一定要是16:9的不然会变形
 # -vcodec -libx264: 输出文件使用的编解码器。
 # -preset fast: 使用libx264做为编解码器时，需要带上这个参数。
@@ -72,10 +72,15 @@ ffmpeg -y -i test.avi -s 400x240 -vcodec libx264 -preset fast -b 80000 -r 25 out
 # -ac 2 声道数1或2
 # -ar: 48000 声音的采样频率
 # -ab: 128 音频数据流量，一般选择32、64、96、128#-vol 200 200%的音量，可更改（如果源文件声音很小，可以提升10到20倍1000%~2000%）
+# -an 移除音频
 # -r: 25 帧数 (一般用25就可以了)
 # out.mp4: 输出文件名。
 ```
-
+6. sshpass免密码登录ssh
+```bash
+sshpass -p nvidia ssh nvidia@192.168.1.188
+```
+> 可能先要登录一下ssh添加信任设备
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
