@@ -1,4 +1,5 @@
 ### core concept
+绘图机制基于OpenGL
 
 ### 2D图形绘制
 	- simpleplot 用于显示2D曲线

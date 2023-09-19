@@ -29,8 +29,9 @@ docker ps -a
 ```
 - 进入某个运行中的镜像命令行
 ```bash
-docker exec -it [container ID] env LANG=C.UTF-8 /bin/bash
+docker exec -it [container ID] -w [default workdir] env hLANG=C.UTF-8 /bin/bash
 # env LANG=C.UTF-8 设置docker 命令行支持中文环境
+# -w(workdir)， 设置默认的进入docker后的默认目录
 ```
 - 列出本机docker 镜像
 ```bash
@@ -115,7 +116,7 @@ docker build <script>
 |USER|设置当前用户||
 |CMD|进入容器后默认执行该命令|可以被docker run 进行覆盖,当执行脚本时，需要将脚本权限更改为可执行|
 |ENTERPOINT|docker run image后面的命令会被当做参数传递给ENTERPOINT|当与CMD同时存在时会将CMD指令当做参数传递给ENTERPOINT，当用户覆盖了CMD时将用户指定的命令当做参数|
-||||
+
 ### docker-compose
 #### 安装
 1. 下载可执行文件
