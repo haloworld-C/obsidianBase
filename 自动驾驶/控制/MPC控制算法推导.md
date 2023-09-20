@@ -230,7 +230,7 @@ $\overline{x}$为初始状态。
 $$
 \begin{equation}
 \begin{aligned}
-J(x_k,u_k)&=x_N^T{Q_N}x_N+\sum_{k=1}^{N-1}x_k^T{Q}x_k + \sum_{k=0}^{N-1}u_k^T{R_1}u_k-2Q_N{r_N}x_N-2Q\sum_{k=0}^{N-1}r_kx_k\\
+J(x_k,u_k)&=x_N^T{Q_N}x_N+\sum_{k=1}^{N-1}x_k^T{Q}x_k + \sum_{k=0}^{N-1}u_k^T{R_1}u_k-2Q_N{r_N}^Tx_N-2Q\sum_{k=0}^{N-1}{r_k}^Tx_k\\
 &=z^Tdiag(Q,\ldots,Q,Q_N,R_1,\cdots,R_1)_{(4*N+2*p)*(4*N+2*p)}z \\
 &+2[Qr_1, Qr_2,\cdots, Qr_{k-1}, Q_N{r_k}, 0, \cdots, 0]*z
 \end{aligned}

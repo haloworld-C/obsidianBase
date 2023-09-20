@@ -388,3 +388,42 @@ sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
 ```bash
 rosrun plotjuggler plotjuggler
 ```
+
+### 讨论
+#### 多线程环境
+1. 如果时纯粹的多消息回调的话不用加资源锁， 如果有用户自定义的线程和资源，则要加锁
+2. 自定义线程的ctrl+c中断处理
+```Python 
+#!/usr/bin/env python
+import rospy
+import threading
+
+'''
+@brief: simple controller for diff-robot, output:[w, v]
+'''
+
+class TrackController():
+	def __init__(self):
+		self.pathLock = threading.Lock()
+		self.controlThread = threading.Thread(target = self.main_thread)
+		self.controlThread.start()
+	def main_thread(self):
+		rate = rospy.Rate(30)
+		try: # 这里如果不加异常处理会raise error
+			while (not rospy.is_shutdown()):
+				if(self.gotOdom and self.track != None):
+					self.pathLock.acquire()
+					# do something
+					self.pathLock.release()
+					rate.sleep()
+					print("loop")
+		except rospy.ROSInterruptException:
+			pass
+if __name__ == '__main__':
+	try: # 异常处理保证ctrl+c 可以被捕捉到
+		rospy.init_node('simple_controller')
+		tc = TrackController()
+		rospy.spin() # 必须,否则捕捉不到ctrl+c异常
+	except KeyboardInterrupt:
+		ros.signal_shutdown('KeyboardInterrupt') # shutdown the node
+```
