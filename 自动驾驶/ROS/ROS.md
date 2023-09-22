@@ -427,3 +427,5 @@ if __name__ == '__main__':
 	except KeyboardInterrupt:
 		ros.signal_shutdown('KeyboardInterrupt') # shutdown the node
 ```
+####  tf树
+1. 如果在rviz中显示局部坐标系中的点，只需要将其投影到对应坐标系中即可, tf会自己转换的
