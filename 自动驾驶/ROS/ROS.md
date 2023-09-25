@@ -219,7 +219,7 @@ with base class type nodelet::Nodelet does not exist
 ```
 则一般是nodemanage的命令行在编译包后没有source.
 
-### 范例
+### C++范例
 1.  subscriber-publisher
 ```C++
 PID-CONTROLLER
@@ -294,8 +294,17 @@ int main(int argc, char **argv)
 	return 0;
 }
 ```
+### rospy范例
+#### 获取系统时间
+```Python
+import rospy
+start = rospy.Time.now()
+#do something ...
+end = rospy.Time.now()
+timeGap = (end - start).to_sec()
+```
 
-#### tips
+### tips
 - publisher设置latch=True，可以保存最后一次消息，知道有receiver接收到了才会消失。
 ### ROS中在callback函数中处理主程序中数据的三种方式
 1. 在主程序外声明全局变量
