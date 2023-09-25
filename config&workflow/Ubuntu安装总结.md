@@ -58,4 +58,10 @@ sudo apt update
 - terminator
 - git
 等
-> TODO：写一个init_install脚本
+### 补充
+#### 引导修复工具
+- windows系统: easybcd
+- ubuntu系统: boot-repair(最好用引导盘进行操作， 不要在本机操作)
+> TODO：
+> 1. 写一个init_install脚本
+> 2. 考虑做一个配置的系统固件
