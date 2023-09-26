@@ -39,6 +39,8 @@
 |df -h| 查看每个根目录下的分区大小 | |
 |shutdown -h [time]|关机 |单位为分钟， 0 或now为马上关机 |
 |crontab -e|编辑定时执行任务并开启服务|这个命令只对当前用户生效|
+|uname -r|查看内核版本||
+|lsb_release -r|查看ubuntu的版本||
 
 
 
@@ -81,6 +83,19 @@ ffmpeg -y -i test.avi -s 400x240 -vcodec libx264 -preset fast -b 80000 -r 25 out
 sshpass -p nvidia ssh nvidia@192.168.1.188
 ```
 > 可能先要登录一下ssh添加信任设备
+7. 引导修复
+- 本机修复
+```bash
+sudo os-prober # 探测本机安装的其他系统
+sudo update-gurb # 更新探测到的系统到grub引导
+```
+- 启动盘root-repair修复
+```bash
+sudo add-apt-repository ppa:yannubuntu/boot-repair 
+sudo apt-get update # 添加软件库
+sudo apt-get install -y boot-repair # 安装
+boot-repair #运行, 点击recommended repair即可
+```
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
