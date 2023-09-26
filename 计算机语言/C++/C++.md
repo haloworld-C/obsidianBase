@@ -124,6 +124,7 @@ int main() {
 #### 数值
 - 无穷大
 ```C++
+#include <limits>
 std::numeric_limits<T> ::infinity()
 ```
 这个无穷大的值只有在浮点数上才有，在其他整形数值类型上为0;
