@@ -76,6 +76,21 @@ auto p = &*foo.begin();
 ```
 ## C++
 ### 概念
+#### 基于对象与面向对象
+
+#### 特点
+- 继承
+	继承实际在一定程度上破坏了封装。 推荐使用has a (composit)代替 is a
+- 封装
+- 多态
+#### big five
+- 构造拷贝(constructor copy)
+- 赋值拷贝(assignment copy) 
+- 移动构造(move copy)
+- 移动赋值 
+- 析构函数
+	1. 用来释放内存资源, 否则会导致内存泄漏/溢出
+	2. 销毁对象的非static数据成员(析构函数体结束后)
 
 #### 左值引用与右值引用
 左值引用：类型 &引用名 = 左值表达式
@@ -328,6 +343,9 @@ auto coutPair = [](std::string a, double parameter){
 ```
 > 注意最后的分号
 
+#### this指针
+在类的非静态函数中可以使用this指针。代表指向对象的“虚拟”指针，代表了绑定关系。
+> 与python class 中的self类似
 
 ### 遇到的问题
 1. ROS plugin中的函数加入inline 标志后无法识别
@@ -337,3 +355,4 @@ auto coutPair = [](std::string a, double parameter){
 	- 利用匿名命名空间进行处理
  3. inline 位于cpp文件中会报链接错误
  这是因为inline会直接在函数出现的地方替换函数代码， 故需要在编译的时候知道实现的代码，解决方案是不使用inline标志，或将其放在.hpp文件中
+ 4. 类内常量引用成员如何进行处理?
