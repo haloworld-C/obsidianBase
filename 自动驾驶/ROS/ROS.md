@@ -48,14 +48,35 @@ esport ROS_MASTER_URI=http://[XXX.XXX.XXX.XXX]
 ```
 
 ## workflow
-安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
+- 安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
 ```bash
 $ source /opt/ros/<distro>/setup.bash
 ```
-每次进入命令行时，需要执行下面操作。以便ROS可以识别我们自己编译的包。或者将其写入~/.bashrc中。
+- 每次进入命令行时，需要执行下面操作。以便ROS可以识别我们自己编译的包。或者将其写入~/.bashrc中。
 ```bash
 $ source devel/setup.bash # devel为在我们的catkin_ws根目录中
 ```
+- rosdepc解决各种安装依赖
+```bash
+sudo pip install rosdepc
+sudo rosdepc init
+sudo rosdepc update
+```
+检查依赖:
+```bash
+rosdepc check --from-path [package path]
+```
+安装依赖:
+```bash
+rosdepc install --from-path [package path]
+```
+对整个工作空间进行依赖检查与安装:
+```bash
+rosdep check --from-path src --ignore-src -r -y
+rosdep install --from-path src --ignore-src -r -y
+```
+
+
 ## 常用模块
 ### rviz ROS
 可视化工具，可以进行3D显示

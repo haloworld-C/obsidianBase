@@ -312,6 +312,7 @@ class son : private nocopyable{
 
 };
 ```
+> 如果设置为delete, big three function都会不可用，这意味着你确实需要写一个赋值拷贝的构造
 ####  constexpr
 C++以后新增的flag, 声明常量值变量，在编译后会作为inline代码（换句话说，不存在于内存空间当中，相当与define）
 
@@ -334,3 +335,5 @@ auto coutPair = [](std::string a, double parameter){
 	- 对于helper函数，一般都是全局的，所以尽量将定义与实现分离
 	- hpp适于写类与结构体进行封装
 	- 利用匿名命名空间进行处理
+ 3. inline 位于cpp文件中会报链接错误
+ 这是因为inline会直接在函数出现的地方替换函数代码， 故需要在编译的时候知道实现的代码，解决方案是不使用inline标志，或将其放在.hpp文件中
