@@ -7,7 +7,7 @@ UEFI为目前的主流版本，为BIOS的升级版本(虽然现在说到BIOS， 
 - Legacy
 即传统的BIOS模式，通过硬盘的引导进入系统，只能为2TB以内的硬盘提供分区表
 - CMS
-而CMS是兼容了UEFI和Legacy Bios的板载系统，是UEFI的升级版本， 可以同时引导新旧系统。
+兼容了UEFI和Legacy Bios的板载系统，是UEFI的升级版本， 可以同时引导新旧系统。
 总而言之，要区分的是Legacy BIOS 和UEFI BIOS这两种， 而CMS则是两者的兼容模式
 #### 引导格式
 - MBR
@@ -23,7 +23,6 @@ windows下的系统引导程序
 Linux下的系统引导程序, 如果是双系统或者多系统，最好是让Linux引导Windows, 因为grub远比BCD灵活与稳定。
 ### 下载镜像
 对于Ubuntu而言推荐，xx.04的版本，应为是以十年为周期进行维护的，所以其内核版本会比较新。
-对于
 ### 制作启动U盘
 - 在windows下推荐uios进行烧录
 - 在ubuntu下可以使用系统自带的usb-creator
@@ -31,11 +30,13 @@ Linux下的系统引导程序, 如果是双系统或者多系统，最好是让L
 sudo usb-creator-gtk
 ```
 ### 安装系统
-主要容易错的地方是硬盘分区， 推荐如下
+第二个坑是系统分区，主要容易错的地方是硬盘分区， 推荐如下
 - /boot分区
 如果是Legacy启动，不需要单独的/boot分区
 如果UEFI启动，则需要一个500M左右的/efi分区，格式为fat32
-> 遇到一个问题，如果是UEFI启动则无法引导Legacy windows，解决方法是Ubuntu也采用Legacy的模式， 如果所有系统都是UEFI模式则可正常引导
+- 遇到一个问题，如果是UEFI启动则无法引导Legacy windows，解决方法是(推荐第二种方法， 第一种不能发挥出硬件的全部性能, 且不能很方便地切换到大硬盘上)
+	1. Ubuntu也采用Legacy的模式
+	2. 将Legacy Windows 转换为UEFI模式则可正常引导
 - /swap分区
 其容量为内存打下的两倍即可, 太小可能导致内存满的情况性能衰退
 - / 根目录分区
