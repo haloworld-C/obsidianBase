@@ -27,3 +27,7 @@ StartupNotify=true
 Exec 和 Icon 后面的代码需要根据你 obsidian 的实际安装的位置替换（Exec就是启动软件的可执行文件位置，Icon就是要显示的启动图标位置，icon可以是jpg、png、svg等格式）。
 
 编辑好后保存退出，然后在启动器上输入“Name[zh_CN]=”后面的内容，就可以显示相应的启动图标了。
+- 设置自动启动
+```bash
+sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
+```
