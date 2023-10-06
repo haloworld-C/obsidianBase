@@ -141,9 +141,9 @@ docker-compose version
 #### 运行
 
 ### Q&A
-1.  安装docker后出现permission denied错误
-- 原因：docker 进程使用Unix Socket而不是TCP端口。而默认情况下，Unix socket属于root用户，需要root权限才能访问。
-- 解决方案（来源：菜鸟教程）
+1.   安装docker后出现permission denied错误
+-  原因：docker 进程使用Unix Socket而不是TCP端口。而默认情况下，Unix socket属于root用户，需要root权限才能访问。
+ 解决方案（来源：菜鸟教程）
 （1）命令行都用sudo执行
 （2）docker守护进程启动的时候，会默认赋予名字为docker的用户组读写Unix socket的权限，因此只要创建docker用户组，并将当前用户加入到docker用户组中，那么当前用户就有权限访问Unix socket了，进而也就可以执行docker相关命令。
 ```bash
@@ -152,6 +152,11 @@ sudo gpasswd -a $USER docker #将登陆用户加入到docker用户组中
 newgrp docker #更新用户组 
 docker ps #测试docker命令是否可以使用sudo正常使用
 ```
+2. 一些国外镜像pull慢
+解决方案又两种:
+	 - 配置命令行翻墙代理(clash), 详见
+	 - 使用第三方加速服务([public-image-mirror](https://github.com/DaoCloud/public-image-mirror)) 
+
 
 ### 备忘
 个人docker 默认密码
