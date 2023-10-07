@@ -23,7 +23,7 @@
 | whereis [package] | 查找package的环境路径| 
 | whichis [file name] | 查找file的文件位置| 
 | sudo ldconfig | 更新链接库|
-| *网络相关*|||
+|*网络相关*|
 |telnet ip:port|            |
 |service network-manager restart|重启网络服务            |
 |clear | 清楚命令行窗口历史文本|
@@ -39,8 +39,10 @@
 |df -h| 查看每个根目录下的分区大小 | |
 |shutdown -h [time]|关机 |单位为分钟， 0 或now为马上关机 |
 |crontab -e|编辑定时执行任务并开启服务|这个命令只对当前用户生效|
+| *系统相关*|
 |uname -r|查看内核版本||
 |lsb_release -r|查看ubuntu的版本||
+|free -h|查看系统内存||
 
 
 
