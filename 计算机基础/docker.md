@@ -155,7 +155,9 @@ docker ps #测试docker命令是否可以使用sudo正常使用
 2. 一些国外镜像pull慢
 解决方案又两种:
 	 - 配置命令行翻墙代理(clash), 详见
-	 - 使用第三方加速服务([public-image-mirror](https://github.com/DaoCloud/public-image-mirror)) 
+	 - 使用第三方加速服务
+> [public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
+> 将 ghcr.io 替换为 ghcr.nju.edu.cn 即可
 
 
 ### 备忘
