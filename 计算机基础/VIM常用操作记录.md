@@ -1,3 +1,5 @@
+### 常用命令
+![vim key](vim_key.png)
 
 | command | discription | comment|
 |------|----------|---------|
@@ -32,12 +34,13 @@
 |[shift] + \*|搜索当前单词| 
 |:set number|显示行号| 
 |:set nonumber|不显示行号| 
+|:m[mark name]|标记书签|如果书签名字是小写字母，则为局部书签，大写字母则是全局书签|
+|:\`[mark name]|跳到书签的行首|
+|:marks|列出所有书签|
+|:delmarks [mark name]|删除书签|
 
-- vim 配置：
+- vim 配置参考：
 [amix/vimrc](https://github.com/amix/vimrc)
-### vim 编辑器
-1. vim(原生自带, 兼容vi)
-2. neovim(推荐)
 ### vim使用技巧
 #### 多行注释
 1. 首先按esc进入命令行模式，按下ctrl+v， 进入区块选择模式
@@ -46,3 +49,30 @@
 4. 此时光标会进入选中的第一行， 输入# 、// 等符号
 5. 按esc退出，然后所有选中行首都会加上刚才输入的字符
 > 删除同理
+
+### `neovim`配置使用
+#### 安装
+```bash
+sudo apt-add-repository ppa:neovim-ppa/stable #版本较低
+sudo add-apt-repository ppa:neovim-ppa/unstable -y #最新版本
+sudo apt-get update
+sudo apt-get install neovim
+```
+#### 配置
+
+##### 插件使用
+
+#### `vscode`中使用
+- 区分`nvim`本地使用和在`vscode`中的使用, 进行分别配置
+```$HOME/.config/nvim/init.vim
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+endif
+```
+- `setting.json`配置
+```
+"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+"vscode-neovim.neovimInitVimPaths.linux": "/home/test/.config/nvim/init.vim"
+```
