@@ -39,6 +39,18 @@ sudo usb-creator-gtk
 	2. 将Legacy Windows 转换为UEFI模式则可正常引导
 - /swap分区
 其容量为内存打下的两倍即可, 太小可能导致内存满的情况性能衰退
+> 更加灵活的做法：也可以不分swap分区，系统会自动在根目录创建一个swap文件，我们可以后期调整这个文件的大小以适应我们的内存升级,操作如下
+```bash
+# 1. 从交换区移除以便对swapfile进行操作
+sudo swapoff /swapfile #swapfile指的是当前根目录下的swap文件
+# 2. 调整大小
+sudo dd if=/dev/zero of=/swapfile bs=1G count=16 oflag=append conv=notrunc
+# 3. 重新格式化为交换空间
+sudo mkswap /swapfile
+# 4. 启动交换空间
+sudo swapon /swapfile
+```
+
 - / 根目录分区
 一般60G就够用了
 - /home分区
