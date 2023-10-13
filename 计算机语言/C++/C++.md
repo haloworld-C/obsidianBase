@@ -93,7 +93,25 @@ auto p = &*foo.begin();
 ```
 ## C++
 ### 概念
-#### 基于对象与面向对象
+C++是一个语言大杂烩，主要有四种编程范式:
+1. 面向过程
+2. 面向对象
+3. 泛型编程
+4. 元编程(meta programming)
+### 基本语法
+
+### 泛型编程 (`template`)
+- 模板函数
+```cpp
+template <class Tl, class T2>
+T2 print(T1 argl, T2 arg2)
+{
+    cout << arg1 << " " << arg2 << endl;
+    return arg2;
+}
+```
+> 注意: 模板函数的实现也应放在头文件中，否则可能出现链接问题
+### 基于对象与面向对象
 
 #### 特点
 - 继承
