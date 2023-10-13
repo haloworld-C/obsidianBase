@@ -3,6 +3,9 @@
 
 | command | discription | comment|
 |------|----------|---------|
+|`nj`| 向下移动n行|
+|`nk`| 向上移动n行|
+|Ctrl+f| 向下翻页|
 |Ctrl+f| 向下翻页|
 | Ctrl + b | 向上翻页|
 | N[enter] | 向下移动n行| n为数字|
