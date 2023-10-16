@@ -49,7 +49,12 @@
 
 ### 高效小工具
 1. terminator多页面命令行终端
-2. fish交互式命令提示工具(不如zsh好用)
+terminator安装完成后会设置为默认terminal，如果我们要切换回系统自带终端：
+```bash
+ sudo update-alternatives --config x-terminal-emulator
+```
+然后选择`/usr/bin/gnome-terminal.wrapper`
+2. `zsh` + `oh-my-zsh`
 3. 考虑使用aptitude作为日常软件的管理工具，而apt作为系统升级的工具
 4. apt-file工具可以查找某个动态链接库的安装包：
 ```bash
