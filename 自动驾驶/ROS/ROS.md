@@ -394,6 +394,7 @@ private_nh.param("pid_param/speed/kp", speedKp, 2.4);// 提供默认参数， �
 > `param`函数对`launch`文件中形成的`nested`参数列表进行解析，优点是易于配置，缺点是配置参数的读取较为繁琐(尤其是很多变量的时候)
 ####  使用map结构一次性读取
 - `yaml-cpp`
+参见[[yaml-cpp]]
 
 #### 使用Dynamic Reconfigure进行读取
 > 这种方式非常适合与动态调参的场景
