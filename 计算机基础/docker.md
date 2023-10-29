@@ -158,6 +158,30 @@ docker ps #测试docker命令是否可以使用sudo正常使用
 	 - 使用第三方加速服务
 > [public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 > 将 ghcr.io 替换为 ghcr.nju.edu.cn 即可
+3. 在docker 中使用宿主机的翻墙代理
+- 配置docker代理`~/.docker/config.json`
+```json
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://127.0.0.1:7890",
+     "httpsProxy": "http://127.0.0.1:7890",
+     "noProxy": "localhost"
+   }
+ }
+}
+```
+- 重启docker服务
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+- 进入docker时使用`host`模式
+```BASH
+docker run -it --network=host --name=ubuntu ubuntu:18.04
+```
 
 
 ### 备忘
