@@ -422,6 +422,8 @@ sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
 ```bash
 rosrun plotjuggler plotjuggler
 ```
+- `ros_vis_tools`
+方便的`rviz`可视化工具。
 
 ### 讨论
 #### 多线程环境
