@@ -69,7 +69,7 @@ sudo apt install ffmpeg
 ```
 - 压缩视频
 ```bash
-ffmpeg -y -i test.avi -s 400x240 -vcodec libx264 -preset fast -b 80000 -r 25 out.mp4
+ffmpeg -y -i test.avi -s 800x640 -vcodec libx264 -preset fast -qscale 4 -r 25 out.mp4
 # 命令参数：
 # -y: 当已存在out.mp4是，不提示是否覆盖。
 # -i : “test.avi” 输入文件名
