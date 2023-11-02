@@ -108,6 +108,15 @@ boot-repair #运行, 点击recommended repair即可
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
 - 如果你不理解正在做什么，坚决不做
 
+####  问题
+1. expect中应该使用双引号
+```expect
+spawn rsync -avzP --progress -e  'ssh -p 8100' nvidia@47.98.115.107:/home/nvidia/Documents/code/install    /    ./ #报参数不识别
+spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/code/install/  /home/test/Downloads # 应该使用双引号
+
+```
+
+
 ## Linux维护
 ### 自动化
 1. ansible playbook
