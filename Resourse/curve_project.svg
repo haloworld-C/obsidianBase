@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:docname="curve_project.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="6.0578002"
+     inkscape:cx="462.13145"
+     inkscape:cy="446.20158"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <pattern
+       inkscape:collect="always"
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="1"
+       patternTransform="translate(0,0) scale(10,10)"
+       id="Strips1_1"
+       inkscape:stockid="Stripes 1:1"
+       inkscape:isstock="true">
+      <rect
+         style="fill:black;stroke:none"
+         x="0"
+         y="-0.5"
+         width="1"
+         height="2"
+         id="rect2748" />
+    </pattern>
+    <linearGradient
+       id="linearGradient3736"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3734" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="Arrow1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1"
+       markerWidth="4.0606604"
+       markerHeight="6.7071066"
+       viewBox="0 0 4.0606602 6.7071068"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         id="path5057"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect1140"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect117"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke-width:0.265;stroke-dasharray:none;stroke:#000000;stroke-opacity:1"
+       d="m 108.67824,129.67479 c 1.82354,-4.76727 3.64713,-9.53468 10.03385,-12.97457 6.38673,-3.43989 17.33589,-5.55199 28.28507,-7.6641"
+       id="path115"
+       inkscape:path-effect="#path-effect117"
+       inkscape:original-d="m 108.67824,129.67479 c 1.82385,-4.76715 3.64745,-9.53456 5.47077,-14.30223 10.94987,-2.11192 21.89903,-4.22403 32.84815,-6.33644" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.139753;stroke-dasharray:none;stroke-opacity:1"
+       id="path1003"
+       cx="133.09552"
+       cy="123.08215"
+       rx="0.1801234"
+       ry="0.18012361" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.279506;stroke-dasharray:none;stroke-opacity:1"
+       id="path1003-7"
+       cx="131.10422"
+       cy="112.37372"
+       rx="0.36024702"
+       ry="0.36024699" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.41111px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="134.07018"
+       y="124.01228"
+       id="text1059"><tspan
+         sodipodi:role="line"
+         id="tspan1057"
+         style="font-size:1.41111px;stroke-width:0;stroke-dasharray:none"
+         x="134.07018"
+         y="124.01228">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.41111px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="128.78711"
+       y="111.7919"
+       id="text1059-5"><tspan
+         sodipodi:role="line"
+         style="font-size:1.41111px;stroke-width:0;stroke-dasharray:none"
+         x="128.78711"
+         y="111.7919"
+         id="tspan1224">H</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="113.92175"
+       y="115.85387"
+       id="text1059-3"><tspan
+         sodipodi:role="line"
+         id="tspan1057-6"
+         style="font-size:2.82222px;stroke-width:0;stroke-dasharray:none"
+         x="113.92175"
+         y="115.85387">S</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:0.8, 0.8;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 133.18277,123.1821 131.1533,112.25819"
+       id="path1173" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:0.4, 0.4;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1)"
+       d="m 140.93659,109.613 -10.70384,2.97966"
+       id="path1173-5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111111px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1"
+       x="141.11209"
+       y="109.59393"
+       id="text1499"><tspan
+         sodipodi:role="line"
+         id="tspan1497"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;font-size:1.41111111px"
+         x="141.11209"
+         y="109.59393">t</tspan></text>
+  </g>
+</svg>
