@@ -303,6 +303,18 @@ auto coutPair = [](std::string a, double parameter){
 #### this指针
 在类的非静态函数中可以使用this指针。代表指向对象的“虚拟”指针，代表了绑定关系。
 > 与python class 中的self类似
+### 技巧
+- 使用"前置声明"来避免头文件递归包含
+前置声明允许你告诉编译器有一个名`classname`的类存在，尽管它的定义并没有在当前文件中提供。
+```cpp
+namespace PathOptimizationNS {
+    class classname;  // Forward declaration of the class
+
+    // Now you can use State as a pointer or reference
+    classname* statePtr;
+}
+```
+
 
 ### 遇到的问题
 1. ROS plugin中的函数加入inline 标志后无法识别
