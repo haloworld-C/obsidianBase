@@ -1,5 +1,5 @@
 ### 当前研究趋势
-![mpc_with_learning](../../Resourse/mpc_research_topic.png)
+![mpc_with_learning](mpc_research_topic.png)
 ### 概述
 #### mpc控制器的设计思路
 

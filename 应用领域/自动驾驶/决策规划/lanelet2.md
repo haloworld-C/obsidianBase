@@ -23,7 +23,7 @@ areas与*lanelets*类似，不过与之不同的是areas是一个没有方向的
  2. 关联层：包含了物理层之间的关联关系（包含交通规则等）
  3. 拓扑层：关联元素的抽象表示
 - 软件架构
-![lanelet2_arch](../../Resourse/lanelet2_arch.png)
+![lanelet2_arch](lanelet2_arch.png)
 
 lanelet2主要识别osm（地图上点的坐标为经度-维度，地图格式（OSM的离线编辑器JOSM））然后将其投影转换到UTM（by default UTM32N）格式地图（其单位是m）
 
