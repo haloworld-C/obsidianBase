@@ -47,6 +47,32 @@ int main() {
 ##### queue
 
 ##### map
+key-value结构， 访问、插入复杂度均为常数。
+std内部实现为排序红黑树.
+其中key必须为可哈希的。
+###### 基本操作
+- 初始化
+```cpp
+#include<map>
+std::map<int, int> data{{1, 2}, {3, 4}};
+```
+- 插入元素
+如果没有键值则直接创建, 如果又插入键值则更新其value.
+```cpp
+data[2] = 3;
+```
+- 搜索
+```cpp
+#include<map>
+
+std::map<int, int> data{{1, 2}, {3, 4}};
+const int index = 2;
+auto iter = data.find(index);
+if(iter != data.end()) {
+	// has key
+	//...
+}
+```
 
 ##### set
 

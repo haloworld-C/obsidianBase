@@ -15,7 +15,7 @@ C++是一个语言大杂烩，主要有四种编程范式:
 - 构造拷贝(constructor copy)
 - 赋值拷贝(assignment copy) 
 - 移动构造(move copy)
-- 移动赋值 
+- 移动赋值(move constructor)
 - 析构函数
 	1. 用来释放内存资源, 否则会导致内存泄漏/溢出
 	2. 销毁对象的非static数据成员(析构函数体结束后)
