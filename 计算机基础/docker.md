@@ -116,7 +116,37 @@ docker build <script>
 |USER|设置当前用户||
 |CMD|进入容器后默认执行该命令|可以被docker run 进行覆盖,当执行脚本时，需要将脚本权限更改为可执行|
 |ENTERPOINT|docker run image后面的命令会被当做参数传递给ENTERPOINT|当与CMD同时存在时会将CMD指令当做参数传递给ENTERPOINT，当用户覆盖了CMD时将用户指定的命令当做参数|
-
+#### docker image 构建
+1. 通过dockerfile构建
+```Dockerfile demo 
+# a docker file for test
+#构建image的基础，如果本机没有则从远程dockerhub拉取
+FROM ubuntu:20.04 
+# 设置进入docker后的工作目录
+WORKDIR /home/westwell/workspace/workout/ #设置workdir后所有单条命令的默认当前目录
+# 拷贝相关的配置文件到镜像中 
+COPY lanelet2.pdf /home
+# 运行linux中的命令
+RUN <linux command>
+```
+2.  运行docker build 进行构建
+```bash
+docker build -t haloworld/docker-test:workdir .
+```
+3. 运行结果如下：
+```output
+Sending build context to Docker daemon  611.3kB
+Step 1/3 : FROM ubuntu:20.04
+ ---> a0ce5a295b63
+Step 2/3 : WORKDIR .
+ ---> Running in 0c93af2519d2
+Removing intermediate container 0c93af2519d2
+ ---> d765d22b25aa
+Step 3/3 : COPY lanelet2.pdf /home
+ ---> 9bbc23e5d288
+Successfully built 9bbc23e5d288
+Successfully tagged haloworld/docker-test:latest
+```
 ### docker-compose
 #### 安装
 1. 下载可执行文件
@@ -203,37 +233,7 @@ README.md
 LICENSE
 .vscode
 ```
-### docker image 构建
-1. 通过dockerfile构建
-```Dockerfile demo 
-# a docker file for test
-#构建image的基础，如果本机没有则从远程dockerhub拉取
-FROM ubuntu:20.04 
-# 设置进入docker后的工作目录
-WORKDIR /home/westwell/workspace/workout/ #设置workdir后所有单条命令的默认当前目录
-# 拷贝相关的配置文件到镜像中 
-COPY lanelet2.pdf /home
-# 运行linux中的命令
-RUN <linux command>
-```
-2.  运行docker build 进行构建
-```bash
-docker build -t haloworld/docker-test:workdir .
-```
-3. 运行结果如下：
-```output
-Sending build context to Docker daemon  611.3kB
-Step 1/3 : FROM ubuntu:20.04
- ---> a0ce5a295b63
-Step 2/3 : WORKDIR .
- ---> Running in 0c93af2519d2
-Removing intermediate container 0c93af2519d2
- ---> d765d22b25aa
-Step 3/3 : COPY lanelet2.pdf /home
- ---> 9bbc23e5d288
-Successfully built 9bbc23e5d288
-Successfully tagged haloworld/docker-test:latest
-```
+
 ### 跨平台使用docker image
 #### 使用qemu进行硬件模拟
 - 缺点： 性能有所损失
