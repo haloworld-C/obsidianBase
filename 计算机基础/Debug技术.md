@@ -41,6 +41,21 @@
 ```bash
 sudo apt install libdw-dev
 ```
+- 使用
+1. 将头文件`backward.hpp`放入工程
+2. `CMakelists.txt`添加：
+```CMakelists.txt
+include_diretory(<backward.hpp path>)
+target_link_libraries(<project name> dw)
+```
+3. 程序入口文件添加：
+```cpp
+#define BACKWARD_HAS_DW 1
+#include "tools/backward.hpp"
+namespace backward{
+backward::SignalHandling sh;
+}
+```
 
 ### 常见debug问题
 1. 当编译结果出现随机值，很有可能跟内存访问错误有关（比如访问越界）
