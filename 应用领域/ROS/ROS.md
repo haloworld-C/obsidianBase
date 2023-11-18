@@ -30,6 +30,7 @@ ROS中默认callback默认是线程安全的
 | rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
 | rosdep|rosdep [package_name]|安装某个包的依赖|
 | rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
+| rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|
 
 ## 网络中的IP设置
 1. 单机 
