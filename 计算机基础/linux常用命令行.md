@@ -103,6 +103,59 @@ sudo apt-get update # 添加软件库
 sudo apt-get install -y boot-repair # 安装
 boot-repair #运行, 点击recommended repair即可
 ```
+8. 远程服务器terminal: `Tmux`
+- basic concept
+	可以实现断连后terminal不挂掉， 可以根据`session`再次进入
+ - 安装
+```bash
+sudo apt-get install tmux
+```
+- 使用
+
+|命令行名称|说明||
+|---|---|---|
+|tmux new -s window | 新建名为windows的session|`tmux new -s windos -d ` 后台启动session |  
+|tmux attach -t window | 与后台的windows session进行绑定||
+|tmux send -t "command" Enter| 向session后台发送命令而不进入||
+|tmux has-session -t "${session_name}" 2>/dev/null|判断是否存在指定session| 使用？环境变量判断|
+
+```bash
+tmux has-session -t "${session_name}" 2>/dev/null
+if [ $? = 0 ]; then # 字符串判断
+	# 创建session
+fi
+```
+
+
+- 快捷键
+
+|快捷键|说明|
+|---|---|
+|Ctrl+b+d | 分离当前session|  
+|Ctrl + b +\[|上下移动|
+|Ctrl+b %|划分左右两个窗格|
+|Ctrl+b "|划分上下两个窗格|
+|Ctrl+b [arrow key]|光标切换到其他窗|
+|Ctrl+b ;|光标切换到上一个窗格|
+|Ctrl+b o |光标切换到下一个窗格|
+|Ctrl+b {|当前窗格与上一个窗格交换位置|
+|Ctrl+b }|当前窗格与下一个窗格交换位置|
+|Ctrl+b Ctrl+o|所有窗格向前移动一个位置，第一个窗格变成最后一个窗格|
+|Ctrl+b Alt+o|所有窗格向后移动一个位置，最后一个窗格变成第一个窗格|
+|Ctrl+b x|关闭当前窗格|
+|Ctrl+b !|将当前窗格拆分为一个独立窗口|
+|Ctrl+b z|当前窗格全屏显示，再使用一次会变回原来大小|
+|Ctrl+b Ctrl+[arrow key]|按箭头方向调整窗格大小|
+|Ctrl+b q|显示窗格编号|
+
+- 设置自启动
+```rc.local
+export HOME=/home/firefly
+/usr/bin/tmux new -s window -d
+## run nav
+/usr/bin/tmux send -t "window" "${cur_work_space}/install/share/scripts/script/auto_run.bash" Enter # 向后台发送命令而不进入
+```
+> 如果在`rc.local`中设置自启`tmux`则需要`root`权限才能运行
 
 ### 注意事项
 - 在terminal界面如果按下Ctrl+s则会冻结该命令行的输出输入（如果是在编辑器则无法编辑及移动光标），可以按下Ctrl+q则可解除这种锁定
@@ -119,6 +172,12 @@ spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/co
 
 ## Linux维护
 ### 自动化
+#### 自启脚本启动顺序 
+- /etc/rc.d, 内脚本
+- /etc/rc.local , 随系统启动
+- /etc/profile , 用户登录启动
+- ~/.bashrc, 随命令行启动
+#### 工具列表
 1. ansible playbook
 2. cron
 示例：

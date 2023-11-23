@@ -1,4 +1,7 @@
 ### bash
+#### basic concept
+- bash中没被识别为变量的均为字符串
+- C style 风格
 #### syntax
 0. 打印
 ```
