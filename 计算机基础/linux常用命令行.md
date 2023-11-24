@@ -1,3 +1,5 @@
+### basic concept
+- `linux` 是一种类`unix`(接口兼容)
 ### 高频常用命令行
 
 |命令行名称|说明||
@@ -173,7 +175,7 @@ spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/co
 ## Linux维护
 ### 自动化
 #### 自启脚本启动顺序 
-- /etc/rc.d, 内脚本
+- /etc/rc.d, 内脚本(注意脚本是否一定可以返回0, 换言之不能阻塞)
 - /etc/rc.local , 随系统启动
 - /etc/profile , 用户登录启动
 - ~/.bashrc, 随命令行启动

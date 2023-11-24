@@ -1,5 +1,5 @@
 ## Debug思路
-- debug的目的是解决程序运行的非预期bug，一般在程序部署运行后使用。对于研发阶段的bug应该通过测试驱动的流程来规避。
+- debug的目的是解决程序运行的非预期bug，一般在程序部署运行后使用。对于研发阶段的bug应该通过测试驱动的流程来规避(换句话说， 应该在能力范围内减少bug)
 
 ### Debug 工具
 #### gdb
@@ -17,7 +17,7 @@
 |print my_var|查看断点处的变量状态|print/x my_var 以十六进制进行显示  |
 |dispaly my_var|自动显示断点处的变量状态|dispaly/x my_var 以十六进制进行显示  |
 |watch my_var|监视某个变量， 如果变量发生改变则暂停程序|  |
-|backtrace|显示 seg fault 前的函数调用过程|  |
+|backtrace|显示 seg fault 前的函数调用过程| 简称`bt` |
 |where|显示 seg fault 前的函数调用过程|  |
 |list|显示发生错误附近的源码|  list [function]显示function源码|
 
