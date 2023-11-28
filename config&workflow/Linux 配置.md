@@ -8,6 +8,16 @@
 ```bash
 sudo passwd root #连续输入两次新密码
 ```
+### 内核升级
+#### 图形界面工具`ukuu-gtk`
+- 添加源
+```bash
+ sudo add-apt-repository ppa:teejee2008/ppa && sudo apt update
+```
+- 安装
+```bash
+sudo apt-get install ukuu
+```
 
 
 

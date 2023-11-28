@@ -1,3 +1,13 @@
+### 科学上网
+#### 梯子
+- `Ghelper`
+#### 客户端
+- `clash for windows`
+```bash
+export http_proxy=http://127.0.0.1:7890
+```
+### 输入法
+- 搜狗拼音
 ### 应用图标及自启动
 [source](https://blog.csdn.net/zhuawalibai/article/details/97764381)
 要给软件添加启动图标，可到/usr/share/applications目录下创建相应的配置文件，以下为给obsidian配置启动图标示例：  
