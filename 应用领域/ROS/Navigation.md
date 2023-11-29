@@ -45,6 +45,7 @@ cost设置的逻辑
 |128~253|可能碰撞区间|外切possibly circumscribed， 可能会碰撞|
 |1~127|无碰撞区间|自由空间free space, 不会发生碰;撞|
 |0|未知区域|未知空间，不在地图上点的集合|
+> costmap与grid-occupancy之间的区别
 
 - 曲线平滑Bspline
 ##### recovery_behaviors

@@ -23,6 +23,7 @@ int32[] sequence
 #### service
 Services are just synchronous remote procedure calls; they allow one node to call a function that executes in another nodwe
 A ROS service is a special kind of topic that allows for two-way communication between nodes. (Specifically, request-response communication.)
+通信可以是一对多，也可以是多对多
 ![ros service](ros_service.png)
 #### ros spin
 - 写脚本的时候遇到一个问题，在while循环中调用了rospy.spin导致while内的语句只能被执行一次:
