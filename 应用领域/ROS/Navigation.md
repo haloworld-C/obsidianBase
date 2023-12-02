@@ -5,8 +5,12 @@
 ### archtect
 ![lanelet2_arch](ros_nav_arch.png)
 #### 外部接口
-##### amcl
+##### slam
+如果切换地图的时候，会在定位与建图之间进行切换
+###### AMCL
 基于概率方法的定位, 即粒子滤波算法。
+##### Maping 
+建图
 ##### map server
 用来管理和加载静态地图。
 

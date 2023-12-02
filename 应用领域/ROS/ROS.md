@@ -31,6 +31,7 @@ ROS中默认callback默认是线程安全的
 | rosdep|rosdep [package_name]|安装某个包的依赖|
 | rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
 | rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|
+| nh_handle("/app")|设置相对命名空间|
 
 ## 网络中的IP设置
 1. 单机 
@@ -361,6 +362,7 @@ nh_private.param<double>("parameters/dt", p_dt); // 两种方式均可
     </node>
 </launch>
 ```
+> 其中param参数名称如果以"/"开头的话，其名称空间是全局的
 
 ```yaml
 parameters:

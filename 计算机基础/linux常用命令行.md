@@ -45,6 +45,9 @@
 |uname -r|查看内核版本||
 |lsb_release -r|查看ubuntu的版本||
 |free -h|查看系统内存||
+|[command] | tee `fil1.txt`  `file2.txt`|命令基于标准输入读取数据，标准输出或文件写入数据,可以同时输出文件和命令行|tee -a 为文件追加模式|
+|stdbuf [OPTION] [COMMAND]|将其他命令输出写入buffer, 以便适应不同命令的响应速度||
+|date|显示或设置时间||
 
 
 

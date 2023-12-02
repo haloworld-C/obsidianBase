@@ -5,12 +5,19 @@
 #### syntax
 0. 打印
 ```
+#!/bin/bash #指定默认bash
 echo "hello"
 ```
 1. 变量
 类似环境变量的概念:
 ```bash
 var=123
+```
+- 特殊变量
+```bash
+$! # 当前进程pid序号
+$0 # 当前脚本名称
+$1,$2... # 第i个变量
 ```
 
 
@@ -47,7 +54,45 @@ else
     echo "please check you connected to robot wifi!"
 fi
 ```
-- `while`
+- `while` 循环
+- `for`循环
+6. 判断
+
+|命令行名称|说明j|
+|---|---|
+|-e filename| 如果 filename存在，则为真|  
+|-d filename| 如果 filename为目录，则为真 |
+|-f filename| 如果 filename为常规文件，则为真 
+|-L filename| 如果 filename为符号链接，则为真| 
+|-r filename| 如果 filename可读，则为真|
+|-w filename| 如果 filename可写，则为真| 
+|-x filename| 如果 filename可执行，则为真| 
+|-s filename| 如果文件长度不为0，则为真| 
+|-h filename| 如果文件是软链接，则为真|
+- 判断变量是否有值
+```bash
+myVar="foo"
+echo $myVar
+if [ -n "$myVar"]; then
+	echo "yes"
+else
+	echo "no"
+fi
+```
+- 判断文件是否存在
+```bash
+filename=example.txt
+if [ ! -e ${filename} ]; then
+	touch  ${filenname}
+fi
+
+```
+- 判断目录是否存在
+```bash
+if [ ! -d ${LOG_DIR} ]; then
+	mkdir -p ${LOG_DIR}
+fi
+```
 
 
 #### 注意事项

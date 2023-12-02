@@ -175,7 +175,40 @@ optional<int> a(1); // 初始化对象， 其有效真值为真
 assert(a); // true
 std::cout << *a << std::endl; // 1
 ```
+#### boost多线程
+##### atomic原子库
+##### thread 库
+- `unique_lock`
+```cpp
+#include <boost/thread.hpp>
+#include <boost/thread/lock_factories.hpp>
+auto lock = boost::make_unique_lock(planner_mutex); # 锁定mutex的简洁写法, 不必详细写出mutex的类型
+```
+##### `astoi` 库
+异步线程库
 
+```C++
+#include <boost/thread/shared_mutex>
+
+boost::shared_mutex sharedMutex; // Create a shared mutex
+
+// Read operation (multiple threads can read simultaneously)
+void ReadOperation()
+{
+    boost::shared_lock<boost::shared_mutex> lock(sharedMutex);
+    // Perform read operations on the shared resource
+} // lock goes out of scope and releases the shared lock
+
+// Write operation (exclusive access)
+void WriteOperation()
+{
+    boost::unique_lock<boost::shared_mutex> lock(sharedMutex);
+    // Perform write operations on the shared resource
+} // lock goes out of scope and releases the exclusive lock
+// Recursive mutex
+boost::recursive_mutex sensor_scan_mutex_;
+boost::unique_lock<boost::recursive_mutex> sensor_scan_lock(sensor_scan_mutex_);
+```
 
 
 ###  Abseil

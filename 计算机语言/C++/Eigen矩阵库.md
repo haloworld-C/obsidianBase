@@ -33,6 +33,7 @@ Eigen::Map<Eigen::Matrix<double, 2, 3>> eigenMatrix(dataArray);
 # use vecotr initlize
 std::vector<double> data = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
 Eigen::Map<Eigen::MatrixXd> eigenMatrix(data.data(), rows, cols);
+Eigen::MatrixXd traj = MatrixXd::Zero(); // 初始化为0矩阵
 ```
 - 运算
 	`Eigen`中乘法操作符`*`会进行严格的维度检查。
