@@ -411,6 +411,12 @@ rosbag reindex xxx.bag.active
 rosbag fix xxx.bag.active result.bag
 rm *.active
 ```
+3. docker 中安装ROS报`GPG error: http://snapshots.ros.org`
+原因是公共key已过期，需要手动删除镜像自带的源:
+```dockerfile
+FROM ros:melodic-ros-base-bionic
+RUN rm /etc/apt/sources.list.d/*
+```
 
 
 

@@ -71,6 +71,10 @@ docker push <docker hub id>/<docker image name>:tag
 ```bash
 docker rmi $(docker images -q) -f
 ```
+- 清空所有镜像缓存
+```bash
+docker system prune --all
+```
 - 查看某镜像的完整ID
 ```bash
 docker images --digests

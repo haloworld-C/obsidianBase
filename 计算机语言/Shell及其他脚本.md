@@ -24,7 +24,6 @@ $1,$2... # 第i个变量
 2. 数组
 
 3. 运算符
-
 4. 函数
 ```bash
 function check() { # 函数声明
@@ -56,6 +55,15 @@ fi
 ```
 - `while` 循环
 - `for`循环
+```bash
+for (( ; ; )) # 无限循环
+do
+	echo "try to get run_id of roscore ..." >> ${LOG_DIR}/roscore.log
+	if [[ $ret != "ERROR" ]]; then
+		break
+	fi
+done
+```
 6. 判断
 
 |命令行名称|说明j|
@@ -69,6 +77,9 @@ fi
 |-x filename| 如果 filename可执行，则为真| 
 |-s filename| 如果文件长度不为0，则为真| 
 |-h filename| 如果文件是软链接，则为真|
+|-eq | 判断相等|
+|-le | 判断是否小于|
+|-ge | 判断是否大于|
 - 判断变量是否有值
 ```bash
 myVar="foo"
