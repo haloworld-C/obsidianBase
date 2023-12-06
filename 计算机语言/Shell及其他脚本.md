@@ -18,8 +18,17 @@ var=123
 $! # 当前进程pid序号
 $0 # 当前脚本名称
 $1,$2... # 第i个变量
-```
+$! #当前进程pid号
+# 获取特殊按键
+# 定义信号处理函数
+function cleanup {
+  echo "接收到Ctrl+C，正在终止记录..."
+  exit 1
+}
 
+# 捕获Ctrl+C信号，执行信号处理函数
+trap cleanup INT
+```
 
 2. 数组
 
@@ -104,7 +113,11 @@ if [ ! -d ${LOG_DIR} ]; then
 	mkdir -p ${LOG_DIR}
 fi
 ```
-
+7. 其他
+```bash
+# 执行第一个脚本，并将其放入后台执行
+./script1.sh &
+```
 
 #### 注意事项
 1. 设置默认shell

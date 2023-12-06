@@ -7,6 +7,7 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 3. 参数服务器（多个node共享不经常变动的参数）
 4. nodelet共享内存方式（可以在一定程度上保证实时性）
 	- nodelet允许将不同的node加载到同一个进程，从而实现不同的节点通过共享内存的形式进行publish与subscribe
+	- 但是缺点是位于同一个进程nodelet如果有一个挂掉了， 那么其他也会挂掉
 ###  通信机制
 ROS中默认callback默认是线程安全的
 ## 常用命令
@@ -19,7 +20,7 @@ ROS中默认callback默认是线程安全的
 | roscore| 启动ROS| 
 | roscd | 切换到对应包的目录当中|
 | rqt_plot | 画图模块| 可画单维变量随时间的变化|
-| rosparam| 在param sever上设置参数数据| 
+| rosparam| 在param sever上设置参数数据| set, get|
 | rqt_graph | 查看包图视图|也可通过rosrun rqt_graph rqt_graph运行
 | catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
 | rqt_console | 查看正在运行的ros_info（）发出的消息
@@ -31,7 +32,8 @@ ROS中默认callback默认是线程安全的
 | rosdep|rosdep [package_name]|安装某个包的依赖|
 | rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
 | rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|
-| nh_handle("/app")|设置相对命名空间|
+| nh_handle("/app")|设置相对命名空间|如果不加`/`则为相对命名|
+| rosservice list|列出所有的服务|`rosservice info /your_service_name`列出具体的service|
 
 ## 网络中的IP设置
 1. 单机 
