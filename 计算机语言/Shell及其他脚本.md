@@ -113,10 +113,10 @@ if [ ! -d ${LOG_DIR} ]; then
 	mkdir -p ${LOG_DIR}
 fi
 ```
-7. 其他
+7. 其他常用操作
 ```bash
-# 执行第一个脚本，并将其放入后台执行
-./script1.sh &
+./script1.sh & # 执行第一个脚本，并将其放入后台执行
+[cmd]  /dev/null 2>&1 # 关闭显示输出
 ```
 
 #### 注意事项

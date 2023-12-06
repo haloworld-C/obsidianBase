@@ -319,6 +319,10 @@ int main(int argc, char **argv)
 	return 0;
 }
 ```
+2. 获取`ROS`包内的文件夹目录
+```cpp
+bash_dir_ = ros::package::getPath("scripts") + "/script/";
+```
 ### rospy范例
 #### 获取系统时间
 ```Python

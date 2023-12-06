@@ -50,7 +50,8 @@ cost设置的逻辑
 |1~127|无碰撞区间|自由空间free space, 不会发生碰;撞|
 |0|未知区域|未知空间，不在地图上点的集合|
 > costmap与grid-occupancy之间的区别
-
+- clearing and marking
+ A marking operation is just an index into an array to change the cost of a cell. A clearing operation, however, consists of raytracing through a grid from the origin of the sensor outwards for each observation reported.
 - 曲线平滑Bspline
 ##### recovery_behaviors
 
