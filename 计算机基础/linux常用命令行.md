@@ -196,4 +196,20 @@ spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/co
 
 3. expect
 #### 开机自启动
-1. 在/etc/profile.d/文件夹下面写脚本
+- 在/etc/profile.d/文件夹下面写脚本
+4. ssh启动远程GUI 
+- 主要原理为Xserver的服务器客户端架构(本来走的就是网络), 在实现上需要再运行GUI的机子上运行客户端, 在需要显示GUI的机子上运行服务端.
+- 服务器端配置(显示GUI机器)
+```bash
+sudo vim /etc/ssh/ssh_config
+```
+注释掉一下内容:
+```config
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost yes
+```
+连接ssh:
+```bash
+ssh -X user@192.168.99.2
+```

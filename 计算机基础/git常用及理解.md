@@ -20,7 +20,7 @@
 | git push -f origin main | 回滚版本后，强制远程仓库同步回退|
 | git branch -d <branch_name>|删除本地分支（需要退出需要删除的分支才能删除）|-D为强制删除|
 | git status| 查看目前分支的修改状态|
-| git log| 查看git commit 的历史记录|git shortlog 历史记录的缩略版|
+| git log| 查看git commit 的历史记录|git shortlog 历史记录的缩略版 --name-only 查看更改文件列表|
 | git merge [分支名称]| 将对应分支的修改合并到本分支|git merge --abort: 放弃之前的merge|
 | git add [filename]| 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update）
 | git rm [filename]| 将对应文件由tracked状态变为untracked状态| 可以添加--cached选项，导致该文件不会立即删除，而是在commit之后删除 |
@@ -116,6 +116,9 @@ git merge --abort
 
 #### 子模块管理
 1. 添加子模块的更改只需要将对应的子目录使用git add <子模块路径>， 即可（事实上父项目中仅更新了版本追踪信息）
+```bash
+$ git submodule add https://github.com/iphysresearch/GWToolkit.git GWToolkit
+```
 2. 更新子模块的仓库更新(按照父模块中记录的commit进行更新)
 ```bash
 git submodule update
