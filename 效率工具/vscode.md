@@ -10,6 +10,8 @@
 |快捷键|说明|补充|
 |---|---|---|
 |Ctrl+alt+k|创建标签| |  
+|Ctrl+B|关闭或者打开侧边栏|如果使用vim需要进入insert模式 |  
+|alt+n|切换到第n个页面|ctrl+tab切换到下一个标签 |  
 2. Command Palette
 `boo li a`, 显示所有标签
   
