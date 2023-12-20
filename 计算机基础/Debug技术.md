@@ -88,7 +88,8 @@ catkin_make -DCMAKE_BUILD_TYPE=Debug -DFORCE_DEBUG_BUILD=True
         <param name="is_linear_interpolation" value="$(arg is_linear_interpolation)"/>
 </node>
 ```
-> #可以把-ex run 去掉，这样就有机会设置断点
+> 可以把-ex run 去掉，这样就有机会设置断点
+> 在docker中运行没有直接运行(需要设置回车)???
 
 3. cmake 源码无法同步显示
 在Cmakefile中添加如下编译选项

@@ -15,6 +15,7 @@ RUN cd /usr/local/stow && \
 ```C++
 YAML::Node config = YAML::LoadFile("config.yaml"); # 加载
 const std::string username = config["username"].as<std::string>(); # 参数读取
+if(config["username"]) # 判断参数是否存在
 ```
 - 特殊结构加载
 ```C++

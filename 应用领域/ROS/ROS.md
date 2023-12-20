@@ -52,6 +52,7 @@ esport ROS_MASTER_URI=http://[XXX.XXX.XXX.XXX]
 ```
 
 ## workflow
+### ROS包管理
 - 安装ROS以后，应该首先设置环境（以便命令行能够识别ROS命令）
 ```bash
 $ source /opt/ros/<distro>/setup.bash
@@ -78,6 +79,46 @@ rosdepc install --from-path [package path]
 ```bash
 rosdep check --from-path src --ignore-src -r -y
 rosdep install --from-path src --ignore-src -r -y
+```
+创建包
+```bash
+catkin_create_pkg [your package name] [dependency package names]
+```
+适用其他包编译到库
+1. 待使用的包
+``` CMakeLists.txt
+catkin_package(
+    INCLUDE_DIRS include
+    LIBRARIES [export_lib] # 导出该库到配置文件
+    CATKIN_DEPENDS common_srvs common_msgs geometry_msgs roscpp sensor_msgs std_msgs std_srvs tf
+)
+add_library(${PROJECT_NAME}_utils src/common_utils.cpp)
+```
+2. 适用该包到包
+配置package.xml
+``` package.xml
+<build_depend>common_libs_utils</build_depend>
+<build_export_depend>common_libs_utils</build_export_depend>
+<exec_depend>common_libs_utils</exec_depend>
+```
+`CMakeList`配置
+```CMakeListx.txt
+find_package(catkin REQUIRED
+	COMPONENTS
+		common_libs # 使用库所在的包
+)
+
+catkin_package(
+INCLUDE_DIRS include
+CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rospy sensor_msgs std_msgs [use_lib] # 包含要使用的包
+)
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS} #包含其他包到头文件路径
+)
+add_executable(${PROJECT_NAME} src/active_safety_node.cpp)
+target_link_libraries(${PROJECT_NAME} glog
+                                    ${catkin_LIBRARIES}) #链接包库
 ```
 
 
@@ -321,6 +362,7 @@ int main(int argc, char **argv)
 ```
 2. 获取`ROS`包内的文件夹目录
 ```cpp
+#include<ros/package.h>
 bash_dir_ = ros::package::getPath("scripts") + "/script/";
 ```
 ### rospy范例
@@ -423,6 +465,8 @@ rm *.active
 FROM ros:melodic-ros-base-bionic
 RUN rm /etc/apt/sources.list.d/*
 ```
+4. rviz没有加载默认的配置文件
+拷贝默认`default.rviz`文件到`/opt/ros/${ROS_DISTRO}/share/rviz`
 
 
 

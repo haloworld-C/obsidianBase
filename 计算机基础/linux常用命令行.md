@@ -1,15 +1,17 @@
 ### basic concept
-- `linux` 是一种类`unix`(接口兼容)
+- `linux` 是一种类`unix`(接口兼容Posix)
 ### 高频常用命令行
 
 |命令行名称|说明||
 |---|---|---|
+|基本操作|
 |dpkg -i <you.deb>|安装deb包| 需要先给dep包添加执行权限|  
 |apt purge [package name]|删除软件及其配置及依赖包|   |
 | apt remove [package name] | 删除软件（保留配置及依赖包）| 
 | apt autoremove [package name] | 删除当前不需要的依赖包|  
 | apt list --installed| 列出已安装软件包|  
-| grep [string] | 搜索文本| 
+| grep [string]  [文件名] | 搜索文本内的内容| 第二个参数为待匹配内容|
+| find [目录路径] -选项参数 -搜索条件 | 搜索文件及文件夹|find ./ -name "*.txt*"| 
 | scp [remote_usr_name@ip_address]:[dir] [本地文件夹] | 将远程电脑中的制定文文件拷贝到本地，反过来则是推送（若是文件夹，则加参数-r）| 
 | rsync - avztP [remote_usr_name@ip_address]:[dir] [本地文件夹] | 将远程电脑中的制定文文件同步到本地，反过来则是推送| 适用于大文件夹内点局域网传输 -a 以归档模式传输， -v显示传输过程中的详细信息， -z压缩传输数据， -P显示传输进度, -t 比较文件时间戳|
 |ln [参数] [源文件或目录] [目标文件或目录] |当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。可用在git submodule中，或ros 工作空间中|-s 软链接| 
@@ -34,7 +36,7 @@
 |du -sh  [文件夹]| 查看文件夹大小 | |
 |tar -czvf [压缩包名称] 文件夹名称| 创建压缩包 |c代表创建压缩包文件， v代表显示详细过程， f表示创建的是文件, z代表二次压缩.gz |
 |tar -zxf|解压缩上面压缩的文件包|
-|ps -ef| 查看进程信息 |-e 显示所有活动进程 -f显示所有信息 |
+|ps -ef| 查看进程信息 |-e 显示所有活动进程 -f显示所有信息 -a 显示所有执行程序 -u 以用户作区分 -x 显示所有程序, 不区分终端|
 |top -p [进程ID]| 查看该进程的资源消耗 | |
 |htop| 查看整体电脑资源占用情况 | |
 |ldd| 打印动态链接库的目录或程序所依赖的动态链接库 | |
@@ -176,6 +178,10 @@ export HOME=/home/firefly
 spawn rsync -avzP --progress -e  'ssh -p 8100' nvidia@47.98.115.107:/home/nvidia/Documents/code/install    /    ./ #报参数不识别
 spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/code/install/  /home/test/Downloads # 应该使用双引号
 
+```
+2. sudo需要手动输入密码
+```bash
+echo "password" | sudo -S CMD
 ```
 
 
