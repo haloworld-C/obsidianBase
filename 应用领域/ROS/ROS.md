@@ -31,7 +31,7 @@ ROS中默认callback默认是线程安全的
 | rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
 | rosdep|rosdep [package_name]|安装某个包的依赖|
 | rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
-| rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|
+| rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|查看两个frame之间的转换`rosrun tf tf_echo base_link target_frame`|
 | nh_handle("/app")|设置相对命名空间|如果不加`/`则为相对命名|
 | rosservice list|列出所有的服务|`rosservice info /your_service_name`列出具体的service|
 
