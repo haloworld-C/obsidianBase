@@ -41,7 +41,7 @@
 |:\`[mark name]|跳到书签的行首|
 |:marks|列出所有书签|
 |:delmarks [mark name]|删除书签|
-|`:w !sudo tee %` |在vim打开的只读文件中获得写权限|需要输入`sudo`密码|
+|`:w ! sudo tee %` |在vim打开的只读文件中获得写权限|需要输入`sudo`密码|
 
 - vim 配置参考：
 [amix/vimrc](https://github.com/amix/vimrc)

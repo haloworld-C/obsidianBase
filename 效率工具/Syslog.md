@@ -30,7 +30,7 @@ $template RemoteLogs,"/var/log/rsyslog/nav_logs/%fromhost-ip%/%fromhost-ip%_%$YE
 # no local log
 :fromhost-ip, !isequal, "127.0.0.1" ?RemoteLogs
 ```
-> 问题: 如何通过文件前缀以区分不同机器人
+> 可以通过`$HOST`设置文件/文件夹前缀以区分不同机器人
 2. 客户端配置
 省略主配置文件， 只需要打开`UDP/TCP`协议即可
 定制配置文件:
@@ -43,4 +43,9 @@ $InputFileSeverity debug
 $InputFileFacility local0
 $InputRunFileMonitor
 local0.* @192.168.99.196 #远程服务器ip
+```
+3. 重启并设置开机自启服务
+```bash
+sudo systemctl restart rsyslog.service 
+sudo systemctl enable rsyslog.service
 ```

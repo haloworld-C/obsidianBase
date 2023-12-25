@@ -20,6 +20,7 @@
 |backtrace|显示 seg fault 前的函数调用过程| 简称`bt` |
 |where|显示 seg fault 前的函数调用过程|  |
 |list|显示发生错误附近的源码|  list [function]显示function源码|
+|bt(back track)|查看程序崩溃时的堆栈调用过程|  up 向前追溯 down 向后追溯|
 
 - gdb -tui
 #### cgdb(图形化gdb工具)

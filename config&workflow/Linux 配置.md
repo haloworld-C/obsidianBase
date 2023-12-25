@@ -18,6 +18,13 @@ sudo passwd root #连续输入两次新密码
 ```bash
 sudo apt-get install ukuu
 ```
+### 环境变量 
+- 修改hostname
+```/etc/hostname
+[your hostname] # 重启生效
+hostname newname # 让hostname立即生效
+主要配置:
+```
 
 
 

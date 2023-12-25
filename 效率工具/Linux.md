@@ -20,3 +20,5 @@ sudo apt install okular
 5. 视频播放软件
 - VLC
 Linux下最强播放器
+6. rsyslog日志工具
+多平台的轻量级日志服务器, 介绍见[[Syslog]]
