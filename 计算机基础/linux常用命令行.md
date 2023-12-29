@@ -214,6 +214,8 @@ echo "password" | sudo -S CMD
 3. expect
 #### 开机自启动
 - 在/etc/profile.d/文件夹下面写脚本
+- 开启服务或软件开机自启
+参见[[Ubuntu设置]]
 4. ssh启动远程GUI 
 - 主要原理为Xserver的服务器客户端架构(本来走的就是网络), 在实现上需要再运行GUI的机子上运行客户端, 在需要显示GUI的机子上运行服务端.
 - 服务器端配置(显示GUI机器)
