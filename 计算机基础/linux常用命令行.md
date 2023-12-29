@@ -133,9 +133,17 @@ sudo apt-get install tmux
 
 ```bash
 tmux has-session -t "${session_name}" 2>/dev/null
-if [ $? = 0 ]; then # 字符串判断
-	# 创建session
-fi
+if [ "$?" -eq 1 ] ; then
+    echo "has not nav_window tmux session, create.."
+else
+```
+9. `.rar`压缩文件解压缩
+```bash
+sudo apt install unrar
+unrar x [file]
+# or
+sudo apt install urar
+urar [file]
 ```
 
 
