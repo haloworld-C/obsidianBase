@@ -26,6 +26,7 @@ ROS中默认callback默认是线程安全的
 | rqt_console | 查看正在运行的ros_info（）发出的消息
 | rosnode kill --all | 关闭所有节点
 | rosbag record /<msg_name>|录入消息数据|
+| rosbag play ros.bag --topics "/topic1 /topic2"|播放指定消息|
 | rosbag filter old.bag new.bag "topic == '/topic_name1' and topic == '/topic_name2'"|过滤bag中的某些消息|""中的逻辑表达式与python兼容|
 | catkin_make --only-pkg-with-deps [package name]|编译单个包及其依赖|
 | rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
