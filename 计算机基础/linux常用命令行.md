@@ -47,6 +47,7 @@
 |uname -r|查看内核版本||
 |lsb_release -r|查看ubuntu的版本||
 |free -h|查看系统内存||
+||查看系统内存||
 |[command] | tee `fil1.txt`  `file2.txt`|命令基于标准输入读取数据，标准输出或文件写入数据,可以同时输出文件和命令行|tee -a 为文件追加模式|
 |stdbuf [OPTION] [COMMAND]|将其他命令输出写入buffer, 以便适应不同命令的响应速度||
 |date|显示或设置时间||
@@ -55,7 +56,19 @@
 |du -sh|查看当前目录大小|du -h [dir]|
 |tail [filename]|查看文件的末尾行|-f 持续更新文件，以便实时显示|
 |:w !  sudo  tee  %|在vim内获取sudo 权限保存文件||
+|时间同步|
+|ntpdate [cn.pool.ntp.org]|从时间服务器同步时间||
+|hwclock --systohc|将系统时间同步到板载时间||
 
+### 常用命令组合
+```bash
+# 查找相关字符
+[command] | grep "context" 
+# 文件重定位
+echo "context" >> a.txt # >> 追加模式， > 为覆盖模式
+# 查看是否有网
+ping www.baidu.com -c 1 | tail -n 1 | grep min
+```
 
 
 

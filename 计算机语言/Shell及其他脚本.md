@@ -48,7 +48,7 @@ check 12 #函数调用，可以带参数
 ```bash
 exit 0 # 退出当前执行脚本，并返回一个状态
 # 判断上个执行脚本的状态
-EXCODE=$?
+EXCODE=$? # 或上一个函数的返回值
 if [ "$EXCODE" != "0" ]; then
     echo "exit"
     exit 1
@@ -93,7 +93,7 @@ done
 ```bash
 myVar="foo"
 echo $myVar
-if [ -n "$myVar"]; then
+if [ -n "$myVar" ]; then
 	echo "yes"
 else
 	echo "no"
@@ -124,7 +124,10 @@ fi
 ```bash
 #!/bin/bash
 ```
-
+2. 在脚本中source其他脚本
+有几个好处
+- 不会新开进程，就在调用脚本进程中执行(但是退出也会一起退出)
+- source后可直接使用被调用脚本的变量、函数
 
 ### expect
 #### install
