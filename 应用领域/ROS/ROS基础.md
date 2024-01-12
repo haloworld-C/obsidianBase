@@ -1,5 +1,10 @@
 ### concepts
-
+- ROS中四种通信机制:
+	1. message消息广播机制(单工)
+	2. service服务器-客户端(请求-响应)机制(双工，同步)
+	3. action服务(请求-响应-回调)机制(双工，异步)
+	4. 参数服务器(适用用变动不频繁的参数)
+ 
 ### comunication
 #### message
 message类似广播模式

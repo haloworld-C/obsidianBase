@@ -36,6 +36,27 @@ ROS中默认callback默认是线程安全的
 | nh_handle("/app")|设置相对命名空间|如果不加`/`则为相对命名|
 | rosservice list|列出所有的服务|`rosservice info /your_service_name`列出具体的service|
 
+### 常用操作
+- 打开rqt相关
+```bash
+rqt # 打开rqt相关插件
+rqt_plot # 数据监控面板
+rqt_graph
+rosrun rqt_tf_tree rqt_tf_tree# 打开tf树
+```
+- rostopic
+```bash
+rostopic list | grep name # 查看某个topic是否存在
+rostopic echo /topic_name # 查看topic内容
+rostopic hz /topic_name # 查看某个消息的更新频率
+rostopic pub "content" # 发送消息
+```
+- rosservice
+```bash
+rosservice list | grep name # 查看某个服务是否存在
+rosservice tpye /service_name # 查看某服务的类型
+rosservice call "content" # 调用某些服务
+```
 ## 网络中的IP设置
 1. 单机 
 如果仅在本地跑则在~/.bashrc中添加如下命令
@@ -484,26 +505,6 @@ rosrun plotjuggler plotjuggler
 ```
 - `ros_vis_tools`
 方便的`rviz`可视化工具。
-### 常用操作
-- 打开rqt相关
-```bash
-rqt # 打开rqt相关插件
-rqt_plot # 数据监控面板
-rqt_tf_tree # 打开tf树
-```
-- rostopic
-```bash
-rostopic list | grep name # 查看某个topic是否存在
-rostopic echo /topic_name # 查看topic内容
-rostopic hz /topic_name # 查看某个消息的更新频率
-rostopic pub "content" # 发送消息
-```
-- rosservice
-```bash
-rosservice list | grep name # 查看某个服务是否存在
-rosservice tpye /service_name # 查看某服务的类型
-rosservice call "content" # 调用某些服务
-```
 
 ### 讨论
 #### 多线程环境
