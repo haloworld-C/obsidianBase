@@ -70,5 +70,12 @@ UUID=9aa48a41-cbab-452c-85e29a4602190e84  /home  ext4  defaults  0  2
 # 第五列 0： 不备份dump
 # 第六列 2： 开机自检
 ```
+### 维护
+#### service
+- 查看service状态
+```bash
+systemctl status rsyslog.service # 只看当前启动日志
+journalctl -u rsyslog.service # 历史启动日志
+```
 ### issues
 1. 发现Ubuntu系统进不去，是因为根目录下空间满了的原因，软件也装不进去，debug了半天发现是一个假的大文件导致，删除了就好了。

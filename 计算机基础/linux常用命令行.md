@@ -62,7 +62,8 @@
 |时间同步|
 |ntpdate [cn.pool.ntp.org]|从时间服务器同步时间||
 |hwclock --systohc|将系统时间同步到板载时间||
-
+|硬件相关|
+|dmesg|产看硬件相关驱动log||
 ### 常用命令组合
 ```bash
 # 查找相关字符
@@ -161,7 +162,14 @@ unrar x [file]
 sudo apt install urar
 urar [file]
 ```
-
+10. 运行`.jar`
+```bash
+java -jar [jar name]
+```
+11. 追踪程序的调用堆栈
+```bash
+sudo strace [programe]
+```
 
 - 快捷键
 

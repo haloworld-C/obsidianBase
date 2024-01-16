@@ -57,6 +57,11 @@ rosservice list | grep name # 查看某个服务是否存在
 rosservice tpye /service_name # 查看某服务的类型
 rosservice call "content" # 调用某些服务
 ```
+- rosbag
+```bash
+rosbag record -bz2 [topics] # 以压缩模式录包
+rosbag decompress *.bag
+```
 ## 网络中的IP设置
 1. 单机 
 如果仅在本地跑则在~/.bashrc中添加如下命令
