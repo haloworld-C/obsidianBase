@@ -170,6 +170,14 @@ java -jar [jar name]
 ```bash
 sudo strace [programe]
 ```
+12. 监控文件修改记录
+```bash
+sudo apt install auditd # 后台守护进程
+aditctl -w /root/.ssh/authorized_keys -p war -k auth_key
+# -w 要监控的文件
+# -p 要监控的类型 append, write, read, execute
+# -k 给这条监控起个名字，方便查找
+```
 
 - 快捷键
 

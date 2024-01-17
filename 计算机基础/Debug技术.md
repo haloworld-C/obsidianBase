@@ -69,6 +69,10 @@ backward::SignalHandling sh;
 }
 ```
 > 在`CMakelist.txt`中需要将编译选项`-g`打开
+#### strace
+查看程序调用堆栈信息
+### btrace
+与strace类似
 
 ### 常见debug问题
 1. 当编译结果出现随机值，很有可能跟内存访问错误有关（比如访问越界）
