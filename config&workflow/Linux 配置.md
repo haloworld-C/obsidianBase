@@ -30,6 +30,40 @@ sudo apt-get install ukuu
 hostname newname # 让hostname立即生效
 主要配置:
 ```
+### 网络相关
+#### 修改静态/动态ip
+- `ubuntu16`及以前:
+```/etc/network/interfaces
+auto eth0 iface 
+eth0 inet static 
+address 192.168.1.2 
+netmask 255.255.255.0 
+gateway 192.168.1.1 
+dns-nameservers 8.8.8.8 8.8.4.4
+```
+修改完成后重启网络
+```bash
+sudo service networking restart
+```
+- `ubuntu18`及以后:
+```/etc/netplan/01-netcfg.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s9:
+      dhcp4: no
+      addresses:
+        - 192.168.121.221/24
+        - 你的IPV6地址
+      gateway4: 192.168.121.1
+      nameservers:
+          addresses: [8.8.8.8, 1.1.1.1]
+```
+修改后输入以下命令配置生效:
+```bash
+sudo netplan apply
+```
 ### 挂载硬盘
 比如将/home挂载到其他硬盘下:
 0. 查看存储介质

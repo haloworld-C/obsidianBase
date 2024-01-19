@@ -1,5 +1,5 @@
 ### basic concept
-- `linux` 是一种类`unix`(接口兼容Posix)
+- `linux` 是一种类`unix`(接口兼容Posix)操作系统。
 ### 高频常用命令行
 
 |命令行名称|说明||
@@ -64,6 +64,9 @@
 |hwclock --systohc|将系统时间同步到板载时间||
 |硬件相关|
 |dmesg|产看硬件相关驱动log||
+| 网络相关|
+|arp -a| 扫描所有ip及主机||
+|nmap -sRn 10.42.0.* -oN out.txt|扫描网段主机ip, mac地址||
 ### 常用命令组合
 ```bash
 # 查找相关字符
