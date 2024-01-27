@@ -14,6 +14,7 @@
 |delete | 删除断点| delete [源文件：行号]，在某行加入断点 delete function_name为某个函数设置断点 |
 |next|执行下一行代码|并不会进入子函数, step会进入子函数   |
 |step|执行下一行代码|   |
+|finish|执行完当前函数|   |
 |print my_var|查看断点处的变量状态|print/x my_var 以十六进制进行显示  |
 |dispaly my_var|自动显示断点处的变量状态|dispaly/x my_var 以十六进制进行显示  |
 |watch my_var|监视某个变量， 如果变量发生改变则暂停程序|  |
@@ -21,6 +22,9 @@
 |where|显示 seg fault 前的函数调用过程|  |
 |list|显示发生错误附近的源码|  list [function]显示function源码|
 |bt(back track)|查看程序崩溃时的堆栈调用过程|  up 向前追溯 down 向后追溯|
+```bash
+break file1.c:6 if i >= ARRAYSIZE # conditional break
+```
 
 - gdb -tui
 #### cgdb(图形化gdb工具)
@@ -29,6 +33,7 @@
 	 - 按[esc]进入源文件窗口
 	 - 按o进入当前加载的程序相关的文件窗口 
 - gdb调试窗口
+	- 按i进入gdb窗口
 ##### 问题解决
 -  显示字体过小，找不到调整菜单
 按住`ctrl`单击右键

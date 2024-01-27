@@ -22,6 +22,15 @@
 cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 ```
 
+### 基本用法
+### 现代用法
+1. 一种指定头文件路径的方法
+```CMakelists.txt
+set(CATCH_DIR include/test/catch2)
+add_library(Catch INTERFACE) # 指定了头文件的位置, 并不会生成.so或.a的二进制文件
+target_include_directories(Catch INTERFACE ${CATCH_DIR})
+add_executable(catch2_test ${TEST_SOURCES})
+target_link_libraries(catch2_test PUBLIC Catch)
 ### 现代用法
 1. 一种指定头文件路径的方法
 ```CMakelists.txt

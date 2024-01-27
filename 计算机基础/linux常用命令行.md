@@ -75,6 +75,13 @@
 echo "context" >> a.txt # >> 追加模式， > 为覆盖模式
 # 查看是否有网
 ping www.baidu.com -c 1 | tail -n 1 | grep min
+# 查看当前文件夹的文件个数
+ls -l | grep "^-" | wc -l # 不包含子目录
+ls -lR | grep "^-" | wc -l # 包含子目录
+# 查看当前文件夹的文件夹个数
+ls -lR | grep "^d" | wc -l
+# 搜索文件名称
+find ./ -name '*.bag'
 ```
 
 
@@ -182,6 +189,8 @@ aditctl -w /root/.ssh/authorized_keys -p war -k auth_key
 # -k 给这条监控起个名字，方便查找
 ```
 
+13. tmux
+替代工具screen
 - 快捷键
 
 |快捷键|说明|
