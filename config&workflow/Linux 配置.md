@@ -35,7 +35,7 @@ hostname newname # 让hostname立即生效
 - `ubuntu16`及以前:
 ```/etc/network/interfaces
 auto eth0 iface 
-eth0 inet static 
+eth0 inet static  # dhcp for dynamic ip
 address 192.168.1.2 
 netmask 255.255.255.0 
 gateway 192.168.1.1 

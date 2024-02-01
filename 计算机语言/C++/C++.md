@@ -23,7 +23,9 @@ C++是一个语言大杂烩，主要有四种编程范式:
 #### 泛型编程及元编程
 
 ### syntax(语法)
-#### 内置数据类型
+#### 内置数据类型(包含容器)
+##### 枚举类型(enum)
+
 #### 算数运算
 - 运算符的优先级(随行递减，同行取决于位置，左边比右边优先级高)
 	1. NOT !
@@ -36,6 +38,38 @@ C++是一个语言大杂烩，主要有四种编程范式:
 - 比较运算符号
 
 	> (a & b ) 中如果a表达式为false， b表达式是不会被执行的
+#### 判断与循环
+
+##### switch
+可以处理条件比较多的情况
+```cpp
+int a = 0; // 1, 2 ..
+switch(a){
+	case 0: {
+	} break;
+	case 1:
+	case 2: { // merge condition
+	} break;
+	default:
+		break;
+}
+```
+> `switch` 结合`enum`可以实现一个简单的状态机:
+
+```cpp
+enum Data {wait, get, processing}
+Data data = Data::wait
+
+
+swith(data){
+case wait:{
+	if(...) data = get
+
+}break;
+default: break;
+}
+
+```
 
 ### 异常处理
 #### 基本机制`try-catch-throw`

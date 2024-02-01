@@ -10,6 +10,8 @@
 | apt remove [package name] | 删除软件（保留配置及依赖包）| 
 | apt autoremove [package name] | 删除当前不需要的依赖包|  
 | apt list --installed| 列出已安装软件包|  
+|文件系统||
+| pwd | 显示当前绝对路径| |
 | grep [string]  [文件名] | 搜索文本内的内容| 第二个参数为待匹配内容|
 | find [目录路径] -选项参数 -搜索条件 | 搜索文件及文件夹|find ./ -name "*.txt*"| 
 | scp [remote_usr_name@ip_address]:[dir] [本地文件夹] | 将远程电脑中的制定文文件拷贝到本地，反过来则是推送（若是文件夹，则加参数-r）| 
