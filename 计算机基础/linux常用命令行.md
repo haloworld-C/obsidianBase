@@ -65,7 +65,7 @@
 |ntpdate [cn.pool.ntp.org]|从时间服务器同步时间||
 |hwclock --systohc|将系统时间同步到板载时间||
 |硬件相关|
-|dmesg|产看硬件相关驱动log||
+|dmesg|产看硬件相关驱动log|可以用这个查看usb有没有识别dmesg --follow|
 | 网络相关|
 |arp -a| 扫描所有ip及主机||
 |nmap -sRn 10.42.0.* -oN out.txt|扫描网段主机ip, mac地址||

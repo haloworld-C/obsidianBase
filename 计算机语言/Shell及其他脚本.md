@@ -65,6 +65,14 @@ fi
 - `while` 循环
 - `for`循环
 ```bash
+#!/bin/bash
+
+# 循环n次
+for ((i=1; i<=100; i++)); do
+    ./common_utils_test
+done
+
+
 for (( ; ; )) # 无限循环
 do
 	echo "try to get run_id of roscore ..." >> ${LOG_DIR}/roscore.log
