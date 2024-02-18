@@ -49,7 +49,7 @@ rosrun rqt_tf_tree rqt_tf_tree# 打开tf树
 rostopic list | grep name # 查看某个topic是否存在
 rostopic echo /topic_name # 查看topic内容
 rostopic hz /topic_name # 查看某个消息的更新频率
-rostopic pub "content" # 发送消息
+rostopic pub /chatter std_msgs/String "data: 'hello world'"
 ```
 - rosservice
 ```bash

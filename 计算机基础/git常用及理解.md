@@ -130,7 +130,7 @@ $ git submodule add https://github.com/iphysresearch/GWToolkit.git GWToolkit
 
 -  更新子模块的仓库更新(按照父模块中记录的commit进行更新)
 ```bash
-git submodule update
+git submodule update # 会按照主仓库中子模块的commit进行更新
 ```
 > 注意更新后子模块目录并不会自动切换分支，需要自己手动切换
 如果是第一次拉取子模块可以使用命令：
