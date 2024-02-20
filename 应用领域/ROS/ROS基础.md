@@ -189,6 +189,30 @@ A ROS service is a special kind of topic that allows for two-way communication b
 通信可以是一对多，也可以是多对多
 service的效果类似函数调用，由于是阻塞的方式， 被调用的服务不应该消耗过多时间
 ![ros service](ros_service.png)
+##### 常用方法
+```cpp
+// 直接使用
+bool setVirtualWallLayer(const common_msgs::VirtualWalls &walls,
+	const std::string service_name) {
+    if(!ros::service::exists(service_name, true)) {
+		bool ret = ros::service::waitForService(service_name, ros::Duration(10));
+	
+		if (!ret) {
+			LOG(WARNING) << service_name << " call service waiting too much time!";
+			return false;
+		}
+	}
+	common_srvs::UpdateVirtualWall virtualWallSrv;
+	virtualWallSrv.request.walls = walls;
+	ros::service::call(service_name, virtualWallSrv);
+	  
+	if(!virtualWallSrv.response.success) {
+		LOG(WARNING) << service_name << " update virtual walls by service error!";
+	}
+	return virtualWallSrv.response.success;
+}
+// 通过句柄使用
+```
 #### ros spin
 - 写脚本的时候遇到一个问题，在while循环中调用了rospy.spin导致while内的语句只能被执行一次:
 	出现这个问题的原因是执行spin后ros中线程管理会只处理callback的线程， 而主线程则只检测rospy是否被关闭了。

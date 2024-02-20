@@ -5,6 +5,7 @@
 |命令行名称|说明||
 |---|---|---|
 |基本操作|
+|history|查看历史命令行| |  
 |dpkg -i <you.deb>|安装deb包| 需要先给dep包添加执行权限|  
 |apt purge [package name]|删除软件及其配置及依赖包|   |
 | apt remove [package name] | 删除软件（保留配置及依赖包）| 

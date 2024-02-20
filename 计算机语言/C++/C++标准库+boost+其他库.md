@@ -142,6 +142,11 @@ C++ 共提供三种时钟计时器：
 1.  system_clock
 2.  high_resolution_clock
 3.  steady_clock(与hight_resolution_clock类似，不过不能调整is_steady属性，indicates if the clock is monotonous)
+C++中原生的sleep方式:
+```cpp
+#include <thread>
+std::this_thread::sleep_for(std::chrono::seconds(1));// sleep one seconds
+```
 ##### std::thread
 - 线程中的资源锁
 std::mutex中提供两种上锁方式
