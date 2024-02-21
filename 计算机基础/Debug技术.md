@@ -52,7 +52,7 @@ valgrind --leak-check=yes myprog arg1 arg2
 ```launch
 <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true" launch-prefix="valgrind --leak-check=full --show-reachable=yes --undef-value-errors=yes --track-fds=yes" >
 ```
-#### `dw`库
+#### `dw`库配合backward.hpp
 用来记录异常抛出附近代码。
 - 安装 
 ```bash

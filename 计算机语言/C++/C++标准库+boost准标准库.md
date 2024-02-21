@@ -1,6 +1,5 @@
-### STL
-#### 数据结构
-##### vector
+## 数据结构
+### vector
 -  vector的内存机制 
 1. 内存为管理对象数目内存的两倍大小，如果超过一个系数(??多少), 便需要再内存中再开辟一个区域，将现有对象拷贝。所以当vector规模很大的时候，很容易触发内存拷贝。
 - 常用方法
@@ -14,7 +13,7 @@
 |front|获取第一个元素||
 |back|获取最后一个元素||
 
-##### list
+#### list
 - 在第k个元素前插入
 ```C++
 #include <iostream>
@@ -44,9 +43,9 @@ int main() {
 ```
 
 
-##### queue
+### queue
 
-##### map
+### map(字典)
 key-value结构， 访问、插入复杂度均为常数。
 std内部实现为排序红黑树.
 其中key必须为可哈希的。
@@ -74,9 +73,13 @@ if(iter != data.end()) {
 }
 ```
 
-##### set
+### set
 
-##### 特殊数值
+### 特殊数值
+- 数学符号
+```cpp
+#include <cmath>
+```
 - 无穷大
 ```C++
 #include <limits>
@@ -89,13 +92,13 @@ std::numeric_limits<T>::max()
 ```
 代替
 包含在头文件limits.h头文件当中 
-#### 算法algorithm
-#### 比较大小
+## 算法algorithm
+### 比较大小
 ```C++
 std::max(a, b);
 std::min(a, b);
 ```
-##### 倒转元素
+### 倒转元素
 ```C++
 #include <iostream>
 #include <vector>
@@ -119,25 +122,25 @@ std::next(iter, 5); //在iter迭代器上递增5(since C++11)
 std::advance(iter, 5); //在iter迭代器上递增5(since C++17)
 std::distance(input_path.begin(), precise_planning_iter); // 计算两个迭代器之间的步长
 ```
-##### 取整
+### 取整
 ```C++
 std::floor(); #地板除(向下取整数)
 std::ceil(); #地板除（向上取整）
 ```
-##### 绑定与注册
+### 绑定与注册
 - 模板绑定
 ```C++
 std::bind();
 ```
-#### 组件
-##### 随机数
+### 随机数
 - random库
 - 生成随机整数
 ```C++
 std::srand(std::time(nullptr)); // use current time as seed for random generator
 int random_variable = std::rand();
 ```
-##### chrono
+## 时钟 
+### chrono
 C++ 共提供三种时钟计时器：
 1.  system_clock
 2.  high_resolution_clock
@@ -147,35 +150,53 @@ C++中原生的sleep方式:
 #include <thread>
 std::this_thread::sleep_for(std::chrono::seconds(1));// sleep one seconds
 ```
-##### std::thread
-- 线程中的资源锁
-std::mutex中提供两种上锁方式
-	1. std::lock_guard
-	2. std::unique_lock
-- 原子量
-	std::atomic原子操作变量，与多线程环境中保证线程安全。
+## 多线程
+### std::thread
+
 > 当使用std::thread时， 需要在编译时g++ 需要在末尾加上-pthread
+### 原子量
+	std::atomic原子操作变量，与多线程环境中保证线程安全。
+### 互斥量
+并不是所有变量都是可以原子操作的， 这时候就需要锁(lock)依据互斥量(mutex)进行保护。
 
+### 资源锁
+### std::lock_guard
+### std::unique_lock
+- 基本用法
+```cpp
+// unique_lock example
+#include <iostream>       // std::cout
+#include <thread>         // std::thread
+#include <mutex>          // std::mutex, std::unique_lock
 
-###  Abseil
-谷歌C++ and Python库
+std::mutex mtx;           // mutex for critical section
 
-#### 谷歌三件套
-##### gflags
-glags在添加链接库报错：
-```error
-undefined reference to symbol '_ZN6google14FlagRegistererC1IiEEPKcS3_S3_PT_S5_'
+void print_block (int n, char c) {
+  // critical section (exclusive access to std::cout signaled by lifetime of lck):
+  std::unique_lock<std::mutex> lck (mtx);
+  for (int i=0; i<n; ++i) { std::cout << c; }
+  std::cout << '\n';
+}
+
+int main ()
+{
+  std::thread th1 (print_block,50,'*');
+  std::thread th2 (print_block,50,'$');
+
+  th1.join();
+  th2.join();
+
+  return 0;
+}
+// try lock
+std::unique_lock<std::mutex> lck (mtx, std::defer);
+if(lck.try_lock()) {
+	// do something
+	lck.unlock();
+} else {
+	std::cout << "failed to get lock.." << std::endl;
+}
+
 ```
-需要在CMakeLists.txt中添加-lgflags：
-```CMakeLists.txt
-IF (HELLO_FOUND AND gflags_FOUND)
-    ADD_EXECUTABLE(useHello useHello.cpp)
-    TARGET_LINK_LIBRARIES(useHello ${HELLO_LIBRARY}
-                                   ${gflags_LIBRARY}
-                                   -lgflags)
 
-```
-
-##### glog
-
-##### gtest
+### std::unique_lock
