@@ -1,3 +1,4 @@
+## 通信机制
 ### concepts
 - ROS中四种通信机制:
 	1. message消息广播机制(单工)
@@ -213,6 +214,60 @@ bool setVirtualWallLayer(const common_msgs::VirtualWalls &walls,
 }
 // 通过句柄使用
 ```
+## 效率工具
+### `dynamic_reconfigure'
+可以很方便的调参， 但是参数不要过多。
+#### 使用
+- 创建`cfg`文件
+```yourpkg/cfg/youcfg.cfg
+#!/usr/bin/env python
+PACKAGE = 'active_safety'
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+gen.add("enable_update_by_dynamic_config", bool_t, 0, "a switch for tune config", False)
+gen.add("lateral_inflation_meter", double_t, 0, "in robot coordinate", 0.1, 0, 1.0)
+gen.add("virtical_inflation_meter", double_t, 0, "in robot coordinate", 0.3, 0, 1.0)
+
+exit(gen.generate(PACKAGE, "active_safety_node", "ActiveSafety")) # ActiveSafety, 生成的配置类名及.h文件名为TuotrialConfig
+```
+> 这个cfg文件名字便决定了catkin_install时要找的.h名字， 换言之，cfg的名字应与exit的最后一个参数相同, 这个文件需要a+x权限(因为是python脚本)
+```CMakelists.txt
+find_package(catkin REQUIRED
+	COMPONENTS
+		dynamic_reconfigure
+		...
+)
+
+generate_dynamic_reconfigure_options(
+	cfg/ActiveSafety.cfg
+)
+# make sure configure headers are built before any node using them
+add_dependencies(example_node ${PROJECT_NAME}_gencfg)
+```
+- package添加依赖
+```package.xml
+<build_depend>dynamic_reconfigure</build_depend>
+<exec_depend>dynamic_reconfigure</exec_depend>
+```
+- cpp使用更新
+```cpp
+// 更新
+void ActiveSafetyNode::reconfigureCB(ActiveSafetyConfig &config, uint32_t level) {
+	const bool enabled = config.enable_update_by_dynamic_config;
+	if(enabled) {
+		Vector2d amplify_meter(config.virtical_inflation_meter,
+								config.lateral_inflation_meter);
+		active_safety_ptr_->set_amplify(amplify_meter);
+	}
+}
+// 绑定回调
+dynamic_reconfigure::Server<ActiveSafetyConfig>::CallbackType f;
+f = boost::bind(&ActiveSafetyNode::reconfigureCB, this, _1, _2);
+dynamic_params_server_.setCallback(f);
+```
+## 常见问题
 #### ros spin
 - 写脚本的时候遇到一个问题，在while循环中调用了rospy.spin导致while内的语句只能被执行一次:
 	出现这个问题的原因是执行spin后ros中线程管理会只处理callback的线程， 而主线程则只检测rospy是否被关闭了。

@@ -419,6 +419,22 @@ nh_private.param<double>("parameters/dt", p_dt); // 两种方式均可
 
 ```
 
+### roslauch 启动
+参考(roslaunch采用XML格式， 使用python维护， 兼容python语法)
+```launch
+<launch>
+	<arg name="chassis" default="canbotmini"/>
+	<arg name="depth_camera_type" default="dw2"/>
+
+	<group if="$(arg depth_camera_type)==dw2">
+		<include file="$(find rplidar_ros)/launch/rplidar_a3.launch">
+			<arg name="angle_compensate_factor" value="$(arg angle_compensate_factor)"/>
+			<arg name="lidar_port" value="$(arg lidar_port)"/>
+			<arg name="scan_topic" value="raw_scan"/>
+		</include>
+	</group>
+</launch>
+```
 ### 配置文件的读取
 #### 参数的设置
 参考
@@ -438,6 +454,7 @@ nh_private.param<double>("parameters/dt", p_dt); // 两种方式均可
 </launch>
 ```
 > 其中param参数名称如果以"/"开头的话，其名称空间是全局的
+
 
 ```yaml
 parameters:
