@@ -34,6 +34,7 @@
 |telnet ip:port|            |
 |service network-manager restart|重启网络服务            |
 |clear | 清楚命令行窗口历史文本|
+|xargs | 将pipeline中的输出作为参数传递给下一个命令|
 |man ascii | 显示ascii码对照表 | |
 |nslookup  [域名]| 刷新dns域名列表 | |
 |iperf -s  | 服务器执行 | 先在被测机器上开启服务，然后再测试机器上执行下一个命令|
@@ -67,6 +68,8 @@
 |hwclock --systohc|将系统时间同步到板载时间||
 |硬件相关|
 |dmesg|产看硬件相关驱动log|可以用这个查看usb有没有识别dmesg --follow|
+|lsusb|查看usb接口状态|-t 列出所有端口|
+|lscpu|查看cup配置信息||
 | 网络相关|
 |arp -a| 扫描所有ip及主机||
 |nmap -sRn 10.42.0.* -oN out.txt|扫描网段主机ip, mac地址||
@@ -85,6 +88,7 @@ ls -lR | grep "^-" | wc -l # 包含子目录
 ls -lR | grep "^d" | wc -l
 # 搜索文件名称
 find ./ -name '*.bag'
+find /tmp -type f -mtime +1 -exec rm -f {} \; # 定时清理修改日期大于1天的文件, -exec是find自带的
 ```
 
 
@@ -257,6 +261,24 @@ echo "password" | sudo -S CMD
 # m h  dom mon dow   command
  0 * * * * /bin/bash -c 'DISPLAY=:0 zenity --width 500 --info --title "一休！休息一下!" --text "喝水>    ！上厕所!"' >> /home/test/Documents/logs/cron/logfile 2>&1
 ```
+> 另外， 可以使用systemctl timer定时器任务执行， 更加灵活与强大(timer名字与服务一样即可关联执行)
+
+```bash
+# 创建定时器关联服务
+sudo nano /etc/systemd/system/tmp-cleanup.service
+[Unit] 
+Description=Cleanup /tmp directory 
+[Service] 
+Type=oneshot 
+ExecStart=/bin/rm -rf /tmp/*
+# 创建定时器
+[Unit] 
+Description=Timer for Cleanup /tmp directory 
+[Timer] OnCalendar=daily 
+Persistent=true 
+[Install] WantedBy=timers.target
+```
+
 
 3. expect
 #### 开机自启动

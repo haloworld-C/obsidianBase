@@ -13,5 +13,7 @@ vim /etc/ssh_config
 ```config
 User "firefly"
 ```
- 1. R
+>有的情况moba会连不上， 也没反应， 可以使用powerShell应急(支持基础ssh, scp命令)
+
+ 4. R
 	统计专业软件，配合`RStudio`食用 
