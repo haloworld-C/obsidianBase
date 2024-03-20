@@ -105,6 +105,23 @@ std::numeric_limits<T>::max()
 ```
 代替
 包含在头文件limits.h头文件当中 
+- 随机数
+随机数包含于random库中， 通常与概率相关。常用方法如下:
+```cpp 
+#include <iostream> 
+#include <random> 
+int main() { 
+	// 使用随机设备生成种子 
+	std::random_device rd; 
+	// 使用 Mersenne Twister 引擎 
+	std::mt19937 gen(rd()); 
+	// 创建均匀分布器，范围为 [0, 1)
+	std::uniform_real_distribution<> dis(0.0, 1.0); 
+	// 生成随机数 
+	double randomValue = dis(gen); std::cout << "Random value between 0 and 1: " << randomValue << std::endl; 
+	return 0; 
+}
+```
 ## 算法algorithm
 ### 比较大小
 ```C++

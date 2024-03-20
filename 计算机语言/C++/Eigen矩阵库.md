@@ -30,12 +30,14 @@ mat.resize(m,n); //将mat初始化为m行n列的矩阵
 # use array intilize
 double dataArray[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
 Eigen::Map<Eigen::Matrix<double, 2, 3>> eigenMatrix(dataArray);
-# use vecotr initlize
+# use vector initlize MatrixXd
 std::vector<double> data = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
 Eigen::Map<Eigen::MatrixXd> eigenMatrix(data.data(), rows, cols);
+# use vector initlize VectorXd
 Eigen::Matrix<double, 2, 4, Eigen::RowMajor> footPrintMatrix(footPrintVec.data()); # 指定存储顺序
 Eigen::MatrixXd traj = MatrixXd::Zero(); // 初始化为0矩阵
 ```
+#### 常用操作
 - 运算
 	`Eigen`中乘法操作符`*`会进行严格的维度检查。
 - 索引与广播
@@ -47,6 +49,11 @@ Vector3d pose(1, 2);
 mat.block(0, 0, 2, lenPoint).colwise() -= pose; # mat中点的坐标以列存储，从而获得相对位置
 mat.block<p, q>(i, j); //返回矩阵左上角为(i, j)，矩阵大小为(p, q)的子矩阵
 mat.block(i, j, p,q); //与上语句等价
+```
+- 算法
+```cpp
+// 最大值
+double maxVal = vec.maxCoeff();
 ```
 #### eigen的注意事项
 - 静态大小与动态大小的区别（初始化）
