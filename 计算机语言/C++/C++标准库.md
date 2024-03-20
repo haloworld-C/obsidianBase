@@ -12,7 +12,20 @@
 |size|获取当前元素个数|其时间复杂度为1|
 |front|获取第一个元素||
 |back|获取最后一个元素||
-
+```cpp
+# 保留容器内存拷贝
+#include <vector> 
+#include <algorithm> 
+int main() { 
+	std::vector<int> source = {6, 7, 8, 9, 10}; 
+	std::vector<int> destination = {1, 2, 3, 4, 5}; 
+	destination.clear(); // 清空 destination 
+	// 确保有足够的空间接收源容器的元素 
+	destination.reserve(source.size()); 
+	std::copy(source.begin(), source.end(), std::back_inserter(destination)); 
+	return 0; 
+}
+```
 #### list
 - 在第k个元素前插入
 ```C++
