@@ -24,6 +24,13 @@ C++是一个语言大杂烩，主要有四种编程范式:
 
 ### syntax(语法)
 #### 内置数据类型(包含容器)
+#### std:: string
+多行字符串的跨行: 
+在 C++ 中，多个相邻的字符串字面量会被自动连接成一个单独的字符串。因此，虽然你的字符串在源代码中跨越了多行，但在程序中它们会被视为一个连续的字符串。
+```cpp
+LOG(ERROR) << "Aborting because a valid control could not be found. " 
+			"Even after executing all recovery behaviors";
+```
 ##### 枚举类型(enum)
 
 #### 算数运算

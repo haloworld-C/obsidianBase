@@ -89,10 +89,11 @@ ls -lR | grep "^d" | wc -l
 # 搜索文件名称
 find ./ -name '*.bag'
 find /tmp -type f -mtime +1 -exec rm -f {} \; # 定时清理修改日期大于1天的文件, -exec是find自带的
+du -sh * # 查看当前文件夹中的文件/文件夹大小
 ```
 
 
-
+> 注意事项， 删除文件最好子在图形界面中的资源管理器中删除(方便找回)
 ### 高效小工具
 1. terminator多页面命令行终端
 terminator安装完成后会设置为默认terminal，如果我们要切换回系统自带终端：
