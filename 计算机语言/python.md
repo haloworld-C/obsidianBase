@@ -203,6 +203,7 @@ print(t2)
 ```bash
 pip install pynput
 ```
+> 平替: termios(未测试)
 ##### demo
 ```python 
 from pynput.keyboard import Key, Listener # keyboard interaction lib

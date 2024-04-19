@@ -64,6 +64,8 @@
 |du -sh|查看当前目录大小|du -h [dir]|
 |tail [filename]|查看文件的末尾行|-f 持续更新文件，以便实时显示|
 |:w !  sudo  tee  %|在vim内获取sudo 权限保存文件||
+|文件相关|
+|diff|比较两个文件内容|-q, 安静模式， 仅关注不同|
 |时间同步|
 |ntpdate [cn.pool.ntp.org]|从时间服务器同步时间||
 |hwclock --systohc|将系统时间同步到板载时间||

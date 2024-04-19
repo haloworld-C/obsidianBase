@@ -97,6 +97,7 @@ catkin_make -DCMAKE_BUILD_TYPE=Debug -DFORCE_DEBUG_BUILD=True
 <node pkg="waypoint_follower" type="pure_persuit" name="pure_pursuit" output="screen" launch-prefix="xterm -e gdb -ex run --args"> 
         <param name="is_linear_interpolation" value="$(arg is_linear_interpolation)"/>
 </node>
+<!--node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true" launch-prefix="xterm -e cgdb -/-args"-->
 ```
 > 可以把-ex run 去掉，这样就有机会设置断点
 > 在docker中运行没有直接运行(需要设置回车)???
