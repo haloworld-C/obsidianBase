@@ -12,29 +12,29 @@ ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构�
 ROS中默认callback默认是线程安全的
 ## 常用命令
 
-| command | discription | comment|
-|------|----------|---------|
-|rosnode list | 列出所有启动节点|
-| rosrun [nodename]| 启动包节点|
-|rosnode kill [node name] | 杀死特定节点|
-| roscore| 启动ROS| 
-| roscd | 切换到对应包的目录当中|
-| rqt_plot | 画图模块| 可画单维变量随时间的变化|
-| rosparam| 在param sever上设置参数数据| set, get|
-| rqt_graph | 查看包图视图|也可通过rosrun rqt_graph rqt_graph运行
-| catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖
-| rqt_console | 查看正在运行的ros_info（）发出的消息
-| rosnode kill --all | 关闭所有节点
-| rosbag record /<msg_name>|录入消息数据|
-| rosbag play ros.bag --topics "/topic1 /topic2"|播放指定消息|
-| rosbag filter old.bag new.bag "topic == '/topic_name1' and topic == '/topic_name2'"|过滤bag中的某些消息|""中的逻辑表达式与python兼容|
-| catkin_make --only-pkg-with-deps [package name]|编译单个包及其依赖|
-| rosclean|rosclean check &&rosclean purge|清楚历史日志（当出现日志内存过大时）|
-| rosdep|rosdep [package_name]|安装某个包的依赖|
-| rosrun rqt_reconfigure rqt_reconfigure|动态参数配置工具|
-| rosrun rqt_tf_tree rqt_tf_tree|查看`tf`树|查看两个frame之间的转换`rosrun tf tf_echo base_link target_frame`|
-| nh_handle("/app")|设置相对命名空间|如果不加`/`则为相对命名|
-| rosservice list|列出所有的服务|`rosservice info /your_service_name`列出具体的service|
+| command | discription | comment |
+| ---- | ---- | ---- |
+| rosnode list | 列出所有启动节点 |  |
+| rosrun [nodename] | 启动包节点 |  |
+| rosnode kill [node name] | 杀死特定节点 |  |
+| roscore | 启动ROS |  |
+| roscd | 切换到对应包的目录当中 |  |
+| rqt_plot | 画图模块 | 可画单维变量随时间的变化 |
+| rosparam | 在param sever上设置参数数据 | set, get |
+| rqt_graph | 查看包图视图 | 也可通过rosrun rqt_graph rqt_graph运行 |
+| catkin_create_pkg [your package name] [dependency package names] | 新建ros包 | dependency为该包的依赖 |
+| rqt_console | 查看正在运行的ros_info（）发出的消息 |  |
+| rosnode kill --all | 关闭所有节点 |  |
+| rosbag record /<msg_name> | 录入消息数据 |  |
+| rosbag play ros.bag --topics "/topic1 /topic2" | 播放指定消息 |  |
+| rosbag filter old.bag new.bag "topic == '/topic_name1' and topic == '/topic_name2'" | 过滤bag中的某些消息 | ""中的逻辑表达式与python兼容 |
+| catkin_make --only-pkg-with-deps [package name] | 编译单个包及其依赖 |  |
+| rosclean | rosclean check &&rosclean purge | 清楚历史日志（当出现日志内存过大时） |
+| rosdep | rosdep [package_name] | 安装某个包的依赖 |
+| rosrun rqt_reconfigure rqt_reconfigure | 动态参数配置工具 |  |
+| rosrun rqt_tf_tree rqt_tf_tree | 查看`tf`树 | 查看两个frame之间的转换`rosrun tf tf_echo base_link target_frame` |
+| nh_handle("/app") | 设置相对命名空间 | 如果不加`/`则为相对命名 |
+| rosservice list | 列出所有的服务 | `rosservice info /your_service_name`列出具体的service |
 
 ### 常用操作
 - 打开rqt相关

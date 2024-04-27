@@ -93,6 +93,13 @@ ls -lR | grep "^d" | wc -l
 find ./ -name '*.bag'
 find /tmp -type f -mtime +1 -exec rm -f {} \; # 定时清理修改日期大于1天的文件, -exec是find自带的
 du -sh * # 查看当前文件夹中的文件/文件夹大小
+# 查看程序线程pid
+pgrep -f test_serial
+kill -9 $(pgrep -f test_serial) # 强制杀掉该进程
+# 查看库所在目录
+find /usr -name "*.so"
+locate libglog.so 
+ldconfig -p | grep [lib name]
 ```
 
 
