@@ -77,7 +77,29 @@ default: break;
 }
 
 ```
+#### 指针的概念模型
+- 基本操作
+```cpp
+#include <iostream>
 
+int main() {
+    int* ptr = new int(10); // 动态分配一个整数
+
+    // 在删除前检查指针是否不为 nullptr
+    if (ptr != nullptr) {
+        delete ptr;  // 释放内存
+        ptr = nullptr; // 将指针设为 nullptr 防止悬挂指针
+    }
+
+    // 再次检查指针以验证其是否已被删除
+    if (ptr == nullptr) {
+        std::cout << "Pointer successfully deleted and set to nullptr." << std::endl;
+    }
+
+    return 0;
+}
+
+```
 ### 异常处理
 #### 基本机制`try-catch-throw`
 - try: 对容易出现异常的地方使用try{}包裹

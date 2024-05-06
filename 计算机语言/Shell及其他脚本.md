@@ -63,6 +63,27 @@ else
     echo "please check you connected to robot wifi!"
 fi
 ```
+- case分支
+```bash
+case $depth_camera_type in 
+	dw2) 
+		echo "检测到 depth_camera_type 为 dw2" 
+		# 这里可以添加针对 dw2 的处理代码 
+		;; 
+	berxel_max) 
+		echo "检测到 depth_camera_type 为 berxel_max" 
+		# 这里可以添加针对 berxel_max 的处理代码 
+		;; 
+	dw2_max) 
+		echo "检测到 depth_camera_type 为 dw2_max" 
+		# 这里可以添加针对 dw2_max 的处理代码 
+		;; 
+	*) 
+		echo "未知的 depth_camera_type: $depth_camera_type" 
+		# 这里可以添加默认的处理代码 
+		;; 
+esac
+```
 - `while` 循环
 - `for`循环
 ```bash
