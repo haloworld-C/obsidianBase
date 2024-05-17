@@ -22,3 +22,7 @@ sudo apt install okular
 Linux下最强播放器
 6. rsyslog日志工具
 多平台的轻量级日志服务器, 介绍见[[Syslog]]
+7. 串口工具
+minicom
+8. 远程命令行终端
+tmux
