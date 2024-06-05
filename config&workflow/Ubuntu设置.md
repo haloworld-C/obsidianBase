@@ -61,7 +61,7 @@ Wants=network.target
 [Service]
 Restart=on-failure
 RestartSec=5
-ExecStart=/home/work/test_algorithm/wedrive_self-innovate/frp_0.41.0_linux_arm64/frpc -c /home/work/test_algorithm/wedrive_self-innovate/frp_0.41.0_linux_arm64/frpc.ini
+ExecStart=/home/firefly/frp/frpc -c /home/firefly/frp/frpc.ini
 
 [Install]
 WantedBy=multi-user.target

@@ -10,6 +10,14 @@
 #### share_ptr
 - 循环引用仍有可能导致内存泄漏
 
+##### make_shared工厂函数
+##### 指针类型的转换
+```cpp
+boost::shared_ptr<Layer> layerPtr plugin;
+boost::shared_ptr<StaticLayer> staticLayerPtr;
+staticLayerPtr = boost::dynamic_pointer_cast<StaticLayer>(plugin); // 向下转换
+LayerPtr = boost::static_pointer_cast<StaticLayer>(plugin); // 向上转换
+```
 
 
 
