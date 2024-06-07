@@ -6,7 +6,7 @@
 | git checkout -b [branch-name] | 创建新分支 |  |  |
 | git remote -v | 查看远程仓库主分支 |  |  |
 | git fetch | 获取远程仓库内容 |  |  |
-| git checkout | 检查当前目录的内容进行校验（如果是子模块，需要在子目录进行checkout; git checkout - 返回之前的分支 |  |  |
+| git checkout | 检查当前目录的内容进行校验（如果是子模块，需要在子目录进行checkout; git checkout - 返回之前的分支 | git checkout [filename or dir]将文件(夹)文件恢复到最后的commit的状态， 即撤销修改 |  |
 | git checkout [分支名称] | 切换到对应的分支 | git checkout -切回到之前的分支 |  |
 | git clone [仓库地址]  [指定目录] --recurse-submodules | 连带子模块进行拉取，如果拉到指定目录则不带顶层文件夹 |  |  |
 | git fetch --all && git reset --hard [分支名称] && git pull | 获取所有历史分支，将head指针重置到最新master分支上 | 更安全的方法是把要更新的分支删除，然后pull | --hard选项不能轻易使用，因为会强制删除本地更改（可以改用--soft选项），且不可恢复 |
