@@ -511,7 +511,13 @@ RUN rm /etc/apt/sources.list.d/*
 ```
 4. rviz没有加载默认的配置文件
 拷贝默认`default.rviz`文件到`/opt/ros/${ROS_DISTRO}/share/rviz`
-
+5. `catkin_make`中依赖的解决
+```CMakeList.txt
+add_dependencies(${PROJECT_NAME}_node ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+# 其中${catkin_EXPORTED_TARGETS}, 为依赖其他ros包
+# 其中${${PROJECT_NAME}_EXPORTED_TARGETS}， 为依赖本包中自动生成的相关文件
+# 如果指定了依赖的包名， 则需要在package.xml中run_time中加入该包
+```
 
 
 ### 有用的包

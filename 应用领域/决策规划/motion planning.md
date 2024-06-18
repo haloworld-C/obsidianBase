@@ -1,4 +1,12 @@
 ### core concept
+#### 主要难点
+- 高维度中的运动规划
+- 复杂约束下的运动规划
+
+#### 主要流程:
+- 全局参考线保证全局最优(离散搜索DP)
+- 局部路径保证局部最优(连续优化QP)
+
 
 #### 主要方法
 ##### 基于搜索
@@ -10,6 +18,7 @@
 - path_opttimizer_2
 > [github](https://github.com/LiJiangnanBit/path_optimizer_2)
 - Piecewise Jerk Path Optimizer
+- EM-planner
 > [paper]()
 
 优化目标函数：
@@ -44,3 +53,9 @@ DWA中考虑的代价有三项：
 
 ##### 人工势场(potential field)
 通常用来计算避障代价
+
+##### Graphs of Convex Sets (GCS)
+一种使用MICP(混合整数规划器)方法进行同时路径搜索和平滑无碰撞路径生成的方法， 值得学习
+直接在凸空间子集上进行搜索， 很有创意， 在搜索过程中也获得了优化的边界。
+> 如何申城GCS
+> 可能比传统方法更加耗时
