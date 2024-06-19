@@ -78,6 +78,7 @@ default: break;
 
 ```
 #### 指针的概念模型
+C++中的指针概念继承自C， 并发展出了对象中的智能指针。
 - 基本操作
 ```cpp
 #include <iostream>

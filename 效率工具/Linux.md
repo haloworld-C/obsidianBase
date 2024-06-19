@@ -26,3 +26,18 @@ Linux下最强播放器
 minicom
 8. 远程命令行终端
 tmux
+9. 压缩工具7z(压缩效率最高)
+常用命令
+```bash
+# 压缩
+7z a my_archive.7z /path/to/directory_or_file
+# 解压
+7z x my_archive.7z -o output_directory
+# 列出压缩包内文件
+7z l my_archive.7z
+# 按照大小分割文件
+7z a -v100m -mx0 large_archive.7z /path/to/largefile
+# 合并分割的文件并解压
+cat large_archive.7z.* > combined_large_archive.7z
+7z x combined_large_archive.7z
+```
