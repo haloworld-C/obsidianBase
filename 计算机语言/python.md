@@ -204,6 +204,26 @@ print(t2)
 pip install pynput
 ```
 > 平替: termios(未测试)
+```python
+class KeyInteract
+    self.keyListener = Listener(on_press = self.on_press)
+    self.keyListener.start()
+    self.keyListener.join()
+    # keyboard interact callback
+    def on_press(self, key):
+        try:
+            # print('key {0} pressed'.format(key.char))
+            if key.char == 'q':
+                self.keyListener.stop()
+                rospy.signal_shutdown('KeyboardInterrupt') # shutdown the node
+        except AttributeError:
+            # print("Special key {0} pressed".format(key))
+            pass
+        if key == Key.space: # space key
+            print("set task point {0}".format(len(self.taskPoints)))
+            self.taskPoints.append(self.curPos.tolist())
+
+```
 ##### demo
 ```python 
 from pynput.keyboard import Key, Listener # keyboard interaction lib

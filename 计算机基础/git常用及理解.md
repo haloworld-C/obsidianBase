@@ -23,7 +23,7 @@
 | git status | 查看目前分支的修改状态 |  |  |
 | git log | 查看git commit 的历史记录 | git shortlog 历史记录的缩略版 --name-only 查看更改文件列表 |  |
 | git merge [分支名称] | 将对应分支的修改合并到本分支 | git merge --abort: 放弃之前的merge |  |
-| git reset --merge previous-commit | 回退合并成功的merge |  |  |
+| git reset --merge previous-commit<br>git reset --merge HEAD~1 | 回退合并成功的merge |  |  |
 | git add [filename] | 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update） |  |  |
 | git rm [filename] | 将对应文件由tracked状态变为untracked状态 | 可以添加--cached选项，导致该文件不会立即删除，而是在commit之后删除 |  |
 | git stash | 将将当前分支更改保存，并恢复到之前clean commit的状态 | 恢复git stash apply |  |
