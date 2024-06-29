@@ -66,6 +66,8 @@
 |:w !  sudo  tee  %|在vim内获取sudo 权限保存文件||
 |文件相关|
 |diff|比较两个文件内容|-q, 安静模式， 仅关注不同|
+|文本处理|
+|awk|文本批量处理|awk 'NR=4', 获取第四行内容 | 
 |时间同步|
 |ntpdate [cn.pool.ntp.org]|从时间服务器同步时间||
 |hwclock --systohc|将系统时间同步到板载时间||

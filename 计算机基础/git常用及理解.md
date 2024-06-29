@@ -186,3 +186,7 @@ git config --global core.editor nvim
 git checkout -b <branch name>
 git pull origin <branch name>
 ```
+- http拉取设置记住密码
+```bash
+git config --global credential.helper store
+```
