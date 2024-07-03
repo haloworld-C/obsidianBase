@@ -159,14 +159,13 @@ git submodule sync
 # 最新git
 git mv old_path new_path
 ```
-```
-
 ### git config
 #### git config的三个级别
 1. --local 仅适用于当前仓库
 2. --global 仅适用当前用户
 3. --system适用于当前系统所有用户
 #### 配置用户名及邮箱
+
 ```bash
 git config --global user.name "guangshen.zhi"
 git config --global user.email guangshen.zhi@westwell-lab.com
