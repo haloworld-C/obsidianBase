@@ -35,6 +35,7 @@ DWA中考虑的代价有三项：
 - 路径周围障碍物距离最短
 - 速度尽可能大(保证到最近的障碍物距离内可以刹停)
 
+> Contingency Planning 防御性规划
 
 2. state space sampling method(状态采样)
 1) random sampling
