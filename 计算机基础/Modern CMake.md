@@ -4,9 +4,9 @@
 
 ### 常用命令与环境变量
 
-| variable | description | comment|
-|------|----------|---------|
-|`CMAKE_CURRENT_SOURCE_DIR`| 当前`CMakelists.txt`所在的完整目录|
+| variable | description | comment |
+| ---- | ---- | ---- |
+| `CMAKE_CURRENT_SOURCE_DIR` | 当前`CMakelists.txt`所在的完整目录 |  |
 
 | command | description | comment|
 |------|----------|---------|
@@ -61,4 +61,6 @@ pkg-config --libs ipopt[pack_name]
 ```bash
 catkin_make -j1
 ```
+3. CMakeLists.txt中如果没有指定Release则默认是Debug模式(优化等级-o0)
+
 

@@ -50,6 +50,7 @@ rostopic list | grep name # 查看某个topic是否存在
 rostopic echo /topic_name # 查看topic内容
 rostopic hz /topic_name # 查看某个消息的更新频率
 rostopic pub /chatter std_msgs/String "data: 'hello world'"
+rostopic echo -b <your_bag_file.bag> /example_topic # 查看bag中的消息内容而不播包
 ```
 - rosservice
 ```bash

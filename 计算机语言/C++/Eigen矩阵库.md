@@ -49,12 +49,18 @@ Vector3d pose(1, 2);
 mat.block(0, 0, 2, lenPoint).colwise() -= pose; # mat中点的坐标以列存储，从而获得相对位置
 mat.block<p, q>(i, j); //返回矩阵左上角为(i, j)，矩阵大小为(p, q)的子矩阵
 mat.block(i, j, p,q); //与上语句等价
+// 调整动态矩阵大小
+mat.resize() // 里面的值不保证不被改变
+mat.conservativeResize(m, n) // 原有值将保持不变
 ```
 - 算法
 ```cpp
 // 最大值
 double maxVal = vec.maxCoeff();
-
+// 拼接矩阵, 横向
+checkPoints.resize(2, scan_points_.cols() + depth_points_.cols());
+checkPoints.block(0, 0, 2, scan_points_.cols()) = scan_points_;
+checkPoints.block(0, scan_points_.cols(), 2, depth_points_.cols()) = depth_points_;
 
 ```
 #### eigen的注意事项
