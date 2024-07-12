@@ -21,7 +21,7 @@
 | git push -f origin main | 回滚版本后，强制远程仓库同步回退 |  |  |
 | git branch -d <branch_name> | 删除本地分支（需要退出需要删除的分支才能删除） | -D为强制删除 |  |
 | git status | 查看目前分支的修改状态 |  |  |
-| git log | 查看git commit 的历史记录 | git shortlog 历史记录的缩略版 --name-only 查看更改文件列表 |  |
+| git log | 查看git commit 的历史记录 | git shortlog 历史记录的缩略版 --name-only 查看更改文件列表<br>git log --graph查看历史分支信息 |  |
 | git merge [分支名称] | 将对应分支的修改合并到本分支 | git merge --abort: 放弃之前的merge |  |
 | git reset --merge previous-commit<br>git reset --merge HEAD~1 | 回退合并成功的merge |  |  |
 | git add [filename] | 将对应文件由untrack状态提升为unstage 状态（第一第创建时候）;更新最近修改（track update） |  |  |
