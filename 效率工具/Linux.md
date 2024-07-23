@@ -41,3 +41,8 @@ tmux
 cat large_archive.7z.* > combined_large_archive.7z
 7z x combined_large_archive.7z
 ```
+10. shell交互`starship`
+```bash
+curl https://sh.rustup.rs -sSf | sh
+cargo install starship --locked
+```

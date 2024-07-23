@@ -23,11 +23,37 @@
 |where|显示 seg fault 前的函数调用过程|  |
 |list|显示发生错误附近的源码|  list [function]显示function源码|
 |bt(back track)|查看程序崩溃时的堆栈调用过程|  up 向前追溯 down 向后追溯|
+|gcore core_name|gdb中生成core dump文件以便再次查看||
+|多线程|
+|info threads|查看线程列表| |
+|thread apply all bt|查看线程列表的bt|thread apply all bt > file.txt保存文件 |
 ```bash
 break file1.c:6 if i >= ARRAYSIZE # conditional break
 ```
 
 - gdb -tui
+- gdb server
+- 利用core_dump文件离线调试
+dump core 功能默认是关闭的， 要手动打开配置:
+1. 查看是否打开了dump core
+```bash
+limit -c # core dump size 0， 则说明没有打开
+```
+2. 打开dump core 
+```bash
+ulimit -c unlimited
+```
+3. 用gdb查看core dump 产生的文件
+coredump产生的文件路径在`/proc/sys/kernel/core_pattern`里面定义, 
+如果没有定位的话则位于程序的的当前路径中
+```bash
+# 指定core dump目录
+sudo vi /etc/sysctl.conf
+kernel.core_pattern=/var/crash/%E.%p.%t.%s
+sudo sysctl -p
+kill -s SIGSEGV $$ # 测试能否生成crash
+
+```
 #### cgdb(图形化gdb工具)
 ##### core concept
 - 源文件窗口
