@@ -115,7 +115,33 @@ try {
 }
 // catch(const std::exception& e) //可捕获标准库类型及其衍生类型
 ```
+### I/0操作
+#### 文件写入竞争
+##### 原子写入
+```cpp
+void atomicWriteYaml(const std::string& filename, const YAML::Node& node) {
+    std::string tempFilename = filename + ".tmp";
 
+    // 使用yaml-cpp写入临时文件
+    std::ofstream tempFile(tempFilename);
+    if (tempFile.is_open()) {
+        tempFile << node;
+        tempFile.close();
+    } else {
+        std::cerr << "Unable to open temporary file" << std::endl;
+        return;
+    }
+
+    // 原子性重命名临时文件为目标文件
+    if (std::rename(tempFilename.c_str(), filename.c_str()) != 0) {
+        std::cerr << "Error renaming temporary file" << std::endl;
+    }
+}
+```
+##### 文件锁
+```cpp
+
+```
 ### 泛型编程 (`template`)
 - 模板函数
 ```cpp

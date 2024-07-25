@@ -18,6 +18,8 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
 <a name="killSessions"></a>关闭会话：
 
     tmux kill-session -t 会话名
+关闭当前window: 
+    ctrl+b x
 
 <a name="killAllSessions"></a>关闭所有会话：
 

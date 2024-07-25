@@ -100,6 +100,7 @@ pgrep -f test_serial
 kill -9 $(pgrep -f test_serial) # 强制杀掉该进程
 # 查看库所在目录
 find /usr -name "*.so"
+find /path/to/search -type d -iname "dirname" # -i 不区分大小写
 locate libglog.so 
 ldconfig -p | grep [lib name]
 ```
