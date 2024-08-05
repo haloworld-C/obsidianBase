@@ -97,7 +97,8 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
 
 按下 `PREFIX-[` 进入文本复制模式。可以使用方向键在屏幕中移动光标。默认情况下，方向键是启用的。在配置文件中启用 Vim 键盘布局来切换窗口、调整窗格大小。Tmux 也支持 Vi 模式。要是想启用 Vi 模式，只需要把下面这一行添加到 .tmux.conf 中：
 
-    setw -g mode-keys vi
+    set-option -g mode-keys vi
+> 临时调整: ctrl + b , 再按:, 进入命令模式， 然后输入上面模式
 
 启用这条配置后，就可以使用 h、j、k、l 来移动光标了。
 
@@ -138,6 +139,7 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
     0              C-a          移到行首
     Space          C-Space      开始选中
                    C-t          字符调序
+	
 
 ## 杂项：
 

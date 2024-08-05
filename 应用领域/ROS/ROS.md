@@ -393,6 +393,12 @@ int main(int argc, char **argv)
 #include<ros/package.h>
 bash_dir_ = ros::package::getPath("scripts") + "/script/";
 ```
+3. 获取tf坐标转换
+```tf
+ros::Time current_time = ros::Time::now();
+tf_.waitForTransform("map", "base_link", current_time, ros::Duration(0.5));
+tf_.lookupTransform("map", "base_link", current_time, tf_base);
+```
 ### rospy范例
 #### 获取系统时间
 ```Python

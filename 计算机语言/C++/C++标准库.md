@@ -179,6 +179,13 @@ C++中原生的sleep方式:
 ```cpp
 #include <thread>
 std::this_thread::sleep_for(std::chrono::seconds(1));// sleep one seconds
+// 计时
+auto last_time = std::chrono::high_resolution_clock::now();
+// do something
+auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::high_resolution_clock::now() - last_time);
+double time_cost = duration_ms.count() / 1000.0;
+LOG(INFO) << "tf transformation cost: " << time_cost << " seconds";
 ```
 ## 多线程
 ### std::thread
