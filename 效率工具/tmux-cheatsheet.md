@@ -25,7 +25,8 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
 
     tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
 
-# 在 Tmux 中，按下 Tmux 前缀 `ctrl+b`，然后：
+>  在 Tmux 中，按下 Tmux 前缀 `ctrl+b`，然后按下`:`， 进入指令配置模式
+>  进入指令模式后， 按上下键可以在历史指令中切换
 
 ## 会话
 
@@ -60,6 +61,7 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
     { 与上一个窗格交换位置
     } 与下一个窗格交换位置
     z 切换窗格最大化/最小化
+> pane快速跳转: `Ctrl+b` `q`: 显示每个窗格的编号，按下相应的数字键跳转到目标窗格。
 ### 移动光标
 1. Ctrl+b ↑ ：**光标切换**到上方**窗格**
 2. Ctrl+b ↓ ：**光标切换**到下方**窗格**
@@ -68,12 +70,13 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
 5. Ctrl+b ; ：**光标切换**到上一个**窗格**
 6. Ctrl+b o ：**光标切换**到下一个**窗格**
 
-## <a name="syncPanes"></a>同步窗格
+## <a name="syncPanes"></a>同步窗格(所有pane相应同样的操作)
 
 这么做可以切换到想要的窗口，输入 Tmux 前缀和一个冒号呼出命令提示行，然后输入：
 
 ```
-:setw synchronize-panes
+:setw synchronize-panes on # 打开
+:setw synchronize-panes off # 关闭
 ```
 
 你可以指定开或关，否则重复执行命令会在两者间切换。

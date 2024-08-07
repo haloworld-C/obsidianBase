@@ -92,6 +92,8 @@ if(iter != data.end()) {
 - 数学符号
 ```cpp
 #include <cmath>
+
+M_PI // 附带了c语言中定义的宏
 ```
 - 无穷大
 ```C++
@@ -102,6 +104,12 @@ std::numeric_limits<T> ::infinity()
 如果在整型上想用一个比较大的值可以用
 ```c++
 std::numeric_limits<T>::max()
+```
+- epsilon
+通常用来判断两个浮点数相等
+```cpp
+std::numeric_limits<float>::epsilon(); //为1.0和float的下一个可表示值之间的差值
+										// best practice: std::numeric_limits<float>::epsilon()*100
 ```
 代替
 包含在头文件limits.h头文件当中 

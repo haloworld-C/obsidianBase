@@ -83,3 +83,22 @@ Vector3d transGlobalPoint2local(Vector3d pose, Vector3d goal) {
 }
 auto  goalLocal = helper::transGlobalPoint2local(robotPos, goalPos); //可能是auto 的原因
 ```
+2. Eigen在开启编译优化-g2的环境环境中使用auto进行类型推断貌似有点问题
+```cpp    
+const double x = 1.0;
+const double y = 2.0;
+const double yaw = 0.5;
+SECTION( "check tranformation1" ) {
+    auto transformedVec = Eigen::Vector3d(x, y, yaw);
+    auto compareVec = Eigen::Vector3d(x, y, yaw);
+    auto diffVec = transformedVec - compareVec; // 0, 0, 0
+    REQUIRE( diffVec.norm() < 0.1 ); // 不通过
+}
+SECTION( "check tranformation2" ) {
+    auto transformedVec = Eigen::Vector3d(x, y, yaw);
+    auto compareVec = Eigen::Vector3d(x, y, yaw);
+    auto diffVec = transformedVec - Eigen::Vector3d(x, y, yaw); // 0, 0, 0
+    REQUIRE( diffVec.norm() < 0.1 ); // 不通过
+}
+```
+> 使用Eigen的库中尽量不用开启release编译选项， 或者避免使用auto
