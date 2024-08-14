@@ -93,7 +93,7 @@ $$
 - 双向欧拉法 
 - 龙格-库塔方法
 ### 优化目标函数推导
-#### 状态矩阵的增广形式(待补充)
+#### 状态矩阵的增广形式
 $$
 \left[ \begin{array}{c}
 z_{k+1} \\
@@ -112,7 +112,7 @@ u_k  \\
 I  \\
 \end{array} \right]*\Delta{u}
 $$
-> 问题： 如何用增广矩阵构造cost函数
+
 #### 形式一(Condensed Format)
 定义未来p个周期(预测步长)内预测的系统状态为：
 $$
@@ -120,7 +120,7 @@ X_k=\left[ z_{k|k}^T, z_{k+1|k}^T, \dots, z_{k+p-1|k}^T  \right]^T
 $$
 定义到达未来p个周期内预测的系统输入为：
 $$
-U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+p-1|k}^T   \right]
+U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+q-1|k}^T   \right]
 $$
 则由上述离散状态转移方程可以写出未来p个状态的状态转移方程：
 $$ \begin{equation} \begin{aligned}
@@ -189,7 +189,7 @@ TODO: 这种类型的实现目前还不多，可以尝试自己封装一个库�
 -  [MPC cast to osqp](https://robotology.github.io/osqp-eigen/md_pages_mpc.html)
 -  [osqp求解器](https://osqp.org/docs/solver/index.html)
 该形式直接利用$J(u_k, x_k)$进行构造，容易实现。下面简要描述构造过程：
-OSQP求解器求解的是一类QPs(quadratic programs)问题,其形式如下：
+OSQP求解器求解的是一类QPs(quadratic programs)问题(本质问题是最小二乘的求解),其形式如下：
 $$
 \begin{equation}
 \begin{aligned}
