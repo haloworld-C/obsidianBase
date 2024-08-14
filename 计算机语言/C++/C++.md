@@ -142,6 +142,43 @@ void atomicWriteYaml(const std::string& filename, const YAML::Node& node) {
 ```cpp
 
 ```
+
+##### 调用外部脚本
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+
+int main() {
+    FILE *fp;
+    char buffer[1000];
+
+    // 假设 navigation_bash_file_ 是一个字符串，包含要执行的 Bash 文件路径
+    std::string navigation_bash_file_ = "/path/to/your/script.sh"; 
+
+    // 使用 popen 打开管道，以读方式执行 shell 命令
+    fp = popen(navigation_bash_file_.c_str(), "r");
+    if (fp == nullptr) {
+        std::cerr << "Error: Failed to open pipe\n";
+        return 1;
+    }
+
+    // 读取并输出 shell 脚本的标准输出
+    while (fgets(buffer, sizeof(buffer), fp) != nullptr) {
+        printf("%s", buffer);
+    }
+
+    // 关闭管道
+    int ret_code = pclose(fp);
+    if (ret_code == -1) {
+        std::cerr << "Error: Failed to close pipe\n";
+        return 1;
+    }
+
+    return 0;
+}
+```
+> 建议仅用于简单系统命令， 切不要用于多线程环境中
 ### 泛型编程 (`template`)
 - 模板函数
 ```cpp
