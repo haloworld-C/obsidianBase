@@ -171,6 +171,15 @@ git config --global user.name "guangshen.zhi"
 git config --global user.email guangshen.zhi@westwell-lab.com
 git config --global alias.co checkout # 重命名
 ```
+### 常用操作
+1. 查看当前分支的修改内容
+```bash
+ git log --stat --first-parent --no-merges -p
+ # --stat 查看修改的文件
+ # --first-parrent 仅查看当前分支上的修改
+ # --no-merges 过滤合并内容
+ # -p 显示修改的patch
+```
 ### 遇到的问题
 - 终端下git status乱码问题
 solution: 
