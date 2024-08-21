@@ -1,3 +1,5 @@
+## 容器通用操作
+### 算法Algorithm
 ## 数据结构
 ### vector
 -  vector的内存机制 
@@ -25,6 +27,9 @@ int main() {
 	std::copy(source.begin(), source.end(), std::back_inserter(destination)); 
 	return 0; 
 }
+// 常用初始化方法
+std::vector<int> a(n, 0); //默认初始化vector， 大小为n
+std::vector<vector<int> > b(n, vector<int>(n, 0)); // 大小n*n
 ```
 #### list
 - 在第k个元素前插入
@@ -87,6 +92,21 @@ if(iter != data.end()) {
 ```
 
 ### set
+C++上实现是通过适配器实现的，即index和value一样的map(所以其内部元素本质还是有序)
+#### 基本操作
+```cpp
+# include<unordered_map>
+// 初始化
+std::unordered_map<int> a{1, 2, 3};
+std::vector<int> b{2, 2, 3};
+std::unordered_map<int> c(b.begin(), b.end());// 使用其他容器初始化
+// 插入元素
+c.insert(0);
+// 查找元素
+if(c.find(5) != c.end()) { // 集合中存在
+	// do something
+}
+```
 
 ### 特殊数值
 - 数学符号

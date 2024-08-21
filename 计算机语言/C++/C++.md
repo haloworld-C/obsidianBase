@@ -189,6 +189,14 @@ T2 print(T1 argl, T2 arg2)
     return arg2;
 }
 ```
+### Algorithm
+- 常用算法整理
+```cpp
+# 需要自己保证写入的容器有足够 last - first的空间
+# 输入迭代器范围: [firt, last)
+std::copy( InputIt first, InputIt last,OutputIt d_first);
+```
+
 > 注意: 模板函数的实现也应放在头文件中，否则可能出现链接问题
 ### 右值引用与std::move
 - 左值引用与右值引用
