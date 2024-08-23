@@ -133,6 +133,24 @@ std::numeric_limits<float>::epsilon(); //为1.0和float的下一个可表示值�
 ```
 代替
 包含在头文件limits.h头文件当中 
+- `bitset`
+C++内置的一种二进制封装
+```cpp
+#include <iostream>       // std::cout
+#include <bitset>         // std::bitset
+
+int main ()
+{
+	std::bitset<4> foo; // 初始化为4位二进制数
+	std::bitset<4> foo(5); // 用数值初始化
+	std::cout << "foo: " << foo << std::cout // output: 1001
+	foo[1]=1; // 访问并赋值
+	foo.set(pos, 1); // 将对应下标位置的值设为1, true
+	long result = foo.ulong(); // 转换为 unsigned long
+	long long result = foo.ullong(); // 转换为unsigned long long 
+	std::string result = foo.string(); // 转换为字符串
+}
+```
 - 随机数
 随机数包含于random库中， 通常与概率相关。常用方法如下:
 ```cpp 
