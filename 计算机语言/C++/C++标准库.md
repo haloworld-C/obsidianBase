@@ -68,8 +68,9 @@ map主要有三个字类:
 - std::map, 内部实现为排序红黑树, 有序
 - `std::multimap`, 内部实现为红黑树, 有序
 - std::unordered_map, 内部实现为哈希表, 无序
-key-value结构， 访问、插入复杂度均为常数。
-std
+对于红黑树， key-value结构， 访问、插入复杂度均为log(n)。
+对于哈希表， 查询、增删复杂度均为O(1)
+
 其中key必须为可哈希的。
 ###### 基本操作
 - 初始化
@@ -101,7 +102,13 @@ for(const auto& pair : data) {
 ```
 
 ### set
-C++上实现是通过适配器实现的，即index和value一样的map(所以其内部元素本质还是有序)
+C++上实现是通过适配器实现的，即index和value一样的map, 所以其分类与map类似:
+- std::map, 内部实现为排序红黑树, 有序
+- `std::multimap`, 内部实现为红黑树, 有序
+- std::unordered_map, 内部实现为哈希表, 无序
+对于红黑树， key-value结构， 访问、插入复杂度均为log(n)。
+对于哈希表， 查询、增删复杂度均为O(1)
+
 #### 基本操作
 ```cpp
 # include<unordered_map>
@@ -109,11 +116,48 @@ C++上实现是通过适配器实现的，即index和value一样的map(所以其
 std::unordered_map<int> a{1, 2, 3};
 std::vector<int> b{2, 2, 3};
 std::unordered_map<int> c(b.begin(), b.end());// 使用其他容器初始化
-// 插入元素
-c.insert(0);
+
+c.insert(0);// 插入元素
+a.erase(2); // 删除元素
 // 查找元素
 if(c.find(5) != c.end()) { // 集合中存在
 	// do something
+}
+// 遍历
+
+// 集合操作
+a.merge(b); // 操作过后a为原始a, b的并集
+			// b为原始a, b的交集
+```
+### 高阶
+- 自定义hash函数
+```cpp
+#include <vector>
+#include <unordered_set>
+#include <numeric>
+
+struct MyHash {
+    size_t operator()(const std::vector<int>& v) const {
+        // 使用异或操作来组合元素的hash值，保证顺序无关性
+        size_t hash = 0;
+        for (int num : v) {
+            hash ^= std::hash<int>()(num);
+        }
+        return hash;
+    }
+};
+
+int main() {
+    std::vector<int> v1 = {1, 2, 3};
+    std::vector<int> v2 = {3, 2, 1};
+
+    // 使用自定义hash函数的unordered_set
+    std::unordered_set<std::vector<int>, MyHash> mySet;
+    mySet.insert(v1);
+    mySet.insert(v2);
+
+    // 由于v1和v2的hash值相同，实际上只插入了一个元素
+    std::cout << "Size of the set: " << mySet.size() << std::endl;
 }
 ```
 
