@@ -192,9 +192,13 @@ T2 print(T1 argl, T2 arg2)
 ### Algorithm
 - 常用算法整理
 ```cpp
+std::find(starIter, endIter, val); // return endIter when failed
+std::map<int, int> myMap = {{1, 10}, {2, 20}, {3, 30}}; // Method 1: Using std::accumulate and a lambda expression 
+int sum1 = std::accumulate(myMap.begin(), myMap.end(), 0, [](int sum, const std::pair<int, int>& pair) { return sum + pair.second; });
 # 需要自己保证写入的容器有足够 last - first的空间
 # 输入迭代器范围: [firt, last)
 std::copy( InputIt first, InputIt last,OutputIt d_first);
+std::swap(T& a, T&b);// 交换两个数
 ```
 
 > 注意: 模板函数的实现也应放在头文件中，否则可能出现链接问题

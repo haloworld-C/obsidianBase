@@ -64,8 +64,12 @@ int main() {
 ### queue
 
 ### map(字典)
+map主要有三个字类:
+- std::map, 内部实现为排序红黑树, 有序
+- `std::multimap`, 内部实现为红黑树, 有序
+- std::unordered_map, 内部实现为哈希表, 无序
 key-value结构， 访问、插入复杂度均为常数。
-std内部实现为排序红黑树.
+std
 其中key必须为可哈希的。
 ###### 基本操作
 - 初始化
@@ -88,6 +92,11 @@ auto iter = data.find(index);
 if(iter != data.end()) {
 	// has key
 	//...
+}
+// 遍历
+for(const auto& pair : data) {
+	int key = data.first;
+	int value  = data.second;
 }
 ```
 
