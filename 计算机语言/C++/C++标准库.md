@@ -6,14 +6,14 @@
 1. 内存为管理对象数目内存的两倍大小，如果超过一个系数(??多少), 便需要再内存中再开辟一个区域，将现有对象拷贝。所以当vector规模很大的时候，很容易触发内存拷贝。
 - 常用方法
 
-|方法|说明|补充|
-|---|---|---|
-|reserve|增大vector的储存元素的能力，系数为1|主要目的是推迟内存的两倍成长， 值得注意的是reverse后之前的iter和元素引用都将失效|
-|resize|改变vector的大小||
-|push_back|在vector尾部插入元素||
-|size|获取当前元素个数|其时间复杂度为1|
-|front|获取第一个元素||
-|back|获取最后一个元素||
+| 方法        | 说明                    | 补充                                             |
+| --------- | --------------------- | ---------------------------------------------- |
+| reserve   | 增大vector的储存元素的能力，系数为1 | 主要目的是推迟内存的两倍成长， 值得注意的是reverse后之前的iter和元素引用都将失效 |
+| resize    | 改变vector的大小           |                                                |
+| push_back | 在vector尾部插入元素         |                                                |
+| size      | 获取当前元素个数              | 其时间复杂度为1                                       |
+| front     | 获取第一个元素               |                                                |
+| back      | 获取最后一个元素              |                                                |
 ```cpp
 # 保留容器内存拷贝
 #include <vector> 
@@ -30,6 +30,53 @@ int main() {
 // 常用初始化方法
 std::vector<int> a(n, 0); //默认初始化vector， 大小为n
 std::vector<vector<int> > b(n, vector<int>(n, 0)); // 大小n*n
+```
+#### string
+string是有char构成的数组， 为常量， 不可修改。
+- 常用操作
+```cpp
+string a = "abce";
+std::string subStr = a.substr(index, size); // 从index开始的n个size组成的子串, 如果不提供第二个参数， 那么默认为a.size()-1
+int = a.find("bc"); // 查询bc第一次出现的位置, 返回下标位置
+int = a.find("bc", 2); // 查询bc第一次出现的位置, 从index 2开始找， 如果失败返回string::npos
+```
+- 按照空格分隔字符串
+```cpp
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<string> split(const string& s) {
+    vector<string> tokens;
+    size_t start = 0;
+    size_t end = s.find(' ');
+
+    while (end != string::npos) {
+        tokens.push_back(s.substr(start, end - start));
+        start = end + 1;
+        end = s.find(' ', start);
+    }
+
+    // 处理最后一个子串
+    if (start != s.length()) {
+        tokens.push_back(s.substr(start));
+    }
+
+    return tokens;
+}
+// 方法2：
+std::vector<std::string> splitStringBySpace(const std::string& str) {
+    std::vector<std::string> result;
+    std::istringstream iss(str);
+    std::string word;
+    while (iss >> word) {
+        result.push_back(word);
+    }
+    return result;
+}
 ```
 #### list
 - 在第k个元素前插入
@@ -222,6 +269,19 @@ int main() {
 }
 ```
 ## 算法algorithm
+- 常用算法整理
+```cpp
+std::find(starIter, endIter, val); // return endIter when failed
+std::map<int, int> myMap = {{1, 10}, {2, 20}, {3, 30}}; // Method 1: Using std::accumulate and a lambda expression 
+int sum1 = std::accumulate(myMap.begin(), myMap.end(), 0, [](int sum, const std::pair<int, int>& pair) { return sum + pair.second; });
+# 需要自己保证写入的容器有足够 last - first的空间
+# 输入迭代器范围: [firt, last)
+std::copy( InputIt first, InputIt last,OutputIt d_first);
+std::swap(T& a, T&b);// 交换两个数
+std::reverse(container.begin(), container.end()); //翻转元素， 左闭右开
+std::sort(c.begin(), c.end()); // 默认为升序
+std::sort(c.rbegin(), c.rend()); // 降序, 区间[)
+```
 ### 比较大小
 ```C++
 std::max(a, b);

@@ -185,6 +185,9 @@ sudo groupadd docker #添加docker用户组
 sudo gpasswd -a $USER docker #将登陆用户加入到docker用户组中 
 newgrp docker #更新用户组 
 docker ps #测试docker命令是否可以使用sudo正常使用
+## 替代方案docker rootless
+sudo apt-get install -y uidmap
+dockerd-rootless-setuptool.sh install
 ```
 2. 一些国外镜像pull慢
 解决方案又两种:

@@ -83,8 +83,8 @@ z_{k+1}&=z_k+f(z_k, u_k){\times}dt=z_k+(A{\times}z_k+B{\times}u_k+C){\times}dt\\
 $$
 > 问题一：是否意味着输入的trajectory上的点也是时间均匀的
 >       solution 1: 将路径点上的速度设置为相同（比如1m/s）
->       solution 2: 在路径点上带上时间点信息(这样就知道dt了)
-> 问题二： 线性化传递函数离线性化点越远，则偏差越大此时A矩阵是否为变值
+>       solution 2: 在路径点上带上时间点信息(这样就知道dt了, 或者按照dt进行采样)
+> 问题二： 线性化传递函数离线性化点越远，则偏差越大此时A矩阵是否为变值(不是)
 > 问题三: 采用运动状态作为线性化点还是参考线上的点(在路径优化中通常为后者, MPC中通常是前者)
 
 ##### 离散化方法
@@ -136,7 +136,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-X_{k+1}&=\Phi\times{X_k}+\Theta\times{U_k} \\
+X_{k+1}&=\Phi\times{z_k}+\Theta\times{U_k} \\
 	   &=\left[ 
 		   \begin{array}{}   
 		   \overline{A} \\
@@ -144,7 +144,7 @@ X_{k+1}&=\Phi\times{X_k}+\Theta\times{U_k} \\
 		   \vdots \\
 		   \overline{A}^p
 		   \end{array} 
-	   \right ]_{4p\times{4}}\times{X_k} 
+	   \right ]_{4p\times{4}}\times{z_k} 
 	   &+\left[ 
 		   \begin{array}{cccc}   
 		   \overline{A}^{1-1}\overline{B} & \dots & 0 & 0 \\
@@ -160,7 +160,7 @@ $$
 $$
 R_k=\left[ r_{k}^T, r_{k+1}^T, \dots, r_{k+p-1}^T  \right]^T
 $$
-这里的$r_k$为路径点，需要根据采样周期dt进行插值处理。
+这里的$r_k$为路径点，需要根据采样周期dt进行采样。
 定义优化目标代价函数为：
 $$
 J(U_k)=(X_{k+1}-R_{k+1})^TQ(X_{k+1}-R_{k+1})+U_k^TW_1U_k+(U_k-U_{k-1})^TW_2(U_k-U_{k-1})
@@ -291,3 +291,4 @@ $$
 4. 在嵌入式设备上使用可以利用代码生成实现高实时
 5. 如果状态量不可测得，则需要利用卡尔曼滤波进行估计
 6. 对于差速小车而言，由于其转弯半径可以接近0，需要考虑圆弧运动限制: $v/R < {\omega}_{max}$
+7. 在我们的例子中， 对于非线性模型进行了线性化处理， 然后利用凸优化求解线性MPC问题， 另一种思路是利用非线性MPC对该模型直接求解详见[[非线性MPC]]

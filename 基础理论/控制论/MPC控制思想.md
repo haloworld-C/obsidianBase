@@ -15,6 +15,26 @@ MPC还有一个特点在它的名字里面没有体现， 即滚动控制(Recedi
 1. 在K时刻， 估计/测量当前系统状态(估计一般使用[[卡尔曼滤波]]或设计观测器)
 2. 基于未来的控制序列和代价函数$J(x, u)$来进行最优化求解
 3. 只取$u_k$施加到系统， 并在下一时刻回到第1步滚动计算(receding horizon control)
+### 系统框图
+- 原始MPC
+![mpc_archi](../../Resourse/mpc_archi.png)
+- Tube-base MPC
+`Tube MPC`的主要思想是优化求解的输出不直接作用于真实系统，而是作用于我们建立的数学模型(这样就没有真实世界的干扰， 及模型误差)。而且求解的速度可以不要求很高(因为不直接作用于系统)， Associate controller是一个基于系统状态误差的控制器(比如PID)， 它的求解速度可以很快， 同时可以处理真实系统的不确定性。
 
+![tube mpc](../../Resourse/tube_mpc.png)
+> `Tube-Based MPC: a Contraction theory approach`
+- 事件驱动MPC
 ### MPC问题推导及求解
-详见[[MPC控制方法]]。
+线性MPC问题详见[[MPC控制方法]]。
+
+### 相关工具
+- acado, 可以代码生成
+- Yane, 可以解非线性MPC
+- Multi-parametric tool-box
+- osqp
+- sqp
+- particle swarn optimation(无需知道梯度信息)
+### MPC求解的稳定性
+#### 软约束与硬约束
+- 系统状态x一般设计为软约束
+- 系统输入u一般设计为硬约束
