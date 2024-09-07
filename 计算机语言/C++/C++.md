@@ -356,6 +356,16 @@ int i =42, *p = &i, &r = i;
 decltype(r + 0) = b;//括号中为表达式，则推断结果是表达式返回类型（int 而非 int&）
 decltype(r) = i;// 括号中为变量，则其推断类型为变量类型
 decltype((i)) d = i; //括号中再来一个小括号，返回该变量的引用，引用值必须初始化
+// 模板参数
+template <typename T>
+void func(T&& param) {
+    decltype(param) x = std::move(param);
+    // ...
+}
+// 决定返回值
+template <typename T> auto add(T a, T b) -> decltype(a + b) { return a + b; }
+// 传入模板参数
+auto cmp = [](const std::pair<int, int>& a, const std::pair<int, int>& b) { return a.second > b.second; }; std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,  dectype(cmp)> pq;
 ```
 item的类型将由var的类型推断得出。
 需要注意的是，auto 会忽略顶层const（但是底层const会保留）。

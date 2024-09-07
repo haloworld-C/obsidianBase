@@ -1,7 +1,9 @@
 ## 容器通用操作
 ### 算法Algorithm
 ## 数据结构
-### vector
+### 顺序容器
+#### 通用操作
+#### vector
 -  vector的内存机制 
 1. 内存为管理对象数目内存的两倍大小，如果超过一个系数(??多少), 便需要再内存中再开辟一个区域，将现有对象拷贝。所以当vector规模很大的时候，很容易触发内存拷贝。
 - 常用方法
@@ -35,10 +37,17 @@ std::vector<vector<int> > b(n, vector<int>(n, 0)); // 大小n*n
 string是有char构成的数组， 为常量， 不可修改。
 - 常用操作
 ```cpp
+// 初始化
+string b(size_t n, char c); 
 string a = "abce";
-std::string subStr = a.substr(index, size); // 从index开始的n个size组成的子串, 如果不提供第二个参数， 那么默认为a.size()-1
+// 操作
+std::string subStr = a.substr(index_start, index_end); // 从index开始的n个size组成的子串, 如果不提供第二个参数， 那么默认为a.size()
 int = a.find("bc"); // 查询bc第一次出现的位置, 返回下标位置
 int = a.find("bc", 2); // 查询bc第一次出现的位置, 从index 2开始找， 如果失败返回string::npos
+// 字符串转换
+#incude<string>
+std::stoi(std::string a); // 将字符串转换为整型
+std::to_string(int a); // 将数字转换为字符串
 ```
 - 按照空格分隔字符串
 ```cpp
@@ -78,6 +87,10 @@ std::vector<std::string> splitStringBySpace(const std::string& str) {
     return result;
 }
 ```
+- 其他辅助函数
+```cpp
+std::stoi(str); // 将string转换为int类型
+```
 #### list
 - 在第k个元素前插入
 ```C++
@@ -107,10 +120,44 @@ int main() {
 
 ```
 
+### 适配器(adapter container)
+#### queue
+是对已有的数据的结构的二次封装。
+- 常用操作
+```cpp
+queue.pop(); // 队首出列
+queue.push(); // 队尾入列
+queue.emplace(); // 构造队尾入列
+```
 
-### queue
+#### stack
+是对已有的数据的结构的二次封装。
+- 常用操作
+```cpp
+stack.push(a); // 压栈操作
+stack.pop(); // 弹栈操作
+stack.top(); // 查看栈顶
 
-### map(字典)
+```
+#### std::priority_queue
+底层容器默认为vector
+优先队列每次排序后默认会对队列进行排序(默认为升序, 最大元素位于堆顶)， 这用pop默认将最大值弹出。
+优先队列的底层实现为大顶堆，见数据结构的堆的介绍。
+- 常用操作
+```cpp
+// 构造
+std::map<int, int> myMap = {{1, 5}, {3, 2}, {2, 4}};
+auto cmp = [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
+    return a.second > b.second;
+};// 小顶堆
+std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(cmp)> pq(cmp);
+for (auto& it : myMap) { pq.push(it);}
+pq.pop();
+pq.push();
+
+```
+### 关联容器
+#### map(字典)
 map主要有三个字类:
 - std::map, 内部实现为排序红黑树, 有序
 - `std::multimap`, 内部实现为红黑树, 有序
@@ -272,6 +319,7 @@ int main() {
 - 常用算法整理
 ```cpp
 std::find(starIter, endIter, val); // return endIter when failed
+auto maxIter = std::max_element(starIter, endIter); // 取出最大值*maxIter
 std::map<int, int> myMap = {{1, 10}, {2, 20}, {3, 30}}; // Method 1: Using std::accumulate and a lambda expression 
 int sum1 = std::accumulate(myMap.begin(), myMap.end(), 0, [](int sum, const std::pair<int, int>& pair) { return sum + pair.second; });
 # 需要自己保证写入的容器有足够 last - first的空间

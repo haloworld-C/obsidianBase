@@ -257,6 +257,13 @@ spawn rsync -avzP --progress -e  "ssh -p $port" $host1:/home/nvidia/Documents/co
 ```bash
 echo "password" | sudo -S CMD
 ```
+3. 如何在shell输入中使用vim移动
+```bash
+# .bashrc, 原生支持
+set -o vi
+# oh_my_zsh, 使用插件
+plugins=(git vi-mode)
+```
 
 
 ## Linux维护
