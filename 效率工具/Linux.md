@@ -41,9 +41,30 @@ tmux
 cat large_archive.7z.* > combined_large_archive.7z
 7z x combined_large_archive.7z
 ```
-10. shell交互`starship` + fish
-```bash
-curl https://sh.rustup.rs -sSf | sh
-cargo install starship --locked
-```
+
 11. 截图工具
+12. 键盘鼠标模拟操作
+- xdotool
+	主要优势是可以自由的与图形界面进行操作。
+	主要键位:
+> [键位参考](https://gitlab.com/nokun/gestures/-/wikis/xdotool-list-of-key-codes)
+
+| key   | 说明  |
+| ----- | --- |
+| Up    | 上箭头 |
+| Down  | 下箭头 |
+| Left  | 左箭头 |
+| Right | 右箭头 |
+	a. 通过系统快捷键绑定类似vim的光标移动:
+	[alt+h]:xdotool `keyup Alt+h && xdotool key Left && xdotool keydown Alt	`
+	主要命令
+```bash
+#安装
+sudo apt install xdotool
+# 键盘
+xdotool key a # 输入a
+xdotool key ctrl+alt+t # 输入快捷键
+# 鼠标操作
+```
+- expect
+	主要是模拟命令行中的操作

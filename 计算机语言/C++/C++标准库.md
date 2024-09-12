@@ -129,7 +129,7 @@ queue.pop(); // 队首出列
 queue.push(); // 队尾入列
 queue.emplace(); // 构造队尾入列
 ```
-
+> 当当前容器为空时， pop出来的元素为默认值， 需要留意
 #### stack
 是对已有的数据的结构的二次封装。
 - 常用操作
@@ -330,8 +330,9 @@ std::reverse(container.begin(), container.end()); //翻转元素， 左闭右开
 std::sort(c.begin(), c.end()); // 默认为升序
 std::sort(c.rbegin(), c.rend()); // 降序, 区间[)
 ```
-### 比较大小
+### 常用辅助函数
 ```C++
+isdigit(char a); // 判断字符是否为数字字符
 std::max(a, b);
 std::min(a, b);
 ```
