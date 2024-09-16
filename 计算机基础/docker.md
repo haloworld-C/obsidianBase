@@ -219,7 +219,16 @@ sudo systemctl restart docker
 ```BASH
 docker run -it --network=host --name=ubuntu ubuntu:18.04
 ```
-
+4. 在装了`Nvidia`驱动的电脑上运行docker GUI程序
+需要一下前置条件:
+- `Nvidia`的驱动装好
+- 安装并配置NVIDIA Container Toolkit才能让docker访问GPU资源
+- 在docker启动命令使用nvidia相关变量
+```bash
+--gpus all \                                                 
+-e NVIDIA_VISIBLE_DEVICES=all \                              
+-e NVIDIA_DRIVER_CAPABILITIES=all \ 
+```
 
 ### 备忘
 个人docker 默认密码
