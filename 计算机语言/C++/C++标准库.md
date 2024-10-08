@@ -41,7 +41,8 @@ string是有char构成的数组， 为常量， 不可修改。
 string b(size_t n, char c); 
 string a = "abce";
 // 操作
-std::string subStr = a.substr(index_start, index_end); // 从index开始的n个size组成的子串, 如果不提供第二个参数， 那么默认为a.size()
+std::string subStr = a.substr(index_start, count); // 从index开始的n个size组成的子串, 如果不提供第二个参数， 那么截取范围为[index_start, size)
+// return [index_start, index_start + count)
 int = a.find("bc"); // 查询bc第一次出现的位置, 返回下标位置
 int = a.find("bc", 2); // 查询bc第一次出现的位置, 从index 2开始找， 如果失败返回string::npos
 // 字符串转换
@@ -137,6 +138,7 @@ queue.emplace(); // 构造队尾入列
 stack.push(a); // 压栈操作
 stack.pop(); // 弹栈操作
 stack.top(); // 查看栈顶
+stack.emplace(a, b) // 如果stack中的元素结构比较复杂， 比较方便
 
 ```
 #### std::priority_queue
