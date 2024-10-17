@@ -161,7 +161,7 @@ pq.push();
 ### 关联容器
 #### map(字典)
 map主要有三个字类:
-- std::map, 内部实现为排序红黑树, 有序
+- std::map, 内部实现为排序红黑树(平衡搜索树), 有序(其值的迭代器遍历key升序排列)
 - `std::multimap`, 内部实现为红黑树, 有序
 - std::unordered_map, 内部实现为哈希表, 无序
 对于红黑树， key-value结构， 访问、插入复杂度均为log(n)。
@@ -196,7 +196,8 @@ for(const auto& pair : data) {
 	int value  = data.second;
 }
 ```
-
+#### 技巧
+1. 利用map的key有序的特性对数组进行排序
 ### set
 C++上实现是通过适配器实现的，即index和value一样的map, 所以其分类与map类似:
 - std::map, 内部实现为排序红黑树, 有序
@@ -217,6 +218,10 @@ c.insert(0);// 插入元素
 a.erase(2); // 删除元素
 // 查找元素
 if(c.find(5) != c.end()) { // 集合中存在
+	// do something
+}
+// 利用count来判断， 简化写法
+if(c.count(5)) { // 与上面写法等价， 但是更简洁
 	// do something
 }
 // 遍历
@@ -255,6 +260,15 @@ int main() {
     // 由于v1和v2的hash值相同，实际上只插入了一个元素
     std::cout << "Size of the set: " << mySet.size() << std::endl;
 }
+// 使用lamda自定义数据类型的hash函数
+// 自定义对 array<int, 26> 类型的哈希函数
+auto arrayHash = [fn = hash<int>{}] (const array<int, 26>& arr) -> size_t {
+    return accumulate(arr.begin(), arr.end(), 0u, [&](size_t acc, int num) {
+        return (acc << 1) ^ fn(num);
+    });
+}
+unordered_map<array<int, 26>, vector<string>, decltype(arrayHash)> mp(0, arrayHash);
+
 ```
 
 ### 特殊数值
@@ -322,6 +336,7 @@ int main() {
 ```cpp
 std::find(starIter, endIter, val); // return endIter when failed
 auto maxIter = std::max_element(starIter, endIter); // 取出最大值*maxIter
+auto minIter = std::min_element(starIter, endIter); // 取出最大值*minIter
 std::map<int, int> myMap = {{1, 10}, {2, 20}, {3, 30}}; // Method 1: Using std::accumulate and a lambda expression 
 int sum1 = std::accumulate(myMap.begin(), myMap.end(), 0, [](int sum, const std::pair<int, int>& pair) { return sum + pair.second; });
 # 需要自己保证写入的容器有足够 last - first的空间
@@ -330,6 +345,7 @@ std::copy( InputIt first, InputIt last,OutputIt d_first);
 std::swap(T& a, T&b);// 交换两个数
 std::reverse(container.begin(), container.end()); //翻转元素， 左闭右开
 std::sort(c.begin(), c.end()); // 默认为升序
+std::sort(c.begin(), c.end(), [](int a, int b){ return a < b}); // 小于号为升序
 std::sort(c.rbegin(), c.rend()); // 降序, 区间[)
 ```
 ### 常用辅助函数

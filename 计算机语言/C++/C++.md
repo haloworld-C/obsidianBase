@@ -391,7 +391,8 @@ private:
 };
 ```
 
-
+### Effective C++
+1. 如果类成员函数不是virtual那么不要在继承的时候“重载”它(条款36)， 事实上类内根本没有重载机制， 而是名称遮盖机制(条款33)
 ### 疑难杂症 
 - char* 与 C++ string之间的互相转换
 1. std::string  to const char*(不可写)
