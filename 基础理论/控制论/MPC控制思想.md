@@ -6,6 +6,7 @@ MPC还有一个特点在它的名字里面没有体现， 即滚动控制(Recedi
 - 需要对系统进行建模(状态转移方程)， 通常需要离散化以便在计算平台上实施
 - 本质是求解QP问题, 计算比较耗时， 对平台的计算能力要求较高。
 - 由于本质是求解QP问题， 可以在计算的同时施加约束constraints。
+- MPC即可以作为规划器，也可以作为控制器
 
 ### MPC主要步骤
 ![MPC steps][../../Resourse/mpc1.png]
@@ -15,6 +16,13 @@ MPC还有一个特点在它的名字里面没有体现， 即滚动控制(Recedi
 1. 在K时刻， 估计/测量当前系统状态(估计一般使用[[卡尔曼滤波]]或设计观测器)
 2. 基于未来的控制序列和代价函数$J(x, u)$来进行最优化求解
 3. 只取$u_k$施加到系统， 并在下一时刻回到第1步滚动计算(receding horizon control)
+### MPC分类
+1. 线性MPC
+2. 非线性MPC
+3. Explicit MPC(离线MPC)
+4. tubeMPC
+5. MPCC
+6. Data-driven MPC
 ### 系统框图
 - 原始MPC
 ![mpc_archi](../../Resourse/mpc_archi.png)
