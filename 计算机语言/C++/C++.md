@@ -200,6 +200,10 @@ T2 print(T1 argl, T2 arg2)
 发现可以使用lamda表达式写一些泛化并不强的小函数(用完既扔), 也能作为functer使用，并且可以减少代码量与可读性。
 下面以cout输出为例：
 ```C++
+// 变量捕获方式
+auto a = [=](){/*do something*/};// 所有当前域内可见的变量按值捕获
+auto a = [&](){/*do something*/};// 所有当前域内可见的变量按引用捕获
+
 auto coutPair = [](std::string a, double parameter){
 	std::cout << a << "\t" << parameter << std::endl;
 };
