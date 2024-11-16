@@ -90,6 +90,15 @@ git merge upstream/master
 5、把合并最新的代码推送到你的fork项目上
 git push origin master
 
+#### 多个commit合成一个
+- 使用git reset soft
+```bash
+# 0. 找到要压缩的commits前面的commit
+git reset --soft target_commit_id #将target后的commit之后的修改恢复到缓存区
+git add -u # 将跟踪的都
+git commit # 压缩target commit之后的所有修改为一个commit
+# git push -u oriing branch_name
+```
 #### 远程仓库
 1. 将本地仓库推送到远程空仓库
 ```bash
