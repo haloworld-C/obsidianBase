@@ -99,6 +99,7 @@ git add -u # 将跟踪的都
 git commit # 压缩target commit之后的所有修改为一个commit
 # git push -u oriing branch_name
 ```
+- git rebase
 #### 远程仓库
 1. 将本地仓库推送到远程空仓库
 ```bash
