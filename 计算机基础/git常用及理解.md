@@ -60,6 +60,8 @@
 8. git rebase, 与git merge要解决的问题一样，都是将不同分支、版本中的修改集中起来。rebase比较危险，可能影响到被合并版本，应**非常小心**
 
 >只要确保不在公共分支上进行rebase即可， 因为这样很大概率会导致其他人切出来的母分支被删除。在自己的独立分支上rebase master分支没有什么风险。 rebase的主要过程是将base的母分支， 先同步到本地， 然后再把本地的修改逐一应用在切出点后面的commit上。
+>
+  最好不要多次使用rebase, 推之前rebase一下即可
 
 > [useful ref](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 9. git的版本管理是每个文件中的每一行进行版本管理的，具有非常高的灵活性
