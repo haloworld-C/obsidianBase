@@ -43,6 +43,7 @@ cat large_archive.7z.* > combined_large_archive.7z
 ```
 
 11. 截图工具
+- flameshot
 12. 键盘鼠标模拟操作
 - xdotool
 	主要优势是可以自由的与图形界面进行操作。
