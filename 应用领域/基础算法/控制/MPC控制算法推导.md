@@ -25,9 +25,11 @@ $$
 $$
 
 其中$\beta$为重心处的速度与车辆纵轴的的夹角, $l_r$为汽车重心到后轮的距离， $l_r$为汽车重心到前轮的距离。
+- 动力学模型(参考)
+![car dynamics](../../../Resourse/car_dynamic.png)
 ### 运动模型线性化
 定义系统状态$z=[x, y, \phi, v]^T$, 控制向量为$u=[a, \delta]^T$。
-则上面运动方程可以写为：
+则上面运动方程可以写为(分子布局， 矩阵求导的行数与分子维度相同)：
 $$
 \begin{equation}
 \begin{aligned}
@@ -71,7 +73,7 @@ v*sin{\phi}*\phi \\
 $$
 
 ### 运动状态方程离散化
-采用前向欧拉法对上述线性方程进行离散化。
+采用前向欧拉法对上述线性方程进行离散化。(??)
 $$
 \begin{equation}
 \begin{aligned}
@@ -120,7 +122,7 @@ X_k=\left[ z_{k|k}^T, z_{k+1|k}^T, \dots, z_{k+p-1|k}^T  \right]^T
 $$
 定义到达未来p个周期内预测的系统输入为：
 $$
-U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+q-1|k}^T   \right]
+U_k=\left[  u_{k|k}^T, u_{k+1|k}^T,\dots, u_{k+p-1|k}^T   \right]
 $$
 则由上述离散状态转移方程可以写出未来p个状态的状态转移方程：
 $$ \begin{equation} \begin{aligned}
@@ -132,7 +134,7 @@ z_{k+p|k}&={\overline{A}}^p{\times}z_{k+p-1|k}+{\overline{A}}^{p-1}{\times}{\ove
 \end{aligned}
 \end{equation}
 $$
-将上式写为矩阵形式：
+将上式写为矩阵形式(其中$z_k$为初值， 为已知量)：
 $$
 \begin{equation}
 \begin{aligned}
@@ -163,21 +165,19 @@ $$
 这里的$r_k$为路径点，需要根据采样周期dt进行采样。
 定义优化目标代价函数为：
 $$
-J(U_k)=(X_{k+1}-R_{k+1})^TQ(X_{k+1}-R_{k+1})+U_k^TW_1U_k+(U_k-U_{k-1})^TW_2(U_k-U_{k-1})
+J(U_k)=(X_{k+1}-R_{k+1})^TQ(X_{k+1}-R_{k+1})+U_k^TWU_k
 $$
 将上面的$X_k$的状态转移方程带入上式，整理得以下二次型：
 $$
-J(u_k)=\frac{1}{2}U_k^THU_k+FU_k 
+J(u_k)=\frac{1}{2}U_k^THU_k+F^TU_k 
 $$
 其中：
 $$
 \begin{equation}
 \begin{aligned}
 \left \{\begin{matrix}
-		H=2({\Theta}^TQ\Theta+W_1+W_2) 
-		\\ F^T=\frac{1}{2}E^TQ\Theta-D
-		\\ E=\Phi{X_k}-R_k
-		\\ D=U_{k-1}^T(W_2+W_2^T)
+		H={\Theta}^TQ\Theta+W
+		\\ F={\Theta}^TQ{\Phi}z_k
 		\end{matrix} \right .
 \end{aligned}
 \end{equation}
@@ -292,3 +292,4 @@ $$
 5. 如果状态量不可测得，则需要利用卡尔曼滤波进行估计
 6. 对于差速小车而言，由于其转弯半径可以接近0，需要考虑圆弧运动限制: $v/R < {\omega}_{max}$
 7. 在我们的例子中， 对于非线性模型进行了线性化处理， 然后利用凸优化求解线性MPC问题， 另一种思路是利用非线性MPC对该模型直接求解详见[[非线性MPC]]
+8. 加快求解速度: Warm-start, 离线MPC
