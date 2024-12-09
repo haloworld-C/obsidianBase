@@ -32,7 +32,14 @@ LOG(ERROR) << "Aborting because a valid control could not be found. "
 			"Even after executing all recovery behaviors";
 ```
 ##### 枚举类型(enum)
-
+```cpp
+enum conditon {
+	a = 0,
+	b, 
+	c,
+	count, // 这样可以很方便的统计条件的数量
+}
+```
 #### 算数运算
 - 运算符的优先级(随行递减，同行取决于位置，左边比右边优先级高)
 	1. NOT !

@@ -58,6 +58,9 @@
 ![git_merge](../Resourse/git_merge_concept.jpeg)
 > [useful ref](https://www.biteinteractive.com/understanding-git-merge/)
 8. git rebase, 与git merge要解决的问题一样，都是将不同分支、版本中的修改集中起来。rebase比较危险，可能影响到被合并版本，应**非常小心**
+
+>只要确保不在公共分支上进行rebase即可， 因为这样很大概率会导致其他人切出来的母分支被删除。在自己的独立分支上rebase master分支没有什么风险。 rebase的主要过程是将base的母分支， 先同步到本地， 然后再把本地的修改逐一应用在切出点后面的commit上。
+
 > [useful ref](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 9. git的版本管理是每个文件中的每一行进行版本管理的，具有非常高的灵活性
 10. branch 就是一系列的commits，当head指向一个具体commit 而不是branch时head会处于游离态（head detached, 也是正常状态，只需要checkout到对应分支即可）
@@ -90,6 +93,16 @@ git merge upstream/master
 5、把合并最新的代码推送到你的fork项目上
 git push origin master
 
+#### 多个commit合成一个
+- 使用git reset soft
+```bash
+# 0. 找到要压缩的commits前面的commit
+git reset --soft target_commit_id #将target后的commit之后的修改恢复到缓存区
+git add -u # 将跟踪的都
+git commit # 压缩target commit之后的所有修改为一个commit
+# git push -u oriing branch_name
+```
+- git rebase
 #### 远程仓库
 1. 将本地仓库推送到远程空仓库
 ```bash

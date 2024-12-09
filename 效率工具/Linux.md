@@ -68,3 +68,5 @@ xdotool key ctrl+alt+t # 输入快捷键
 ```
 - expect
 	主要是模拟命令行中的操作
+- mold
+替代diff的图形化差异比较工具。
