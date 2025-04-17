@@ -40,6 +40,12 @@ sqrt_2 = lambda n, n*n
          self._as = actionlib.SimpleActionServer(self._action_name, actionlib_tutorials.msg.FibonacciAction, execute_cb=self.execute_cb, auto_start=False)
          self._as.start()
 ```
+#### 内存开销
+在python中
+```python
+x = x + y
+```
+的运算实际上x已经是一个新对象了， 其id已经改变(可以使用`id(x)`进行观察)
 #### 异常处理
 ##### basic idea
 - 使用try-except-finally结构处理
@@ -137,6 +143,10 @@ pip3 install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 [install]
 trusted-host = https://pypi.tuna.tsinghua.edu.cn
+```
+- 命令行设置
+```bash
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 #### numpy

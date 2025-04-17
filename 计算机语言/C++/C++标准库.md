@@ -17,6 +17,7 @@
 | front     | 获取第一个元素               |                                                |
 | back      | 获取最后一个元素              |                                                |
 | erase     | 删除元素                  |                                                |
+| pop_back  | 删除尾部元素                |                                                |
 ```cpp
 # 保留容器内存拷贝
 #include <vector> 
