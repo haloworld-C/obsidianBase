@@ -210,6 +210,7 @@ T2 print(T1 argl, T2 arg2)
 // 变量捕获方式
 auto a = [=](){/*do something*/};// 所有当前域内可见的变量按值捕获
 auto a = [&](){/*do something*/};// 所有当前域内可见的变量按引用捕获
+// 捕获某个值?
 
 auto coutPair = [](std::string a, double parameter){
 	std::cout << a << "\t" << parameter << std::endl;

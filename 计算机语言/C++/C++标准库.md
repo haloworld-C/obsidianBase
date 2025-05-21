@@ -34,6 +34,8 @@ int main() {
 // 常用初始化方法
 std::vector<int> a(n, 0); //默认初始化vector， 大小为n
 std::vector<vector<int> > b(n, vector<int>(n, 0)); // 大小n*n
+// erase
+c.erase(c.begin() + 2, c.begin() + 5); // erase element [3, 6)
 ```
 #### string
 string是有char构成的数组， 为常量， 不可修改。
