@@ -15,7 +15,7 @@ x_{k+1}=f(x_{k},u_{k})&==A{\times}x_k+B{\times}u_k \\
 $$
 上面状态转移矩阵为离散形式， 对于非线性函数的线性化、离散化参考[[MPC控制算法推导]]
 对于完全可观系统$y_k = x_k$
-#### 代价\目标函数
+#### 代价\目标\价值函数
 $$
 \begin{equation}
 J(x_0, U)=min\sum{c(x_k, u_k)} = x_N^TQ_Nx_N+min\sum_{k=0}^{N-1}{(x_k^TQ_kx_k+u_k^TR_ku_k)}
@@ -27,7 +27,7 @@ $$
 > $Q_k$, $R_k$均为对角矩阵(对称， 正定, 具有良好的性质， 保证后续求解方便)
 
 影响上述代价函数的变量为$U=(u_0,u_1,...,u_{N-1})$， 其中$x_0$为当前系统的状态为已知量(可以通过测量或者估计得到)。
-#### 动态规划递推方法
+#### 方法一：动态规划
 动态规划的原理基于贝尔曼法则(bellman's pricinple, 是优化理论的基石):
 > An optimal policy has the property that whatever the initial state and initial decision are, the remaining decision must consitute an optimal policy with regard to the state resulting from first decision.
 
@@ -109,6 +109,11 @@ $$
 由于$S_N$已知(是我们设定的)， 于是我们可以递归的向前求解$K_K, S_k，u_k$, 直到$K_0$, 这样我们就得到了使$J$最小化的最优控制策略$U=(-K_0x_0, -K_1x_1,...,-K_{N-1}x_{N-1})$
 
 > 如果系统为线性时不变系统且完全可控， 系统的稳定时间为无穷大， 那么$K_k$将会收敛为常数矩阵K。
+#### 方法二: 构造解析法(???)
+> refer: [# RL — LQR & iLQR Linear Quadratic Regulator](https://jonathan-hui.medium.com/rl-lqr-ilqr-linear-quadratic-regulator-a5de5104c750)
+
+
+
 
 ### 矩阵运算背景知识
 注意: 上面的求导需要利用以下矩阵求导公式(分子布局):
