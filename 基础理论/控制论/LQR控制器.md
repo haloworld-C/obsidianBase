@@ -109,6 +109,9 @@ $$
 由于$S_N$已知(是我们设定的)， 于是我们可以递归的向前求解$K_K, S_k，u_k$, 直到$K_0$, 这样我们就得到了使$J$最小化的最优控制策略$U=(-K_0x_0, -K_1x_1,...,-K_{N-1}x_{N-1})$
 
 > 如果系统为线性时不变系统且完全可控， 系统的稳定时间为无穷大， 那么$K_k$将会收敛为常数矩阵K。
+
+#### 无限步长
+
 #### 方法二: 构造解析法(???)
 > refer: [# RL — LQR & iLQR Linear Quadratic Regulator](https://jonathan-hui.medium.com/rl-lqr-ilqr-linear-quadratic-regulator-a5de5104c750)
 
