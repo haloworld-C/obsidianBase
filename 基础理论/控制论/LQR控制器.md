@@ -27,7 +27,7 @@ $$
 > $Q_k$, $R_k$均为对角矩阵(对称， 正定, 具有良好的性质， 保证后续求解方便)
 
 影响上述代价函数的变量为$U=(u_0,u_1,...,u_{N-1})$， 其中$x_0$为当前系统的状态为已知量(可以通过测量或者估计得到)。
-#### 方法一：动态规划
+#### 动态规划递推
 动态规划的原理基于贝尔曼法则(bellman's pricinple, 是优化理论的基石):
 > An optimal policy has the property that whatever the initial state and initial decision are, the remaining decision must consitute an optimal policy with regard to the state resulting from first decision.
 
@@ -110,6 +110,10 @@ $$
 
 > 如果系统为线性时不变系统且完全可控， 系统的稳定时间为无穷大， 那么$K_k$将会收敛为常数矩阵K。
 
+至此我们得到了递推关系式， 总结如下: 
+#### Backward and Forward
+
+#### 算法框架
 ### 矩阵运算背景知识
 注意: 上面的求导需要利用以下矩阵求导公式(分子布局):
 
