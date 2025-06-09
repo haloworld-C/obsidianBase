@@ -24,6 +24,7 @@
 | frac{}{}       | 除法          |            |                |
 | partial        | 偏导          |            | $\partial$     |
 | overline       | 字符上方加横线     |            | $\overline{x}$ |
+| quad           | 空格          | qquad更大的空格 |                |
 
 
 不常用希腊字母

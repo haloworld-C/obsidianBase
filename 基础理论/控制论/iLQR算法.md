@@ -11,7 +11,7 @@
 - 但是现实的问题中， 比如车辆的的运动学、动力学方程都是非线性系统(车轮横向运动约束)， 故需要对运动方程及代价函数在采样点进行线性化，然后再应用类似`LQR`控制器推导框架(基于动态规划思想)。
 - 在iLQR中本质上是通过施加$\delta{U}$对初始的轨迹进行"扰动"， 从而迭代地在上一次得到轨迹附近找到一条质量更优的轨迹(更低的代价)， 本质上是局部寻优。
 - iLQR与DDP方法对区别是， iLQR对非线性动态方程进行一阶泰勒展开， 而DDP则进行二阶展开。
-- i LQR需要一条初始轨迹$X$及对应的控制量$U$启动(可以通过LQR或其他方法得到)(是否需要初始轨迹还需要想想？)。
+- iLQR需要一条初始轨迹$X$及对应的控制量$U$启动(可以通过LQR或其他方法得到)(是否需要初始轨迹还需要想想？)。
 ### 推导过程
 #### 离散状态转移方程的线性化
 对于以下离散状态转移方程， 
@@ -164,7 +164,7 @@ $$
 \begin{equation}
 \begin{aligned}
 V_k(\overline{x}_k+\delta{x_k}) &= V_k(\overline{x}_k) + \delta{V_k} \\
-&=V_k(\overline{x}_k)+\frac{\partial{V_k}}{\partial{x_k}}\delta{x_k}+\frac{1}{2}\delta{x_k}^T\frac{\partial^2{V_k}}{\partial{x_k}^2}\delta{x_k}
+&=V_k(\overline{x}_k)+\delta{x_k}^T\frac{\partial{V_k}}{\partial{x_k}}+\frac{1}{2}\delta{x_k}^T\frac{\partial^2{V_k}}{\partial{x_k}^2}\delta{x_k}
 \end{aligned}
 \end{equation}
 \tag{2.9}
@@ -185,7 +185,7 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\delta{V_k}=s_k\delta{x_k}+\frac{1}{2}\delta{x_k}^TS_k\delta{x_k}
+\delta{V_k}=\delta{x_k}^Ts_k+\frac{1}{2}\delta{x_k}^TS_k\delta{x_k}
 \end{aligned}
 \end{equation}
 \tag{2.11}
@@ -360,7 +360,7 @@ Q_{u|k}&=\frac{\partial{Q}_k}{\partial{u_k}}=\ell_{x|k}+A_k^Ts_{k+1}^T \\
 \tag{2.20}
 \right.
 $$
-式2.19意味着当前第k步的Q的一、二阶偏导数，可以由第k步的$\ell_k$的偏导数及上一步的$s_{k+1}$, $S_{k+1}$推导得出。
+式2.20意味着当前第k步的Q的一、二阶偏导数，可以由第k步的$\ell_k$的偏导数及上一步的$s_{k+1}$, $S_{k+1}$推导得出。
 
 ---
 上一步的$s_{k+1}$, $S_{k+1}$为已知量， 故推导到现在$Q_k$的一、二阶偏导数也是已知量。故当前步的$\delta{Q_k}$的函数表达式也是已知的了， 下面我们来求$u_k^*$, 由式2.8、2.12可知:
@@ -406,20 +406,99 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-u_k^*&=-Q_{uu|k}^{-1}(Q_{u|k}+Q_{xu|k}\delta{x_k}) \\
+\delta{u}_k^*&=-Q_{uu|k}^{-1}(Q_{u|k}+Q_{xu|k}\delta{x_k}) \\
 &=-Q_{uu|k}^{-1}Q_{u|k}+-Q_{uu|k}^{-1}Q_{xu|k}\delta{x_k} \\
-&=d+K\delta{x_k}
+&=d_k+K_k\delta{x_k}
 \end{aligned}
 \end{equation}
 \tag{2.24}
 $$
 > 注意上式中$Q_{uu|k}^{-1}$不一定存在, 且$\frac{\partial^2(\delta{Q_k})}{\partial(\delta{u_k})^2}>0$未必成立，这时便需要进行正则化及稳定的数值解法。本文的主要目的是说明iLQR的算法原理及流程， 其数值解法暂不讨论。
 
+---
+现在当前步的递推矩阵就差$s_k$和$S_k$还不知道， 接下来我们来推导。由于$u_k^*$已经已知， 我们把式2.24带入式2.15， 得到:
+$$
+\begin{equation}
+\begin{aligned}
+\delta{Q}_k^*&= \left [ \begin{array}{c}
+\delta{x}_k \\
+d_k+K_k\delta{x}_k\\
+  \end{array} \right]^T \left [ \begin{array}{c}
+Q_{x|k} \\
+Q_{u|k}\\
+  \end{array} \right] \\
+& \quad + \frac{1}{2}\left [ \begin{array}{c}
+\delta{x}_k \\
+d_k+K_k\delta{x}_k\\
+  \end{array} \right]^T\left [ \begin{array}{cc}
+ Q_{xx|k} &  Q_{xu|k}\\
+Q_{ux|k} & Q_{uu|k}
+  \end{array} \right]\left [ \begin{array}{c}
+\delta{x}_k \\
+d_k+K_k\delta{x}_k\\
+  \end{array} \right] \\
+&=d_k^TQ_{u|k}+\frac{1}{2}d_k^TQ_{uu|k}d_k \\
+& \quad + \delta{x}_k^T(Q_{u|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k) \\
+& \quad + \frac{1}{2}\delta{x}_k^T(Q_{xx|k}+2Q_{xu|k}K_k+K_k^TQ_{uu|k}K_k)\delta{x}_k
+\end{aligned}
+\end{equation}
+\tag{2.25}
+$$
 
+又由于
+$$
+\begin{equation}
+\begin{aligned}
+Q_k^*&=min(Q_k)=Q_k(\overline{x}_k, \overline{u}_k)+\delta{Q}_k^*(\delta{x}_k) \\
+&=V_k(x_k) \\
+&=V_k(\overline{x}_k)+\delta{V}_k(\delta{x_k})
+\end{aligned}
+\end{equation}
+\tag{2.26}
+$$
+又由于$Q_k(\overline{x}_k,\overline{u}_k)=V_k(\overline{x}_k)$, 故有:
+$$
+\begin{equation}
+\delta{Q}_k^*(\delta{x}_k)=\delta{V}_k(\delta{x}_k)
+\end{equation}
+\tag{2.27}
+$$
+于是式2.11与式2.25中对应系数相等，故有:
+$$
+\left\{
+\begin{equation}
+\begin{aligned}
+s_k&=\frac{\partial{V_k}}{\partial{x_k}}=Q_{u|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k \\
+S_k&= \frac{\partial^2{V_k}}{\partial{x_k}^2}=Q_{xx|k}+2Q_{xu|k}K_k+K_k^TQ_{uu|k}K_k\\
+\end{aligned}
+\end{equation}
+\tag{2.28}
+\right.
+$$
 
+我们观察到时式2.25比2.11多了一个常数项， 这是因为我们在二阶泰勒展开的时候舍弃了高阶余项(可以理解为$\delta{V}_k(x_k)$与$\delta{Q}_k^*(x_k)$的二阶泰勒展开的高阶余项的差)， 我们可以定义:
+$$
+\begin{equation}
+\Delta{V}_k=d_k^TQ_{u|k}+\frac{1}{2}d_k^TQ_{uu|k}d_k
+\end{equation}
+\tag{2.29}
+$$
+于是:
+> 定义$\Delta{V}_k$是为了递推更精确的$\delta{V}_k$
+$$
+\begin{equation}
+\delta{V}_k=\Delta{V}_k+\delta{x}_ks_k+\frac{1}{2}\delta{x}_k^TS_k\delta{x}_k
+\end{equation}
+\tag{2.30}
+$$
 
+至此第k步所有的变量均为已知量。我们来综合总结一下递推关系式:
 
+#### Backward and forward
 
+#### 迭代终止条件
+
+#### 算法伪代码
 
 
 ### 背景知识
