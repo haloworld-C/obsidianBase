@@ -110,14 +110,6 @@ $$
 
 > 如果系统为线性时不变系统且完全可控， 系统的稳定时间为无穷大， 那么$K_k$将会收敛为常数矩阵K。
 
-#### 无限步长
-
-#### 方法二: 构造解析法(???)
-> refer: [# RL — LQR & iLQR Linear Quadratic Regulator](https://jonathan-hui.medium.com/rl-lqr-ilqr-linear-quadratic-regulator-a5de5104c750)
-
-
-
-
 ### 矩阵运算背景知识
 注意: 上面的求导需要利用以下矩阵求导公式(分子布局):
 

@@ -400,7 +400,7 @@ $$
 \end{equation}
 \tag{2.23}
 $$
->上面的整理过程中用到了标量函数的二阶矩阵偏导为对称阵这个事实，有$Q_{ux|k}=Q_{xu|k}^T$, $Q_{xx|k}=Q_{xx|k}^T$, $Q_{uu|k}=Q_{uu|k}^T$, 可参考[黑塞矩阵wiki](https://zh.wikipedia.org/wiki/%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%99%A3) 
+>上面的整理过程中用到了标量函数的二阶矩阵偏导为对称阵这个事实，有$Q_{ux|k}=Q_{xu|k}^T$, $Q_{xx|k}=Q_{xx|k}^T$, $Q_{uu|k}=Q_{uu|k}^T$, 依据可参考[黑塞矩阵wiki](https://zh.wikipedia.org/wiki/%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%99%A3) 
 
 接下来令是是2.23中$\frac{\partial(\delta{Q_k})}{\partial(\delta{u_k})}=0$， 求得:
 $$
