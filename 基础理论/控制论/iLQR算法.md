@@ -11,7 +11,7 @@
 - 但是现实的问题中， 比如车辆的的运动学、动力学方程都是非线性系统(车轮横向运动约束)， 故需要对运动方程及代价函数在采样点进行线性化，然后再应用类似`LQR`控制器推导框架(基于动态规划思想)。
 - 在iLQR中本质上是通过施加$\delta{U}$对初始的轨迹进行"扰动"， 从而迭代地在上一次得到轨迹附近找到一条质量更优的轨迹(更低的代价)， 本质上是局部寻优。
 - iLQR与DDP方法对区别是， iLQR对非线性动态方程进行一阶泰勒展开， 而DDP则进行二阶展开。
-- iLQR需要一条初始轨迹$X$及对应的控制量$U$启动(可以通过LQR或其他方法得到)(是否需要初始轨迹还需要想想？)。
+- iLQR需要一条初始轨迹$X$及对应的控制量$U$启动(可以通过LQR或QP求解方法得到)。
 ### 推导过程
 #### 离散状态转移方程的线性化
 对于以下离散状态转移方程， 
@@ -500,10 +500,39 @@ $$
 ![backward and forward](../../Resourse/backward_forward.png)
 然后我们迭代地进行Backward向后矩阵递推和Forward状态向前递归， 寻找J更低的轨迹。如下图所示(其中右上角标表示轨迹迭代循环次数):
 ![backward and forward](../../Resourse/path_iter.png)
-##### 轨迹迭代终止条件
+#### 轨迹迭代终止条件
  而整体上的Backward和forward的大循环迭代何时停止呢， 通常是通过式2.30计算的$J=V_0=\overline{V}_0+\delta{V}_0$的代价的下降幅度小于某个阈值，那么则整个轨迹优化过程便结束。
 
+###  遗留问题及实现示例
+ 书接上回。我们在上面的讨论中说明了iLQR的算法推导过程， 本部分内容重点讨论上面内容的遗留问题及以一个差动驱动的机器人轨迹规划问题的iLQR算法实现的实例。
+ > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)
+ > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)
+ > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)
  
+#### 初始轨迹及对应控制量获取
+ - option1: 使用常量控制量， 生成一条初始轨迹
+ - option2: 如果代价函数可以很容易转换为QP问题， 则使用QP问题求解器获取一个初始的轨迹及对应的控制量
+ - option3: 如果代价函数为二次型， 那么可以使用LQR的解获得一个初始轨迹及对应的控制量
+#### 正则化(Regularization)
+对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$min(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。(这里缺乏转换过程)
+
+ref1有两种正则化的选择:
+- option 1:
+$$
+\widetilde{Q}_{uu|k}=Q_{uu|k}+{\mu}I=\ell_{uu|k} + B_k^TS_{k+1}B_k+{\mu}I
+$$
+- option 2:
+$$
+\widetilde{Q}_{uu|k}=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k
+$$
+#### 线搜索(Line search)
+(缺乏问题转换过程)
+线搜索形式:
+$$
+\hat{u}_k=u_k+{\alpha}*d_k+K_k\delta{x}_k
+$$
+
+
 ##### 算法伪代码
 > TODO: 渲染好后贴在这里
 
@@ -511,5 +540,15 @@ $$
 
 ### 背景知识
 1. 矩阵求导(见[[LQR控制器]]中的附录)
-2. 关于二元向量的标量函数的二阶泰勒展开公式: 
+2. 关于向量的标量函数$f(x)$的二阶泰勒展开公式: 
 
+$$
+\begin{equation}
+\begin{aligned}
+\delta{f}=
+\delta{x}^T \nabla + \frac{1}{2}\delta{x} ^T{\nabla}^2\delta{x}+高阶项
+\end{aligned}
+\end{equation}
+\tag{2.15}
+$$
+其中一阶全导数$\nabla$又记为$J$(雅可比矩阵)， 二阶全导数${\nabla}^2$又可记为$H$(黑森矩阵)
