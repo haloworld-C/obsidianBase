@@ -11,7 +11,7 @@
 - 但是现实的问题中， 比如车辆的的运动学、动力学方程都是非线性系统(车轮横向运动约束)， 故需要对运动方程及代价函数在采样点进行线性化，然后再应用类似`LQR`控制器推导框架(基于动态规划思想)。
 - 在iLQR中本质上是通过施加$\delta{U}$对初始的轨迹进行"扰动"， 从而迭代地在上一次得到轨迹附近找到一条质量更优的轨迹(更低的代价)， 本质上是局部寻优。
 - iLQR与DDP方法对区别是， iLQR对非线性动态方程进行一阶泰勒展开， 而DDP则进行二阶展开。
-- iLQR需要一条初始轨迹$X$及对应的控制量$U$启动(可以通过LQR或QP求解方法得到)。
+- iLQR需要一条初始轨迹$X$及对应的控制量$U$启动(遗留问题1: 初始轨迹及对应控制量的获取)。
 ### 推导过程
 #### 离散状态转移方程的线性化
 对于以下离散状态转移方程， 
@@ -112,7 +112,7 @@ l_{ux|k}&= \frac{\partial^2\ell_k}{\partial{u_k}\partial{x_k}}\\
 \right.
 $$
 其中$\ell_{xx|k}$下标中$x$表示$\ell$对$x$求一次偏导数， $x$在下标中出现两次表示求的是二阶偏导， 下标$k$表示的是在离散后的系统中是第k步(轨迹中的第k个状态点), 这样定义方便我们理解后文中的递推过程。
-#### 动态规划递推方程及初值
+#### 动态规划递推关系式
 在递推过程中我们用到了[贝尔曼优化思想](https://en.wikipedia.org/wiki/Bellman_equation), 在我们的问题中可表述如下:
 首先定义价值函数V为从最后一步N到第k步的代价和(我们后面也是从后向前递推):
 $$
@@ -135,6 +135,8 @@ V_k&=min(l_f(x_N)+\sum^{N-k}_k{l_i(x_i, u_)}) \\
 \end{equation}
 \tag{2.6}
 $$
+> 是2.6其实就是离散形式的HJB方程
+
 式2.6即我们递归关系式推导的核心, 我们定义Q函数(在贝尔曼公式中称为动作价值函数， 即考虑控制量$u_k$的待优化目标函数):
 $$
 \begin{equation}
@@ -400,14 +402,14 @@ $$
 \end{equation}
 \tag{2.23}
 $$
->上面的整理过程中用到了标量函数的二阶矩阵偏导为对称阵这个事实，有$Q_{ux|k}=Q_{xu|k}^T$, $Q_{xx|k}=Q_{xx|k}^T$, $Q_{uu|k}=Q_{uu|k}^T$, 依据可参考[黑塞矩阵wiki](https://zh.wikipedia.org/wiki/%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%99%A3) 
+>遗留问题2: 上面的整理过程中用到了标量函数的二阶矩阵偏导为对称阵这个事实，有$Q_{ux|k}=Q_{xu|k}^T$, $Q_{xx|k}=Q_{xx|k}^T$, $Q_{uu|k}=Q_{uu|k}^T$, 依据可参考[黑塞矩阵wiki](https://zh.wikipedia.org/wiki/%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%99%A3) 
 
 接下来令是是2.23中$\frac{\partial(\delta{Q_k})}{\partial(\delta{u_k})}=0$， 求得:
 $$
 \begin{equation}
 \begin{aligned}
 \delta{u}_k^*&=-Q_{uu|k}^{-1}(Q_{u|k}+Q_{xu|k}\delta{x_k}) \\
-&=-Q_{uu|k}^{-1}Q_{u|k}+-Q_{uu|k}^{-1}Q_{xu|k}\delta{x_k} \\
+&=-Q_{uu|k}^{-1}Q_{u|k}-Q_{uu|k}^{-1}Q_{xu|k}\delta{x_k} \\
 &=d_k+K_k\delta{x_k}
 \end{aligned}
 \end{equation}
@@ -438,8 +440,8 @@ Q_{ux|k} & Q_{uu|k}
 d_k+K_k\delta{x}_k\\
   \end{array} \right] \\
 &=d_k^TQ_{u|k}+\frac{1}{2}d_k^TQ_{uu|k}d_k \\
-& \quad + \delta{x}_k^T(Q_{u|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k) \\
-& \quad + \frac{1}{2}\delta{x}_k^T(Q_{xx|k}+2Q_{xu|k}K_k+K_k^TQ_{uu|k}K_k)\delta{x}_k
+& \quad + \delta{x}_k^T(Q_{x|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k) \\
+& \quad + \frac{1}{2}\delta{x}_k^T(Q_{xx|k}+Q_{xu|k}K_k+K_k^TQ_{ux|k}+K_k^TQ_{uu|k}K_k)\delta{x}_k
 \end{aligned}
 \end{equation}
 \tag{2.25}
@@ -468,8 +470,8 @@ $$
 \left\{
 \begin{equation}
 \begin{aligned}
-s_k&=\frac{\partial{V_k}}{\partial{x_k}}=Q_{u|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k \\
-S_k&= \frac{\partial^2{V_k}}{\partial{x_k}^2}=Q_{xx|k}+2Q_{xu|k}K_k+K_k^TQ_{uu|k}K_k\\
+s_k&=\frac{\partial{V_k}}{\partial{x_k}}=Q_{x|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k \\
+S_k&= \frac{\partial^2{V_k}}{\partial{x_k}^2}=Q_{xx|k}+Q_{xu|k}K_k+K_k^TQ_{ux|k}+K_k^TQ_{uu|k}K_k\\
 \end{aligned}
 \end{equation}
 \tag{2.28}
@@ -484,16 +486,64 @@ $$
 \tag{2.29}
 $$
 于是:
-> 定义$\Delta{V}_k$是为了递推更精确的$\delta{V}_k$
 $$
 \begin{equation}
 \delta{V}_k=\Delta{V}_k+\delta{x}_ks_k+\frac{1}{2}\delta{x}_k^TS_k\delta{x}_k
 \end{equation}
 \tag{2.30}
 $$
+> 定义$\Delta{V}_k$是为了递推更精确的$\delta{V}_k$:
 
 至此第k步所有的变量均为已知量。我们来综合总结一下递推关系式:
+$$
+\left\{
+\begin{equation}
+\begin{aligned}
+Q_{xx|k}&=\frac{\partial^2Q_k}{\partial{x_k}^2}=\ell_{xx|k}+A_k^TS_{k+1}A_k\\
+Q_{xu|k}&= \frac{\partial^2Q_k}{\partial{x_k}\partial{u_k}}=\ell_{xu|k}+A_k^TS_{k+1}B_k\\
+Q_{ux|k}&= \frac{\partial^2Q_k}{\partial{u_k}\partial{x_k}}=\ell_{ux|k}+B_k^TS_{k+1}A_k\\
+Q_{uu|k}&=\frac{\partial^2Q_k}{\partial{u_k}^2}=\ell_{uu|k} + B_k^TS_{k+1}B_k \\
+Q_{x|k}&=\frac{\partial{Q}_k}{\partial{x_k}}=\ell_{x|k}+A_k^Ts_{k+1}^T \\
+Q_{u|k}&=\frac{\partial{Q}_k}{\partial{u_k}}=\ell_{x|k}+A_k^Ts_{k+1}^T \\
+d_k&=-Q_{uu|k}^{-1}Q_{u|k} \\
+K_k&=-Q_{uu|k}^{-1}Q_{xu|k} \\
+s_k&=\frac{\partial{V_k}}{\partial{x_k}}=Q_{x|k}+K_k^TQ_{u|k}+d_k^TQ_{ux|k}+K_k^TQ_{uu|k}d_k \\
+S_k&= \frac{\partial^2{V_k}}{\partial{x_k}^2}=Q_{xx|k}+Q_{xu|k}K_k+K_k^TQ_{ux|k}+K_k^TQ_{uu|k}K_k\\
+\end{aligned}
+\end{equation}
+\tag{2.31}
+\right.
+$$
+> 由于代价函数$\ell_k$函数是给定的，故其一、二阶偏导数均为已知量;$A_k$、$B_k$也是根据系统的运动学、动力学方程在$(\overline{x}_k, \overline{u}_k)$处进行线性化，也为已知量; 由于我们是从后向前递推(cost-to-go), 故在第k步$s_{k+1}$,$S_{k+1}$均为已知量。故我们便完成了所有递推矩阵的推导，而矩阵推导涉及上一步矩阵的就是$s_{k+1}$,$S_{k+1}$，那么从后向前递推的核心便是$s_{k+1}$,$S_{k+1}$
+#### 动态规划递推初值
+接下来我们给出递推过程的初值。
+对于第N步(状态的最后一步, 我们递推的第一步):
+$$
+\left\{
+\begin{equation}
+\begin{aligned}
+V_N&=\ell_f(x_N) \\
+s_N&=\frac{\partial{\ell_f}}{\partial{x_N}}\\
+S_N&= \frac{\partial^2{\ell_f}}{\partial{x_N}^2}\\
+\end{aligned}
+\end{equation}
+\tag{3.1}
+\right.
+$$
+> 比如， 对终端状态我们通常不会对其施加控制量，故$V_N=Q_N$, 而且终端代价函数通常不会设计的很复杂， 通常为二次型函数比如$\ell_f(x_N)=(x_N-x_N^{d})^TW_N(x_N-x_N^{d})$，那么$s_N=W_N(x_N-x_N^d)$, $S_N=W_N$
 
+####  Backward and forward
+事实上， 前面的矩阵递归过程就是其他博文里面的backward(类比神经网络优化的反向传播概念), 一旦递推到初始状态，那么我们就得到了各步的$K_i$,$d_i$，然后我们可以利用公式2.24从$x_0$左为初值，计算各步的$\delta{u_k}$, 也就知道了各步的$u_k=\overline{u}_k+\delta{u}_k$, 然后通过式1.1递推扰动后的$x_i$, 完成了一次轨迹的局部寻优。然后我们迭代地进行Backward向后矩阵递推和Forward状态向前递归， 寻找J更低的轨迹。
+而整体上的Backward和forward的大循环迭代何时停止呢， 通常是通过式2.30计算的$J=V_0=\overline{V}_0+\delta{V}_0$的代价的下降幅度小于某个阈值，那么则整个轨迹优化过程便结束。
+> 遗留问题3: 某些情况下整体代价函数会出现不降反升的现象， 需要用到line search优化的技术
+
+
+> todo: 补充图示意
+
+#### 迭代终止条件
+
+
+#### 算法框架伪代码
 #### 总结
 - backward and forward
 事实上， 前面的矩阵递归过程就是其他博文里面的backward(类比神经网络优化的反向传播概念), 一旦递推到初始状态，那么我们就得到了各步的$K_i$,$d_i$，然后我们可以利用公式2.24从$x_0$左为初值，计算各步的$\delta{u}_k=\overline{u}_k+\delta{u}_k$, 也就知道了整个轨迹的扰动量$\delta{U}=(\delta{u}_0, \delta{u}_1,...,\delta{u}_N)$, 然后通过式1.1递推扰动后的$x_k$, 完成了一次轨迹的局部寻优。如下图所示:
