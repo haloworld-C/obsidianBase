@@ -559,15 +559,63 @@ $$
  > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)
  > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)
  > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)
+ > ref4: [LM(Levenberg-Marquard)算法实现](https://www.codelast.com/%e5%8e%9f%e5%88%9blm%e7%ae%97%e6%b3%95%e7%9a%84%e5%ae%9e%e7%8e%b0/)
+ > ref5: [A Brief Description of the Levenberg-Marquardt Algorithm Implemened by levmar](http://users.ics.forth.gr/~lourakis/levmar/levmar.pdf)
  
 #### 初始轨迹及对应控制量获取
- - option1: 使用常量控制量， 生成一条初始轨迹
- - option2: 如果代价函数可以很容易转换为QP问题， 则使用QP问题求解器获取一个初始的轨迹及对应的控制量
- - option3: 如果代价函数为二次型， 那么可以使用LQR的解获得一个初始轨迹及对应的控制量
+ - option1: 使用常量控制量， 生成一条初始轨迹(劣势是很有可能无法迭代出全局最优的结果)
+ - option2: 如果代价函数可以很容易转换为QP问题， 则使用QP问题求解器获取一个初始的轨迹及对应的控制量(其实这种场景下已经失去了使用iLQR的意义了)
+ - option3: 如果代价函数为二次型， 那么可以使用状态转移方程一阶近似去应用LQR的解获得一个初始轨迹及对应的控制量
+ - option4: 使用Dubins或RS曲线生成的轨迹， 天然带控制量(也满足全局路径短，比较理想)
+ > 对于迭代过程中的初始轨迹可以使用上一次迭代的状态及对应控制量， 也称为热启动
+ > 若有其他思路， 欢迎在评论区补充
 #### 正则化(Regularization)
-对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$min(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。(这里缺乏转换过程)
+对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$min_{u_k}(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。(这里缺乏转换过程)
+我们退而求其次， 利用数值优化的方法求其数值解。
+由式2.2我们可知现在的优化目标(由于均为序列k的变量， 略去):
+$$
+\begin{equation}
+\begin{aligned}
+min_u{\delta{Q}}&= min_{u}[\delta{x}^TQ_{x|k}+Q_{u}^T\delta{u} \\
+& \quad +\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}+\frac{1}{2}\delta{x}^TQ_{xu}\delta{u} \\
+& \quad +\frac{1}{2}\delta{x}^TQ_{ux}^T\delta{u}+\frac{1}{2}\delta{u}^TQ_{uu}\delta{u}]  \\
+&=min[(\delta{x}^TQ_{x|k}+\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}) \\
+& \qquad \qquad + (Q_{u}^T+\delta{x}^TQ_{xu})\delta{u} \\
+& \qquad \qquad + \frac{1}{2}\delta{u}^TQ_{uu}\delta{u}]
+\end{aligned}
+\end{equation}
+\tag{4.1}
+$$
+> 上式是对$u$求最小二次型， 故将$x$看做是已知量。
 
-ref1有两种正则化的选择:
+对式4.1， 令:
+$$
+\left\{
+\begin{equation}
+\begin{aligned}
+H&=Q_{uu} \\
+J&=Q_{u}^T+\delta{x}^TQ_{xu}
+\end{aligned}
+\end{equation}
+\tag{4.2}
+\right.
+$$
+> 其中J为我们优化的目标函数的一阶导， H为待优化目标函数的二阶导(注意这里使用的符号， 天然地可以与牛顿法优化、高斯牛顿法优化， LM优化方法产生联系， 故意为之)
+
+根据ref4及ref5, 我们知道式(4.1)等价于求解下面方程:
+$$
+\begin{equation}
+\begin{aligned}
+(H+\mu{I})\delta{u}=-J
+\end{aligned}
+\end{equation}
+\tag{4.3}
+$$
+其中$\mu$为LM(Levenberg-Marquard数值优化算法的调节因子(满足$\mu{\geq}0$)， 当$\mu$很小时且能保证$H+\mu{I}$正定时，此时数值迭代以接近牛顿法的速度收敛；当$\mu$很大时，$H$可被忽略，注意到此时$\delta{u}$的方向为负梯度，数值迭代以最速下降法的速度收敛。
+> 这里我们对LM(Levenberg-Marquard数值优化算法有了一个直观的认识， 具体的实施步骤及证明可以在上述参考中寻找。从直观上来看， LM算法是牛顿法与最速下降法的混合体。我们迭代出的也仅是本地的最优局部解，因为我们舍弃了$H$正定性的要求(但是也满足了我们的需求， 我们整个iLQR算法正是在上条轨迹附近寻找代价更优的轨迹)
+
+---
+根据ref1, 有两种正则化的选择:
 - option 1:
 $$
 \widetilde{Q}_{uu|k}=Q_{uu|k}+{\mu}I=\ell_{uu|k} + B_k^TS_{k+1}B_k+{\mu}I
@@ -576,6 +624,8 @@ $$
 $$
 \widetilde{Q}_{uu|k}=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k
 $$
+> 补充意义
+> 补充算法描述
 #### 线搜索(Line search)
 (缺乏问题转换过程)
 线搜索形式:
@@ -583,8 +633,9 @@ $$
 \hat{u}_k=u_k+{\alpha}*d_k+K_k\delta{x}_k
 $$
 
+> 补充算法描述
 
-##### 算法伪代码
+##### 算法伪代码及流程
 > TODO: 渲染好后贴在这里
 
 #### 示例(deepnote链接)
@@ -596,8 +647,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-\delta{f}=
-\delta{x}^T \nabla + \frac{1}{2}\delta{x} ^T{\nabla}^2\delta{x}+高阶项
+\delta{f}&=
+\delta{x}^T \nabla + \frac{1}{2}\delta{x} ^T{\nabla}^2\delta{x}+高阶项 \\
+&=\delta{x}^T J + \frac{1}{2}\delta{x} ^TH\delta{x}+高阶项
 \end{aligned}
 \end{equation}
 \tag{2.15}
