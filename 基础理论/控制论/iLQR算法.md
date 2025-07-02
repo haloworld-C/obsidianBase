@@ -553,6 +553,7 @@ $$
 #### 轨迹迭代终止条件
  而整体上的Backward和forward的大循环迭代何时停止呢， 通常是通过式2.30计算的$J=V_0=\overline{V}_0+\delta{V}_0$的代价的下降幅度小于某个阈值，那么则整个轨迹优化过程便结束。
 
+> 遗留问题4： 在iLQR/LQR的框架下如何考虑障碍物避障需求
 ###  遗留问题及实现示例
  书接上回。我们在上面的讨论中说明了iLQR的算法推导过程， 本部分内容重点讨论上面内容的遗留问题及以一个差动驱动的机器人轨迹规划问题的iLQR算法实现的实例。
  > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)

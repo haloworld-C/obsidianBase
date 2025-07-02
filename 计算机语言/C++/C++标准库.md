@@ -37,6 +37,19 @@ std::vector<vector<int> > b(n, vector<int>(n, 0)); // 大小n*n
 // erase
 c.erase(c.begin() + 2, c.begin() + 5); // erase element [3, 6)
 ```
+
+##### 面试常问
+1. 函数内的局部vector作为返回值被return是否涉及深度拷贝
+```cpp
+std::vector<int> createVector() {
+    std::vector<int> v = {1, 2, 3, 4, 5};
+    return v;
+}
+```
+在 **现代C++（C++11及以后）** 中：
+
+> 一般不会发生**拷贝（copy）**，而是会发生**移动（move）** 或者**返回值优化（RVO）**，避免不必要的性能开销。
+> 同时， 这个原则适用于绝大部分标准容器， 甚至是写了"移动构造"的其他自定义类
 #### string
 string是有char构成的数组， 为常量， 不可修改。
 - 常用操作
