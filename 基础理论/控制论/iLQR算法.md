@@ -562,15 +562,64 @@ $$
  > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)
  > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)
  > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)
- 
+ > ref4: [LM(Levenberg-Marquard)算法的实现](https://www.codelast.com/%e5%8e%9f%e5%88%9blm%e7%ae%97%e6%b3%95%e7%9a%84%e5%ae%9e%e7%8e%b0/)
+  
 #### 初始轨迹及对应控制量获取
  - option1: 使用常量控制量， 生成一条初始轨迹
  - option2: 如果代价函数可以很容易转换为QP问题， 则使用QP问题求解器获取一个初始的轨迹及对应的控制量
  - option3: 如果代价函数为二次型， 那么可以使用LQR的解获得一个初始轨迹及对应的控制量
 #### 正则化(Regularization)
-对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$min(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。(这里缺乏转换过程)
+对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$\mathop{min}\limits_{\delta{u_k}}(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。故我们回到式(2.22)：
+$$
+\begin{equation}
+\begin{aligned}
+\delta{Q}_k&= \delta{x_k}^TQ_{x|k}+Q_{u|k}^T\delta{u_k} \\
+& \quad +\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}+\frac{1}{2}\delta{x_k}^TQ_{xu|k}\delta{u_k} \\
+& \quad +\frac{1}{2}\delta{x_k}^TQ_{ux|k}^T\delta{u_k}+\frac{1}{2}\delta{u_k}^TQ_{uu|k}\delta{u_k} \\
+&=(\delta{x_k}^TQ_{x|k}+\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}) \\
+&\quad + (Q_{u|k}^T+\delta{x_k}^TQ_{xu|k})\delta{u_k} \\
+&\quad + \frac{1}{2}\delta{u_k}^TQ_{uu|k}\delta{u_k}
+\end{aligned}
+\end{equation}
+\tag{4.1}
+$$
 
-ref1有两种正则化的选择:
+由于我们是在寻找$u_k^*$使得$\delta{Q_k}$最小， 故在上式中$\delta{x_k}$为已知量。又由于上式中所有变量的序列均为第k步， 故下文的说明中均省略。令:
+$$
+\left\{
+\begin{equation}
+\begin{aligned}
+d&=\delta{x_k}^TQ_{x|k}+\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}\\
+H&=Q_{xu}\\
+J&= Q_{u|k}^T+\delta{x_k}^TQ_{xu|k}\\
+\end{aligned}
+\end{equation}
+\tag{4.2}
+\right.
+$$
+故，
+$$
+\begin{equation}
+\begin{aligned}
+\mathop{min}\limits_{\delta{u}}(\delta{Q})&=\mathop{min}\limits_{\delta{u}}[(\delta{x}^TQ_{x}+\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}) \\
+&\quad + (Q_{u}^T+\delta{x}^TQ_{xu})\delta{u} \\
+&\quad + \frac{1}{2}\delta{u}^TQ_{uu}\delta{u}]\\
+&=\mathop{min}\limits_{\delta{u}}(d+J\delta{u}+\frac{1}{2}\delta{u}^TH\delta{u})
+\end{aligned}
+\end{equation}
+\tag{4.3}
+$$
+由ref4， 对上式求最小值等价于求解方程(对上式求$\frac{\partial}{\partial{\delta{u}}}=0$， 然后对H矩阵添加正则项):
+$$
+\begin{equation}
+(H+\mu{I})\delta{u}=-J
+\end{equation}
+\tag{4.4}
+$$
+其中$\mu$称为LM参数(LM数值算法本质上是一种信赖域优化方法), $\mu{\in}[0, +\infty)$
+当$u=0$时(H本身正定)，数值算法求解以牛顿法进行收敛；
+当$\mu{I} \gg H$时， 数值算法求解以梯度法进行收敛。其迭代求解步骤详见ref4.
+ref1中有两种正则化的选择:
 - option 1:
 $$
 \widetilde{Q}_{uu|k}=Q_{uu|k}+{\mu}I=\ell_{uu|k} + B_k^TS_{k+1}B_k+{\mu}I

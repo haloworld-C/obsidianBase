@@ -28,6 +28,8 @@
 | overline       | 字符上方加横线     |            | $\overline{x}$ |     |
 | quad           | 空格          | qquad更大的空格 |                |     |
 | nabla          | 倒大三角        | $\nabla$   |                |     |
+| gg             | 远大于         |            | $\gg$          |     |
+| ll             | 远小于         |            | $\ll$          |     |
 
 
 不常用希腊字母
@@ -41,4 +43,6 @@
 $$
 \begin{matrix}\underbrace{cos\theta_c*v_{xr}+sin\theta_c*v_{yr}} \\ v_r\ project\ to\ v_c\end{matrix}-\begin{matrix}\underbrace{(cos\theta_c*v_c*cos\theta_c + sin\theta_c*v_c*sin\theta_c) }\\ v_c \end{matrix}
 $$
+- 下标\上标(正上方、正下方)
+$\mathop{min}\limits_{u_k}^h(\delta{Q}_k)$
 
