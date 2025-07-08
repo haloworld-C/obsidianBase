@@ -590,9 +590,9 @@ $$
 \left\{
 \begin{equation}
 \begin{aligned}
-d&=\delta{x_k}^TQ_{x|k}+\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}\\
+d&=\delta{x}^TQ_{x}+\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}\\
 H&=Q_{uu}\\
-J&= Q_{u|k}^T+\delta{x_k}^TQ_{xu|k}\\
+J&= Q_{u}^T+\delta{x}^TQ_{xu}\\
 \end{aligned}
 \end{equation}
 \tag{4.2}
