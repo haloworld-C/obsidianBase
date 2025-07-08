@@ -559,10 +559,10 @@ $$
 > 遗留问题4： 在iLQR/LQR的框架下如何考虑障碍物避障需求
 ###  遗留问题及实现示例
  书接上回。我们在上面的讨论中说明了iLQR的算法推导过程， 本部分内容重点讨论上面内容的遗留问题及以一个差动驱动的机器人轨迹规划问题的iLQR算法实现的实例。
- > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)
- > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)
- > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)
- > ref4: [LM(Levenberg-Marquard)算法的实现](https://www.codelast.com/%e5%8e%9f%e5%88%9blm%e7%ae%97%e6%b3%95%e7%9a%84%e5%ae%9e%e7%8e%b0/)
+ > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)，（本文主要内容从该篇论文取得理解）
+ > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)（理解了LM算法的实施过程）
+ > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)（理解了iLQR的动态规划算法框架）
+ > ref4: [LM(Levenberg-Marquard)算法的实现](https://www.codelast.com/%e5%8e%9f%e5%88%9blm%e7%ae%97%e6%b3%95%e7%9a%84%e5%ae%9e%e7%8e%b0/)（理解了LM算法的实质）
   
 #### 初始轨迹及对应控制量获取
  - option1: 使用常量控制量， 生成一条初始轨迹
@@ -590,13 +590,15 @@ $$
 \begin{equation}
 \begin{aligned}
 d&=\delta{x_k}^TQ_{x|k}+\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}\\
-H&=Q_{xu}\\
+H&=Q_{uu}\\
 J&= Q_{u|k}^T+\delta{x_k}^TQ_{xu|k}\\
 \end{aligned}
 \end{equation}
 \tag{4.2}
 \right.
 $$
+> 上式中符号的选择是故意为之，其中$H$为式4.1中二次型关于$\delta{u}$的二阶导(哈密顿矩阵)， $J$为关于$\delta{u}$的一阶导(雅可比矩阵)， $d$为常数， 对于我们求解极值问题没有影响
+
 故，
 $$
 \begin{equation}
@@ -619,15 +621,24 @@ $$
 其中$\mu$称为LM参数(LM数值算法本质上是一种信赖域优化方法), $\mu{\in}[0, +\infty)$
 当$u=0$时(H本身正定)，数值算法求解以牛顿法进行收敛；
 当$\mu{I} \gg H$时， 数值算法求解以梯度法进行收敛。其迭代求解步骤详见ref4.
+>上面的数值解法实质上放弃了对$H$正定性的要求， 而是在局部区域求解一个最小值。
+
 ref1中有两种正则化的选择:
-- option 1:
+- option 1(标准的LM正则化方法):
 $$
 \widetilde{Q}_{uu|k}=Q_{uu|k}+{\mu}I=\ell_{uu|k} + B_k^TS_{k+1}B_k+{\mu}I
 $$
+> 注意到将上式带回到式4.3， 相当于增加了针对控制的二次项， 会对控制的变化幅度做出惩罚， 产生的轨迹会更加保守。缺点是由于这是一个数值算法， 对于相同轨迹不同时刻迭代出来的$u^*$可能不同，虽然控制量的变化足够小，但轨迹 一致性难以保证
 - option 2:
 $$
-\widetilde{Q}_{uu|k}=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k
+\begin{equation}
+\begin{aligned}
+\widetilde{Q}_{uu|k}&=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k \\
+\widetilde{Q}_{xu|k}&=\ell_{xu|k}+A_k^T(S_{k+1}+\mu{I})B_k
+\end{aligned}
+\end{equation}
 $$
+> 注意将上式带回式4.3， 多出来的二次型代价为$\frac{1}{2}{\mu}\delta{u}^TB_k^TB_k\delta{u}+{\mu}\delta{x_k}^TA_k^TB_k\delta{u_k}$， 读者可以尝试将$\delta{x_{k+1}}^T\delta{x_{k+1}}=(A_k\delta{x}_k+B_k\delta{u}_k)^T(A_k\delta{x}_k+B_k\delta{u}_k)$继续展开， 发现与多出来的二次型仅差一个系数与常数项， 故此种形式的正则化相当于对轨迹状态变化进行惩罚， 相比于option1更加保守， 有利于保持轨迹优化的一致性。
 #### 线搜索(Line search)
 (缺乏问题转换过程)
 线搜索形式:
