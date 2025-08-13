@@ -1,3 +1,11 @@
+### 版本问题
+#### 2204
+1. 卡在图标界面， 需要更换官方驱动
+2. 安装软件与自动更新冲突， 可以关掉自动更新服务
+```bash
+sudo systemctl stop unattended-upgrades
+sudo systemctl disable unattended-upgrades
+```
 ### 科学上网
 #### 梯子
 - `Ghelper`
@@ -8,6 +16,14 @@ export http_proxy=http://127.0.0.1:7890
 ```
 ### 输入法
 - 搜狗拼音
+22.04后chrome浏览器无法激活的问题解决方案: 
+在`~/.bashrc`中加入以下环境变量:
+```bash
+# 桌面环境变量sogou
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS="@im=fcitx"
+```
 ### 应用图标及自启动
 [source](https://blog.csdn.net/zhuawalibai/article/details/97764381)
 要给软件添加启动图标，可到/usr/share/applications目录下创建相应的配置文件，以下为给obsidian配置启动图标示例：  

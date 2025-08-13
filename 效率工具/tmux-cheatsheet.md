@@ -74,6 +74,8 @@ tmux 可以包含多个 session，一个 session 可以包含多个 window， �
     PREFIX : resize-pane -R          当前窗格向右扩大 1 格
     PREFIX : resize-pane -D 20       当前窗格向下扩大 20 格
     PREFIX : resize-pane -t 2 -L 20  编号为 2 的窗格向左扩大 20 格
+#### 滚动模式：
+    PREFIX : [          进入vim选中模式， 按q退出
 #### 文本复制模式：
 - 设置鼠标支持
 ```conf
