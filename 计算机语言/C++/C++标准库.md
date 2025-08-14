@@ -436,6 +436,7 @@ std::sort(c.rbegin(), c.rend()); // 降序, 区间[)
 ```C++
 isdigit(char a); // 判断字符是否为数字字符
 std::max(a, b);
+std::max({a, b, c}); // 同时比较多个元素
 std::min(a, b);
 ```
 ### 倒转元素
