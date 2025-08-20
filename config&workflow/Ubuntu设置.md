@@ -17,13 +17,19 @@ export http_proxy=http://127.0.0.1:7890
 ### 输入法
 - 搜狗拼音
 22.04后chrome浏览器无法激活的问题解决方案: 
+安装依赖: 
+```bash
+sudo apt install fcitx5-frontend-gtk4
+```
 在`~/.bashrc`中加入以下环境变量:
 ```bash
 # 桌面环境变量sogou
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
 ```
+重启后选择右下角选择图形界面选项: "Ubuntu on Xorg"
+
 ### 应用图标及自启动
 [source](https://blog.csdn.net/zhuawalibai/article/details/97764381)
 要给软件添加启动图标，可到/usr/share/applications目录下创建相应的配置文件，以下为给obsidian配置启动图标示例：  
