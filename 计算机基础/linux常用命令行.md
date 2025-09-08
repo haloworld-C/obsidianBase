@@ -6,10 +6,11 @@
 |---|---|---|
 |基本操作|
 |history|查看历史命令行| |  
-|dpkg -i <you.deb>|安装deb包| 需要先给dep包添加执行权限|  
+|dpkg -i <you.deb>|安装deb包| 需要先给dep包添加执行权限, -L 查看包信息|  
 |apt purge [package name]|删除软件及其配置及依赖包|   |
 | apt remove [package name] | 删除软件（保留配置及依赖包）| 
 | apt autoremove [package name] | 删除当前不需要的依赖包|  
+| apt show [package name] | 查看包信息|  
 | apt list --installed| 列出已安装软件包|  
 |文件系统||
 | pwd | 显示当前绝对路径| |

@@ -1,3 +1,6 @@
+### 实用技巧
+#### 不运行代码， 先检查语法
+python3 -m py_compile motion_precision_benchmark.py
 ### 基础语法
 - 断行符 \ 或将多个语句放在()内
 - python中一切皆对象，赋值均为浅拷贝

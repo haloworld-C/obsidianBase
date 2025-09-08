@@ -1,4 +1,4 @@
-## 关键概念
+****## 关键概念
 catkin为ROS的包管理工具，本质上是一个目录系统，是一种松散的组织结构。
 ROS基于TCP/IP网络进行节点之间的通信，实现松散的耦合结构。
 ### ROS中提供4种通信方式：
@@ -540,8 +540,37 @@ sudo apt-get install ros-<version>-plotjuggler-ros # 安装rosbag 支持
 ```bash
 rosrun plotjuggler plotjuggler
 ```
+可以在plotjuggler里面对数据进行处理或者组合绘制: 
+```lua
+-- Get the handle to access a timeseries called "trajectory/node.0/position/x"
+-- /navigation/path_route_group/route_group[1]/route[0]/linear_v
+
+-- global data
+new_series = ScatterXY.new("trajectory_XY")
+-- Clear previous data
+new_series:clear()
+
+dt = 0.1
+prefix = "/navigation/path_route_group/route_group[1]/route[%d]/linear_v"
+index = 0
+
+while(true) do
+	str = string.format(prefix, index)
+	series_y = TimeseriesView.find( str )
+	-- stop the loop if any of those series can't be found
+	if series_y == nil then
+		print("tag [%s] not found", prefix)
+		break
+	end
+
+	y = series_y:atTime(tracker_time)
+	new_series:push_back(index * dt, y)
+	index = index + 1
+end -- end loop
+```
 - `ros_vis_tools`
 方便的`rviz`可视化工具。
+> 坑： 数据中的array如果当前帧比上一帧的短， 会有残存历史数据
 
 ### 讨论
 #### 多线程环境

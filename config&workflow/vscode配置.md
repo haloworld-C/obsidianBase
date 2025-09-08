@@ -41,5 +41,13 @@
 #### 插件
 - `Vscode-neovim`
 	原生vim支持，使用`Vscode`作为前端`GUI`, 只用`neovim`作为后台。
+-  clangd语言跳转/补全工具
+	1. 先本机安装clang/clangd
+	```bash
+	sudo apt update
+	sudo apt install clang clangd
+	```
+	2. vscode安装clangd插件
+	3. 可能需要禁止C++插件
 
 
