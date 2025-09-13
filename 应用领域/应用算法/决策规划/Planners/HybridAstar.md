@@ -1,14 +1,25 @@
 [ref1: Practical Search Techniques in Path Planning for Autonomous Driving]([Practical Search Techniques in Path Planning for Autonomous Driving](https://ai.stanford.edu/%7Eddolgov/papers/dolgov_gpp_stair08.pdf))
 ### Core Concept
-1. 应用Dubins曲线或者RS曲线进行运动空间采样的方式， 保证满足动力学约束
-2. 采用了A\*的搜索技巧，离散空间搜索
-3. 前端采用Dubins扩展节点的方式进行A\*搜索， 后端采用优化的方式保证路径平滑(航向角没有跳变)及原理障碍物(原始论文采用的是zig-zag梯度下降的方式)
+1. 应用Dubins曲线或者RS曲线进行运动空间($x$, $y$, $\theta$)采样的方式， 保证满足动力学约束
+2. 采用了A\*的搜索技巧，离散空间搜索(其中向后的采样并不是每次都会计算没N个节点采样一次， 并且N随这距离障碍物越近越小)
+3. 前端采用Dubins扩展节点的方式进行A\*搜索， 后端采用CG优化的方式(障碍物梯度信息使用Voronoi势场提供)保证路径平滑(航向角没有跳变)及原理障碍物(原始论文采用的是zig-zag梯度下降的方式)
 ### 算法框架
 #### Dubins曲线及RS曲线采样
 
 #### A\*搜索代价函数
-J=G+H
+扩展的方式为采样， 采样的过程也进行障碍物判断的剪枝
+$J=G+H_1+H_2$, 
+其中$H_1$为不考虑障碍物的到懂点的最短运动距离(Rubin曲线意义下)和欧式距离的较小值（可离线提前计算）
+其中$H_2$为考虑障碍物忽略运动特性的最短距离(利用d*， A\*等算法)
+G在论文中没有提， 根据A\*算法， 可以选择为走过的距离
+
+
 #### 优化平滑
+#### CG优化
+
+#### 非线性优化(非参数插值优化,仍使用CG方法)
+
+
 
 #### 算法伪码
 

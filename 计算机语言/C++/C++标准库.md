@@ -1,3 +1,61 @@
+## 标准输入输出
+### 输入
+cin作为输入操作符会自动跳过空格读取输入， 并且不消耗分割符'\n'
+```cpp
+int a;
+cin >> a;
+```
+getline一次读取一行， 效率较高;
+```cpp
+#include <string>
+#include <sstream>
+
+string input;
+getline(cin, input);  // 读取整行（如 "11"）
+
+stringstream ss(input);
+int num;
+if (ss >> num) {      // 从字符串流转换为整数
+    cout << num;       // 输出 11
+} else {
+    cout << "输入的不是有效数字！";
+}
+```
+### 输出
+cout 可方便的输出基本类型数据， 容器中包含string, 其他容器则不支持。
+- 保留精度
+```cpp
+#include <iostream>
+#include <iomanip>  // 必须包含此头文件
+
+double num = 12.2345;
+int n = 3;
+cout << fixed << setprecision(n);  // 固定小数格式，保留n位
+// output 12.1234
+```
+- 补充前导0
+```cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    int num;
+    int digits;  // 总位数
+    
+    cout << "请输入一个整数: ";
+    cin >> num;
+    
+    cout << "需要显示多少位? ";
+    cin >> digits;
+    
+    cout << "结果: " 
+         << setw(digits) << setfill('0') << num << endl;
+    
+    return 0;
+}
+```
 ## 容器通用操作
 ### 算法Algorithm
 ## 数据结构
@@ -108,6 +166,15 @@ std::vector<std::string> splitStringBySpace(const std::string& str) {
 - 其他辅助函数
 ```cpp
 std::stoi(str); // 将string转换为int类型
+```
+- 去除先导零
+```cpp
+    size_t first_non_zero = -1;
+    first_non_zero = result.find_first_not_of('0');
+    if(first_non_zero == -1) return "0";
+
+    return result.substr(first_non_zero);
+```
 ```
 #### list
 - 在第k个元素前插入
@@ -369,6 +436,7 @@ std::sort(c.rbegin(), c.rend()); // 降序, 区间[)
 ```C++
 isdigit(char a); // 判断字符是否为数字字符
 std::max(a, b);
+std::max({a, b, c}); // 同时比较多个元素
 std::min(a, b);
 ```
 ### 倒转元素

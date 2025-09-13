@@ -559,32 +559,101 @@ $$
 > 遗留问题4： 在iLQR/LQR的框架下如何考虑障碍物避障需求
 ###  遗留问题及实现示例
  书接上回。我们在上面的讨论中说明了iLQR的算法推导过程， 本部分内容重点讨论上面内容的遗留问题及以一个差动驱动的机器人轨迹规划问题的iLQR算法实现的实例。
- > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)
- > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)
- > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)
- 
+ > ref1: [Synthesis and stabilization of complex behaviors through online trajectory optimization](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=71b552b2e058d5a6a760ba203f10f13be759edd3)，（本文主要内容从该篇论文取得理解）
+ > ref2: [Blog post about iLQR by Travis deWolf](https://studywolf.wordpress.com/2016/02/03/the-iterative-linear-quadratic-regulator-method/)（理解了LM算法的实施过程）
+ > ref3: [有模型的强化学习—LQR与iLQR](https://zhuanlan.zhihu.com/p/91865627)（理解了iLQR的动态规划算法框架）
+ > ref4: [LM(Levenberg-Marquard)算法的实现](https://www.codelast.com/%e5%8e%9f%e5%88%9blm%e7%ae%97%e6%b3%95%e7%9a%84%e5%ae%9e%e7%8e%b0/)（理解了LM算法的实质）
+  
 #### 初始轨迹及对应控制量获取
  - option1: 使用常量控制量， 生成一条初始轨迹
  - option2: 如果代价函数可以很容易转换为QP问题， 则使用QP问题求解器获取一个初始的轨迹及对应的控制量
  - option3: 如果代价函数为二次型， 那么可以使用LQR的解获得一个初始轨迹及对应的控制量
+ - option4: 使用RS曲线或者dubin曲线生成初始轨迹，自带对应控制量
 #### 正则化(Regularization)
-对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$min(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。(这里缺乏转换过程)
+对于公式(2.24)中$Q_{uu|k}^{-1}$未必存在, 而且我们的原问题是求$\mathop{min}\limits_{\delta{u_k}}(\delta{Q}_k)$, 我们希望其二阶导$Q_{uu|k}$为正定的。故我们回到式(2.22)：
+$$
+\begin{equation}
+\begin{aligned}
+\delta{Q}_k&= \delta{x_k}^TQ_{x|k}+Q_{u|k}^T\delta{u_k} \\
+& \quad +\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}+\frac{1}{2}\delta{x_k}^TQ_{xu|k}\delta{u_k} \\
+& \quad +\frac{1}{2}\delta{x_k}^TQ_{ux|k}^T\delta{u_k}+\frac{1}{2}\delta{u_k}^TQ_{uu|k}\delta{u_k} \\
+&=(\delta{x_k}^TQ_{x|k}+\frac{1}{2}\delta{x_k}^TQ_{xx|k}\delta{x_k}) \\
+&\quad + (Q_{u|k}^T+\delta{x_k}^TQ_{xu|k})\delta{u_k} \\
+&\quad + \frac{1}{2}\delta{u_k}^TQ_{uu|k}\delta{u_k}
+\end{aligned}
+\end{equation}
+\tag{4.1}
+$$
 
-ref1有两种正则化的选择:
-- option 1:
+由于我们是在寻找$u_k^*$使得$\delta{Q_k}$最小， 故在上式中$\delta{x_k}$为已知量。又由于上式中所有变量的序列均为第k步， 故下文的说明中均省略。令:
 $$
+\left\{
+\begin{equation}
+\begin{aligned}
+d&=\delta{x}^TQ_{x}+\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}\\
+H&=Q_{uu}\\
+J&= Q_{u}^T+\delta{x}^TQ_{xu}\\
+\end{aligned}
+\end{equation}
+\tag{4.2}
+\right.
+$$
+> 上式中符号的选择是故意为之，其中$H$为式4.1中二次型关于$\delta{u}$的二阶导(哈密顿矩阵)， $J$为关于$\delta{u}$的一阶导(雅可比矩阵)， $d$为常数， 对于我们求解极值问题没有影响
+
+故，
+$$
+\begin{equation}
+\begin{aligned}
+\mathop{min}\limits_{\delta{u}}(\delta{Q})&=\mathop{min}\limits_{\delta{u}}[(\delta{x}^TQ_{x}+\frac{1}{2}\delta{x}^TQ_{xx}\delta{x}) \\
+&\quad + (Q_{u}^T+\delta{x}^TQ_{xu})\delta{u} \\
+&\quad + \frac{1}{2}\delta{u}^TQ_{uu}\delta{u}]\\
+&=\mathop{min}\limits_{\delta{u}}(d+J\delta{u}+\frac{1}{2}\delta{u}^TH\delta{u})
+\end{aligned}
+\end{equation}
+\tag{4.3}
+$$
+由ref4， 对上式求最小值等价于求解方程(对上式求$\frac{\partial}{\partial{\delta{u}}}=0$， 然后对H矩阵添加正则项):
+$$
+\begin{equation}
+(H+\mu{I})\delta{u}=-J
+\end{equation}
+\tag{4.4}
+$$
+其中$\mu$称为LM参数(LM数值算法本质上是一种信赖域优化方法), $\mu{\in}[0, +\infty)$
+当$u=0$时(H本身正定)，数值算法求解以牛顿法进行收敛；
+当$\mu{I} \gg H$时， 数值算法求解以梯度法进行收敛。其迭代求解步骤详见ref4.
+>上面的数值解法实质上放弃了对$H$正定性的要求， 而是在局部区域求解一个最小值。
+
+ref1中有两种正则化的选择:
+- option 1(标准的LM正则化方法):
+$$
+\begin{equation}
 \widetilde{Q}_{uu|k}=Q_{uu|k}+{\mu}I=\ell_{uu|k} + B_k^TS_{k+1}B_k+{\mu}I
+\end{equation}
+\tag{4.5}
 $$
+> 注意到将上式带回到式4.3， 相当于增加了针对控制的二次项$\delta{u_k}^T\delta{u_k}$， 会对控制的变化幅度做出惩罚， 产生的轨迹会更加保守。缺点是由于这是一个数值算法， 对于相同轨迹不同时刻迭代出来的$u^*$可能不同，虽然控制量的变化足够小，但轨迹 一致性难以保证
 - option 2:
 $$
-\widetilde{Q}_{uu|k}=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k
+\begin{equation}
+\begin{aligned}
+\widetilde{Q}_{uu|k}&=\ell_{uu|k} + B_k^T(S_{k+1}+{\mu}I)B_k \\
+\widetilde{Q}_{xu|k}&=\ell_{xu|k}+A_k^T(S_{k+1}+\mu{I})B_k
+\end{aligned}
+\end{equation}
+\tag{4.6}
 $$
+> 注意将上式带回式4.3， 多出来的二次型代价为$\frac{1}{2}{\mu}\delta{u}^TB_k^TB_k\delta{u}+{\mu}\delta{x_k}^TA_k^TB_k\delta{u_k}$， 读者可以尝试将$\delta{x_{k+1}}^T\delta{x_{k+1}}=(A_k\delta{x}_k+B_k\delta{u}_k)^T(A_k\delta{x}_k+B_k\delta{u}_k)$继续展开， 发现与多出来的二次型仅差一个系数与常数项， 故此种形式的正则化相当于对轨迹状态变化进行惩罚， 相比于option1更加保守， 有利于保持轨迹优化的一致性。
 #### 线搜索(Line search)
-(缺乏问题转换过程)
 线搜索形式:
 $$
+\begin{equation}
 \hat{u}_k=u_k+{\alpha}*d_k+K_k\delta{x}_k
+\end{equation}
+\tag{4.7}
 $$
+其中，$\alpha\in{[0, 1]}$
+> 使用线搜索的主要目的是应对代价值迭代$\delta{J}$出现不降反升的情况， 常用的先搜索技巧有黄金分割法、斐波那契分割法等， 本质思想是当$\delta{J}$不下降的时候可能是我们迭代步长过大， 这时我们减小$\alpha$；如果$\delta{J}$在下降说明我们的优化方向是正确的， 这时我们增大$\alpha$
 
 
 ##### 算法伪代码
