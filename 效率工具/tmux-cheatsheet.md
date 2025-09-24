@@ -88,6 +88,9 @@ set-option -g mouse on # 鼠标支持, 按住shift然后负责
 
     set-option -g mode-keys vi
 > 临时调整: ctrl + b , 再按:, 进入命令模式， 然后输入上面模式
+```tmux
+setw -g mode-keys vi
+```
 
 启用这条配置后，就可以使用 h、j、k、l 来移动光标了。
 

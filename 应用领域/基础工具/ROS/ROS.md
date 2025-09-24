@@ -568,9 +568,10 @@ while(true) do
 	index = index + 1
 end -- end loop
 ```
+> 坑： 数据中的array如果当前帧比上一帧的短， 会有残存历史数据
+> 使用xy绘图模式， 使用右键拖动而不是左键
 - `ros_vis_tools`
 方便的`rviz`可视化工具。
-> 坑： 数据中的array如果当前帧比上一帧的短， 会有残存历史数据
 
 ### 讨论
 #### 多线程环境
