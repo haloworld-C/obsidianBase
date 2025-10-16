@@ -71,3 +71,8 @@ xdotool key ctrl+alt+t # 输入快捷键
 	主要是模拟命令行中的操作
 - mold
 替代diff的图形化差异比较工具。
+- blueman
+方便连接蓝牙耳机:
+```bash
+sudo apt install blueman -y
+```
