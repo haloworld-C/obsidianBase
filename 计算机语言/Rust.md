@@ -251,3 +251,7 @@ fn main() {
 
 > rust没有return保留字？
 
+## 好用的rust工具
+- ripgrep， 搜索匹配工具
+- starship, 终端提示工具
+- 
