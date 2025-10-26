@@ -76,3 +76,5 @@ xdotool key ctrl+alt+t # 输入快捷键
 ```bash
 sudo apt install blueman -y
 ```
+- sunlight+moonlight
+实现任意设备的串流
