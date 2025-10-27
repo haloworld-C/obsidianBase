@@ -2,6 +2,7 @@
 - TODO Hightlight
 - clangd(C/C++提示工具，比官方好用， 需要安装`语言服务器`)
 - clangd-formant(方便的格式化工具)
+> 需要安装vscode插件， clangd-formart发行包
 ### 使用技巧
 - 远程登录服务器查看log
 	文件刷新做的比较好，也比较好看
