@@ -230,6 +230,26 @@ auto coutPair = [](std::string a, double parameter){
 ### this指针
 在类的非静态函数中可以使用this指针。代表指向对象的“虚拟”指针，代表了绑定关系。
 > 与python class 中的self类似
+### 移动构造语义move
+
+
+
+```c++
+// 省去一次构造成本   
+for (const auto& point : smooth_path) {
+        Node3d node(point);
+        if (!collision_detection_.isTraversable(node)) {
+            path.clear();
+            return false;
+        }
+        path.emplace_back(std::move(node));
+    }
+```
+
+
+
+
+
 ### 技巧
 - 使用"前置声明"来避免头文件递归包含
 前置声明允许你告诉编译器有一个名`classname`的类存在，尽管它的定义并没有在当前文件中提供。
@@ -474,4 +494,3 @@ auto p = &*foo.begin();
 	 1. 可以在构造函数初始化列表进行赋值
 - 模板函数的使用
 	1. 必须把实现写在.h文件中
-  
