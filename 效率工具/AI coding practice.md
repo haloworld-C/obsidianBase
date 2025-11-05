@@ -16,6 +16,7 @@
 - windsurf
 - copilot
 - cursor
+- continue
 
 ## CLI
 ### claude
@@ -47,3 +48,8 @@ export ANTHROPIC_SMALL_FAST_MODEL="deepseek-chat"
 ### cline
 
 ## Practice
+
+
+## API记录
+- GLM
+api: c1dc350b81ec4110858031280d31484d.TULqwreKQjqEQyN3
