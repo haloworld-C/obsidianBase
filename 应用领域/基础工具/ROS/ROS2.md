@@ -6,15 +6,15 @@
 
 ####  常用命令(与ROS1相同的命令见[[ROS]])
 
-| command                          | params                      | decription         | comment                                                      |
-| -------------------------------- | --------------------------- | ------------------ | ------------------------------------------------------------ |
-| colcon build                     | --packages-select [package] | 编译指定包         | colcon build为ROS2的编译命令行工具, 编译附加依赖colcon build --packages <name-of-pkg><br>添加Cmake参数： --cmake-args -DBUILD_TESTING=ON |
-| colcon test                      |                             | 统一运行测试用例   |                                                              |
-| ros2 daemon start                |                             | 启动ros2的守护进程 |                                                              |
-| ros2 daemon stop                 |                             | 关闭ros2的守护进程 |                                                              |
-| ros2 daemon status               |                             | 查看ros2的运行状态 |                                                              |
-| ros2 pkg executables [pack name] |                             | 查看包是否已经安装 |                                                              |
-| ros2 bag record -o my_bag -a     |                             | 录包               |                                                              |
+| command                          | params                      | decription  | comment                                                                                                                                                                                                                                              |
+| -------------------------------- | --------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| colcon build                     | --packages-select [package] | 编译指定包       | colcon build为ROS2的编译命令行工具, 编译附加依赖colcon build --packages <name-of-pkg><br>添加Cmake参数： --cmake-args -DBUILD_TESTING=ON<br>限制多线程数:colcon build --parallel-workers 2<br>单线程编译: colcon build --executor sequential<br>限制等层多线程: MAKEFLAGS=-j4 colcon build |
+| colcon test                      |                             | 统一运行测试用例    |                                                                                                                                                                                                                                                      |
+| ros2 daemon start                |                             | 启动ros2的守护进程 |                                                                                                                                                                                                                                                      |
+| ros2 daemon stop                 |                             | 关闭ros2的守护进程 |                                                                                                                                                                                                                                                      |
+| ros2 daemon status               |                             | 查看ros2的运行状态 |                                                                                                                                                                                                                                                      |
+| ros2 pkg executables [pack name] |                             | 查看包是否已经安装   |                                                                                                                                                                                                                                                      |
+| ros2 bag record -o my_bag -a     |                             | 录包          |                                                                                                                                                                                                                                                      |
 ### Colcon test
 #### gtest支持
 要让新的 gtest 在 colcon test 时自动跑，关键是按 ROS2/ament-cmake 的套路把它注册进去。基本步骤如下：
