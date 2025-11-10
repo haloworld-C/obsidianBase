@@ -16,6 +16,7 @@
 - windsurf
 - copilot
 - cursor
+- continue(还可以组合各种模型)
 
 ## CLI
 ### claude
@@ -45,5 +46,33 @@ export ANTHROPIC_SMALL_FAST_MODEL="deepseek-chat"
 
 ### MCP
 ### cline
-
+### 本地模型进行代码补全
+#### ollama安装
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+#### 模型拉取到本地
+```bash
+ollama run deepseek-coder:6.7b
+```
+#### continue中进行配置
+```YAML
+models: 
+	- name: Qwen3 without Thinking for Autocomplete 
+	  provider: ollama 
+	  model: qwen3:4b # qwen3 is a thinking-switchable model 
+	  roles: - autocomplete 
+	  requestOptions: 
+		extraBodyProperties: 
+			think: false # turning off the thinking
+```
 ## Practice
+
+
+## API记录
+- GLM
+baseULR:
+anthropic_base_url: https://api.z.ai/api/anthropic
+open_ai_base_url: https://api.z.ai/api/coding/paas/v4
+api: c1dc350b81ec4110858031280d31484d.TULqwreKQjqEQyN3
+zAI: 1d46786929cf473a96dae3aadcefb5d7.Tgdho9eV6Nd6Fqo2

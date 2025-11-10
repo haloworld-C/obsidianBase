@@ -78,3 +78,7 @@ sudo apt install blueman -y
 ```
 - sunlight+moonlight
 实现任意设备的串流
+- gpu监控工具
+```bash
+pip3 install nvitop
+```

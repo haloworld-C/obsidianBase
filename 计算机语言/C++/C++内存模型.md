@@ -18,6 +18,8 @@ staticLayerPtr = boost::dynamic_pointer_cast<StaticLayer>(plugin); // 向下转�
 LayerPtr = boost::static_pointer_cast<StaticLayer>(plugin); // 向上转换
 ```
 
+> 注意: 无论是何种智能指针， 其资源的对象都在堆上。 对于没有手动管理的内存的小规模类而言， 如果没有构造多态的需求， 那么使用其原始对象has a as value是一种更好的实践。
+
 
 
 ### issues
