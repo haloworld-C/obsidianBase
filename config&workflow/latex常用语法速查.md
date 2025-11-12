@@ -41,7 +41,7 @@
 
 - 分组注释
 $$
-\begin{matrix}\underbrace{cos\theta_c*v_{xr}+sin\theta_c*v_{yr}} \\ v_r\ project\ to\ v_c\end{matrix}-\begin{matrix}\underbrace{(cos\theta_c*v_c*cos\theta_c + sin\theta_c*v_c*sin\theta_c) }\\ v_c \end{matrix}
+\begin{matrix} \\ \underbrace{cos\theta_c*v_{xr}+sin\theta_c*v_{yr}} \\ v_r\ project\ to\ v_c\end{matrix}-\begin{matrix} v_c \\ \overbrace{(cos\theta_c*v_c*cos\theta_c + sin\theta_c*v_c*sin\theta_c) } \\ \\ \end{matrix}
 $$
 - 下标\上标(正上方、正下方)
 $\mathop{min}\limits_{u_k}^h(\delta{Q}_k)$
