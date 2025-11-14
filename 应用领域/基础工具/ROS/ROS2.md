@@ -50,3 +50,28 @@ colcon test --packages-select your_pkg --ctest-args --output-on-failure
 colcon test --packages-select spider_navigation --ctest-args -R collision_detection_costmap_test
 ```
 > 未解决问题， 无法在测试用例失败的时候输出详细信息
+
+### 常见问题
+#### ROS2 中开debug模式
+在ros launch py中添加前缀标签即可: 
+```python
+lifecycle_manager = Node(
+	package='nav2_lifecycle_manager',
+	executable='lifecycle_manager',
+	name='lifecycle_manager_navigation',
+	output='screen',
+	arguments=['--ros-args', '--log-level', log_level],
+	parameters=[{
+		'use_sim_time': use_sim_time,
+		'autostart': autostart,
+		'bond_timeout': 0.0, # 禁用bond连接
+		'bond_respawn_max_duration': 10.0,
+		'node_names': [
+			'navigation/cmd_navigation',
+			'navigation/control_process',
+			'navigation/navigation_planner'
+		]
+	}],
+	prefix=['gdb -ex run --args']
+)
+```

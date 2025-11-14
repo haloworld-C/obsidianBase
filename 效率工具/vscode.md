@@ -1,7 +1,9 @@
 ### 插件列表
 - TODO Hightlight
 - clangd(C/C++提示工具，比官方好用， 需要安装`语言服务器`)
+TODO: 配置说明
 - clangd-formant(方便的格式化工具)
+TODO: 配置说明
 > 需要安装vscode插件， clangd-formart发行包
 ### 使用技巧
 - 远程登录服务器查看log
