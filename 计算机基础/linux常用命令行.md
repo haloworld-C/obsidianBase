@@ -148,6 +148,11 @@ ffmpeg -y -i test.avi -s 800x640 -vcodec libx264 -preset fast -qscale 4 -r 25 ou
 # -r: 25 帧数 (一般用25就可以了)
 # out.mp4: 输出文件名。
 ```
+- 格式转换(动图)
+```bash
+ffmpeg -i out.mp4 out.gif
+ffmpeg -i input.gif -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -r 15 output.gif
+```
 6. sshpass免密码登录ssh
 ```bash
 sshpass -p nvidia ssh nvidia@192.168.1.188
