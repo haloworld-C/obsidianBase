@@ -19,6 +19,7 @@
 - continue(还可以组合各种模型)
 
 ## CLI
+### Aider(pair programming)
 ### claude
 - 优点: 可以在大型项目中修改代码
 - 缺点: 账号容易封, 贵
