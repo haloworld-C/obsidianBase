@@ -1,3 +1,5 @@
+- 方法论
+- 工具
 ## 使用场景
 ### 善于做什么
 - chat(无需在编辑器和网页之间切换， 复制粘贴)
@@ -17,9 +19,22 @@
 - copilot
 - cursor
 - continue(还可以组合各种模型)
-
+## IDE
+### anti-gravity
+1. 安装vpn需要开tun模式
+2. 登录需要vpn开全局模式
+3. zsh补全受到干扰:
+```bash
+sudo chown root:root /usr/share/zsh/vendor-completions/_antigravity
+```
 ## CLI
 ### Aider(pair programming)
+- 特点: 可以通过ide注释主动触发
+#### 使用deepseek api登录
+
+```bash
+aider --model deepseek --api-key deepseek=<key>
+```
 ### claude
 - 优点: 可以在大型项目中修改代码
 - 缺点: 账号容易封, 贵
@@ -116,3 +131,5 @@ anthropic_base_url: https://api.z.ai/api/anthropic
 open_ai_base_url: https://api.z.ai/api/coding/paas/v4
 api: c1dc350b81ec4110858031280d31484d.TULqwreKQjqEQyN3
 zAI: 1d46786929cf473a96dae3aadcefb5d7.Tgdho9eV6Nd6Fqo2
+- deepseek
+key api: sk-5175b5cd6f324d9b95ba08812a07fd2b
