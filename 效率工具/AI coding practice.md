@@ -33,7 +33,7 @@ sudo chown root:root /usr/share/zsh/vendor-completions/_antigravity
 #### 使用deepseek api登录
 
 ```bash
-aider --model deepseek --api-key deepseek=<key>
+aider --model deepseek --api-key deepseek=<key> --watch-files
 ```
 ### claude
 - 优点: 可以在大型项目中修改代码

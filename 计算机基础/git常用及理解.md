@@ -214,3 +214,9 @@ git pull origin <branch name>
 ```bash
 git config --global credential.helper store
 ```
+
+### 技巧
+添加所有文件， 但排除特定文件:
+```bash
+git add . ':!config.yaml' # 支持通配符
+```
