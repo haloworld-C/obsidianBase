@@ -37,8 +37,11 @@ gtest 代码里如果用到了包内头文件/库，务必把 ${CMAKE_CURRENT_SO
 3. 运行测试
 构建：colcon build --packages-select my_pkg --cmake-args -DBUILD_TESTING=ON
 执行全部测试：colcon test --packages-select my_pkg
-看详细输出：colcon test --packages-select my_pkg --event-handlers console_direct+ --ctest-args --output-on-failure
-4. 日志与调试
+看详细输出：
+```
+colcon test-result --verbose
+```
+3. 日志与调试
 测试运行后 colcon test-result --verbose 会列出全部结果；单个 gtest 的原始输出位于 build/[pkg]/test_results/，必要时可以直接运行 build/[pkg]/test/my_test --gtest_filter=... 调试。
 照这个流程安置好 gtest 后，每次执行 colcon test 就会自动构建并运行所有注册的测试。
 
@@ -50,3 +53,69 @@ colcon test --packages-select your_pkg --ctest-args --output-on-failure
 colcon test --packages-select spider_navigation --ctest-args -R collision_detection_costmap_test
 ```
 > 未解决问题， 无法在测试用例失败的时候输出详细信息
+
+### 参数加载
+
+#### yaml config加载
+```yaml
+/navigation/navigation_planner: # 这一行比较重要， 搞清楚节点名称就能正确加载
+  ros__parameters:
+    chassis:
+      footprint_x: 0.64
+      footprint_y: 0.6
+      min_turning_radius: 0.5
+    hybrid:
+      motion_delta_theta: 7.5 #degree
+      rs_step: 0.2
+      tie_breaker: 0.01
+```
+读取示例:
+```cpp
+params_->declare_parameter("hybrid.motion_delta_theta",rclcpp::ParameterValue(7.5));
+
+float  motionDeltaTheta = params_->get_parameter("hybrid.motion_delta_theta").as_double();
+```
+#### 支持动态参数
+```cpp
+param_callback_handle_ = this->add_on_set_parameters_callback(
+  [this](const std::vector<rclcpp::Parameter> &params) {
+    rcl_interfaces::msg::SetParametersResult result;
+    result.successful = true;
+
+    for (const auto & p : params) {
+      if (p.get_name() == "kp") {
+        kp_ = p.as_double();
+      }
+    }
+    return result;
+  });
+
+```
+- 修改参数(运行时)
+```bash
+ros2 param set /controller kp 2.0
+```
+### 常见问题
+#### ROS2 中开debug模式
+在ros launch py中添加前缀标签即可: 
+```python
+lifecycle_manager = Node(
+	package='nav2_lifecycle_manager',
+	executable='lifecycle_manager',
+	name='lifecycle_manager_navigation',
+	output='screen',
+	arguments=['--ros-args', '--log-level', log_level],
+	parameters=[{
+		'use_sim_time': use_sim_time,
+		'autostart': autostart,
+		'bond_timeout': 0.0, # 禁用bond连接
+		'bond_respawn_max_duration': 10.0,
+		'node_names': [
+			'navigation/cmd_navigation',
+			'navigation/control_process',
+			'navigation/navigation_planner'
+		]
+	}],
+	prefix=['gdb -ex run --args']
+)
+```

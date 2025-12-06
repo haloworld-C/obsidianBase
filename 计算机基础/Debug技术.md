@@ -101,6 +101,29 @@ backward::SignalHandling sh;
 }
 ```
 > 在`CMakelist.txt`中需要将编译选项`-g`打开
+#### gdb server
+- 优点: 可远程调试
+- 缺点: 配置稍微麻烦
+##### 配置步骤
+0. install
+```bash
+sudo apt install gdbserver
+```
+1. 运行程序(编译时需要开启debug选项)
+有两个选择:
+- 手动运行程序， gdbserver会阻塞程序运行， 直到客户端gdb中远程连接， 并continue命令:
+```bash
+# 服务端
+gdbserver  localhost:1234 <your program>
+# 客户端
+gdb <your program>
+[gdb] target remote localhost:1234 # gdb中运行
+[gdb] continue
+```
+- 先运行程序， 再把程序pid附加在server中: 
+```bash
+sudo gdbserver --attach localhost:1234 12345
+```
 #### strace
 查看程序调用堆栈信息
 ### btrace
@@ -168,3 +191,10 @@ std::cout << "test" << __FILE__ << __LINE__ << std::endl;
 ```
 ### 注意事项
 - debug模式对性能是有影响的(cpu、内存占用)
+
+### Core dump
+#### 开启core dump
+```bash
+ulimit -c unlimited
+```
+#### gdb加载core dump 文件
